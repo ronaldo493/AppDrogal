@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Button, Alert } from 'react-native';
+import { View, Button, Alert, Image } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import RouteList from '../components/RouteList';
-import styles from '../components/styles/HomeStyles';
+import HomeStyles from '../components/styles/HomeStyles';
 import * as Location from 'expo-location';
 import MapService from '../services/MapService';
 
@@ -59,10 +59,15 @@ export default function Home() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={HomeStyles.container}>
+      <View style={HomeStyles.logoContainer}>
+        <Image source={require('../assets/img/drogal.png')} style={HomeStyles.logo} />
+      </View>
       <SearchBar onAddRoute={handleAddRoute} />
-      <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
-      <Button title="Traçar Rota" onPress={handleTraceRoute} />
+      <View style={HomeStyles.routeContainer}>
+        <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
+        <Button title="Traçar Rota" onPress={handleTraceRoute} />
+      </View>
     </View>
   );
 }

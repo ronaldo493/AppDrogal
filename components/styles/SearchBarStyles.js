@@ -24,5 +24,4 @@ export default StyleSheet.create({
   buttonContainer: {
     marginTop: 10,
   }
-
 });
