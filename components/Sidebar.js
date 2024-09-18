@@ -12,7 +12,6 @@ export default function Sidebar({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
         <Text style={SidebarStyles.menuItem}>Settings</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
