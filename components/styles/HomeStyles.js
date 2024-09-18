@@ -24,6 +24,5 @@ export default StyleSheet.create({
   
   routeContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
   },
 });
