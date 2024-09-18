@@ -19,7 +19,8 @@ export default StyleSheet.create({
   logo: {
     width: width * 0.6,
     height: height * 0.3,
-    resizeMode: 'contain', //Mantéma proporção
+    resizeMode: 'contain', //Mantém a proporção
+    opacity: 0.3,
   },
   
   routeContainer: {
