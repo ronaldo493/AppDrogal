@@ -6,7 +6,6 @@ import SearchBarStyles from './styles/SearchBarStyles';
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilial, setSelectedFilial] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSearch = (text) => {
     setSearchTerm(text);

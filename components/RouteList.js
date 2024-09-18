@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import styles from './styles/RouteListStyles';
 import RouteListStyles from './styles/RouteListStyles';
 
 export default function RouteList({ routes, onRemoveRoute }) {
@@ -18,7 +17,7 @@ export default function RouteList({ routes, onRemoveRoute }) {
       data={routes}
       keyExtractor={(item) => item.codigofilial.toString()} // Usa o código da filial como chave
       renderItem={renderItem}
-      style={styles.list}
+      style={RouteListStyles.list}
     />
   );
 }
