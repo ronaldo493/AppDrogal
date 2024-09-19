@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
     borderWidth: 1.5,
