@@ -18,6 +18,7 @@
       }
     },
     "web": {
-    }
+    },
+    "assets": ["./assets/fonts"]
   }
 }

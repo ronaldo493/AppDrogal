@@ -7,18 +7,19 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight: 'bold',
     textAlign: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
+    borderWidth: 1.5,
+    borderColor: '#2196F3',
     padding: 8,
     borderRadius: 4,
   },
   suggestionItem: {
     padding: 8,
-    fontSize: 45,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+    backgroundColor: 'white',
   },
 
   buttonContainer: {

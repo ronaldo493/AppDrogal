@@ -4,9 +4,9 @@ const { width, height } = Dimensions.get('window'); //Ajustar automaticamente
 
 export default StyleSheet.create({
   container: {
-
     flex: 1,
     padding: 25,
+    backgroundColor: 'white',
   },
 
   logoContainer: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: width * 0.6,
     height: height * 0.3,
     resizeMode: 'contain', //Mantém a proporção
-    opacity: 0.3,
+    opacity: 0.5,
   },
   
   routeContainer: {
