@@ -7,10 +7,10 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-    borderWidth: 1.5,
+    borderWidth: 1.3,
     borderColor: '#2196F3',
     padding: 8,
     borderRadius: 4,
