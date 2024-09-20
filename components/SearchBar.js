@@ -7,6 +7,7 @@ export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilial, setSelectedFilial] = useState(null);
 
+  //Função que lida com a BUSCA
   const handleSearch = (text) => {
     setSearchTerm(text);
     const selected = filiais.find(filial => filial.codigofilial.toString() === text);
@@ -17,6 +18,7 @@ export default function SearchBar({ onAddRoute }) {
     }
   };
 
+  //Função que lida com a Seleção da Filial
   const handleSelectFilial = () => {
     if (selectedFilial) {
       onAddRoute(selectedFilial);

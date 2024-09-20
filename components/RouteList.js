@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import RouteListStyles from './styles/RouteListStyles';
 
 export default function RouteList({ routes, onRemoveRoute }) {
+  //Renderenização de cada Item da Lista
   const renderItem = ({ item }) => (
     <View style={RouteListStyles.routeItem}>
       <Text>{item.nomefilial}</Text>
@@ -12,6 +13,7 @@ export default function RouteList({ routes, onRemoveRoute }) {
     </View>
   );
 
+  //Exibição da Lista
   return (
     <FlatList
       data={routes}

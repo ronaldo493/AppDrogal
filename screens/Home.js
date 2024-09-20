@@ -12,23 +12,29 @@ export default function Home() {
 
   useEffect(() => {
     const getLocation = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync(); //Solicita permissão para acessar a localização do dispositivo
-      if (status !== 'granted') {
-        Alert.alert('Erro', 'Permissão para acessar localização foi negada.');
-        return;
+      let { status } = await Location.requestForegroundPermissionsAsync(); //Solicita permissão para acessar a localização
+      
+      //Verifiação de Permissão
+      if (status !== 'granted') { 
+        Alert.alert('Permissão Negada', 'Você precisa permitir o acesso à localização para traçar a rota.', [
+          { text: 'Solicitar Permissão', onPress: () => getLocation() }, //Reexecuta getLocation
+          { text: 'Sair', onPress: () => console.log('Usuário saiu') }
+        ]);
+        return false;
       }
-      let location = await Location.getCurrentPositionAsync({});
+
+      //Obtém a localização atual do usuário
+      let location = await Location.getCurrentPositionAsync({}); 
       setCurrentLocation({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
     };
-
     getLocation();
   }, []);
 
+  //Função para adicionar uma filial
   const handleAddRoute = (filial) => {
-    // Verifica se a filial já foi adicionada
     if (routes.some(route => route.codigofilial === filial.codigofilial)){
       Alert.alert('Atenção!', 'Filial já adicionada.');
       return;
@@ -36,10 +42,12 @@ export default function Home() {
     setRoutes([...routes, filial]);
   };
 
+   //Função para remover uma rota/filial
   const handleRemoveRoute = (filialToRemove) => {
     setRoutes(routes.filter(filial => filial.codigofilial !== filialToRemove.codigofilial));
   };
 
+    //Função para traçar a rota
   const handleTraceRoute = () => {
     if (!currentLocation) {
       Alert.alert('Erro', 'Localização atual não encontrada.');
@@ -47,7 +55,7 @@ export default function Home() {
     }
 
     if (routes.length === 0) {
-      Alert.alert('Nenhuma filial selecionada', 'Adicione uma Filial para traçar uma rota.');
+      Alert.alert('Atenção!', 'Nenhuma filial selecionada');
       return;
     }
 
