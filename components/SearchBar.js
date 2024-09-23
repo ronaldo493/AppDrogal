@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Button, View, Text } from 'react-native';
+import { TextInput, Button, View, StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
 import filiais from '../data/filiais.json';
 import SearchBarStyles from './styles/SearchBarStyles';
 
