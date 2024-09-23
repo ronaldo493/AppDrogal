@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Button, Alert, Image } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import RouteList from '../components/RouteList';
-import HomeStyles from '../components/styles/HomeStyles';
+import HomeStyles from './styles/HomeStyles';
 import * as Location from 'expo-location';
 import MapService from '../services/MapService';
 
