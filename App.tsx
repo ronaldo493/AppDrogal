@@ -39,10 +39,6 @@ export default function App() {
               <Icon name="account-circle" size={28} color="#000" /> 
             </TouchableOpacity>
           ),
-          drawerType: 'back', // Para melhorar a experiência ao abrir o drawer
-          // Adiciona eventos para o drawer
-          onDrawerOpen={handleCloseOptions}
-          onDrawerClose={handleCloseOptions}
         }}
       >
         <Drawer.Screen 
