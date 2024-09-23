@@ -1,0 +1,8 @@
+O que têm que fazer:
+
+1° Pedir para abrir com Maps ou Waze
+2° Tirar o estilo do Componente
+2° Verificar nomes das paginas
+3° Fazer o Mapa com as Lojas
+4° Fazer o histórico das rotas (Data e Hora, Ponto de partida e Destino)
+
