@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import SidebarStyles from './styles/SidebarStyles'; // Estilos personalizados
+import SidebarStyles from './styles/SidebarStyles';
 
 export default function Sidebar({ navigation }) {
   return (
