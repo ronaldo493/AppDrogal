@@ -1,4 +1,4 @@
-import { Linking } from 'react-native';
+import { Linking, Alert } from 'react-native';
 
 const MapService = {
   openGoogleMapsRoute: (routes) => {
@@ -12,6 +12,18 @@ const MapService = {
 
     const url = `${baseUrl}${origin}&waypoints=${waypoints}${destination}${travelMode}`;
     Linking.openURL(url);
+  },
+
+  openWazeRoute: (routes) => {
+    if (routes.length === 0) return;
+
+    const baseUrl = 'waze://?ll=';
+    const destination = `${routes[routes.length - 1].latitude},${routes[routes.length - 1].longitude}`;
+    const url = `${baseUrl}${destination}&navigate=yes`;
+
+    Linking.openURL(url).catch(() => {
+      Alert.alert('Waze não encontrado', 'Por favor, instale o Waze para navegar.');
+    });
   }
 };
 

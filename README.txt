@@ -15,4 +15,5 @@ services/:
 
 data/:
 	filiais.json: Contém informações das filiais, como código, nome, endereço, telefone e CNPJ.
+	OBS: *LOJA 03, 126 e 31 VIERAM DUPLICADAS NO ARQUIVO*
 

@@ -62,8 +62,25 @@ export default function Home() {
     // Adiciona a localização atual como a primeira posição na rota
     const completeRoute = [{ latitude: currentLocation.latitude, longitude: currentLocation.longitude }, ...routes];
 
-    // Chama o MapService para abrir o Google Maps
-    MapService.openGoogleMapsRoute(completeRoute);
+    Alert.alert(
+      'Escolha o Navegador',
+      'Deseja abrir a rota no Google Maps ou no Waze?',
+      [
+        {
+          text: 'Google Maps',
+          onPress: () => MapService.openGoogleMapsRoute(completeRoute),
+        },
+        {
+          text: 'Waze',
+          onPress: () => MapService.openWazeRoute(completeRoute),
+        },
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+      ]
+    );
+
   };
 
   return (

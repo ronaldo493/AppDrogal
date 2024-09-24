@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Home from './screens/Home';
 import Settings from './screens/Settings';
 import Historico from './screens/Historico';
-import MapaLojas from './screens/MapaLojas';
+import MapaLojas from './screens/MapaLojas/MapaLojas';
 import Sidebar from './components/Sidebar';
 
 const Drawer = createDrawerNavigator();
@@ -24,6 +24,7 @@ export default function App() {
         screenOptions={{
           headerShown: true, //Mostra o cabeçalho
           headerTitle: '',   //Remove o título da tela
+          headerStyle: {backgroundColor: '#f5f5f5'},
           headerRight: () => (
             <TouchableOpacity onPress={handleLoginPress} style={{ marginRight: 15 }}>
               <Icon name="account-circle" size={28} color="#000" /> 
