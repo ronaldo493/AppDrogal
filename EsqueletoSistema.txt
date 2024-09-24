@@ -1,0 +1,26 @@
+src/
+├── assets/
+│   ├── fonts/                # Diretório para fontes personalizadas
+│   └── img/                  # Diretório para imagens
+│       └── drogal.png
+├── components/               # Componentes reutilizáveis do aplicativo
+│   ├── styles/               # Estilos específicos dos componentes
+│   │   ├── SearchBarStyles.js
+│   │   ├── RouteListStyles.js
+│   │   └── SidebarStyles.js
+│   ├── SearchBar.js
+│   ├── RouteList.js
+│   └── Sidebar.js
+├── data/                     # Dados estáticos
+│   └── filiais.json
+├── screens/                  # Telas do aplicativo
+│   ├── styles/               # Estilos específicos das telas
+│   │   ├── HomeStyles.js
+│   │   └── MapaLojasStyles.js
+│   ├── Home.js
+│   ├── Historico.js
+│   ├── MapaLojas.js
+│   └── Settings.js
+├── services/                 # Serviços para interações externas (API, Mapas)
+│   └── MapService.js
+└── App.js                    # Arquivo principal do aplicativo
