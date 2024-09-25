@@ -59,7 +59,7 @@ export default function Home() {
       return;
     }
 
-    // Adiciona a localização atual como a primeira posição na rota
+    //Adiciona a localização atual como a primeira posição na rota
     const completeRoute = [{ latitude: currentLocation.latitude, longitude: currentLocation.longitude }, ...routes];
 
     Alert.alert(
