@@ -5,6 +5,7 @@ import RouteList from '../components/RouteList';
 import HomeStyles from './styles/HomeStyles';
 import * as Location from 'expo-location';
 import MapService from '../services/MapService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -48,7 +49,7 @@ export default function Home() {
   };
 
     //Função para traçar a rota
-  const handleTraceRoute = () => {
+  const handleTraceRoute = async () => {
     if (!currentLocation) {
       Alert.alert('Erro', 'Localização atual não encontrada.');
       return;
@@ -60,26 +61,39 @@ export default function Home() {
     }
 
     //Adiciona a localização atual como a primeira posição na rota
-    const completeRoute = [{ latitude: currentLocation.latitude, longitude: currentLocation.longitude }, ...routes];
+    const completeRoute = [
+      { latitude: currentLocation.latitude, longitude: currentLocation.longitude }, 
+      ...routes
+    ];
 
-    Alert.alert(
-      'Escolha o Navegador',
-      'Deseja abrir a rota no Google Maps ou no Waze?',
-      [
-        {
-          text: 'Google Maps',
-          onPress: () => MapService.openGoogleMapsRoute(completeRoute),
-        },
-        {
-          text: 'Waze',
-          onPress: () => MapService.openWazeRoute(completeRoute),
-        },
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
-      ]
-    );
+    try {
+      //Tenta pegar o histórico de rotas que já está salvo
+      const history = await AsyncStorage.getItem('routeHistory');
+
+      //Se tiver alguma coisa no histórico, transforma em objeto; se não, cria um array vazio
+      const parsedHistory = history ? JSON.parse(history) : [];
+  
+      //Transforma a rota com informações do Codigo e cidade
+      const updatedRoute = routes.map(route => ({
+        codigofilial: route.codigofilial,
+        nomecidade: route.nomecidade,
+      }));
+  
+      parsedHistory.push(updatedRoute);
+      await AsyncStorage.setItem('routeHistory', JSON.stringify(parsedHistory));
+
+      Alert.alert(
+        'Escolha o Navegador',
+        'Deseja abrir a rota no Google Maps ou no Waze?',
+        [
+          { text: 'Google Maps', onPress: () => MapService.openGoogleMapsRoute(completeRoute) },
+          { text: 'Waze', onPress: () => MapService.openWazeRoute(completeRoute) },
+          { text: 'Cancelar', style: 'cancel' },
+        ]
+      );
+    } catch (error) {
+      Alert.alert('Erro ao salvar o histórico', error.message);
+    }
 
   };
 

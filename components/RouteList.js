@@ -17,7 +17,7 @@ export default function RouteList({ routes, onRemoveRoute }) {
   return (
     <FlatList
       data={routes}
-      keyExtractor={(item) => item.codigofilial.toString()} // Usa o código da filial como chave
+      keyExtractor={(item) => item.codigofilial.toString()} //Usa o código da filial como chave
       renderItem={renderItem}
       style={RouteListStyles.list}
     />
