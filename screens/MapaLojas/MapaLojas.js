@@ -17,8 +17,8 @@ const MapaLojas = () => {
 
   return (
     <View style={MapaLojasStyles.container}>
-      <Text style={MapaLojasStyles.title}>FILIAIS EM SÃO PAULO: {filiaisSP.length}</Text>
-      <Text style={MapaLojasStyles.title}>FILIAIS EM MINAS GERAIS: {filiaisMG.length}</Text>
+      <Text style={MapaLojasStyles.title}>ESTADO DE SÃO PAULO: {filiaisSP.length} LOJAS</Text>
+      <Text style={MapaLojasStyles.title}>ESTADO DE MINAS GERAIS: {filiaisMG.length} LOJAS</Text>
 
       <MapView
         style={MapaLojasStyles.map}

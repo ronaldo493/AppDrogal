@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import RouteListStyles from './styles/RouteListStyles';
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 export default function RouteList({ routes, onRemoveRoute }) {
   //Renderenização de cada Item da Lista
@@ -8,7 +9,7 @@ export default function RouteList({ routes, onRemoveRoute }) {
     <View style={RouteListStyles.routeItem}>
       <Text>{item.nomefilial}</Text>
       <TouchableOpacity onPress={() => onRemoveRoute(item)}>
-        <Text style={RouteListStyles.removeButton}>Remover</Text>
+        <Icon name="delete" size={25} color="#cc0000"></Icon>
       </TouchableOpacity>
     </View>
   );
