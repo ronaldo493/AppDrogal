@@ -62,12 +62,17 @@ export default function Historico() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={HistoricoStyles.routeItem}>
+            <Text>Data: {item.date}</Text>
             <Text>Rota:</Text>
-            {item.map((route, index) => (
-              <Text key={index}>
-                Filial: {route.codigofilial || 'Desconhecida'}, Cidade: {route.nomecidade || 'Desconhecida'}
-              </Text>
-            ))}
+            {Array.isArray(item.routes) && item.routes.length > 0 ? ( //Verifica se 'routes' é um array
+              item.routes.map((route, index) => (
+                <Text key={index}>
+                  Filial: {route.codigofilial || 'Desconhecida'}, Cidade: {route.nomecidade || 'Desconhecida'}
+                </Text>
+              ))
+            ) : (
+              <Text>Nenhuma rota disponível</Text>
+            )}
           </View>
         )}
       />

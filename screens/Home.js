@@ -65,6 +65,8 @@ export default function Home() {
       { latitude: currentLocation.latitude, longitude: currentLocation.longitude }, 
       ...routes
     ];
+    
+    const currentDate = new Date().toLocaleString(); //Obtém a data atual
 
     try {
       //Tenta pegar o histórico de rotas que já está salvo
@@ -74,11 +76,14 @@ export default function Home() {
       const parsedHistory = history ? JSON.parse(history) : [];
   
       //Transforma a rota com informações do Codigo e cidade
-      const updatedRoute = routes.map(route => ({
-        codigofilial: route.codigofilial,
-        nomecidade: route.nomecidade,
-      }));
-  
+      const updatedRoute = {
+        date: currentDate,
+        routes: routes.map(route => ({
+          codigofilial: route.codigofilial,
+          nomecidade: route.nomecidade,
+        })),  
+      };
+
       parsedHistory.push(updatedRoute);
       await AsyncStorage.setItem('routeHistory', JSON.stringify(parsedHistory));
 
