@@ -12,7 +12,7 @@ import Sidebar from './components/Sidebar';
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  // Função para lidar com o clique no ícone de login
+  //unção para lidar com o clique no ícone de login
   const handleLoginPress = () => {
     //...
   };
