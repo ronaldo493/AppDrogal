@@ -8,15 +8,19 @@ src/
 │   │   ├── SearchBarStyles.js
 │   │   ├── RouteListStyles.js
 │   │   └── SidebarStyles.js
+|   |   |__ ThemeStyles.js
 │   ├── SearchBar.js
 │   ├── RouteList.js
 │   └── Sidebar.js
+|   |__ ThemeContext.js
 ├── data/                     # Dados estáticos
 │   └── filiais.json
 ├── screens/                  # Telas do aplicativo
 │   ├── styles/               # Estilos específicos das telas
 │   │   ├── HomeStyles.js
 │   │   └── MapaLojasStyles.js
+|   |   |__ HistoricoStyles.js
+|   |   |__ SettingStyles.js
 │   ├── Home.js
 │   ├── Historico.js
 │   ├── MapaLojas.js

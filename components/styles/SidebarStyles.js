@@ -9,7 +9,6 @@ export default StyleSheet.create({
   },
   menuItem: {
     fontWeight: 'bold',
-    backgroundColor: '#F5F5F5',
     borderBottomWidth: 1,
     borderBottomColor: '#ccd', 
     paddingVertical: '7%',

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, Switch} from 'react-native';
 import SettingStyles from './styles/SettingStyles';
-import { Picker } from '@react-native-picker/picker'; // Importa o Picker
+import { Picker } from '@react-native-picker/picker';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
 export default function Settings() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme(); 
+  const styles = getThemeStyles(isDarkMode);
+
   const [language, setLanguage] = useState('pt-BR');
 
-  // Função para alternar o modo escuro
-  const toggleDarkMode = () => {
-    setIsDarkMode(previousState => !previousState);
-  };
-
-  // Função para mudar o idioma
+  //Função para mudar o idioma
   const handleLanguageChange = (itemValue) => {
     setLanguage(itemValue);
   };
@@ -25,7 +24,7 @@ export default function Settings() {
         <Text style={SettingStyles.label}>Modo Escuro</Text>
         <Switch
           value={isDarkMode}
-          onValueChange={toggleDarkMode}
+          onValueChange={toggleTheme}
         />
       </View>
       
@@ -33,7 +32,7 @@ export default function Settings() {
         <Text style={SettingStyles.label}>Idioma</Text>
         <Picker
           selectedValue={language}
-          style={{ height: 10, width: 160 }}
+          style={{ height: 20, width: 160 }}
           onValueChange={handleLanguageChange}
         >
           <Picker.Item label="Português" value="pt-BR" />

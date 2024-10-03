@@ -8,6 +8,7 @@ import Settings from './screens/Settings';
 import Historico from './screens/Historico';
 import MapaLojas from './screens/MapaLojas/MapaLojas';
 import Sidebar from './components/Sidebar';
+import { ThemeProvider } from './components/ThemeContext';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,41 +19,44 @@ export default function App() {
   };
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={(props) => <Sidebar {...props} />}
-        screenOptions={{
-          headerShown: true, //Mostra o cabeçalho
-          headerTitle: '',   //Remove o título da tela
-          headerStyle: {backgroundColor: '#f5f5f5'},
-          headerRight: () => (
-            <TouchableOpacity onPress={handleLoginPress} style={{ marginRight: 15 }}>
-              <Icon name="account-circle" size={28} color="#000" /> 
-            </TouchableOpacity>
-          ),
-        }}
-      >
-        <Drawer.Screen 
-          name="Home" 
-          component={Home} 
-          options={{ headerTitle: '' }} 
-        />
-        <Drawer.Screen 
-          name="Historico" 
-          component={Historico} 
-          options={{ headerTitle: '' }} 
-        />
-        <Drawer.Screen 
-          name="MapaLojas" 
-          component={MapaLojas} 
-          options={{ headerTitle: '' }} 
-        />
-        <Drawer.Screen 
-          name="Settings" 
-          component={Settings} 
-          options={{ headerTitle: '' }} 
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>
+        <NavigationContainer>
+        <Drawer.Navigator
+          drawerContent={(props) => <Sidebar {...props} />}
+          screenOptions={{
+            headerShown: true, //Mostra o cabeçalho
+            headerTitle: '',   //Remove o título da tela
+            headerStyle: {backgroundColor: '#f5f5f5'},
+            headerRight: () => (
+              <TouchableOpacity onPress={handleLoginPress} style={{ marginRight: 15 }}>
+                <Icon name="account-circle" size={28} color="#000" /> 
+              </TouchableOpacity>
+            ),
+          }}
+        >
+          <Drawer.Screen 
+            name="Home" 
+            component={Home} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="Historico" 
+            component={Historico} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="MapaLojas" 
+            component={MapaLojas} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="Settings" 
+            component={Settings} 
+            options={{ headerTitle: '' }} 
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
+    
   );
 }
