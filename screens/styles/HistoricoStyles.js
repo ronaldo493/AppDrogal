@@ -18,7 +18,7 @@ const HistoricoStyles = StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     backgroundColor: '#f0f0f0',
-    borderRadius: 2,
+    borderRadius: 7,
     borderWidth: 1,
     borderColor: '#ccc',
   },

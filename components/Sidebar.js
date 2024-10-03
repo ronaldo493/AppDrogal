@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import SidebarStyles from './styles/SidebarStyles';
 
 export default function Sidebar({ navigation }) {
+  const handleLogout = () => {
+  
+  };
+
   return (
     <View style={SidebarStyles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Home')} style={SidebarStyles.menuItem}>
@@ -16,6 +20,10 @@ export default function Sidebar({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Settings')} style={SidebarStyles.menuItem}>
         <Text style={SidebarStyles.menuText}>CONFIGURAÇÕES</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={handleLogout} style={[SidebarStyles.buttonLogoff]}>
+        <Text style={SidebarStyles.logoffText}>SAIR</Text>
       </TouchableOpacity>
     </View>
   );

@@ -19,4 +19,19 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
+  buttonLogoff: {
+    width: '70%',
+    backgroundColor: '#bb5059',
+    borderRadius: 8,
+    marginTop: 'auto',
+    padding: 9,
+    marginHorizontal: 'auto',
+    margin: 15,
+  },
+  logoffText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'white',
+  },  
+ 
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button, Alert } from 'react-native';
+import { View, Text, FlatList, Button, TextInput, Alert } from 'react-native';
 import HistoricoStyles from './styles/HistoricoStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
@@ -76,7 +76,7 @@ export default function Historico() {
           </View>
         )}
       />
-      <Button title="Limpar Histórico" onPress={clearHistory} color="#cc0000" />
+      <Button title="Limpar Histórico" onPress={clearHistory} color="#bb5059" />
     </View>
   );
 }

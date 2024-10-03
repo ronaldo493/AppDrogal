@@ -12,7 +12,7 @@ const MapaLojasStyles = StyleSheet.create({
       fontSize: 15,
       padding: 15,
       margin: 10,
-      backgroundColor: '#cc0000',
+      backgroundColor: '#bb5059',
       color: 'white',
       textAlign: 'center',
       fontWeight: 'bold',
