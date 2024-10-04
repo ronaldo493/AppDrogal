@@ -3,14 +3,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5', 
     paddingTop: '34%', 
-
   },
   menuItem: {
     fontWeight: 'bold',
     borderBottomWidth: 1,
-    borderBottomColor: '#ccd', 
     paddingVertical: '7%',
     paddingHorizontal: '10%',
   },
@@ -30,7 +27,6 @@ export default StyleSheet.create({
   logoffText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'white',
   },  
  
 });

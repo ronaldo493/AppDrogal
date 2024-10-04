@@ -13,7 +13,8 @@ import { ThemeProvider } from './components/ThemeContext';
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  //unção para lidar com o clique no ícone de login
+
+  //Função para lidar com o clique no ícone de login
   const handleLoginPress = () => {
     //...
   };
