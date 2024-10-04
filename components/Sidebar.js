@@ -9,7 +9,7 @@ export default function Sidebar({ navigation }) {
   const themeStyles = getThemeStyles(isDarkMode);
 
   const handleLogout = () => {
-  
+  //Logoff
   };
 
   return (

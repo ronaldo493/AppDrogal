@@ -10,7 +10,6 @@ const darkTheme = {
     background: '#222',
     text: '#cccccc',
     sidebar: '#3E3E3C',
-
 };
 
 export const getThemeStyles = (isDarkMode) =>
