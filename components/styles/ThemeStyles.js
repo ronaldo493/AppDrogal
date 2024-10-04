@@ -10,10 +10,10 @@ const lightTheme = {
 
 const darkTheme = {
     text: '#cccccc',
-    screenText: 'white',
-    sidebar: '#3E3E3C',
+    screenText: '#E0E0E0',
+    sidebar: '#2E2E2C',
     borderBottomColor: '#555553',
-    screenBackground: '#5E5E5C',
+    screenBackground: '#080808',
 };
 
 export const getThemeStyles = (isDarkMode) =>
@@ -37,5 +37,8 @@ export const getThemeStyles = (isDarkMode) =>
         },
         buttonBackground: {
             backgroundColor: isDarkMode ? '#555' : '#ccc',
+        },
+        radiusBackground: {
+            backgroundColor: isDarkMode ? '#222' : '#ddd',
         },
     });

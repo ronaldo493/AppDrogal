@@ -9,7 +9,7 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold',
-    marginVertical: 25,
+    marginBottom: 70,
   },
   optionContainer: {
     flexDirection: 'row',
@@ -37,5 +37,9 @@ export default StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
+  },
+  content: {
+    borderRadius: 8,
+    paddingHorizontal: 15,
   },
 });

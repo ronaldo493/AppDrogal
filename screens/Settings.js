@@ -18,30 +18,32 @@ export default function Settings() {
 
   return (
     <View style={[SettingStyles.container, themeStyles.screenBackground]}>
-      <Text style={[SettingStyles.title, themeStyles.screenText]}>CONFIGURAÇÕES</Text>
-      
-      <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-        <Text style={[SettingStyles.label, themeStyles.screenText]}>Modo Escuro</Text>
-        <Switch
-          value={isDarkMode}
-          onValueChange={toggleTheme}
-        />
+      <Text style={[SettingStyles.title, themeStyles.text]}>CONFIGURAÇÕES</Text>
+      <View style={[SettingStyles.content, themeStyles.radiusBackground]}>
+        <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+          <Text style={[SettingStyles.label, themeStyles.text]}>Modo Escuro</Text>
+          <Switch
+            value={isDarkMode}
+            onValueChange={toggleTheme}
+          />
+        </View>
+        
+        <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+          <Text style={[SettingStyles.label, themeStyles.text]}>Idioma</Text>
+          <Picker
+            selectedValue={language}
+            style={{ height: 20, width: 160 }}
+            onValueChange={handleLanguageChange}
+          >
+            <Picker.Item label="Português" value="pt-BR" color={isDarkMode ? '#cccccc' : '#000'} />
+            <Picker.Item label="Inglês" value="en" color={isDarkMode ? '#cccccc' : '#000'} />
+          </Picker>
+        </View>
       </View>
       
-      <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-        <Text style={[SettingStyles.label, themeStyles.screenText]}>Idioma</Text>
-        <Picker
-          selectedValue={language}
-          style={{ height: 20, width: 160 }}
-          onValueChange={handleLanguageChange}
-        >
-          <Picker.Item label="Português" value="pt-BR" />
-          <Picker.Item label="Inglês" value="en" />
-        </Picker>
-      </View>
       
       <View style={SettingStyles.footer}>
-        <Text style={[SettingStyles.footerText, themeStyles.screenText]}>Desenvolvido por Ronaldo</Text>
+        <Text style={[SettingStyles.footerText, themeStyles.text]}>Desenvolvido por Ronaldo</Text>
       </View>
     </View>
   );
