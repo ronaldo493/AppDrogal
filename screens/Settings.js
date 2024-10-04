@@ -7,7 +7,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 
 export default function Settings() {
   const { isDarkMode, toggleTheme } = useTheme(); 
-  const styles = getThemeStyles(isDarkMode);
+  const themeStyles = getThemeStyles(isDarkMode);
 
   const [language, setLanguage] = useState('pt-BR');
 
@@ -17,19 +17,19 @@ export default function Settings() {
   };
 
   return (
-    <View style={SettingStyles.container}>
-      <Text style={SettingStyles.title}>CONFIGURAÇÕES</Text>
+    <View style={[SettingStyles.container, themeStyles.screenBackground]}>
+      <Text style={[SettingStyles.title, themeStyles.screenText]}>CONFIGURAÇÕES</Text>
       
-      <View style={SettingStyles.optionContainer}>
-        <Text style={SettingStyles.label}>Modo Escuro</Text>
+      <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+        <Text style={[SettingStyles.label, themeStyles.screenText]}>Modo Escuro</Text>
         <Switch
           value={isDarkMode}
           onValueChange={toggleTheme}
         />
       </View>
       
-      <View style={SettingStyles.optionContainer}>
-        <Text style={SettingStyles.label}>Idioma</Text>
+      <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+        <Text style={[SettingStyles.label, themeStyles.screenText]}>Idioma</Text>
         <Picker
           selectedValue={language}
           style={{ height: 20, width: 160 }}
@@ -41,7 +41,7 @@ export default function Settings() {
       </View>
       
       <View style={SettingStyles.footer}>
-        <Text style={SettingStyles.footerText}>Desenvolvido por Ronaldo</Text>
+        <Text style={[SettingStyles.footerText, themeStyles.screenText]}>Desenvolvido por Ronaldo</Text>
       </View>
     </View>
   );

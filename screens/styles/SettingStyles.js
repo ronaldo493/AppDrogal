@@ -4,7 +4,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#F9F9F9',
   },
   title: {
     fontSize: 18,
@@ -18,7 +17,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
   },
   label: {
     fontSize: 17,
@@ -39,6 +37,5 @@ export default StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
-    color: '#888',
   },
 });
