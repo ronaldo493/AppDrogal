@@ -3,8 +3,13 @@ import { View, Text } from 'react-native';
 import {MapView, Marker } from './map';
 import filiaisData from '../../data/filiais.json';
 import MapaLojasStyles from '../styles/MapaLojasStyles';
+import { useTheme } from '../../components/ThemeContext'; 
+import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 
 const MapaLojas = () => {
+  const { isDarkMode, toggleTheme } = useTheme(); 
+  const themeStyles = getThemeStyles(isDarkMode);
+
   //Coordenadas de Piracicaba onde o mapa irá inciar
   const piracicabaCoordinates = {
     latitude: -22.7277,
@@ -16,9 +21,9 @@ const MapaLojas = () => {
   const filiaisMG = filiaisData.filter(filial => filial.uf === 'MG');
 
   return (
-    <View style={MapaLojasStyles.container}>
-      <Text style={MapaLojasStyles.title}>ESTADO DE SÃO PAULO: {filiaisSP.length} LOJAS</Text>
-      <Text style={MapaLojasStyles.title}>ESTADO DE MINAS GERAIS: {filiaisMG.length} LOJAS</Text>
+    <View style={[MapaLojasStyles.container, themeStyles.screenBackground]}>
+      <Text style={[MapaLojasStyles.title, themeStyles.text, themeStyles.textBackground]}>ESTADO DE SÃO PAULO: {filiaisSP.length} LOJAS</Text>
+      <Text style={[MapaLojasStyles.title, themeStyles.text, themeStyles.textBackground]}>ESTADO DE MINAS GERAIS: {filiaisMG.length} LOJAS</Text>
 
       <MapView
         style={MapaLojasStyles.map}

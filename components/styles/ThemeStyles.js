@@ -3,6 +3,7 @@ import { Button, StyleSheet } from 'react-native';
 const lightTheme = {
     text: '#000',
     screenText: '#000',
+    backText: 'yellow',
     sidebar: '#f0f0f0',
     borderBottomColor: '#ddd',
     screenBackground: '#f5f5f5',
@@ -11,6 +12,7 @@ const lightTheme = {
 const darkTheme = {
     text: '#cccccc',
     screenText: '#E0E0E0',
+    backText: 'red',
     sidebar: '#2E2E2C',
     borderBottomColor: '#555553',
     screenBackground: '#080808',
@@ -41,4 +43,7 @@ export const getThemeStyles = (isDarkMode) =>
         radiusBackground: {
             backgroundColor: isDarkMode ? '#222' : '#ddd',
         },
+        textBackground: {
+            backgroundColor: isDarkMode ? darkTheme.backText : lightTheme.backText,
+        },  
     });
