@@ -3,8 +3,13 @@ import { View, Text, FlatList, Button, TextInput, Alert } from 'react-native';
 import HistoricoStyles from './styles/HistoricoStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
 export default function Historico() {
+  const { isDarkMode, toggleTheme } = useTheme(); 
+  const themeStyles = getThemeStyles(isDarkMode);
+
   const [routeHistory, setRouteHistory] = useState([]);
 
   //Carregar o histórico sempre que a tela for focada
@@ -56,7 +61,7 @@ export default function Historico() {
 
   return (
     <View style={HistoricoStyles.container}>
-      <Text style={HistoricoStyles.title}>HISTÓRICO DE ROTAS</Text>
+      <Text style={[HistoricoStyles.title, themeStyles.text]}>HISTÓRICO DE ROTAS</Text>
       <FlatList
         data={routeHistory}
         keyExtractor={(item, index) => index.toString()}

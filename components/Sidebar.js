@@ -27,7 +27,7 @@ export default function Sidebar({ navigation }) {
         <Text style={[SidebarStyles.menuText, themeStyles.text]}>CONFIGURAÇÕES</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleLogout} style={[SidebarStyles.buttonLogoff,  themeStyles.buttonBackground]}>
+      <TouchableOpacity onPress={handleLogout} style={[SidebarStyles.buttonLogoff,  themeStyles.buttonBackgroundSide]}>
         <Text style={[SidebarStyles.logoffText, themeStyles.text]}>SAIR</Text>
       </TouchableOpacity>
     </View>

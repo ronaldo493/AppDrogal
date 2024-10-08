@@ -3,7 +3,7 @@ import { Button, StyleSheet } from 'react-native';
 const lightTheme = {
     text: '#000',
     screenText: '#000',
-    backText: 'yellow',
+    backText: '#BB5059',
     sidebar: '#f0f0f0',
     borderBottomColor: '#ddd',
     screenBackground: '#f5f5f5',
@@ -12,7 +12,7 @@ const lightTheme = {
 const darkTheme = {
     text: '#cccccc',
     screenText: '#E0E0E0',
-    backText: 'red',
+    backText: '#555553',
     sidebar: '#2E2E2C',
     borderBottomColor: '#555553',
     screenBackground: '#080808',
@@ -27,6 +27,9 @@ export const getThemeStyles = (isDarkMode) =>
         text: {
             color: isDarkMode ? darkTheme.text : lightTheme.text,
         },
+        buttonBackgroundSide: {
+            backgroundColor: isDarkMode ? '#555' : '#ccc',
+        },
         //SCREEN
         screenText: {
             color: isDarkMode ? darkTheme.screenText : lightTheme.screenText,
@@ -37,13 +40,13 @@ export const getThemeStyles = (isDarkMode) =>
         borderBottomColor: {
             borderBottomColor: isDarkMode ? darkTheme.borderBottomColor : lightTheme.borderBottomColor,
         },
-        buttonBackground: {
-            backgroundColor: isDarkMode ? '#555' : '#ccc',
-        },
         radiusBackground: {
             backgroundColor: isDarkMode ? '#222' : '#ddd',
         },
         textBackground: {
             backgroundColor: isDarkMode ? darkTheme.backText : lightTheme.backText,
-        },  
+        },
+        buttonBackgroundScreen: {
+            backgroundColor: isDarkMode ? '#555' : '#ccc',
+        },
     });
