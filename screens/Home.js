@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { View, Button, Alert, Image } from 'react-native';
+import { View, Alert, Image, TouchableOpacity, Text } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import RouteList from '../components/RouteList';
 import HomeStyles from './styles/HomeStyles';
 import * as Location from 'expo-location';
 import MapService from '../services/MapService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
   const [currentLocation, setCurrentLocation] = useState(null); //Estado que armazena a localização atual do usuário
+
+  //Modo escuro
+  const { isDarkMode, toggleTheme } = useTheme(); 
+  const themeStyles = getThemeStyles(isDarkMode);
 
   useEffect(() => {
     const getLocation = async () => {
@@ -103,14 +109,20 @@ export default function Home() {
   };
 
   return (
-    <View style={HomeStyles.container}>
+    <View style={[HomeStyles.container, themeStyles.sidebar]}>
       <View style={HomeStyles.logoContainer}>
         <Image source={require('../assets/img/drogal.png')} style={HomeStyles.logo} />
       </View>
       <SearchBar onAddRoute={handleAddRoute} />
       <View style={HomeStyles.routeContainer}>
         <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
-        <Button title="Traçar Rota" onPress={handleTraceRoute} />
+        <TouchableOpacity
+        onPress={handleTraceRoute}
+      >
+      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>  {/* Mantém a fonte branca e tamanho */}
+        TRAÇAR ROTA
+      </Text>
+    </TouchableOpacity>
       </View>
     </View>
   );

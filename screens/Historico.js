@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button, TextInput, Alert } from 'react-native';
+import { View, Text, FlatList, Button, Alert, TouchableOpacity } from 'react-native';
 import HistoricoStyles from './styles/HistoricoStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
@@ -7,6 +7,7 @@ import { useTheme } from '../components/ThemeContext';
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
 export default function Historico() {
+  //Modo escuro
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
@@ -60,18 +61,18 @@ export default function Historico() {
   };
 
   return (
-    <View style={HistoricoStyles.container}>
+    <View style={[HistoricoStyles.container, themeStyles.screenBackground]}>
       <Text style={[HistoricoStyles.title, themeStyles.text]}>HISTÓRICO DE ROTAS</Text>
       <FlatList
         data={routeHistory}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={HistoricoStyles.routeItem}>
-            <Text>Data: {item.date}</Text>
-            <Text>Rota:</Text>
+          <View style={[HistoricoStyles.routeItem, themeStyles.radiusBackground]}>
+            <Text style={[themeStyles. text]}>Data: {item.date}</Text>
+            <Text style={[themeStyles. text]}>Rota:</Text>
             {Array.isArray(item.routes) && item.routes.length > 0 ? ( //Verifica se 'routes' é um array
               item.routes.map((route, index) => (
-                <Text key={index}>
+                <Text key={index} style={[themeStyles. text]}>
                   Filial: {route.codigofilial || 'Desconhecida'}, Cidade: {route.nomecidade || 'Desconhecida'}
                 </Text>
               ))
@@ -81,7 +82,14 @@ export default function Historico() {
           </View>
         )}
       />
-      <Button title="Limpar Histórico" onPress={clearHistory} color="#bb5059" />
+      <TouchableOpacity
+        onPress={clearHistory}
+      >
+      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>  {/* Mantém a fonte branca e tamanho */}
+        LIMPAR HISTÓRICO
+      </Text>
+    </TouchableOpacity>
+      
     </View>
   );
 }

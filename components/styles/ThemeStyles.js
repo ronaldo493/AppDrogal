@@ -3,7 +3,6 @@ import { Button, StyleSheet } from 'react-native';
 const lightTheme = {
     text: '#000',
     screenText: '#000',
-    backText: '#BB5059',
     sidebar: '#f0f0f0',
     borderBottomColor: '#ddd',
     screenBackground: '#f5f5f5',
@@ -12,7 +11,6 @@ const lightTheme = {
 const darkTheme = {
     text: '#cccccc',
     screenText: '#E0E0E0',
-    backText: '#555553',
     sidebar: '#2E2E2C',
     borderBottomColor: '#555553',
     screenBackground: '#080808',
@@ -43,10 +41,34 @@ export const getThemeStyles = (isDarkMode) =>
         radiusBackground: {
             backgroundColor: isDarkMode ? '#222' : '#ddd',
         },
+
+
+        //BUTTON
         textBackground: {
-            backgroundColor: isDarkMode ? darkTheme.backText : lightTheme.backText,
+            backgroundColor: isDarkMode ? '#555553' : '#BB5059',
+            color: 'white',
         },
         buttonBackgroundScreen: {
-            backgroundColor: isDarkMode ? '#555' : '#ccc',
+            fontSize: 14,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            padding: 8,
+            borderRadius: 4,
+            elevation: 4,
         },
+
+        //INPUT & SEARCH
+        listSearch: {
+            backgroundColor: isDarkMode ? '#4d4d4d' : '#dddddd',
+        },
+        input: {
+            borderWidth: 0.8,
+            borderColor: isDarkMode ? '#777777' : '#2196F3',
+            color: isDarkMode ? '#ffffff' : '#000000'
+        },
+        
+        //ROTAS LISTAS
+        listRoutes: {
+            backgroundColor: isDarkMode ? '#D3D3D3' : '#dddddd',
+        }
     });

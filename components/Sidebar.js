@@ -5,6 +5,7 @@ import { useTheme } from '../components/ThemeContext';
 import { getThemeStyles } from '../components/styles/ThemeStyles';
 
 export default function Sidebar({ navigation }) {
+  //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 

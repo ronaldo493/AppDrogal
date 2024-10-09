@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import {MapView, Marker } from './map';
 import filiaisData from '../../data/filiais.json';
-import MapaLojasStyles from '../styles/MapaLojasStyles';
+import MapaLojasStyles, {darkMapStyle} from '../styles/MapaLojasStyles';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 
 const MapaLojas = () => {
+  //Modo escuro
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
@@ -32,6 +33,7 @@ const MapaLojas = () => {
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}
+        customMapStyle={isDarkMode ? darkMapStyle : []}
       >
         {filiaisData.map(filial => {
           const latitude = parseFloat(filial.latitude?.replace(',', '.'));

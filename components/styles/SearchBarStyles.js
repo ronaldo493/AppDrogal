@@ -10,16 +10,14 @@ export default StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-    borderWidth: 0.4,
-    borderColor: '#2196F3',
+    borderWidth: 0.8,
     padding: 8,
     borderRadius: 4,
   },
   suggestionItem: {
     padding: 8,
-    borderBottomWidth: 1,
+    borderRadius: 8,
     borderBottomColor: '#ccc',
-    backgroundColor: 'white',
   },
 
   buttonContainer: {
