@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Switch} from 'react-native';
 import SettingStyles from './styles/SettingStyles';
-import { Picker } from '@react-native-picker/picker';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
@@ -29,17 +28,7 @@ export default function Settings() {
           />
         </View>
         
-        <View style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-          <Text style={[SettingStyles.label, themeStyles.text]}>Idioma</Text>
-          <Picker
-            selectedValue={language}
-            style={{ height: 20, width: 160 }}
-            onValueChange={handleLanguageChange}
-          >
-            <Picker.Item label="Português" value="pt-BR" color={isDarkMode ? '#7D7D7D' : '#000'} />
-            <Picker.Item label="Inglês" value="en" color={isDarkMode ? '#7D7D7D' : '#000'} />
-          </Picker>
-        </View>
+        
       </View>
       
       

@@ -109,9 +109,9 @@ export default function Home() {
   };
 
   return (
-    <View style={[HomeStyles.container, themeStyles.sidebar]}>
+    <View style={[HomeStyles.container, themeStyles.screenBackground]}>
       <View style={HomeStyles.logoContainer}>
-        <Image source={require('../assets/img/drogal.png')} style={HomeStyles.logo} />
+        <Image source={require('../assets/img/drogal.png')} style={[HomeStyles.logo, themeStyles.logoImg]} />
       </View>
       <SearchBar onAddRoute={handleAddRoute} />
       <View style={HomeStyles.routeContainer}>

@@ -9,11 +9,23 @@ import Historico from './screens/Historico';
 import Chamados from './screens/Chamados'
 import MapaLojas from './screens/MapaLojas/MapaLojas';
 import Sidebar from './components/Sidebar';
-import { ThemeProvider } from './components/ThemeContext';
+import { ThemeProvider, useTheme } from './components/ThemeContext';
+
 
 const Drawer = createDrawerNavigator();
 
+//Componente principal, fornecerá o tema para todo o APP
 export default function App() {
+  return (
+    <ThemeProvider>
+      <AppNavigation />
+    </ThemeProvider>
+  );
+}
+
+//Componente de navegação, que agora usará o tema
+function AppNavigation() {
+  const { isDarkMode } = useTheme();
 
   //Função para lidar com o clique no ícone de login
   const handleLoginPress = () => {
@@ -21,17 +33,19 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider>
         <NavigationContainer>
         <Drawer.Navigator
           drawerContent={(props) => <Sidebar {...props} />}
           screenOptions={{
             headerShown: true, //Mostra o cabeçalho
             headerTitle: '',   //Remove o título da tela
-            headerStyle: {backgroundColor: '#f5f5f5'},
+            headerStyle: {
+              backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
+            },
+            headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
             headerRight: () => (
               <TouchableOpacity onPress={handleLoginPress} style={{ marginRight: 15 }}>
-                <Icon name="account-circle" size={28} color="#000" /> 
+                <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
               </TouchableOpacity>
             ),
           }}
@@ -62,8 +76,8 @@ export default function App() {
             options={{ headerTitle: '' }} 
           />
         </Drawer.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
-    
+      </NavigationContainer>   
   );
 }
+
+

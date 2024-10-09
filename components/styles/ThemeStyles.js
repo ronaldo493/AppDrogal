@@ -13,7 +13,7 @@ const darkTheme = {
     screenText: '#E0E0E0',
     sidebar: '#2E2E2C',
     borderBottomColor: '#555553',
-    screenBackground: '#080808',
+    screenBackground: '#101010',
 };
 
 export const getThemeStyles = (isDarkMode) =>
@@ -69,6 +69,11 @@ export const getThemeStyles = (isDarkMode) =>
         
         //ROTAS LISTAS
         listRoutes: {
-            backgroundColor: isDarkMode ? '#D3D3D3' : '#dddddd',
+            backgroundColor: isDarkMode ? '#A9A9A9' : '#dddddd',
+        },
+
+        //LOGO IMAGEM
+        logoImg: {
+            opacity: isDarkMode ? 0.2 : 0.6,
         }
     });
