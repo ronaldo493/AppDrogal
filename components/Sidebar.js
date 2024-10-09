@@ -24,6 +24,9 @@ export default function Sidebar({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('MapaLojas')} style={[SidebarStyles.menuItem, themeStyles.borderBottomColor]}>
         <Text style={[SidebarStyles.menuText, themeStyles.text]}>MAPA DE LOJAS</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Chamados')} style={[SidebarStyles.menuItem, themeStyles.borderBottomColor]}>
+        <Text style={[SidebarStyles.menuText, themeStyles.text]}>CHAMADOS</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Settings')} style={[SidebarStyles.menuItem, themeStyles.borderBottomColor]}>
         <Text style={[SidebarStyles.menuText, themeStyles.text]}>CONFIGURAÇÕES</Text>
       </TouchableOpacity>
