@@ -6750,6 +6750,24 @@
     "longitude": "-48.4419070176515"
   },
   {
+    "codigofilial": 376,
+    "nomefilial": "FILIAL 376 - DROGAL SAO JOSE D",
+    "endereco": "AV MIRASSOLANDIA",
+    "numero": "1535",
+    "cep": "15.043-165",
+    "bairro": "ELDORADO",
+    "nomecidade": "SAO JOSE DO RIO PRETO",
+    "numeroibge": 3549805,
+    "uf": "SP",
+    "telefone": "Fone1: 19 34291200 / Fone2:  ",
+    "gerente": null,
+    "supervisor": null,
+    "cnpj": "54.375.647/0410-79",
+    "horariofuncionamento": null,
+    "latitude": null,
+    "longitude": null
+  },
+  {
     "codigofilial": 2000,
     "nomefilial": "INSTITUTO JOSÉ CANÇADO",
     "endereco": "AV DR. CASSIO PASCHOAL PADOVANI",
