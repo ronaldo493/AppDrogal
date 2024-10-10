@@ -1,9 +1,6 @@
 O que têm que fazer:
 
-1° Ajustar o MODO ESCURO NO SISTEMA INTEIRO
-2° Configurar o IDIOMA no sistema inteiro
-3° Criar a tela de Login
-4° Ter a opção de entrar como convidado
-5° Criar o banco de dados
+1° Tela de Login
+2° A tela de login será chamada assim que clicar nos chamados
 
 
