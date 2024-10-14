@@ -5,7 +5,7 @@ const MapService = {
     if (routes.length === 0) return;
 
     const baseUrl = 'https://www.google.com/maps/dir/?api=1';
-    const origin = `&origin=${routes[0].latitude},${routes[0].longitude}`; // Localização atual
+    const origin = `&origin=${routes[0].latitude},${routes[0].longitude}`; //Localização atual
     const waypoints = routes.slice(1, routes.length - 1).map(route => `${route.latitude},${route.longitude}`).join('|');
     const destination = `&destination=${routes[routes.length - 1].latitude},${routes[routes.length - 1].longitude}`;
     const travelMode = '&travelmode=driving';

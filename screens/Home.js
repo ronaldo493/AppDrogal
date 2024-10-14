@@ -119,7 +119,7 @@ export default function Home() {
         <TouchableOpacity
         onPress={handleTraceRoute}
       >
-      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>  {/* Mantém a fonte branca e tamanho */}
+      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>
         TRAÇAR ROTA
       </Text>
     </TouchableOpacity>

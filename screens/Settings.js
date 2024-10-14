@@ -9,8 +9,6 @@ export default function Settings() {
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const [language, setLanguage] = useState('pt-BR');
-
   //Função para mudar o idioma
   const handleLanguageChange = (itemValue) => {
     setLanguage(itemValue);

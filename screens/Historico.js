@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button, Alert, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, Alert, TouchableOpacity } from 'react-native';
 import HistoricoStyles from './styles/HistoricoStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
@@ -85,7 +85,7 @@ export default function Historico() {
       <TouchableOpacity
         onPress={clearHistory}
       >
-      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>  {/* Mantém a fonte branca e tamanho */}
+      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}> 
         LIMPAR HISTÓRICO
       </Text>
     </TouchableOpacity>
