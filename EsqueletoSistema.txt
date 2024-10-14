@@ -15,6 +15,7 @@ src/
 |   |__ ThemeContext.js
 ├── data/                     # Dados estáticos
 │   └── filiais.json
+|   |__ db.json
 ├── screens/                  # Telas do aplicativo
 │   ├── styles/               # Estilos específicos das telas
 │   │   ├── HomeStyles.js
