@@ -17,6 +17,15 @@ const MapaLojasStyles = StyleSheet.create({
       fontWeight: 'bold',
       borderRadius: 8,
     },
+    input: {
+      fontSize: 17,
+      margin: 15,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      borderWidth: 0.8,
+      padding: 8,
+      borderRadius: 4,
+    },
   });
 
 export default MapaLojasStyles;
