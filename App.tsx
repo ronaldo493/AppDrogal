@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; 
 import Home from './screens/Home';
-import Settings from './screens/Settings';
+import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
 import Chamados from './screens/Chamados'
 import MapaLojas from './screens/MapaLojas/MapaLojas';

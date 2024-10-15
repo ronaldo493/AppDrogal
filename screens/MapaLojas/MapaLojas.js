@@ -68,8 +68,9 @@ const MapaLojas = () => {
   return (
     <View style={[MapaLojasStyles.container, themeStyles.screenBackground]}>
       <TextInput
-        style={MapaLojasStyles.input}
-        placeholder="Digite a cidade"
+        style={[MapaLojasStyles.input, themeStyles.input]}
+        placeholder="DIGITE A CIDADE"
+        placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
         value={searchCity}
         onChangeText={setSearchCity}
       />

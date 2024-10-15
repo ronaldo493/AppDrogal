@@ -18,13 +18,7 @@ const MapaLojasStyles = StyleSheet.create({
       borderRadius: 8,
     },
     input: {
-      fontSize: 17,
       margin: 15,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      borderWidth: 0.8,
-      padding: 8,
-      borderRadius: 4,
     },
   });
 

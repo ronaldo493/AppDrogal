@@ -7,12 +7,6 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    borderWidth: 0.8,
-    padding: 8,
-    borderRadius: 4,
   },
   suggestionItem: {
     padding: 8,

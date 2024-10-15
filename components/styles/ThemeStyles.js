@@ -64,7 +64,13 @@ export const getThemeStyles = (isDarkMode) =>
         input: {
             borderWidth: 0.8,
             borderColor: isDarkMode ? '#777777' : '#2196F3',
-            color: isDarkMode ? '#ffffff' : '#000000'
+            color: isDarkMode ? '#ffffff' : '#000000',
+            fontSize: 17,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            borderWidth: 0.8,
+            padding: 8,
+            borderRadius: 4,
         },
         
         //ROTAS LISTAS

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Switch} from 'react-native';
-import SettingStyles from './styles/SettingStyles';
-import { useTheme } from '../components/ThemeContext'; 
-import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+import SettingStyles from '../styles/SettingStyles';
+import { useTheme } from '../../components/ThemeContext'; 
+import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Settings() {
   //Modo escuro
@@ -25,8 +26,16 @@ export default function Settings() {
             onValueChange={toggleTheme}
           />
         </View>
-        
-        
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate('Feedback')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+            <Text style={[SettingStyles.label, themeStyles.text]}>Feedback e Suporte</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate('About')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+            <Text style={[SettingStyles.label, themeStyles.text]}>About</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       
       

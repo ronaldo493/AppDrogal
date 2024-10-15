@@ -15,7 +15,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 15,
+    paddingVertical: 25,
     borderBottomWidth: 1,
   },
   label: {
