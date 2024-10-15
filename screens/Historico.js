@@ -68,8 +68,8 @@ export default function Historico() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={[HistoricoStyles.routeItem, themeStyles.radiusBackground]}>
-            <Text style={[themeStyles. text]}>Data: {item.date}</Text>
-            <Text style={[themeStyles. text]}>Rota:</Text>
+            <Text style={[themeStyles.text]}>Data: {item.date}</Text>
+            <Text style={[themeStyles.text]}>Rota:</Text>
             {Array.isArray(item.routes) && item.routes.length > 0 ? ( //Verifica se 'routes' é um array
               item.routes.map((route, index) => (
                 <Text key={index} style={[themeStyles. text]}>

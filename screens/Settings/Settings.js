@@ -5,10 +5,11 @@ import { useTheme } from '../../components/ThemeContext';
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Settings() {
+export default function Settings({navigation}) {
   //Modo escuro
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
+
 
   //Função para mudar o idioma
   const handleLanguageChange = (itemValue) => {
@@ -27,7 +28,7 @@ export default function Settings() {
           />
         </View>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate('Feedback')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+          <TouchableOpacity onPress={() => navigation.navigate('FeedBack')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
             <Text style={[SettingStyles.label, themeStyles.text]}>Feedback e Suporte</Text>
           </TouchableOpacity>
         </View>
