@@ -8,7 +8,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 
 export default function Historico() {
   //Modo escuro
-  const { isDarkMode, toggleTheme } = useTheme(); 
+  const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
   const [routeHistory, setRouteHistory] = useState([]);

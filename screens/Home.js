@@ -14,7 +14,7 @@ export default function Home() {
   const [currentLocation, setCurrentLocation] = useState(null); //Estado que armazena a localização atual do usuário
 
   //Modo escuro
-  const { isDarkMode, toggleTheme } = useTheme(); 
+  const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
   useEffect(() => {

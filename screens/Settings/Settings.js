@@ -28,13 +28,13 @@ export default function Settings({navigation}) {
           />
         </View>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate('FeedBack')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-            <Text style={[SettingStyles.label, themeStyles.text]}>Feedback e Suporte</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Suporte')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+            <Text style={[SettingStyles.label, themeStyles.text]}>Suporte</Text>
           </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity onPress={() => navigation.navigate('About')} style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-            <Text style={[SettingStyles.label, themeStyles.text]}>About</Text>
+            <Text style={[SettingStyles.label, themeStyles.text]}>Sobre</Text>
           </TouchableOpacity>
         </View>
       </View>

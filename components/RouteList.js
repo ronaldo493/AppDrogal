@@ -7,7 +7,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 
 export default function RouteList({ routes, onRemoveRoute }) {
   //Modo escuro
-  const { isDarkMode, toggleTheme } = useTheme(); 
+  const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Renderenização de cada Item da Lista

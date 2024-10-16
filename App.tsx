@@ -10,7 +10,7 @@ import Chamados from './screens/Chamados';
 import Preventiva from './screens/Preventiva';
 import MapaLojas from './screens/MapaLojas/MapaLojas';
 import Sidebar from './components/Sidebar';
-import FeedBack from './screens/Settings/FeedBack';
+import Suporte from './screens/Settings/Suporte';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 
@@ -89,8 +89,8 @@ function AppNavigation() {
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
-            name="FeedBack" 
-            component={FeedBack} 
+            name="Suporte" 
+            component={Suporte} 
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 

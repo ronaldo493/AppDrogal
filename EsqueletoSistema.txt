@@ -7,25 +7,38 @@ src/
 │   ├── styles/               # Estilos específicos dos componentes
 │   │   ├── SearchBarStyles.js
 │   │   ├── RouteListStyles.js
-│   │   └── SidebarStyles.js
-|   |   |__ ThemeStyles.js
+│   │   ├── SidebarStyles.js
+│   │   └── ThemeStyles.js
 │   ├── SearchBar.js
 │   ├── RouteList.js
-│   └── Sidebar.js
-|   |__ ThemeContext.js
+│   ├── Sidebar.js
+│   └── ThemeContext.js
+│   └── Login.js
 ├── data/                     # Dados estáticos
 │   └── filiais.json
-|   |__ db.json
+│   └── db.json
 ├── screens/                  # Telas do aplicativo
 │   ├── styles/               # Estilos específicos das telas
 │   │   ├── HomeStyles.js
-│   │   └── MapaLojasStyles.js
-|   |   |__ HistoricoStyles.js
-|   |   |__ SettingStyles.js
+│   │   ├── MapaLojasStyles.js
+│   │   ├── HistoricoStyles.js
+│   │   ├── SettingStyles.js
+│   │   ├── FeedBackStyles.js
+│   │   ├── AboutStyles.js
+│   │   ├── ChamadosStyles.js
+│   │   └── PreventivaStyles.js
 │   ├── Home.js
 │   ├── Historico.js
-│   ├── MapaLojas.js
-│   └── Settings.js
+│   ├── Chamados.js
+│   ├── Preventiva.js
+│   └── MapaLojas/
+│       ├── map.js
+│       ├── map.web.js
+│       └── MapaLojas.js
+│   └── Settings/
+│       ├── Settings.js
+│       ├── FeedBack.js
+│       └── About.js
 ├── services/                 # Serviços para interações externas (API, Mapas)
 │   └── MapService.js
 └── App.js                    # Arquivo principal do aplicativo

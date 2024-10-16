@@ -10,7 +10,7 @@ export default function SearchBar({ onAddRoute }) {
   const [selectedFilial, setSelectedFilial] = useState(null);
 
   //Modo escuro
-  const { isDarkMode, toggleTheme } = useTheme(); 
+  const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
   //Função que lida com a BUSCA
