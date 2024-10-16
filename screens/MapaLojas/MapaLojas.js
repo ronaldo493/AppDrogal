@@ -8,17 +8,17 @@ import { useTheme } from '../../components/ThemeContext';
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 
 const MapaLojas = () => {
-  // Modo escuro
+  //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  // Coordenadas de Piracicaba onde o mapa irá iniciar
+  //Coordenadas de Piracicaba onde o mapa irá iniciar
   const piracicabaCoordinates = {
     latitude: -22.7277,
     longitude: -47.6490,
   };
 
-  // Estado para armazenar a cidade digitada, a região do mapa e a localização atual
+  // stado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState(filiaisData);
   const [mapRegion, setMapRegion] = useState({
@@ -28,7 +28,7 @@ const MapaLojas = () => {
   });
   const [currentLocation, setCurrentLocation] = useState(null); // Adicione este estado
 
-  // Função para remover acentos e normalizar o texto
+  //Função para remover acentos e normalizar o texto
   const normalizeText = (text) => {
     return text
       .toLowerCase()
@@ -67,7 +67,7 @@ const MapaLojas = () => {
           longitudeDelta: 0.1,
         });
       } catch (error) {
-        Alert.alert('Erro ao obter localização:');
+        Alert.alert('Erro ao obter localização!');
         
       }
     };

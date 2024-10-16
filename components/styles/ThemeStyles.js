@@ -61,6 +61,10 @@ export const getThemeStyles = (isDarkMode) =>
             borderRadius: 4,
             elevation: 4,
         },
+        buttonSelected: {
+            backgroundColor: isDarkMode ? '#007bff' : '#BB5059',
+        },
+
 
         //INPUT & SEARCH
         listSearch: {
