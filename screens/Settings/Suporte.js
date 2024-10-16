@@ -13,23 +13,27 @@ export default function Suporte (){
     <View style={[SuporteStyles.container,themeStyles.screenBackground]}>
       <Text style={[SuporteStyles.title, themeStyles.text]}>Suporte</Text>
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        1. Use a aba de chamados para consultar rapidamente quais tarefas estão atribuídas ou pendentes.
+        1. Para o perfeito funcionamento do aplicativo é preciso estr ativado a localização do celular.
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        2. Na opção 'Mapa Lojas', você pode localizar lojas em uma cidade específica e traçar rotas para chegar até elas usando Google Maps.
+        2. Use a aba de chamados para consultar rapidamente quais tarefas estão atribuídas ou pendentes.
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        3. Ative o modo escuro nas configurações para facilitar a visualização em ambientes com pouca luz.
+        3. Na opção 'Mapa Lojas', você pode localizar lojas em uma cidade específica e traçar rotas para chegar até elas usando Google Maps.
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        4. Utilize o botão de localização rápida para encontrar a filial mais próxima no mapa.
+        4. Ative o modo escuro nas configurações para facilitar a visualização em ambientes com pouca luz.
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        5. Mesmo sem internet, você ainda pode visualizar chamados e suas atribuições anteriores.
+        5. Utilize o botão de localização rápida para encontrar a filial mais próxima no mapa.
+      </Text>
+
+      <Text style={[SuporteStyles.tipText, themeStyles.text]}>
+        6. Mesmo sem internet, você ainda pode visualizar chamados e suas atribuições anteriores.
       </Text>
     </View>
   );

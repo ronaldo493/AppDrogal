@@ -3,8 +3,7 @@ import { StyleSheet } from 'react-native';
 const AboutStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between', // Distribui o conteúdo com espaços iguais entre eles
-    padding: 20,
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 24,

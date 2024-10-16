@@ -5,7 +5,7 @@ import { useTheme } from '../../components/ThemeContext';
 import { getThemeStyles } from '../../components/styles/ThemeStyles';
 
 export default function About() {
-  // Modo Escuro
+  //Modo Escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 

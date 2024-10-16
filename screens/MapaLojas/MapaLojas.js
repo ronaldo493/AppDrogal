@@ -26,7 +26,7 @@ const MapaLojas = () => {
     longitudeDelta: 0.1,
   });
 
-  // Função para remover acentos e normalizar o texto
+  //Função para remover acentos e normalizar o texto
   const normalizeText = (text) => {
     return text
       .toLowerCase()
