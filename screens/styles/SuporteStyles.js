@@ -17,6 +17,13 @@ const FeedBackStyles = StyleSheet.create({
         lineHeight: 21,
         marginBottom: 21,
         textAlign: 'justify',
+    },
+    tipTextObs: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        lineHeight: 21,
+        marginBottom: 21,
+        textAlign: 'justify',
     }
 
 });

@@ -21,8 +21,8 @@ export default function About() {
         proporcionando uma visão clara das tarefas a serem realizadas.
       </Text>
 
-      <Text style={[AboutStyles.highlightText, themeStyles.text]}>
-        Importante: o aplicativo não permite modificações nos chamados, apenas visualização.
+      <Text style={[AboutStyles.highlightText, themeStyles.textImp]}>
+        IMPORTANTE: o aplicativo não permite modificações nos chamados, apenas visualização.
       </Text>
 
       <Text style={[AboutStyles.versionText, themeStyles.text]}>

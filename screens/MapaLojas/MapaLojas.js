@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Alert } from 'react-native';
+import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
 import filiaisData from '../../data/filiais.json';
 import MapaLojasStyles, { darkMapStyle } from '../styles/MapaLojasStyles';
@@ -7,17 +8,17 @@ import { useTheme } from '../../components/ThemeContext';
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 
 const MapaLojas = () => {
-  //Modo escuro
+  // Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  //Coordenadas de Piracicaba onde o mapa irá iniciar
+  // Coordenadas de Piracicaba onde o mapa irá iniciar
   const piracicabaCoordinates = {
     latitude: -22.7277,
     longitude: -47.6490,
   };
 
-  //Estado para armazenar a cidade digitada e a região do mapa
+  // Estado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState(filiaisData);
   const [mapRegion, setMapRegion] = useState({
@@ -25,15 +26,54 @@ const MapaLojas = () => {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
+  const [currentLocation, setCurrentLocation] = useState(null); // Adicione este estado
 
-  //Função para remover acentos e normalizar o texto
+  // Função para remover acentos e normalizar o texto
   const normalizeText = (text) => {
     return text
       .toLowerCase()
-      .normalize('NFD') //Decompõe caracteres acentuados
+      .normalize('NFD') // Decompõe caracteres acentuados
       .replace(/[\u0300-\u036f]/g, '') // Remove os acentos
-      .trim(); //Remove espaços em branco nas pontas
+      .trim(); // Remove espaços em branco nas pontas
   };
+
+  //Obtém a localização atual do usuário
+  useEffect(() => {
+    const getLocation = async () => {
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+
+        if (status !== 'granted') {
+          status = await Location.requestForegroundPermissionsAsync();
+          
+          Alert.alert('Permissão de localização negada');
+          return;
+        }
+
+        //Obtém a posição atual do usuário
+        let location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.High,
+          timeout: 3000, //Timeout de 3 segundos
+          maximumAge: 1000, //Use a localização armazenada se disponível
+        });
+        setCurrentLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        });
+        setMapRegion({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
+        });
+      } catch (error) {
+        Alert.alert('Erro ao obter localização:');
+        
+      }
+    };
+
+    getLocation();
+  }, []);
 
   //Atualiza a região do mapa e os marcadores quando o usuário digitar uma cidade
   useEffect(() => {
@@ -80,6 +120,14 @@ const MapaLojas = () => {
         region={mapRegion}
         customMapStyle={isDarkMode ? darkMapStyle : []}
       >
+        {currentLocation && (
+          <Marker
+            coordinate={currentLocation}
+            title="Localização Atual"
+            pinColor="blue"
+          />
+        )}
+
         {filteredFiliais.map(filial => {
           const latitude = parseFloat(filial.latitude?.replace(',', '.'));
           const longitude = parseFloat(filial.longitude?.replace(',', '.'));

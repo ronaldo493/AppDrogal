@@ -41,6 +41,11 @@ export const getThemeStyles = (isDarkMode) =>
         radiusBackground: {
             backgroundColor: isDarkMode ? '#222' : '#ddd',
         },
+        textImp: {
+            color: isDarkMode ? '#B22222' : '#B22222',
+            fontStyle: 'italic',
+        },  
+
 
 
         //BUTTON

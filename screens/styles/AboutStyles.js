@@ -4,6 +4,7 @@ const AboutStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    padding: 20,
   },
   title: {
     fontSize: 24,
@@ -23,14 +24,15 @@ const AboutStyles = StyleSheet.create({
     marginBottom: 15,
   },
   versionText: {
+    fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',
     marginTop: 20,
   },
   developerText: {
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
-    marginTop: 5,
+    marginTop: 10,
   },
 });
 
