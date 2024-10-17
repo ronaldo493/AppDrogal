@@ -26,12 +26,12 @@ export default function Chamados (){
       </View>
       {selectedOption === 'atribuido' && (
         <View style={ChamadosStyles.content}>
-          <Text style={[themeStyles.text]}>Conteúdo dos chamados atribuídos.</Text>
+          <Text style={[themeStyles.text]}>Conteúdo dos chamados atribuídos em Desenvolvimento.</Text>
         </View>
       )}
       {selectedOption === 'naoAtribuido' && (
         <View style={ChamadosStyles.content}>
-          <Text style={themeStyles.text }>Conteúdo dos chamados não atribuídos.</Text>
+          <Text style={themeStyles.text }>Conteúdo dos chamados não atribuídos em Desenvolvimento.</Text>
         </View>
       )}
     </View>
