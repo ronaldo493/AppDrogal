@@ -15,10 +15,14 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.ronaldo27.AppDrogal"
+    },
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "65b71262-be2b-4089-b712-c13c03acc42e"
       }
-    },
-    "web": {
-    },
-    "assets": ["./assets/fonts"]
+    }
   }
 }
