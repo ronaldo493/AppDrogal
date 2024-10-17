@@ -21,7 +21,7 @@ export default function Home() {
     const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync(); //Solicita permissão para acessar a localização
       
-      //Verifiação de Permissão
+      //Verificação de Permissão
       if (status !== 'granted') { 
         Alert.alert('Permissão Negada', 'Você precisa permitir o acesso à localização para traçar a rota.', [
           { text: 'Solicitar Permissão', onPress: () => getLocation() }, //Reexecuta getLocation
