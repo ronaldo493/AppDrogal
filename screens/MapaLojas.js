@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
-import filiaisData from '../../data/filiais.json';
-import MapaLojasStyles, { darkMapStyle } from '../styles/MapaLojasStyles';
-import { useTheme } from '../../components/ThemeContext'; 
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-
+import filiaisData from '../data/filiais.json';
+import MapaLojasStyles, { darkMapStyle } from './styles/MapaLojasStyles';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+S
 const MapaLojas = () => {
   //Modo escuro
   const { isDarkMode } = useTheme();
