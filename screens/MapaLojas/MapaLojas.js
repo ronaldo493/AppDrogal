@@ -18,7 +18,7 @@ const MapaLojas = () => {
     longitude: -47.6490,
   };
 
-  // stado para armazenar a cidade digitada, a região do mapa e a localização atual
+  //Estado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState(filiaisData);
   const [mapRegion, setMapRegion] = useState({
@@ -26,15 +26,15 @@ const MapaLojas = () => {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
-  const [currentLocation, setCurrentLocation] = useState(null); // Adicione este estado
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   //Função para remover acentos e normalizar o texto
   const normalizeText = (text) => {
     return text
       .toLowerCase()
-      .normalize('NFD') // Decompõe caracteres acentuados
-      .replace(/[\u0300-\u036f]/g, '') // Remove os acentos
-      .trim(); // Remove espaços em branco nas pontas
+      .normalize('NFD') //Decompõe caracteres acentuados
+      .replace(/[\u0300-\u036f]/g, '') //Remove os acentos
+      .trim(); //Remove espaços em branco nas pontas
   };
 
   //Obtém a localização atual do usuário
