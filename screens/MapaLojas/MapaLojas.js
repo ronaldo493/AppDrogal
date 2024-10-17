@@ -53,7 +53,7 @@ const MapaLojas = () => {
         //Obtém a posição atual do usuário
         let location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High,
-          timeout: 3000, //Timeout de 3 segundos
+          timeout: 10000, 
           maximumAge: 1000, //Use a localização armazenada se disponível
         });
         setCurrentLocation({
@@ -132,7 +132,7 @@ const MapaLojas = () => {
           const latitude = parseFloat(filial.latitude?.replace(',', '.'));
           const longitude = parseFloat(filial.longitude?.replace(',', '.'));
 
-          if (latitude && longitude) {
+          if (!isNaN(latitude) && !isNaN(longitude)) {
             return (
               <Marker
                 key={filial.codigofilial}

@@ -12,6 +12,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
   const [currentLocation, setCurrentLocation] = useState(null); //Estado que armazena a localização atual do usuário
+  const [isLocationLoaded, setIsLocationLoaded] = useState(false); //Estado para verificar se a localização foi carregada
 
   //Modo escuro
   const { isDarkMode } = useTheme(); 
@@ -30,12 +31,17 @@ export default function Home() {
         return false;
       }
 
-      //Obtém a localização atual do usuário
-      let location = await Location.getCurrentPositionAsync({}); 
-      setCurrentLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
+      try {
+        //Obtém a localização atual do usuário
+        let location = await Location.getCurrentPositionAsync();
+        setCurrentLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        });
+        setIsLocationLoaded(true); //Define que a localização foi carregada
+      } catch (error) {
+        Alert.alert('Erro ao obter localização!');
+      }
     };
     getLocation();
   }, []);
@@ -56,8 +62,8 @@ export default function Home() {
 
     //Função para traçar a rota
   const handleTraceRoute = async () => {
-    if (!currentLocation) {
-      Alert.alert('Erro', 'Localização atual não encontrada.');
+    if (!isLocationLoaded) {
+      Alert.alert('Atenção', 'Localização ainda está sendo carregada. Tente novamente em alguns segundos.');
       return;
     }
 
