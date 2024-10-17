@@ -18,7 +18,7 @@ export default function Suporte (){
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-        1° Trace rotas para várias filiais ao mesmo tempo. ()
+        1° Trace rotas para várias filiais ao mesmo tempo.
       </Text>
 
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
