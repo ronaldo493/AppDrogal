@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/LogoApp2.png",
+      "image": "./assets/img/LogoApp2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
