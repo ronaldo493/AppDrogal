@@ -10,12 +10,6 @@ export default function Settings({navigation}) {
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
-
-  //Função para mudar o idioma
-  const handleLanguageChange = (itemValue) => {
-    setLanguage(itemValue);
-  };
-
   return (
     <View style={[SettingStyles.container, themeStyles.screenBackground]}>
       <Text style={[SettingStyles.title, themeStyles.text]}>CONFIGURAÇÕES</Text>

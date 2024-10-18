@@ -1,8 +1,9 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { TouchableOpacity, StatusBar  } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
+import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
+import { TouchableOpacity, StatusBar, GestureResponderEvent } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'; //Icones
+import { Menu, Provider as PaperProvider, Divider, MD3DarkTheme, MD3LightTheme }  from 'react-native-paper'; //Menu DropDown
 import Home from './screens/Home';
 import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
@@ -13,27 +14,49 @@ import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
-
+import { getThemeStyles } from './components/styles/ThemeStyles'; 
 
 const Drawer = createDrawerNavigator();
 
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
-    <ThemeProvider>
+      <ThemeProvider>
+         <AppWithTheme />
+      </ThemeProvider>
+  );
+}
+
+//Componente que usa o tema no menu
+function AppWithTheme() {
+  const { isDarkMode } = useTheme();
+  return (
+    <PaperProvider theme={isDarkMode ? MD3DarkTheme : MD3LightTheme}>
       <AppNavigation />
-    </ThemeProvider>
+    </PaperProvider>
   );
 }
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
+  //Modo Escuro
   const { isDarkMode } = useTheme();
+  const ThemeStyles = getThemeStyles(isDarkMode);
 
-  //Função para lidar com o clique no ícone de login
-  const handleLoginPress = () => {
-    //...
-  };
+  //Controla o estado da visibilidade do Menu(Icone)
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [anchorPosition, setAnchorPosition] = useState<{ x: number; y: number } | null>(null);
+
+  //Função para abrir Menu(Icone)
+  const openMenu = (event: GestureResponderEvent) => {
+    setAnchorPosition({ x: event.nativeEvent.pageX, y: event.nativeEvent.pageY });
+    setIsMenuVisible(true);
+  }
+
+  //Função para Fechar Menu(Icone)
+  const closeMenu = () => {
+    setIsMenuVisible(false);
+  }
 
   return (
       <>  
@@ -52,9 +75,23 @@ function AppNavigation() {
             },
             headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
             headerRight: () => (
-              <TouchableOpacity onPress={handleLoginPress} style={{ marginRight: 15 }}>
+              <>
+                <TouchableOpacity onPress={openMenu} style={{ marginRight: 15, padding: 15 }} >
                 <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
-              </TouchableOpacity>
+                </TouchableOpacity>
+                <Menu   
+                  visible={isMenuVisible}
+                  onDismiss={closeMenu}
+                  anchor={{ x: anchorPosition?.x || 0, y: anchorPosition?.y || 0}}
+                >
+                  <Menu.Item onPress={() => { closeMenu(); }} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
+                  <Divider />
+                  <Menu.Item  onPress={() => { closeMenu(); }} title="Conta" titleStyle={ThemeStyles.textMenu} />
+                  <Divider />
+                  <Menu.Item  onPress={() => { closeMenu(); }} title="Sair" titleStyle={ThemeStyles.textMenu} />
+                </Menu>
+              </>
+              
             ),
           }}
         >

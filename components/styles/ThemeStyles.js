@@ -25,6 +25,11 @@ export const getThemeStyles = (isDarkMode) =>
         text: {
             color: isDarkMode ? darkTheme.text : lightTheme.text,
         },
+        textMenu: {
+            color: isDarkMode ? darkTheme.text : lightTheme.text,
+            paddingVertical: 10,
+            paddingHorizontal: 25,
+        },
         buttonBackgroundSide: {
             backgroundColor: isDarkMode ? '#555' : '#ccc',
         },
@@ -45,8 +50,6 @@ export const getThemeStyles = (isDarkMode) =>
             color: isDarkMode ? '#B22222' : '#B22222',
             fontStyle: 'italic',
         },  
-
-
 
         //BUTTON
         textBackground: {
@@ -92,3 +95,4 @@ export const getThemeStyles = (isDarkMode) =>
             opacity: isDarkMode ? 0.2 : 0.6,
         }
     });
+

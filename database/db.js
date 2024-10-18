@@ -6804,7 +6804,7 @@
            "latitude":null,
            "longitude":null
         }
-    ],
+    ]
     "chamados": [
         {
            "sequencia":291050,

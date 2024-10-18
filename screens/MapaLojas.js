@@ -7,7 +7,7 @@ import MapaLojasStyles, { darkMapStyle } from './styles/MapaLojasStyles';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
-const MapaLojas = () => {
+export default function MapaLojas(){
   //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
@@ -147,4 +147,4 @@ const MapaLojas = () => {
   );
 };
 
-export default MapaLojas;
+
