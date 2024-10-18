@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
-import filiaisData from '../../data/filiais.json';
-import MapaLojasStyles, { darkMapStyle } from '../styles/MapaLojasStyles';
-import { useTheme } from '../../components/ThemeContext'; 
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
+import filiaisData from '../data/filiais.json';
+import MapaLojasStyles, { darkMapStyle } from './styles/MapaLojasStyles';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
 const MapaLojas = () => {
   //Modo escuro
@@ -44,16 +44,14 @@ const MapaLojas = () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
-          status = await Location.requestForegroundPermissionsAsync();
-          
-          Alert.alert('Permissão de localização negada');
-          return;
-        }
+        Alert.alert('Permissão de localização negada');
+       return;
+}
 
         //Obtém a posição atual do usuário
         let location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High,
-          timeout: 10000, 
+          timeout: 3000, 
           maximumAge: 1000, //Use a localização armazenada se disponível
         });
         setCurrentLocation({

@@ -8,7 +8,7 @@ import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
 import Chamados from './screens/Chamados';
 import Preventiva from './screens/Preventiva';
-import MapaLojas from './screens/MapaLojas/MapaLojas';
+import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
 import About from './screens/Settings/About';

@@ -629,24 +629,7 @@
     "latitude": "-21.825225",
     "longitude": " -47.247637"
   },
-  {
-    "codigofilial": 36,
-    "nomefilial": "FILIAL 036 - DROGAL F-36",
-    "endereco": "R ABELARDO BENEDICTO LIBORIO",
-    "numero": "1600",
-    "cep": "13.413-071",
-    "bairro": "LOT DISTR INDUSTRIAL UNINORTE",
-    "nomecidade": "PIRACICABA",
-    "numeroibge": 3538709,
-    "uf": "SP",
-    "telefone": "Fone1: 19 34291200 / Fone2:   / Fax: 19 34242029",
-    "gerente": null,
-    "supervisor": null,
-    "cnpj": "54.375.647/0037-38",
-    "horariofuncionamento": null,
-    "latitude": null,
-    "longitude": null
-  },
+  
   {
     "codigofilial": 37,
     "nomefilial": "FILIAL 037 - DROGAL SANTA BARB",
@@ -3508,24 +3491,6 @@
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
     "latitude": "-21.184282725872297",
     "longitude": "-47.82523605814238"
-  },
-  {
-    "codigofilial": 196,
-    "nomefilial": "FILIAL 196 - DROGAL ADM",
-    "endereco": "AV DOUTOR CASSIO PASCHOAL PADOVANI",
-    "numero": "1910",
-    "cep": "13.420-360",
-    "bairro": "MORUMBI",
-    "nomecidade": "PIRACICABA",
-    "numeroibge": 3538709,
-    "uf": "SP",
-    "telefone": "Fone1: 19 34291200 / Fone2:   / Fax:  ",
-    "gerente": null,
-    "supervisor": null,
-    "cnpj": "54.375.647/0229-53",
-    "horariofuncionamento": null,
-    "latitude": null,
-    "longitude": null
   },
   {
     "codigofilial": 197,
@@ -6763,24 +6728,6 @@
     "gerente": null,
     "supervisor": null,
     "cnpj": "54.375.647/0410-79",
-    "horariofuncionamento": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
-    "codigofilial": 2000,
-    "nomefilial": "INSTITUTO JOSÉ CANÇADO",
-    "endereco": "AV DR. CASSIO PASCHOAL PADOVANI",
-    "numero": "1910",
-    "cep": "13.420-360",
-    "bairro": "MORUMBI",
-    "nomecidade": "PIRACICABA",
-    "numeroibge": 3538709,
-    "uf": "SP",
-    "telefone": "Fone1: 19 34291313 / Fone2:   / Fax:  ",
-    "gerente": null,
-    "supervisor": null,
-    "cnpj": "36.212.860/0001-36",
     "horariofuncionamento": null,
     "latitude": null,
     "longitude": null
