@@ -67,7 +67,16 @@ export const getThemeStyles = (isDarkMode) =>
         buttonSelected: {
             backgroundColor: isDarkMode ? '#007bff' : '#BB5059',
         },
-
+        buttonBack: {
+            backgroundColor: isDarkMode ? '#222' : '#ddd',
+            margin: 10,
+            bottom: 10,
+            position: 'absolute',
+            padding: 14,
+            borderRadius: 14,
+            elevation: 3,
+            alignItems: 'center',
+        },
 
         //INPUT & SEARCH
         listSearch: {
@@ -93,6 +102,6 @@ export const getThemeStyles = (isDarkMode) =>
         //LOGO IMAGEM
         logoImg: {
             opacity: isDarkMode ? 0.2 : 0.6,
-        }
+        },
     });
 

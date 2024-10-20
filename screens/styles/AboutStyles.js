@@ -32,7 +32,7 @@ const AboutStyles = StyleSheet.create({
   developerText: {
     fontSize: 14,
     textAlign: 'center',
-    marginTop: 10,
+    marginBottom: 15,
   },
 });
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import SuporteStyles from '../styles/SuporteStyles';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 
-export default function Suporte (){
+export default function Suporte ({navigation}){
     //Modo escuro
     const { isDarkMode } = useTheme(); 
     const themeStyles = getThemeStyles(isDarkMode);
@@ -36,6 +36,13 @@ export default function Suporte (){
       <Text style={[SuporteStyles.tipText, themeStyles.text]}>
         6° Mesmo sem internet, você ainda pode visualizar chamados e suas atribuições anteriores.
       </Text>
+      <Text style={[SuporteStyles.tipText, themeStyles.text, { fontStyle: 'italic', marginTop: 20 }]}>
+        🚧 Algumas funcionalidades estão em desenvolvimento. Fique atento a atualizações!
+      </Text>
+      
+      <TouchableOpacity onPress={() => navigation.goBack()} style={themeStyles.buttonBack}>
+          <Text style={themeStyles.text}>← Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 };

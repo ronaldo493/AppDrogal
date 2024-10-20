@@ -32,11 +32,6 @@ export default function Settings({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-      
-      
-      <View style={SettingStyles.footer}>
-        <Text style={[SettingStyles.footerText, themeStyles.text]}>Desenvolvido por Ronaldo</Text>
-      </View>
     </View>
   );
 }

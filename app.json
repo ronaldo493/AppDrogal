@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "icon": "./assets/img/LogoApp2.png",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/img/LogoApp2.png",
       "resizeMode": "contain",
@@ -15,14 +15,22 @@
       "supportsTablet": true,
       "config": {
         "googleMapsApiKey": "AIzaSyCdWLfccDPylQ5I1peF-wC0vm9uNKZ-PWY"
-      }
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você."
+      },
+      "bundleIdentifier": "com.ronaldo27.SuporteDrogal"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
       "package": "com.ronaldo27.SuporteDrogal",
-      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyCdWLfccDPylQ5I1peF-wC0vm9uNKZ-PWY"

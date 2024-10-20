@@ -114,9 +114,11 @@ export default function MapaLojas(){
       />
       
       <MapView
+        provider={MapView.PROVIDER_GOOGLE}
         style={MapaLojasStyles.map}
         region={mapRegion}
         customMapStyle={isDarkMode ? darkMapStyle : []}
+        
       >
         {currentLocation && (
           <Marker

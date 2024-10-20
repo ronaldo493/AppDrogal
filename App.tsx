@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
+import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
 import { TouchableOpacity, StatusBar, GestureResponderEvent } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; //Icones
-import { Menu, Provider as PaperProvider, Divider, MD3DarkTheme, MD3LightTheme }  from 'react-native-paper'; //Menu DropDown
+import { Menu, Provider as PaperProvider, Divider, MD2DarkTheme, MD2LightTheme }  from 'react-native-paper'; //Menu Suspenso
 import Home from './screens/Home';
 import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
@@ -17,6 +18,7 @@ import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
@@ -31,7 +33,7 @@ export default function App() {
 function AppWithTheme() {
   const { isDarkMode } = useTheme();
   return (
-    <PaperProvider theme={isDarkMode ? MD3DarkTheme : MD3LightTheme}>
+    <PaperProvider theme={isDarkMode ? MD2DarkTheme : MD2LightTheme}>
       <AppNavigation />
     </PaperProvider>
   );
@@ -39,6 +41,7 @@ function AppWithTheme() {
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
+
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const ThemeStyles = getThemeStyles(isDarkMode);
@@ -49,7 +52,8 @@ function AppNavigation() {
 
   //Função para abrir Menu(Icone)
   const openMenu = (event: GestureResponderEvent) => {
-    setAnchorPosition({ x: event.nativeEvent.pageX, y: event.nativeEvent.pageY });
+    const { pageX, pageY } = event.nativeEvent;
+    setAnchorPosition({ x: pageX, y: pageY, });
     setIsMenuVisible(true);
   }
 
@@ -57,7 +61,7 @@ function AppNavigation() {
   const closeMenu = () => {
     setIsMenuVisible(false);
   }
-
+ 
   return (
       <>  
         <StatusBar 
@@ -67,7 +71,7 @@ function AppNavigation() {
         <NavigationContainer>
         <Drawer.Navigator
           drawerContent={(props) => <Sidebar {...props} />}
-          screenOptions={{
+          screenOptions={({ navigation }) => ({ 
             headerShown: true, //Mostra o cabeçalho
             headerTitle: '',   //Remove o título da tela
             headerStyle: {
@@ -76,7 +80,7 @@ function AppNavigation() {
             headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
             headerRight: () => (
               <>
-                <TouchableOpacity onPress={openMenu} style={{ marginRight: 15, padding: 15 }} >
+                <TouchableOpacity onPress={openMenu} style={{ marginRight: 10, padding: 9 }} >
                 <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
                 </TouchableOpacity>
                 <Menu   
@@ -84,16 +88,16 @@ function AppNavigation() {
                   onDismiss={closeMenu}
                   anchor={{ x: anchorPosition?.x || 0, y: anchorPosition?.y || 0}}
                 >
-                  <Menu.Item onPress={() => { closeMenu(); }} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
+                  <Menu.Item  onPress={() => { closeMenu(); navigation.navigate('Settings');}} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
                   <Divider />
-                  <Menu.Item  onPress={() => { closeMenu(); }} title="Conta" titleStyle={ThemeStyles.textMenu} />
+                  <Menu.Item  onPress={() => { closeMenu(); }} title="Meu Perfil" titleStyle={ThemeStyles.textMenu} />
                   <Divider />
                   <Menu.Item  onPress={() => { closeMenu(); }} title="Sair" titleStyle={ThemeStyles.textMenu} />
                 </Menu>
               </>
               
             ),
-          }}
+          })}
         >
           <Drawer.Screen 
             name="Home" 
@@ -122,7 +126,7 @@ function AppNavigation() {
           />
           <Drawer.Screen 
             name="Settings" 
-            component={Settings} 
+            component={SettingsStack} 
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
@@ -142,4 +146,14 @@ function AppNavigation() {
   );
 }
 
+//Stack para as telas de Configurações
+function SettingsStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SettingsMenu" component={Settings} options={{ headerShown: false }}  />
+      <Stack.Screen name="Suporte" component={Suporte} options={{ headerShown: false }} />
+      <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+}
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import AboutStyles from '../../screens/styles/AboutStyles';
 import { useTheme } from '../../components/ThemeContext';
 import { getThemeStyles } from '../../components/styles/ThemeStyles';
 
-export default function About() {
+export default function About({navigation}) {
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
@@ -32,6 +32,9 @@ export default function About() {
       <Text style={[AboutStyles.developerText, themeStyles.text]}>
         Desenvolvido por: Ronaldo
       </Text>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={themeStyles.buttonBack}>
+          <Text style={themeStyles.text}>← Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
