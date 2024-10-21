@@ -35,7 +35,17 @@
         "googleMaps": {
           "apiKey": "AIzaSyCdWLfccDPylQ5I1peF-wC0vm9uNKZ-PWY"
         }
-      }
+      },
+      "plugins": [
+        "expo-font",
+        [
+          "expo-build-properties", {
+            "android": {
+              "usesCleartextTraffic": true  
+            }
+          }
+        ]
+      ]
     },
     "web": {},
     "extra": {
