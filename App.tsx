@@ -119,11 +119,11 @@ function AppNavigation() {
             component={Chamados} 
             options={{ headerTitle: '' }} 
           />
-          <Drawer.Screen 
+          {/* <Drawer.Screen 
             name="Preventiva" 
             component={Preventiva} 
             options={{ headerTitle: '' }} 
-          />
+          /> */}
           <Drawer.Screen 
             name="Settings" 
             component={SettingsStack} 
