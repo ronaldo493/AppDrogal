@@ -8,7 +8,7 @@ const FeedBackStyles = StyleSheet.create({
     title: {
         fontSize: 26,
         fontWeight: 'bold',
-        marginBottom: 35,
+        marginVertical: 35,
         textAlign: 'center',
         
     },
@@ -24,8 +24,10 @@ const FeedBackStyles = StyleSheet.create({
         lineHeight: 21,
         marginBottom: 21,
         textAlign: 'justify',
+    },
+    scrollContainer: {
+        flexGrow: 1,
     }
-
 });
 
 export default FeedBackStyles;

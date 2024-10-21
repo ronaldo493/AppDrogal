@@ -69,12 +69,9 @@ export const getThemeStyles = (isDarkMode) =>
         },
         buttonBack: {
             backgroundColor: isDarkMode ? '#222' : '#ddd',
-            margin: 10,
-            bottom: 10,
-            position: 'absolute',
             padding: 14,
-            borderRadius: 14,
-            elevation: 3,
+            borderRadius: 12,
+            elevation: 2,
             alignItems: 'center',
         },
 

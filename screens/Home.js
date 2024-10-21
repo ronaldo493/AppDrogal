@@ -35,8 +35,8 @@ export default function Home() {
         //Obtém a localização atual do usuário
         let location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High,
-          timeout: 3000, 
-          maximumAge: 1000,
+          timeout: 6000, 
+          maximumAge: 3000,
         }
           
         );
