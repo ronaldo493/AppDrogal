@@ -9,7 +9,7 @@ import Home from './screens/Home';
 import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
 import Chamados from './screens/Chamados';
-import Preventiva from './screens/Preventiva';
+import Preventiva from './screens/Preventiva/Preventiva';
 import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
@@ -119,11 +119,11 @@ function AppNavigation() {
             component={Chamados} 
             options={{ headerTitle: '' }} 
           />
-          {/* <Drawer.Screen 
+          <Drawer.Screen 
             name="Preventiva" 
             component={Preventiva} 
             options={{ headerTitle: '' }} 
-          /> */}
+          />
           <Drawer.Screen 
             name="Settings" 
             component={SettingsStack} 

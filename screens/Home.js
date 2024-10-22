@@ -128,7 +128,7 @@ export default function Home() {
       <SearchBar onAddRoute={handleAddRoute} />
       <View style={HomeStyles.routeContainer}>
         <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
-        <TouchableOpacity
+      <TouchableOpacity
         onPress={handleTraceRoute}
       >
       <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>

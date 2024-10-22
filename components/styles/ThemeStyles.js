@@ -83,6 +83,7 @@ export const getThemeStyles = (isDarkMode) =>
             borderWidth: 0.8,
             borderColor: isDarkMode ? '#777777' : '#2196F3',
             color: isDarkMode ? '#ffffff' : '#000000',
+            backgroundColor: isDarkMode ? '#555' : '#ccc',
             fontSize: 17,
             fontWeight: 'bold',
             textAlign: 'center',
@@ -100,5 +101,14 @@ export const getThemeStyles = (isDarkMode) =>
         logoImg: {
             opacity: isDarkMode ? 0.2 : 0.6,
         },
+
+        //PREVENTIVAS
+        checklistContainerTheme: {
+            backgroundColor: isDarkMode ? '#111' : '#f5f5f5',
+        },
+        checklistItemTheme: {
+            backgroundColor: isDarkMode ? '#333' : '#f5f5f5',
+            color: isDarkMode ? darkTheme.text : lightTheme.text,
+        }
     });
 
