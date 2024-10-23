@@ -308,7 +308,7 @@
   {
     "codigofilial": 18,
     "nomefilial": "FILIAL 018 - DROGAL IRACEMAPOL",
-    "endereco": "PC DA MATRIZ",
+    "endereco": "R. DOM PEDRO II",
     "numero": "242",
     "cep": "13.495-043",
     "bairro": "CENTRO",
@@ -1550,7 +1550,7 @@
   {
     "codigofilial": 87,
     "nomefilial": "FILIAL 087 - DROGAL RIO PARDO",
-    "endereco": "PC CAPITAO VICENTE DIAS",
+    "endereco": "R. FRANCISQUINHO DIAS",
     "numero": "161",
     "cep": "13.720-000",
     "bairro": "CENTRO",
@@ -2270,7 +2270,7 @@
   {
     "codigofilial": 127,
     "nomefilial": "FILIAL 127 - DROGAL AVARE II",
-    "endereco": "PC DA INDEPENDENCIA",
+    "endereco": "PRAÇA DA INDEPENDENCIA",
     "numero": "6",
     "cep": "18.705-080",
     "bairro": "CENTRO",
