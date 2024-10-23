@@ -2498,8 +2498,8 @@
     "supervisor": "NATHALIA GUIARO CARCINONI",
     "cnpj": "54.375.647/0172-83",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.010502",
-    "longitude": "-48.217693"
+    "latitude": "21.01004266036361",
+    "longitude": "-48.21856294535157"
   },
   {
     "codigofilial": 140,
@@ -2666,7 +2666,7 @@
   {
     "codigofilial": 149,
     "nomefilial": "FILIAL 149 - DROGAL CAPIVARI I",
-    "endereco": "PC RODRIGUES DE ABREU",
+    "endereco": "RUA XV DE NOVEMBRO",
     "numero": "505",
     "cep": "13.360-000",
     "bairro": "CENTRO",
@@ -2678,8 +2678,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0182-55",
     "horariofuncionamento": "SEG. À SEX. 08:00 ÀS 19:00 SAB. 08:00 ÀS 13:00 - DOM. E FER. NÃO ABRE",
-    "latitude": "-22.999774",
-    "longitude": " -47.504175"
+    "latitude": "-22.999908130175587",
+    "longitude": " -47.50431832999034"
   },
   {
     "codigofilial": 150,
@@ -3326,8 +3326,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0218-09",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:30 ÀS 22:00",
-    "latitude": "-23.10133705056681",
-    "longitude": "-48.615305849886575"
+    "latitude": "-23.101448112543572",
+    "longitude": "-48.61569755576522"
   },
   {
     "codigofilial": 186,
@@ -4214,7 +4214,7 @@
   {
     "codigofilial": 235,
     "nomefilial": "FILIAL 235 - DROGAL RIBEIRAO P",
-    "endereco": "PC JORDINO VIEIRA SAMPAIO",
+    "endereco": "ROD. JOSÉ FREGONESI",
     "numero": "16",
     "cep": "14.110-000",
     "bairro": "BONFIM PAULISTA",
@@ -4226,8 +4226,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0269-40",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.25816921111508",
-    "longitude": "-47.814323873740115"
+    "latitude": "-21.267078902174347",
+    "longitude": "--47.817286198558165"
   },
   {
     "codigofilial": 236,
@@ -5144,8 +5144,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0320-88",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.462450098123767",
-    "longitude": "-47.00984086184485"
+    "latitude": "-21.46193192126358",
+    "longitude": " -47.00953889544121"
   },
   {
     "codigofilial": 287,
@@ -5468,8 +5468,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0338-07",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20.58107131988994",
-    "longitude": "-47.860314273570424"
+    "latitude": "-20.581267233114964", 
+    "longitude": "-47.861545742211675"
   },
   {
     "codigofilial": 305,

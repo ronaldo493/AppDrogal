@@ -51,6 +51,7 @@ export default function SearchBar({ onAddRoute }) {
                 <Text style={themeStyles.text}>Código: {selectedFilial.codigofilial}</Text>
                 <Text style={themeStyles.text}>Nome: {selectedFilial.nomefilial}</Text>
                 <Text style={themeStyles.text}>Endereço: {selectedFilial.endereco}, {selectedFilial.numero}</Text>
+                <Text style={themeStyles.text}>Bairro: {selectedFilial.bairro}</Text>
                 <Text style={themeStyles.text}>Telefone: {selectedFilial.telefone}</Text>
                 <Text style={themeStyles.text}>CNPJ: {selectedFilial.cnpj}</Text>
             </View>
