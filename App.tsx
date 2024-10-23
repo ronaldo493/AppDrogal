@@ -16,6 +16,7 @@ import Suporte from './screens/Settings/Suporte';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
+import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -121,7 +122,7 @@ function AppNavigation() {
           />
           <Drawer.Screen 
             name="Preventiva" 
-            component={Preventiva} 
+            component={PreventivaStack} 
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
@@ -146,7 +147,7 @@ function AppNavigation() {
   );
 }
 
-//Stack para as telas de Configurações
+//Stack para a tela de Configurações
 function SettingsStack() {
   return (
     <Stack.Navigator>
@@ -155,5 +156,15 @@ function SettingsStack() {
       <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
+}
+
+//Stack para a tela de Preventiva
+function PreventivaStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="PreventivaScreen" component={Preventiva} options={{ headerShown: false }}  />
+      <Stack.Screen name="PatrimonioAssinatura" component={PatrimonioAssinatura} options={{ headerShown: false }}  />
+    </Stack.Navigator>
+  )
 }
 

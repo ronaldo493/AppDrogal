@@ -20,7 +20,7 @@ export default function Historico() {
         try {
           const history = await AsyncStorage.getItem('routeHistory');
           if (history) {
-            setRouteHistory(JSON.parse(history));
+            setRouteHistory(JSON.parse(history).reverse());
           }
         } catch (error) {
           console.log('Erro ao carregar o histórico de rotas:', error);
@@ -66,7 +66,7 @@ export default function Historico() {
       <FlatList
         data={routeHistory}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={[HistoricoStyles.routeItem, themeStyles.radiusBackground]}>
             <Text style={[themeStyles.text]}>Data: {item.date}</Text>
             <Text style={[themeStyles.text]}>Rota:</Text>

@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, TextInput, Alert} from 'react-native';
 import PreventivaStyles from '../styles/PreventivaStyles';
 import Checklist from './Checklist';
 import { useTheme } from '../../components/ThemeContext'; 
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
+import { getThemeStyles } from '../../components/styles/ThemeStyles';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Preventiva (){
     //Modo escuro
@@ -13,13 +14,17 @@ export default function Preventiva (){
     //Filial Escolhida
     const [filialInput, setFilialInput] =useState('');
     const [showChecklist, setShowChecklist] = useState(false);
+
+    //Navegação
+    const navigation = useNavigation();
     
     //Função de Start da Preventiva
     const handleStartPreventiva = () => {
       if (!filialInput) {
         Alert.alert('Atenção!', 'Por favor, insira a Filial')
         return;
-      }   
+      }
+      navigation.navigate('PatrimonioAssinatura', { filial: filialInput });
     }
 
     const toggleChecklist = () => {

@@ -10,10 +10,12 @@ const PreventivaStyles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         fontWeight: 'bold',
+        marginBottom: 20,
     },
     label: {
         fontSize: 17,
-        marginVertical: 14
+        marginVertical: 14,
+        textAlign: 'left',
     },
     input: {
         flex: 1,
@@ -22,12 +24,13 @@ const PreventivaStyles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 15
+        marginTop: 15,
     },
     button: {
         padding: 14,
         borderRadius: 4,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        elevation: 4
     },
     //Estilo para o Checklist Renderizado
     checklistItem: {
