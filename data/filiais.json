@@ -32,8 +32,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0003-99",
     "horariofuncionamento": "LOJA 24 HORAS",
-    "latitude": "-22.726731",
-    "longitude": "-47.6484358"
+    "latitude": "-22.726528230593747", 
+    "longitude": "-47.648450431766875"
   },
   {
     "codigofilial": 3,
@@ -50,9 +50,9 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0099-30",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 23:00 DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.759217",
-    "longitude": " -48.829811"
-  },
+    "latitude": "-21.759242662079277",
+    "longitude": "-48.82960880787911"
+  }, 
   {
     "codigofilial": 4,
     "nomefilial": "FILIAL 004 - DROGAL JARDIM",
@@ -176,8 +176,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0104-32",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.949179",
-    "longitude": " -47.311840"
+    "latitude": "-22.949024080802342",
+    "longitude": " -47.312337884065585"
   },
   {
     "codigofilial": 11,
@@ -249,7 +249,7 @@
     "cnpj": "54.375.647/0107-85",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
     "latitude": "-22.562722",
-    "longitude": " -47.406339"
+    "longitude": "-47.406339"
   },
   {
     "codigofilial": 15,
@@ -266,8 +266,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0108-66",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.748741",
-    "longitude": " -47.656103"
+    "latitude": "-22.748493861158963",
+    "longitude": "-47.65636947933553"
   },
   {
     "codigofilial": 16,
@@ -284,8 +284,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0109-47",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.895872",
-    "longitude": " -47.175364"
+    "latitude": "-22.896073118184166", 
+    "longitude": "-47.17495602554883"
   },
   {
     "codigofilial": 17,
@@ -356,8 +356,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0111-61",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.407365",
-    "longitude": " -47.572322"
+    "latitude": "-22.409423158022832",
+    "longitude": "-47.57143241048342"
   },
   {
     "codigofilial": 21,
@@ -410,8 +410,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0113-23",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.593023",
-    "longitude": "-47.423517"
+    "latitude": "-22.592873159123346",
+    "longitude": "-47.423585894515384"
   },
   {
     "codigofilial": 24,
@@ -428,8 +428,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0114-04",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.117712",
-    "longitude": " -47.232426"
+    "latitude": "-23.11734837123641",
+    "longitude": "-47.233724631573196"
   },
   {
     "codigofilial": 25,
@@ -446,8 +446,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0115-95",
     "horariofuncionamento": "SEG. À DOM. E FER. 08:00 ÀS 22:00",
-    "latitude": "-23.008409",
-    "longitude": "-47.523511"
+    "latitude": "-22.997097296645276",
+    "longitude": " -47.51369528062625"
   },
   {
     "codigofilial": 26,
@@ -464,8 +464,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0116-76",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.728536",
-    "longitude": " -47.620573"
+    "latitude": "-22.729191220575974", 
+    "longitude": " -47.62099049956126"
   },
   {
     "codigofilial": 27,
@@ -482,8 +482,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0028-47",
     "horariofuncionamento": "LOJA 24 HORAS",
-    "latitude": "-23.0871871",
-    "longitude": "-47.2156482"
+    "latitude": "-23.08865815487532", 
+    "longitude": "-47.21652367017372"
   },
   {
     "codigofilial": 28,
@@ -500,8 +500,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0117-57",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.899613",
-    "longitude": " -47.234644"
+    "latitude": "-22.899523575861686", 
+    "longitude": " -47.23459898086506"
   },
   {
     "codigofilial": 29,
@@ -518,8 +518,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0118-38",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.771253",
-    "longitude": "-47.389247"
+    "latitude": "-22.76840578482815", 
+    "longitude": "-47.387232311369765"
   },
   {
     "codigofilial": 30,
@@ -536,8 +536,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0119-19",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.704278",
-    "longitude": "-47.29737"
+    "latitude": "-22.70534613567177",
+    "longitude": "-47.29896694279522"
   },
   {
     "codigofilial": 31,
@@ -608,8 +608,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0121-33",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.302312",
-    "longitude": " -48.572762"
+    "latitude": "-22.300080712760188",
+    "longitude": "-48.56812726032233"
   },
   {
     "codigofilial": 35,
@@ -626,8 +626,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0122-14",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:30 ÀS 22:00",
-    "latitude": "-21.825225",
-    "longitude": " -47.247637"
+    "latitude": "-21.826058562477776", 
+    "longitude": "-47.2478670408099"
   },
   {
     "codigofilial": 36,
@@ -662,8 +662,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0123-03",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.737248",
-    "longitude": " -47.357065"
+    "latitude": "-22.735917280003335",
+    "longitude": "-47.35739517520021"
   },
   {
     "codigofilial": 38,
@@ -680,8 +680,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0124-86",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.579346",
-    "longitude": " -47.400700"
+    "latitude": "-22.579321607570225", 
+    "longitude": "-47.400795711227985"
   },
   {
     "codigofilial": 39,
@@ -698,8 +698,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0040-33",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.739096",
-    "longitude": " -47.624281"
+    "latitude": "-22.739071587444407", 
+    "longitude": "-47.62421556825117"
   },
   {
     "codigofilial": 40,
@@ -716,8 +716,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0041-14",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.708761",
-    "longitude": " -47.653734"
+    "latitude": "-22.70884565033613",
+    "longitude": "-47.65382947986274"
   },
   {
     "codigofilial": 41,
@@ -734,8 +734,8 @@
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0042-03",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 22:00 SAB. 07:00 ÀS 20:00 - DOM. E FER. NÃO ABRE ",
-    "latitude": "-22.906985",
-    "longitude": "-47.058820"
+    "latitude": "-22.907001659146903",
+    "longitude": "-47.05886596279978"
   },
   {
     "codigofilial": 42,
@@ -752,8 +752,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0125-67",
     "horariofuncionamento": "SEG. À SAB. 08:00 ÀS 22:00 -  DOM. E FER. NÃO ABRE",
-    "latitude": "-22.744808",
-    "longitude": "-47.622237"
+    "latitude": "-22.74494078794319",
+    "longitude": "-47.62182036971123"
   },
   {
     "codigofilial": 43,
@@ -770,8 +770,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0163-92",
     "horariofuncionamento": "SEG. À DOM.E FER. 07:00 ÀS 22:00 ",
-    "latitude": "-21.484283",
-    "longitude": " -47.364533"
+    "latitude": "-21.484126508986105", 
+    "longitude": "-47.36449645323005"
   },
   {
     "codigofilial": 44,
@@ -788,8 +788,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0126-48",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.356249",
-    "longitude": " -48.774594"
+    "latitude": "-22.35405237580419", 
+    "longitude": "-48.776310343812284"
   },
   {
     "codigofilial": 45,
@@ -806,8 +806,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0127-29",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:30 ÀS 23:00",
-    "latitude": "-22.579976",
-    "longitude": " -47.382000"
+    "latitude": "-22.579855004663283",
+    "longitude": "-47.382124383103445"
   },
   {
     "codigofilial": 46,
@@ -824,8 +824,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0128-00",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-21.997925",
-    "longitude": " -47.430952"
+    "latitude": "-21.997452860836724", 
+    "longitude": "-47.42865388088053"
   },
   {
     "codigofilial": 47,
@@ -842,8 +842,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0048-90",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.639469",
-    "longitude": "-47.194516"
+    "latitude": "-22.644702681860615",  
+    "longitude": "-47.19708527355077"
   },
   {
     "codigofilial": 48,
@@ -860,8 +860,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0049-71",
     "horariofuncionamento": "SEG. À SAB. E FER. 07:00 ÀS 22:00 DOM. 08:00 ÀS 13:00",
-    "latitude": "-23.117255",
-    "longitude": " -47.235552"
+    "latitude": "-23.117260660452782", 
+    "longitude": "-47.235554163700264"
   },
   {
     "codigofilial": 49,
@@ -878,8 +878,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0050-05",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.677681",
-    "longitude": " -47.680817"
+    "latitude": "-22.67765288954279", 
+    "longitude": "-47.68079988691789"
   },
   {
     "codigofilial": 50,
@@ -896,8 +896,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0051-96",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 23:00 SAB. 07:30 ÀS 23:00 FER.8H00 ÀS 18H00 - DOM. NÃO ABRE",
-    "latitude": "-22.727254",
-    "longitude": "-47.634633"
+    "latitude": "-22.727171466253534",
+    "longitude": "-47.634692515528755"
   },
   {
     "codigofilial": 51,
@@ -950,8 +950,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0054-39",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.105804",
-    "longitude": "-47.218291"
+    "latitude": "-23.10587556745622", 
+    "longitude": "-47.218378278104325"
   },
   {
     "codigofilial": 54,
@@ -986,8 +986,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0130-24",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.879253",
-    "longitude": "-47.197671"
+    "latitude": "-22.881217120797597", 
+    "longitude": "-47.19673708693318"
   },
   {
     "codigofilial": 56,
@@ -1004,8 +1004,8 @@
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0057-81",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-23.201368",
-    "longitude": " -47.289189"
+    "latitude": "-23.205960811313762",
+    "longitude": "-47.292519186404334"
   },
   {
     "codigofilial": 57,
@@ -1094,8 +1094,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0062-49",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.574478",
-    "longitude": " -47.170659"
+    "latitude": "-22.574536883811078",
+    "longitude": "-47.17087851111902"
   },
   {
     "codigofilial": 62,
@@ -1112,8 +1112,8 @@
     "supervisor": "JOSIVALDO ANTONIO DE OLIVEIRA",
     "cnpj": "54.375.647/0063-20",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.999774",
-    "longitude": " -47.504175"
+    "latitude": "-23.083165792841886",
+    "longitude": "-46.94985790250811"
   },
   {
     "codigofilial": 63,
@@ -1166,8 +1166,8 @@
     "supervisor": "ESTEFANO YAMADA PARRA",
     "cnpj": "54.375.647/0066-72",
     "horariofuncionamento": null,
-    "latitude": "-22,727438",
-    "longitude": "-47,643563"
+    "latitude": "-22.72739802860428",
+    "longitude": "-47.6435379940129"
   },
   {
     "codigofilial": 66,
@@ -1202,8 +1202,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0068-34",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.025188",
-    "longitude": "-48.037953"
+    "latitude": "-21.024665512454778", 
+    "longitude": "-48.0380283258703"
   },
   {
     "codigofilial": 68,
@@ -1220,8 +1220,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0069-15",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 00:00 DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.155995",
-    "longitude": " -47.819518"
+    "latitude": "-21.15654065646235", 
+    "longitude": "-47.81893719516376"
   },
   {
     "codigofilial": 69,
@@ -1292,8 +1292,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0073-00",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.140797",
-    "longitude": "-47.986156"
+    "latitude": "-21.137226540786045", 
+    "longitude": "-47.9909324046258"
   },
   {
     "codigofilial": 73,
@@ -1310,8 +1310,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0074-82",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 23:00 SAB. DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.889649",
-    "longitude": " -48.444916"
+    "latitude": "-22.889424391391007", 
+    "longitude": "-48.44489249871443"
   },
   {
     "codigofilial": 74,
@@ -1328,8 +1328,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0075-63",
     "horariofuncionamento": "SEG. À SAB. E FER. 07:00 ÀS 22:00 DOM. 08:00 ÀS 13:00",
-    "latitude": "-23.101714",
-    "longitude": " -47.212094"
+    "latitude": "-23.101258795757172",
+    "longitude": "-47.21250840921504"
   },
   {
     "codigofilial": 75,
@@ -1364,8 +1364,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0077-25",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.672975",
-    "longitude": "-47.691071"
+    "latitude": "-22.671315476065093",
+    "longitude": "-47.69486977621274"
   },
   {
     "codigofilial": 77,
@@ -1400,8 +1400,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0079-97",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.738264",
-    "longitude": " -47.377292"
+    "latitude": "-22.738920586316326", 
+    "longitude": "-47.37708421760211"
   },
   {
     "codigofilial": 79,
@@ -1526,8 +1526,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0086-16",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.851914",
-    "longitude": " -47.192078"
+    "latitude": "-22.851921307405693", 
+    "longitude": "-47.19244698827416"
   },
   {
     "codigofilial": 86,
@@ -1670,8 +1670,8 @@
     "supervisor": "TAMARA THOMAZI",
     "cnpj": "54.375.647/0094-26",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-22.753423",
-    "longitude": " -47.413664"
+    "latitude": "-22.75320885591305", 
+    "longitude": "-47.41359045514194"
   },
   {
     "codigofilial": 94,
@@ -1746,24 +1746,6 @@
     "longitude": " -47.651954"
   },
   {
-    "codigofilial": 98,
-    "nomefilial": "ZILEIDE SEVERINO DA SILVA COL.",
-    "endereco": "R RUA CABO OSWALDO DE MORAES",
-    "numero": "0",
-    "cep": "13.420-000",
-    "bairro": "BAIRRO",
-    "nomecidade": "NAO DEFINIDO",
-    "numeroibge": null,
-    "uf": "SP",
-    "telefone": "Fone1: VA X.DEL / Fone2:  X.DEL / Fax: 19 33018029",
-    "gerente": null,
-    "supervisor": null,
-    "cnpj": "",
-    "horariofuncionamento": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
     "codigofilial": 99,
     "nomefilial": "FILIAL 099 - FARMACIA DO POVO",
     "endereco": "R GOVERNADOR PEDRO DE TOLEDO",
@@ -1778,8 +1760,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0001-27",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 23:00 SAB. 07:00 ÀS 22:30 DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.726097",
-    "longitude": "-47.648123"
+    "latitude": "-22.7254973964156", 
+    "longitude": "-47.6479587120027"
   },
   {
     "codigofilial": 100,
@@ -1796,8 +1778,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0132-96",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.189689523968458",
-    "longitude": "-47.80416617374142"
+    "latitude": "-21.18988317450747",
+    "longitude": "-47.80418250769023"
   },
   {
     "codigofilial": 101,
@@ -1886,8 +1868,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0137-09",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.814945",
-    "longitude": " -47.239975"
+    "latitude": "-22.814885748403267", 
+    "longitude": "-47.2393822014672"
   },
   {
     "codigofilial": 106,
@@ -1940,8 +1922,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0140-04",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 22:00 DOM. E FER. 08:00 ÀS 13:00",
-    "latitude": "-22.683932",
-    "longitude": " -47.665281"
+    "latitude": "-22.684102501776508", 
+    "longitude": "-47.66508148392324"
   },
   {
     "codigofilial": 109,
@@ -1976,8 +1958,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0142-68",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.357046",
-    "longitude": " -47.382317"
+    "latitude": "-22.357283113014706", 
+    "longitude": "-47.381292197510604"
   },
   {
     "codigofilial": 111,
@@ -1994,8 +1976,8 @@
     "supervisor": "RAFAEL ROCHA SEVERINO",
     "cnpj": "54.375.647/0143-49",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": " -22.879702",
-    "longitude": " -48.450396"
+    "latitude": "-22.881127959557485", 
+    "longitude": "-48.451732669011925"
   },
   {
     "codigofilial": 112,
@@ -2030,8 +2012,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0145-00",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 22:00 DOM. E FER. 08:00 ÀS 22:00",
-    "latitude": "-22.068504",
-    "longitude": " -48.746267"
+    "latitude": "-22.07454638838766",
+    "longitude": "-48.742399441564146"
   },
   {
     "codigofilial": 114,
@@ -2084,8 +2066,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0148-53",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.902657",
-    "longitude": "-47.617952"
+    "latitude": "-21.902381750090733",
+    "longitude": "-47.61995240554666"
   },
   {
     "codigofilial": 117,
@@ -2102,8 +2084,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0149-34",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.702350",
-    "longitude": " -47.272458"
+    "latitude": "-21.7075940980923", 
+    "longitude": "-47.27424404008414"
   },
   {
     "codigofilial": 118,
@@ -2192,8 +2174,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0154-00",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-23.092258",
-    "longitude": "-47.211209"
+    "latitude": "-23.091547792903135", 
+    "longitude": "-47.21217058264634"
   },
   {
     "codigofilial": 123,
@@ -2300,8 +2282,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0160-40",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 22:00 SAB. 07:00 ÀS 12:00 - DOM. E FER. NÃO ABRE ",
-    "latitude": "-23.050918",
-    "longitude": " -47.836637"
+    "latitude": "-23.05065420557693", 
+    "longitude": "-47.83696125162908"
   },
   {
     "codigofilial": 129,
@@ -2354,8 +2336,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0164-73",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-21.466403",
-    "longitude": " -46.999942"
+    "latitude": "-21.466703640620125", 
+    "longitude": "-47.00014799364789"
   },
   {
     "codigofilial": 132,
@@ -2372,8 +2354,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0165-54",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 23:00 DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.716915",
-    "longitude": " -47.661022"
+    "latitude": "-22.717350062386913",
+    "longitude": "-47.66174079456465"
   },
   {
     "codigofilial": 133,
@@ -2408,8 +2390,8 @@
     "supervisor": "BARBARA CAMPOS TEIXEIRA MALTA GRAVINA",
     "cnpj": "54.375.647/0167-16",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.3506264",
-    "longitude": "-47.8379551"
+    "latitude": "-23.350433467724347",
+    "longitude": "-47.83995518219629"
   },
   {
     "codigofilial": 135,
@@ -2426,8 +2408,8 @@
     "supervisor": "RAFAEL ROCHA SEVERINO",
     "cnpj": "54.375.647/0168-05",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.473049",
-    "longitude": "-48.991320"
+    "latitude": "-22.47335123027658",
+    "longitude": "-48.989879123160186"
   },
   {
     "codigofilial": 136,
@@ -2498,8 +2480,8 @@
     "supervisor": "NATHALIA GUIARO CARCINONI",
     "cnpj": "54.375.647/0172-83",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "21.01004266036361",
-    "longitude": "-48.21856294535157"
+    "latitude": "-21.009971006260074",
+    "longitude": "-48.21853260858482"
   },
   {
     "codigofilial": 140,
@@ -2534,8 +2516,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0174-45",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.427690",
-    "longitude": " -46.953971"
+    "latitude": "-22.44169453507933", 
+    "longitude": "-46.96899177593704"
   },
   {
     "codigofilial": 142,
@@ -2570,8 +2552,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0176-07",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.6974554",
-    "longitude": "-47.6767664"
+    "latitude": "-22.699937716293555",
+    "longitude": "-47.6759483191017"
   },
   {
     "codigofilial": 144,
@@ -2588,8 +2570,8 @@
     "supervisor": "CRISTIANO DE JESUS GONZALEZ",
     "cnpj": "54.375.647/0177-98",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.7674476",
-    "longitude": "-47.6502558"
+    "latitude": "-22.767049335037804",
+    "longitude": "-47.649649255428805"
   },
   {
     "codigofilial": 145,
@@ -2642,8 +2624,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0180-93",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.707976",
-    "longitude": "-47.4788165"
+    "latitude": "-21.70951703424692",
+    "longitude": "-47.47864052384888"
   },
   {
     "codigofilial": 148,
@@ -2660,8 +2642,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0181-74",
     "horariofuncionamento": "SEG. À SAB. 08:00 ÀS 21:00 DOM. E FER. 08:00 ÀS 13:00",
-    "latitude": "-22.839213",
-    "longitude": " -47.606623"
+    "latitude": "-22.839466580578215",
+    "longitude": "-47.60674881752438"
   },
   {
     "codigofilial": 149,
@@ -2696,8 +2678,8 @@
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0183-36",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:30",
-    "latitude": "-23.193890",
-    "longitude": "-47.276160"
+    "latitude": "-23.193846487354726",
+    "longitude": "-47.27605952004079"
   },
   {
     "codigofilial": 151,
@@ -2714,8 +2696,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0184-17",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.118610",
-    "longitude": "-47.790990"
+    "latitude": "-21.117943043901747", 
+    "longitude": "-47.791455719400425"
   },
   {
     "codigofilial": 152,
@@ -2732,8 +2714,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0185-06",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.777270",
-    "longitude": "-47.080600"
+    "latitude": "-21.7745883827754",  
+    "longitude": "-47.0836194524624"
   },
   {
     "codigofilial": 153,
@@ -2750,8 +2732,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0186-89",
     "horariofuncionamento": "SEG. À SAB. 7:00 ÀS 23:00 DOM. E FER. 08:00 ÀS 22:00",
-    "latitude": "-22.286007",
-    "longitude": "-48.555904"
+    "latitude": "-22.285832117455257", 
+    "longitude": "-48.556137794328684"
   },
   {
     "codigofilial": 154,
@@ -2768,8 +2750,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0187-60",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 22:00  DOM E FER. 08:00 ÀS 22:00",
-    "latitude": "-22.280320",
-    "longitude": "-48.543870"
+    "latitude": "-22.280569854113306", 
+    "longitude": "-48.54357320711809"
   },
   {
     "codigofilial": 155,
@@ -2786,8 +2768,8 @@
     "supervisor": "BARBARA CAMPOS TEIXEIRA MALTA GRAVINA",
     "cnpj": "54.375.647/0188-40",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.101902515570497",
-    "longitude": "-47.71402137370062"
+    "latitude": "-23.102078311476173", 
+    "longitude": "-47.713835623544064"
   },
   {
     "codigofilial": 156,
@@ -2804,8 +2786,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0189-21",
     "horariofuncionamento": "SEG. À SAB. E FER. 07:00 ÀS 22:00 DOM. E FER. 08:00 ÀS 13:00",
-    "latitude": "-22.555157",
-    "longitude": "-47.901180"
+    "latitude": "-22.55516589234211", 
+    "longitude": "-47.90088487104221"
   },
   {
     "codigofilial": 157,
@@ -2822,8 +2804,8 @@
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0190-65",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.165501",
-    "longitude": "-47.312038"
+    "latitude": "-23.18303945770529", 
+    "longitude": "-47.311585938338425"
   },
   {
     "codigofilial": 158,
@@ -2840,8 +2822,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0191-46",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.595270",
-    "longitude": "-48.811531"
+    "latitude": "-21.59451202363476",
+    "longitude": "-48.8116840073785"
   },
   {
     "codigofilial": 159,
@@ -2858,8 +2840,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0192-27",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.340206514673653",
-    "longitude": "-47.73296367373827"
+    "latitude": "-21.340371827828655",
+    "longitude": "-47.73297658004798"
   },
   {
     "codigofilial": 160,
@@ -2948,8 +2930,8 @@
     "supervisor": "JOSIVALDO ANTONIO DE OLIVEIRA",
     "cnpj": "54.375.647/0197-31",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.033898",
-    "longitude": "-46.980797"
+    "latitude": "-23.037127407157087",
+    "longitude": "-46.98384024298448"
   },
   {
     "codigofilial": 165,
@@ -3002,8 +2984,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0200-71",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.056252",
-    "longitude": "-46.978289"
+    "latitude": "-22.058276906960987", 
+    "longitude": "-46.97849494347584"
   },
   {
     "codigofilial": 168,
@@ -3038,8 +3020,8 @@
     "supervisor": "BARBARA CAMPOS TEIXEIRA MALTA GRAVINA",
     "cnpj": "54.375.647/0202-33",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.351140",
-    "longitude": "-47.690240"
+    "latitude": "-23.34997513173513",
+    "longitude": "-47.690040918786295"
   },
   {
     "codigofilial": 170,
@@ -3074,8 +3056,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0204-03",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-21.193226",
-    "longitude": "-47.756950"
+    "latitude": "-21.18797707855901",
+    "longitude": "-47.75837247744276"
   },
   {
     "codigofilial": 172,
@@ -3092,8 +3074,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0205-86",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23,505062",
-    "longitude": "-47,615562"
+    "latitude": "-23.50500821422304",
+    "longitude": "-47.61549885472583"
   },
   {
     "codigofilial": 173,
@@ -3110,8 +3092,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0206-67",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20,950063",
-    "longitude": "-48,480562"
+    "latitude": "-20.949973434466035",
+    "longitude": "-48.48050648815993"
   },
   {
     "codigofilial": 174,
@@ -3128,8 +3110,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0207-48",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23,043188",
-    "longitude": "-47,374563"
+    "latitude": "-23.043222165592535",
+    "longitude": "-47.37465580130371"
   },
   {
     "codigofilial": 175,
@@ -3146,8 +3128,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0208-29",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23,202062",
-    "longitude": "-47,527563"
+    "latitude": "-23.2020732485799",
+    "longitude": "-47.52750932829233"
   },
   {
     "codigofilial": 176,
@@ -3164,8 +3146,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0209-00",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22,847687",
-    "longitude": "-47,608313"
+    "latitude": "-22.84768561785783", 
+    "longitude": "-47.60818143487215"
   },
   {
     "codigofilial": 177,
@@ -3182,8 +3164,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0210-43",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22,336005",
-    "longitude": "-47,171763"
+    "latitude": "-22.33588684632316",
+    "longitude": "-47.17179783195452"
   },
   {
     "codigofilial": 178,
@@ -3200,8 +3182,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0211-24",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23,125537",
-    "longitude": "-47,2416208"
+    "latitude": "-23.125324487811817",
+    "longitude": "-47.241808442702734"
   },
   {
     "codigofilial": 179,
@@ -3218,8 +3200,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0212-05",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-23,1106253",
-    "longitude": "-48,9093501"
+    "latitude": "-23.110290197917102",
+    "longitude": "-48.90982811556212"
   },
   {
     "codigofilial": 180,
@@ -3236,8 +3218,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0213-96",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.7658146",
-    "longitude": "-47.1539963"
+    "latitude": "-22.76415472334612",
+    "longitude": "-47.15064105118773"
   },
   {
     "codigofilial": 181,
@@ -3254,8 +3236,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0214-77",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.1104038",
-    "longitude": "-47.239039"
+    "latitude": "-23.110482536390354",
+    "longitude": "-47.23894152217094"
   },
   {
     "codigofilial": 182,
@@ -3290,8 +3272,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0216-39",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.789188733022733",
-    "longitude": "-47.303773258365176"
+    "latitude": "-22.789358546144435",
+    "longitude": "-47.30392459811213"
   },
   {
     "codigofilial": 184,
@@ -3362,8 +3344,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0220-15",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.8019393752836",
-    "longitude": "-47.27447892039045"
+    "latitude": "-22.802158054621014",
+    "longitude": "-47.274918677609634"
   },
   {
     "codigofilial": 188,
@@ -3380,8 +3362,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0221-04",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.21186473126925",
-    "longitude": "-47.596414599402536"
+    "latitude": "-21.21197519176538", 
+    "longitude": "-47.59700202053507"
   },
   {
     "codigofilial": 189,
@@ -3398,8 +3380,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0222-87",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.877539562467245",
-    "longitude": "-48.434398700458416"
+    "latitude": "-22.877755146873593", 
+    "longitude": "-48.435078088776834"
   },
   {
     "codigofilial": 190,
@@ -3416,8 +3398,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0223-68",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.101670542787584",
-    "longitude": "-47.22862100867335"
+    "latitude": "-23.10189755111165",
+    "longitude": "-47.22951238111165"
   },
   {
     "codigofilial": 191,
@@ -3434,8 +3416,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0224-49",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.97404711891577",
-    "longitude": "-47.42861610066982"
+    "latitude": "-21.978497360648266",
+    "longitude": "-47.42979790928016"
   },
   {
     "codigofilial": 192,
@@ -3452,8 +3434,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0225-20",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.567645686753618",
-    "longitude": "-47.163198882883506"
+    "latitude": "-22.563241313096057",
+    "longitude": "-47.16342519948945"
   },
   {
     "codigofilial": 193,
@@ -3470,8 +3452,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0226-00",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.27561950720914",
-    "longitude": "-47.302583256893016"
+    "latitude": "-21.275854488521666",
+    "longitude": "-47.30366710450533"
   },
   {
     "codigofilial": 194,
@@ -3488,8 +3470,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0227-91",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.134942165710964",
-    "longitude": "-48.97138214754953"
+    "latitude": "-21.135029536681717",
+    "longitude": "-48.97179763662703"
   },
   {
     "codigofilial": 195,
@@ -3506,8 +3488,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0228-72",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.184282725872297",
-    "longitude": "-47.82523605814238"
+    "latitude": "-21.1843735049588", 
+    "longitude": "-47.825782274622355"
   },
   {
     "codigofilial": 196,
@@ -3542,8 +3524,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0230-97",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.409615140676678",
-    "longitude": "-48.49640851342189"
+    "latitude": "-21.40965831976054",
+    "longitude": "-48.49667831178017"
   },
   {
     "codigofilial": 198,
@@ -3560,8 +3542,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0231-78",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.01292359061482",
-    "longitude": "-48.00998166798803"
+    "latitude": "-23.013120784060927",
+    "longitude": "-48.01028915075663"
   },
   {
     "codigofilial": 199,
@@ -3578,8 +3560,8 @@
     "supervisor": "JOSIVALDO ANTONIO DE OLIVEIRA",
     "cnpj": "54.375.647/0232-59",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.248384156770694",
-    "longitude": "-47.055721042230765"
+    "latitude": "-23.24855755399797",
+    "longitude": "-47.05633317619793"
   },
   {
     "codigofilial": 200,
@@ -3596,8 +3578,8 @@
     "supervisor": "CESAR LUIS GONCALVES DO PRADO",
     "cnpj": "54.375.647/0233-30",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.7821129796468",
-    "longitude": "-47.17437587867784"
+    "latitude": "-22.78227911548987",
+    "longitude": "-47.174859789282685"
   },
   {
     "codigofilial": 201,
@@ -3614,8 +3596,8 @@
     "supervisor": "RAFAEL ROCHA SEVERINO",
     "cnpj": "54.375.647/0234-10",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.47287499473868",
-    "longitude": "-48.563314418465296"
+    "latitude": "-22.4951477178619",
+    "longitude": "-48.55652336556646"
   },
   {
     "codigofilial": 202,
@@ -3632,8 +3614,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0235-00",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-23.284666211822348",
-    "longitude": "-47.67416654495395"
+    "latitude": "-23.284754244404226",
+    "longitude": "-47.67466506587416"
   },
   {
     "codigofilial": 203,
@@ -3650,8 +3632,8 @@
     "supervisor": "ANA FLAVIA CORREA BELLO RUEDA",
     "cnpj": "54.375.647/0236-82",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.603836760335223",
-    "longitude": "-46.89713565643172"
+    "latitude": "-21.603909304192634",
+    "longitude": "-46.897815946845604"
   },
   {
     "codigofilial": 204,
@@ -3668,8 +3650,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0237-63",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-21.12749481349536",
-    "longitude": "-47.8107607640633"
+    "latitude": "-21.12769290979924",
+    "longitude": "-47.81114495955782"
   },
   {
     "codigofilial": 205,
@@ -3686,8 +3668,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0238-44",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.164114178245185",
-    "longitude": "-47.80334573469064"
+    "latitude": "-21.168711703390887", 
+    "longitude": "-47.807216273403"
   },
   {
     "codigofilial": 206,
@@ -3704,8 +3686,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0239-25",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.55836056676784",
-    "longitude": "-47.44258428751739"
+    "latitude": "-22.55848982247939",
+    "longitude": "-47.443106353845636"
   },
   {
     "codigofilial": 207,
@@ -3722,8 +3704,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0240-69",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.35336314680274",
-    "longitude": "-46.937871641201234"
+    "latitude": "-22.346964356422262",
+    "longitude": "-46.94703057664618"
   },
   {
     "codigofilial": 208,
@@ -3740,8 +3722,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0241-40",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.626575040677356",
-    "longitude": "-47.166767657693704"
+    "latitude": "-22.63406794786428",
+    "longitude": "-47.175326067053376"
   },
   {
     "codigofilial": 209,
@@ -3758,8 +3740,8 @@
     "supervisor": "JOSIVALDO ANTONIO DE OLIVEIRA",
     "cnpj": "54.375.647/0242-20",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.043786952555045",
-    "longitude": "-47.010009486574766"
+    "latitude": "-23.04390482986189",
+    "longitude": "-47.01055047493911"
   },
   {
     "codigofilial": 210,
@@ -3776,8 +3758,8 @@
     "supervisor": "JOSIVALDO ANTONIO DE OLIVEIRA",
     "cnpj": "54.375.647/0243-01",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.16058761227505",
-    "longitude": "-47.05491397186504"
+    "latitude": "-23.16046996644685",
+    "longitude": "-47.055716991715514"
   },
   {
     "codigofilial": 211,
@@ -3848,8 +3830,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0247-35",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.63508",
-    "longitude": "-47.52943"
+    "latitude": "-23.650493448032773",
+    "longitude": "-47.572742770503226"
   },
   {
     "codigofilial": 215,
@@ -3866,8 +3848,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0248-16",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.35872396275275",
-    "longitude": "-47.34739363138782"
+    "latitude": "-22.356917364102273",
+    "longitude": "-47.33884669454146"
   },
   {
     "codigofilial": 216,
@@ -3956,8 +3938,8 @@
     "supervisor": "MARCOS DE OLIVEIRA MOTA",
     "cnpj": "54.375.647/0253-83",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.293348488342833",
-    "longitude": "-47.65087045130663"
+    "latitude": "-23.29397931386521",
+    "longitude": "-47.650685151045735"
   },
   {
     "codigofilial": 221,
@@ -3974,8 +3956,8 @@
     "supervisor": "NATHALIA GUIARO CARCINONI",
     "cnpj": "54.375.647/0255-45",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.603557556862796",
-    "longitude": "-48.36550104489715"
+    "latitude": "-21.603758585565846",
+    "longitude": "-48.3655744413729"
   },
   {
     "codigofilial": 222,
@@ -4010,8 +3992,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0257-07",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.027287568705237",
-    "longitude": "-48.036032417919245"
+    "latitude": "-21.027562734157048",
+    "longitude": "-48.035823293241556"
   },
   {
     "codigofilial": 224,
@@ -4046,8 +4028,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0259-79",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.46755001092941",
-    "longitude": "-47.001902502571056"
+    "latitude": "-21.467740621095164",
+    "longitude": "-47.00190553534979"
   },
   {
     "codigofilial": 226,
@@ -4064,8 +4046,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0260-02",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.129648828474664",
-    "longitude": "-47.98359176024927"
+    "latitude": "-21.129233770051986",
+    "longitude": "-47.9832158787973"
   },
   {
     "codigofilial": 227,
@@ -4082,8 +4064,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0261-93",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.404862598470938",
-    "longitude": "-48.50933658907901"
+    "latitude": "-21.40504544963316",
+    "longitude": "-48.50930601827522"
   },
   {
     "codigofilial": 228,
@@ -4136,8 +4118,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0264-36",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.112642056652614",
-    "longitude": "-48.93065393012627"
+    "latitude": "-23.11301141619297",
+    "longitude": "-48.93051865312132"
   },
   {
     "codigofilial": 231,
@@ -4154,8 +4136,8 @@
     "supervisor": "NATHALIA GUIARO CARCINONI",
     "cnpj": "54.375.647/0265-17",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 23:00 SAB.07:00 ÀS 13:00 - DOM. E FER. NÃO ABRE ",
-    "latitude": "-21.261006716561727",
-    "longitude": "-48.48979920442418"
+    "latitude": "-21.261237054822022",
+    "longitude": "-48.48974465953416"
   },
   {
     "codigofilial": 232,
@@ -4208,8 +4190,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0268-60",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20.733698376329198",
-    "longitude": "-48.89725078909271"
+    "latitude": "-20.739526712945622",
+    "longitude": "-48.90585266830424"
   },
   {
     "codigofilial": 235,
@@ -4226,8 +4208,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0269-40",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.267078902174347",
-    "longitude": "--47.817286198558165"
+    "latitude": "-21.266979060702493",
+    "longitude": "-47.817172461061325"
   },
   {
     "codigofilial": 236,
@@ -4244,8 +4226,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0270-84",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.38498893722953",
-    "longitude": "-47.5723006467295"
+    "latitude": "-22.385446136590463",
+    "longitude": "-47.57270046272238"
   },
   {
     "codigofilial": 237,
@@ -4262,8 +4244,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0271-65",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.33291397971612",
-    "longitude": "-47.38400233138847"
+    "latitude": "-22.33248340850979",
+    "longitude": "-47.383974803276914"
   },
   {
     "codigofilial": 238,
@@ -4352,8 +4334,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0276-70",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.179761354453518",
-    "longitude": "-47.77645881791918"
+    "latitude": "-21.180005942129203",
+    "longitude": "-47.776473087987455"
   },
   {
     "codigofilial": 243,
@@ -4370,8 +4352,8 @@
     "supervisor": "BARBARA CAMPOS TEIXEIRA MALTA GRAVINA",
     "cnpj": "54.375.647/0277-50",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.58529160006768",
-    "longitude": "-48.04788080252534"
+    "latitude": "-23.584431866764096",
+    "longitude": "-48.04247374508917"
   },
   {
     "codigofilial": 244,
@@ -4478,8 +4460,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0283-07",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20.806456273861354",
-    "longitude": "-48.80250188724242"
+    "latitude": "-20.809038247125937",
+    "longitude": "-48.80721808495255"
   },
   {
     "codigofilial": 250,
@@ -4514,8 +4496,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0285-60",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20.889984532212974",
-    "longitude": "-47.58722827374755"
+    "latitude": "-20.89023742775212",
+    "longitude": "-47.5871626636955"
   },
   {
     "codigofilial": 252,
@@ -4532,8 +4514,8 @@
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0286-41",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.877842763726804",
-    "longitude": "-46.96673764486999"
+    "latitude": "-22.878277261672675",
+    "longitude": "-46.96672923334129"
   },
   {
     "codigofilial": 253,
@@ -4586,8 +4568,8 @@
     "supervisor": "NATHALIA GUIARO CARCINONI",
     "cnpj": "54.375.647/0289-94",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.011454561442115",
-    "longitude": "-48.22167877189608"
+    "latitude": "-21.011593747433587",
+    "longitude": "-48.2218030187888"
   },
   {
     "codigofilial": 256,
@@ -4622,8 +4604,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0291-09",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.375059000593783",
-    "longitude": "-46.94255240255186"
+    "latitude": "-22.375291126132264",
+    "longitude": "-46.94253689993457"
   },
   {
     "codigofilial": 258,
@@ -4640,8 +4622,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0292-90",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.603607467602256",
-    "longitude": "-46.92092016021812"
+    "latitude": "-22.60391905744381",
+    "longitude": "-46.92091813276576"
   },
   {
     "codigofilial": 259,
@@ -4658,8 +4640,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0293-70",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.94412106444348",
-    "longitude": "-47.0899817890462"
+    "latitude": "-22.944381230062174",
+    "longitude": "-47.0899177623792"
   },
   {
     "codigofilial": 260,
@@ -4694,8 +4676,8 @@
     "supervisor": "RAFAELA FERNANDA BATISTA",
     "cnpj": "54.375.647/0295-32",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.855377812404605",
-    "longitude": "-47.48014234489201"
+    "latitude": "-21.855354523266445",
+    "longitude": "-47.480140137179085"
   },
   {
     "codigofilial": 262,
@@ -4784,8 +4766,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0300-34",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.4567646347381",
-    "longitude": "-47.53086854672797"
+    "latitude": "-22.45708265134006",
+    "longitude": "-47.53075714456177"
   },
   {
     "codigofilial": 267,
@@ -4802,8 +4784,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0301-15",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.632524324872257",
-    "longitude": "-47.05442074487535"
+    "latitude": "-22.633019735628604",
+    "longitude": "-47.05438878623051"
   },
   {
     "codigofilial": 268,
@@ -4820,8 +4802,8 @@
     "supervisor": "ANA PAULA FRANCOSO MAFINATO",
     "cnpj": "54.375.647/0302-04",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.741125310447906",
-    "longitude": "-47.667782002544115"
+    "latitude": "-22.74141778268852",
+    "longitude": "-47.66776124900972"
   },
   {
     "codigofilial": 269,
@@ -4892,8 +4874,8 @@
     "supervisor": "FRANCISALINE APARECIDA DE ALMEIDA MIONI",
     "cnpj": "54.375.647/0306-20",
     "horariofuncionamento": "SEG. Á DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.03372215634224",
-    "longitude": "-49.16550308904423"
+    "latitude": "-23.033802619771727",
+    "longitude": "-49.16580887010117"
   },
   {
     "codigofilial": 273,
@@ -4964,8 +4946,8 @@
     "supervisor": "RAFAEL ROCHA SEVERINO",
     "cnpj": "54.375.647/0310-06",
     "horariofuncionamento": "SEG. À SAB. 7:00 ÀS 23:00 DOM. E FER. 08:00 ÀS 22:00",
-    "latitude": "-22.86349773910418",
-    "longitude": "-48.4474883423289"
+    "latitude": "-22.863732607484952",
+    "longitude": "-48.44761769282097"
   },
   {
     "codigofilial": 277,
@@ -4982,8 +4964,8 @@
     "supervisor": "LUANA CAMILA MARINO DE OLIVEIRA",
     "cnpj": "54.375.647/0311-97",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.803370418693166",
-    "longitude": "-47.19599627370712"
+    "latitude": "-22.803600045434585",
+    "longitude": "-47.19600516355204"
   },
   {
     "codigofilial": 278,
@@ -5018,8 +5000,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0313-59",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 22:00",
-    "latitude": "-22.68839281187912",
-    "longitude": "-47.63251765836742"
+    "latitude": "-22.688892305451027",
+    "longitude": "-47.633146377896885"
   },
   {
     "codigofilial": 280,
@@ -5108,8 +5090,8 @@
     "supervisor": "CICERA DO SOCORRO SOARES",
     "cnpj": "54.375.647/0318-63",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.25140709773598",
-    "longitude": "-47.80872623141114"
+    "latitude": "-21.251990844457875",
+    "longitude": "-47.80738750394296"
   },
   {
     "codigofilial": 285,
@@ -5144,8 +5126,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0320-88",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.46193192126358",
-    "longitude": " -47.00953889544121"
+    "latitude": "-21.461920382187333",
+    "longitude": "-47.00954262920154"
   },
   {
     "codigofilial": 287,
@@ -5162,8 +5144,8 @@
     "supervisor": "FLAVIA ALINE PUPPIN",
     "cnpj": "54.375.647/0321-69",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.741146299524818",
-    "longitude": "-47.611472975295875"
+    "latitude": "-22.74139131514807",
+    "longitude": "-47.611587602294875"
   },
   {
     "codigofilial": 288,
@@ -5306,8 +5288,8 @@
     "supervisor": "LUCAS CAETANO CHAVES",
     "cnpj": "54.375.647/0329-16",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.429058726913414",
-    "longitude": "-47.58142040255079"
+    "latitude": "-22.434393926774522",
+    "longitude": "-47.58257776065752"
   },
   {
     "codigofilial": 296,
@@ -5324,8 +5306,8 @@
     "supervisor": "MARIA EUGENIA GOMES MUNIZ",
     "cnpj": "54.375.647/0330-50",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-21.141473129800147",
-    "longitude": "-47.8441668194405"
+    "latitude": "-21.141645185730397",
+    "longitude": "-47.84404486623516"
   },
   {
     "codigofilial": 297,
@@ -5378,8 +5360,8 @@
     "supervisor": "THIAGO FANTI PROVAZI",
     "cnpj": "54.375.647/0333-00",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.575062090355424",
-    "longitude": "-47.407959675301484"
+    "latitude": "-22.57540392714086",
+    "longitude": "-47.4078934509311"
   },
   {
     "codigofilial": 300,
@@ -5414,8 +5396,8 @@
     "supervisor": "GUSTAVO FREITAS DA SILVA",
     "cnpj": "54.375.647/0335-64",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 00:00",
-    "latitude": "-21.119667441599816",
-    "longitude": "-48.005810719526934"
+    "latitude": "-21.11959726777724",
+    "longitude": "-48.00516490139848"
   },
   {
     "codigofilial": 302,
@@ -5432,8 +5414,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0336-45",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-20.737611373730623",
-    "longitude": "-48.911028833032375"
+    "latitude": "-20.737792257403402",
+    "longitude": "-48.911013825932514"
   },
   {
     "codigofilial": 303,
@@ -5450,8 +5432,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0337-26",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.90080796515709",
-    "longitude": "-47.2385320483037"
+    "latitude": "-22.903240633457553",
+    "longitude": "-47.24335093710997"
   },
   {
     "codigofilial": 304,
@@ -5504,8 +5486,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0340-21",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.95123536869296",
-    "longitude": "-47.18822182317669"
+    "latitude": "-22.951169257554515",
+    "longitude": "-47.188247364672925"
   },
   {
     "codigofilial": 307,
@@ -5522,8 +5504,8 @@
     "supervisor": "BARBARA CAMPOS TEIXEIRA MALTA GRAVINA",
     "cnpj": "54.375.647/0341-02",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.226219220138344",
-    "longitude": "-47.95346158392337"
+    "latitude": "-23.226458350532845",
+    "longitude": "-47.9535436685891"
   },
   {
     "codigofilial": 308,
@@ -5630,8 +5612,8 @@
     "supervisor": "TIAGO FERIAN DOS SANTOS",
     "cnpj": "54.375.647/0347-06",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.433356625851744",
-    "longitude": "-46.95817134639269"
+    "latitude": "-22.42673406657366",
+    "longitude": "-46.96390502359234"
   },
   {
     "codigofilial": 314,
@@ -5666,8 +5648,8 @@
     "supervisor": "MARCIO DE LIMA SANTOS",
     "cnpj": "54.375.647/0349-60",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.89785144454947",
-    "longitude": "-47.17417103288487"
+    "latitude": "-22.898078428074935",
+    "longitude": "-47.17421105876457"
   },
   {
     "codigofilial": 316,
