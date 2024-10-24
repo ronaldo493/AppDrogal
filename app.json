@@ -35,21 +35,22 @@
         "googleMaps": {
           "apiKey": "AIzaSyCdWLfccDPylQ5I1peF-wC0vm9uNKZ-PWY"
         }
-      },
-      "plugins": [
-        "expo-font",
-        [
-          "expo-build-properties", {
-            "android": {
-              "usesCleartextTraffic": true  
-            },
-            "ios": {
-              "deploymentTarget": "13.0"
-            }
-          }
-        ]
-      ]
+      }
     },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          },
+          "ios": {
+            "deploymentTarget": "13.4"
+          }
+        }
+      ]
+    ],
     "web": {},
     "extra": {
       "eas": {
