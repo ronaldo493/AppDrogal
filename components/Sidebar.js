@@ -19,7 +19,7 @@ export default function Sidebar({ navigation }) {
     { label: 'HISTÓRICO', route: 'Historico' },
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'CHAMADOS', route: 'Chamados' },
-    { label: 'PREVENTIVA', route: 'Preventiva' },
+    // { label: 'PREVENTIVA', route: 'Preventiva' },
     { label: 'CONFIGURAÇÕES', route: 'Settings' },
   ];
 
