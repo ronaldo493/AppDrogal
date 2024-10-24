@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Suporte Drogal",
-    "slug": "AppDrogal",
+    "slug": "ronaldo493",
     "version": "1.0.0",
     "icon": "./assets/img/LogoApp2.png",
     "orientation": "portrait",
@@ -20,13 +20,13 @@
         "NSLocationWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você."
       },
-      "bundleIdentifier": "com.ronaldo27.SuporteDrogal"
+      "bundleIdentifier": "com.ronaldo493.SuporteDrogal"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ronaldo27.SuporteDrogal",
+      "package": "com.ronaldo493.SuporteDrogal",
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION"
@@ -54,7 +54,7 @@
     "web": {},
     "extra": {
       "eas": {
-        "projectId": "65b71262-be2b-4089-b712-c13c03acc42e"
+        "projectId": "74c1ad25-ca3f-4b3c-8e75-09f1893dac15"
       }
     }
   }
