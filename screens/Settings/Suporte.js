@@ -16,11 +16,11 @@ export default function Suporte ({navigation}){
         <Text style={[SuporteStyles.title, themeStyles.text]}>Suporte</Text>
         <Text style={[SuporteStyles.tipTextObs, themeStyles.textImp]}>
           OBS: Para o perfeito funcionamento do aplicativo é preciso estar ativado a localização do celular.
-              O Sistema de traçar rota, por padrão o waze não consegue gerar várias rotas ao mesmo tempo.
+              Por padrão o waze não consegue gerar várias rotas ao mesmo tempo. Caso precise gerar várias rotas, use o Google Maps.
         </Text>
 
         <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-          1° Trace rotas para várias filiais ao mesmo tempo.
+          1° Trace rotas para várias filiais ao mesmo tempo usando o Maps.
         </Text>
 
         <Text style={[SuporteStyles.tipText, themeStyles.text]}>
