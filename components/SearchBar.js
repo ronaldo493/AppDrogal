@@ -48,12 +48,12 @@ export default function SearchBar({ onAddRoute }) {
       {selectedFilial && (
         <View style={SearchBarStyles.suggestionContainer}>
             <View style={[SearchBarStyles.suggestionItem, themeStyles.listSearch]}>
-                <Text style={themeStyles.text}>Código: {selectedFilial.codigofilial}</Text>
-                <Text style={themeStyles.text}>Nome: {selectedFilial.nomefilial}</Text>
-                <Text style={themeStyles.text}>Endereço: {selectedFilial.endereco}, {selectedFilial.numero}</Text>
-                <Text style={themeStyles.text}>Bairro: {selectedFilial.bairro}</Text>
-                <Text style={themeStyles.text}>Telefone: {selectedFilial.telefone}</Text>
-                <Text style={themeStyles.text}>CNPJ: {selectedFilial.cnpj}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>Código: {selectedFilial.codigofilial}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>Nome: {selectedFilial.nomefilial}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>Endereço: {selectedFilial.endereco}, {selectedFilial.numero}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>Bairro: {selectedFilial.bairro}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>Telefone: {selectedFilial.telefone}</Text>
+                <Text style={[themeStyles.text, SearchBarStyles.text]}>CNPJ: {selectedFilial.cnpj}</Text>
             </View>
             <View style={SearchBarStyles.buttonContainer}>
                 <Button title="Adicionar" onPress={handleSelectFilial} />

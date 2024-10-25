@@ -1,14 +1,15 @@
 import { StyleSheet } from "react-native";
 
-const FeedBackStyles = StyleSheet.create({
+const SuporteStyles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+        justifyContent: 'space-between',
     },
     title: {
         fontSize: 26,
         fontWeight: 'bold',
-        marginVertical: 35,
+        marginVertical: 25,
         textAlign: 'center',
         
     },
@@ -26,8 +27,8 @@ const FeedBackStyles = StyleSheet.create({
         textAlign: 'justify',
     },
     scrollContainer: {
-        flexGrow: 1,
+        flex: 1,
     }
 });
 
-export default FeedBackStyles;
+export default SuporteStyles;

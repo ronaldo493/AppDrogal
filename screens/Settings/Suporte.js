@@ -11,7 +11,7 @@ export default function Suporte ({navigation}){
     const themeStyles = getThemeStyles(isDarkMode);
 
   return (
-    <ScrollView style={SuporteStyles.scrollContainer}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={SuporteStyles.scrollContainer}>
       <View style={[SuporteStyles.container,themeStyles.screenBackground]}>
         <Text style={[SuporteStyles.title, themeStyles.text]}>Suporte</Text>
         <Text style={[SuporteStyles.tipTextObs, themeStyles.textImp]}>
@@ -41,7 +41,7 @@ export default function Suporte ({navigation}){
         <Text style={[SuporteStyles.tipText, themeStyles.text, { fontStyle: 'italic', marginTop: 20 }]}>
           🚧 Algumas funcionalidades estão em desenvolvimento. Fique atento a atualizações!
         </Text>
-        
+    
         <TouchableOpacity onPress={() => navigation.goBack()} style={themeStyles.buttonBack}>
             <Text style={themeStyles.text}>← Voltar</Text>
         </TouchableOpacity>
