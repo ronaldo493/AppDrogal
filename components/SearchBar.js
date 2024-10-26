@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, Button, View, Text } from 'react-native';
-import filiais from '../data/filiais.json';
+// import filiais from '../data/filiais.json';
 import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext'; 
 import { getThemeStyles } from './styles/ThemeStyles'; 
@@ -8,10 +8,26 @@ import { getThemeStyles } from './styles/ThemeStyles';
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilial, setSelectedFilial] = useState(null);
+  const [filiais, setFiliais] = useState([]);
 
   //Modo escuro
   const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
+
+  //Função para buscar dados das filiais no Strapi
+  const fetchFiliais = async () => {
+    try {
+      const response = await fetch('http://suporteappdrogal.ddns.com.br:18083/api/informacoeslojas');
+      const data = await response.json();
+      setFiliais(data);
+    } catch (error) {
+      console.error('Erro ao buscar dados das filiais:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFiliais();
+  }, []);
 
   //Função que lida com a BUSCA
   const handleSearch = (text) => {
