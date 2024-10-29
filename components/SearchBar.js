@@ -2,26 +2,51 @@ import React, { useState } from 'react';
 import { TextInput, Button, View, Text } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 import SearchBarStyles from './styles/SearchBarStyles';
-import { useTheme } from './ThemeContext'; 
-import { getThemeStyles } from './styles/ThemeStyles'; 
+import { useTheme } from './ThemeContext';
+import { getThemeStyles } from './styles/ThemeStyles';
 
-
-const openDatabase = async () => {
-  console.log(SQLite)
-  const db = await SQLite.openDatabaseAsync('DataStrapi.db');
-  return db;
-};
-
+//Abre o banco de dados usando expo-sqlite
+const db = SQLite.openDatabase('DataStrapi.db');
 
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilial, setSelectedFilial] = useState(null);
 
-  // Modo escuro
-  const { isDarkMode } = useTheme(); 
+  //Modo escuro
+  const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  // Função que lida com a Seleção da Filial
+  //Função para buscar filial no banco de dados usando o código de filial
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+
+    if (text.trim() === '') {
+      setSelectedFilial(null);
+      return;
+    }
+
+    const codigoFilial = parseInt(text, 10);
+
+    db.transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM filiais WHERE codigofilial = ?',
+        [codigoFilial],
+        (_, { rows }) => {
+          if (rows.length > 0) {
+            setSelectedFilial(rows.item(0));
+          } else {
+            setSelectedFilial(null);
+          }
+        },
+        (error) => {
+          console.error('Erro ao buscar filial:', error);
+          setSelectedFilial(null);
+        }
+      );
+    });
+  };
+
+  //Função que lida com a Seleção da Filial
   const handleSelectFilial = () => {
     if (selectedFilial) {
       onAddRoute(selectedFilial);
