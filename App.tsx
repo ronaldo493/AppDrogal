@@ -15,6 +15,7 @@ import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
+import { StrapiProvider } from './services/StrapiProvider';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
 
@@ -24,9 +25,11 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
+    <StrapiProvider>
       <ThemeProvider>
          <AppWithTheme />
       </ThemeProvider>
+    </StrapiProvider>
   );
 }
 
