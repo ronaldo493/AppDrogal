@@ -1,5 +1,3 @@
-//services/StrapiClient.js
-
 import axios from 'axios';
 
 //URL base da API Strapi
