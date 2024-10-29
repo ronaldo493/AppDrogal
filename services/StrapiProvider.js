@@ -9,7 +9,7 @@ const StrapiContext = createContext();
 export const useStrapi = () => useContext(StrapiContext);
 
 //Abre o banco de dados SQLite
-const db = SQLite.openDatabase('DataStrapi.db');
+const db = await SQLite.openDatabase('DataStrapi.db');
 
 //Inicializa o banco de dados e cria as tabelas, se ainda não existirem
 const initDB = async () => {
