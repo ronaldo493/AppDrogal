@@ -23,21 +23,27 @@ src/
 │   │   ├── MapaLojasStyles.js
 │   │   ├── HistoricoStyles.js
 │   │   ├── SettingStyles.js
-│   │   ├── FeedBackStyles.js
+│   │   ├── SuporteStyles.js
 │   │   ├── AboutStyles.js
 │   │   ├── ChamadosStyles.js
 │   │   └── PreventivaStyles.js
+|   |   |__ PatrimonioAssinaturaStyles.js
+|   |   Preventiva/
+|   |   |__ Checklist.js
+|   |   |__ MaquinaItem.js
+|   |   |__ MaquinaSection.js
+|   |   |__ PatrimonioAssinatura.js
+|   |   |__ Preventiva.js
 │   ├── Home.js
 │   ├── Historico.js
 │   ├── Chamados.js
-│   ├── Preventiva.js
 │   └── MapaLojas/
 │       ├── map.js
 │       ├── map.web.js
 │       └── MapaLojas.js
 │   └── Settings/
 │       ├── Settings.js
-│       ├── FeedBack.js
+│       ├── Suporte.js
 │       └── About.js
 ├── services/                 # Serviços para interações externas (API, Mapas)
 │   └── MapService.js
