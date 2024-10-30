@@ -3,6 +3,9 @@
     "name": "Suporte Drogal",
     "slug": "AppDrogal",
     "version": "1.0.1",
+    "runtimeVersion":{
+      "policy":"fingerprint"
+    },
     "icon": "./assets/img/LogoApp2.png",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",

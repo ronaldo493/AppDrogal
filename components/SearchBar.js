@@ -1,50 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Button, View, Text } from 'react-native';
-import * as SQLite from 'expo-sqlite';
 import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';
 import { getThemeStyles } from './styles/ThemeStyles';
-
-//Abre o banco de dados usando expo-sqlite
-const db = SQLite.openDatabase('DataStrapi.db');
+import { openDatabaseAsync } from 'expo-sqlite';
 
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilial, setSelectedFilial] = useState(null);
+  const [db, setDb] = useState(null);
 
   //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  //Função para buscar filial no banco de dados usando o código de filial
-  const handleSearch = (text) => {
-    setSearchTerm(text);
+ //Função para abrir o banco de dados
+ const openDatabase = async () => {
+  try {
+    const database = await openDatabaseAsync('DataStrapi.db');
+    console.log('Banco de dados aberto com sucesso:', database);
+    setDb(database); // Armazena o banco de dados no estado
+  } catch (error) {
+    console.error('Erro ao abrir o banco de dados:', error);
+  }
+};
 
-    if (text.trim() === '') {
+useEffect(() => {
+  //Abre o banco de dados ao montar o componente
+  openDatabase(); 
+}, []);
+
+//Função para buscar filial no banco de dados usando o código de filial
+const handleSearch = async (text) => {
+  setSearchTerm(text);
+
+  if (text.trim() === '') {
       setSelectedFilial(null);
       return;
-    }
+  }
 
-    const codigoFilial = parseInt(text, 10);
+  const codigoFilial = parseInt(text, 10);
 
-    db.transaction((tx) => {
-      tx.executeSql(
-        'SELECT * FROM filiais WHERE codigofilial = ?',
-        [codigoFilial],
-        (_, { rows }) => {
+  if (db) { //Verifica se o banco de dados está aberto
+      try {
+          //Busca todas as filiais e filtra pelo código da filial
+          const rows = await db.getAllAsync('SELECT * FROM filiais WHERE codigofilial = ?', [codigoFilial]);
+
           if (rows.length > 0) {
-            setSelectedFilial(rows.item(0));
+              setSelectedFilial(rows[0]); //Define a filial encontrada
+              console.log('Filial encontrada:', rows[0]);
           } else {
-            setSelectedFilial(null);
+              console.log('Nenhuma filial encontrada com o código:', codigoFilial);
+              setSelectedFilial(null);
           }
-        },
-        (error) => {
+      } catch (error) {
           console.error('Erro ao buscar filial:', error);
           setSelectedFilial(null);
-        }
-      );
-    });
-  };
+      }
+  } else {
+      console.error('Banco de dados não está aberto.');
+  }
+};
+
 
   //Função que lida com a Seleção da Filial
   const handleSelectFilial = () => {
