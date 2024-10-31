@@ -2,6 +2,7 @@ const axios = require('axios');
 
 // Dados das lojas
 const stores = [
+  
   {
     "codigofilial": 1,
     "nomefilial": "FILIAL 001 - MANIPULAÇÃO DOIS ",
@@ -125,8 +126,8 @@ const stores = [
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0102-70",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-22.789487703263056",
-    "longitude": "-47.29749462952965"
+    "latitude": "-22.3677820431692",
+    "longitude": "-48.38199430784893"
   },
   {
     "codigofilial": 8,
@@ -737,8 +738,8 @@ const stores = [
     "supervisor": "FERNANDO LOPES MACHADO",
     "cnpj": "54.375.647/0042-03",
     "horariofuncionamento": "SEG. À SEX. 07:00 ÀS 22:00 SAB. 07:00 ÀS 20:00 - DOM. E FER. NÃO ABRE ",
-    "latitude": "-22.907001659146903",
-    "longitude": "-47.05886596279978"
+    "latitude": "-22.90700119611131", 
+    "longitude": "-47.05886438191946"
   },
   {
     "codigofilial": 42,
@@ -7058,6 +7059,7 @@ const stores = [
     "latitude": "-21.275374063001255",
     "longitude": "-47.30083004295964"
   }
+
 ];
 
 // Função para enviar os dados

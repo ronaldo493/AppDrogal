@@ -113,8 +113,8 @@ export default function MapaLojas(){
                 setMapRegion({
                   latitude,
                   longitude,
-                  latitudeDelta: 0.1,
-                  longitudeDelta: 0.1,
+                  latitudeDelta: 0.1, //Delta de latitude para zoom
+                  longitudeDelta: 0.1, //Delta de longitude para zoom
                 });
               }
       

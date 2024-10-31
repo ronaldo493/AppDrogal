@@ -19,37 +19,41 @@ export default function Home() {
   const themeStyles = getThemeStyles(isDarkMode);
 
   useEffect(() => {
-    const getLocation = async () => {
+    const subscribeToLocationUpdates = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync(); //Solicita permissão para acessar a localização
       
       //Verificação de Permissão
       if (status !== 'granted') { 
         Alert.alert('Permissão Negada', 'Você precisa permitir o acesso à localização para traçar a rota.', [
-          { text: 'Solicitar Permissão', onPress: () => getLocation() }, //Reexecuta getLocation
+          { text: 'Solicitar Permissão', onPress: () => subscribeToLocationUpdates() }, //Reexecuta a função
           { text: 'Sair', onPress: () => console.log('Usuário saiu') }
         ]);
-        return false;
+        return;
       }
 
-      try {
-        //Obtém a localização atual do usuário
-        let location = await Location.getCurrentPositionAsync({
+      //Define o watcher para a localização
+      const locationSubscription = await Location.watchPositionAsync(
+        {
           accuracy: Location.Accuracy.High,
-          timeout: 6000, 
-          maximumAge: 3000,
+          timeInterval: 1000, //Tempo em milissegundos entre atualizações
+          distanceInterval: 1, //Distância em metros entre atualizações
+        },
+        (location) => {
+          setCurrentLocation({
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+          });
+          setIsLocationLoaded(true); //Define que a localização foi carregada
         }
-          
-        );
-        setCurrentLocation({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-        });
-        setIsLocationLoaded(true); //Define que a localização foi carregada
-      } catch (error) {
-        Alert.alert('Erro ao obter localização!');
-      }
+      );
+
+      return () => {
+        //Limpa o watcher ao desmontar o componente
+        locationSubscription.remove();
+      };
     };
-    getLocation();
+
+    subscribeToLocationUpdates();
   }, []);
 
   //Função para adicionar uma filial
@@ -61,13 +65,14 @@ export default function Home() {
     setRoutes([...routes, filial]);
   };
 
-   //Função para remover uma rota/filial
+  //Função para remover uma rota/filial
   const handleRemoveRoute = (filialToRemove) => {
     setRoutes(routes.filter(filial => filial.codigofilial !== filialToRemove.codigofilial));
   };
 
-    //Função para traçar a rota
+  //Função para traçar a rota
   const handleTraceRoute = async () => {
+    console.log('Estado atual da localização:', currentLocation)
     if (!isLocationLoaded) {
       Alert.alert('Atenção', 'Localização ainda está sendo carregada. Tente novamente em alguns segundos.');
       return;
@@ -93,7 +98,7 @@ export default function Home() {
       //Se tiver alguma coisa no histórico, transforma em objeto; se não, cria um array vazio
       const parsedHistory = history ? JSON.parse(history) : [];
   
-      //Transforma a rota com informações do Codigo e cidade
+      //Transforma a rota com informações do Código e cidade
       const updatedRoute = {
         date: currentDate,
         routes: routes.map(route => ({
@@ -117,7 +122,6 @@ export default function Home() {
     } catch (error) {
       Alert.alert('Erro ao salvar o histórico', error.message);
     }
-
   };
 
   return (
@@ -128,13 +132,11 @@ export default function Home() {
       <SearchBar onAddRoute={handleAddRoute} />
       <View style={HomeStyles.routeContainer}>
         <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
-      <TouchableOpacity
-        onPress={handleTraceRoute}
-      >
-      <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>
-        TRAÇAR ROTA
-      </Text>
-    </TouchableOpacity>
+        <TouchableOpacity onPress={handleTraceRoute}>
+          <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>
+            TRAÇAR ROTA
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

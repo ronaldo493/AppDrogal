@@ -19,7 +19,7 @@ export default function SearchBar({ onAddRoute }) {
   try {
     const database = await openDatabaseAsync('DataStrapi.db');
     console.log('Banco de dados aberto com sucesso:', database);
-    setDb(database); // Armazena o banco de dados no estado
+    setDb(database); //Armazena o banco de dados no estado
   } catch (error) {
     console.error('Erro ao abrir o banco de dados:', error);
   }

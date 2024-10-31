@@ -1,50 +1,43 @@
-src/
-├── assets/
-│   ├── fonts/                # Diretório para fontes personalizadas
-│   └── img/                  # Diretório para imagens
-│       └── drogal.png
-├── components/               # Componentes reutilizáveis do aplicativo
-│   ├── styles/               # Estilos específicos dos componentes
+/MyApp
+├── /components
+│   ├── SearchBar.js          //Implementa a barra de busca para buscar filiais pelo código
+│   ├── RouteList.js          //Exibe lista de rotas (filiais) com opção de remoção
+│   ├── Sidebar.js            //Barra lateral de navegação com opções e logout
+│   ├── ThemeContext.js       //Contexto para gerenciar o tema (claro/escuro)
+│   ├── /styles               //Estilos específicos dos componentes
 │   │   ├── SearchBarStyles.js
 │   │   ├── RouteListStyles.js
 │   │   ├── SidebarStyles.js
 │   │   └── ThemeStyles.js
-│   ├── SearchBar.js
-│   ├── RouteList.js
-│   ├── Sidebar.js
-│   └── ThemeContext.js
-│   └── Login.js
-├── data/                     # Dados estáticos
-│   └── filiais.json
-│   └── db.json
-├── screens/                  # Telas do aplicativo
-│   ├── styles/               # Estilos específicos das telas
+│
+├── /screens
+│   ├── Home.js               //Tela principal para buscar/adicionar filiais e traçar rotas
+│   ├── Historico.js          //Exibe histórico de rotas traçadas
+│   ├── MapaLojas.js          //Apresenta um mapa interativo para pesquisar filiais
+│   ├── Chamados.js           //Em desenvolvimento
+│   ├── /Settings
+│   │   ├── Settings.js       //Permite ajustar configurações do aplicativo
+│   │   ├── Suporte.js        //Fornece informações úteis sobre o aplicativo
+│   │   └── About.js          //Apresenta informações sobre o aplicativo
+│   ├── /Preventiva           //Seção dedicada a funcionalidades preventivas
+│   │   ├── Preventiva.js     //Insere nome/código de uma filial e navega para assinatura
+│   │   ├── Checklist.js       //Exibe lista de tarefas para manutenção preventiva
+│   │   ├── PatrimonioAssinatura.js //Registra patrimônio de uma filial
+│   │   ├── MaquinaSection.js  //Seção dedicada às máquinas
+│   │   └── MaquinaItem.js     //Item individual dentro da seção de máquinas
+│   ├── /styles               //Estilos específicos das telas
 │   │   ├── HomeStyles.js
-│   │   ├── MapaLojasStyles.js
 │   │   ├── HistoricoStyles.js
+│   │   ├── MapaLojasStyles.js
+│   │   ├── ChamadosStyles.js
 │   │   ├── SettingStyles.js
 │   │   ├── SuporteStyles.js
 │   │   ├── AboutStyles.js
-│   │   ├── ChamadosStyles.js
 │   │   └── PreventivaStyles.js
-|   |   |__ PatrimonioAssinaturaStyles.js
-|   |   Preventiva/
-|   |   |__ Checklist.js
-|   |   |__ MaquinaItem.js
-|   |   |__ MaquinaSection.js
-|   |   |__ PatrimonioAssinatura.js
-|   |   |__ Preventiva.js
-│   ├── Home.js
-│   ├── Historico.js
-│   ├── Chamados.js
-│   └── MapaLojas/
-│       ├── map.js
-│       ├── map.web.js
-│       └── MapaLojas.js
-│   └── Settings/
-│       ├── Settings.js
-│       ├── Suporte.js
-│       └── About.js
-├── services/                 # Serviços para interações externas (API, Mapas)
-│   └── MapService.js
-└── App.js                    # Arquivo principal do aplicativo
+│
+├── /services
+│   ├── MapService.js         //Funções para abrir rotas em Google Maps e Waze
+│   ├── StrapiClient.js       //Busca dados paginados da API Strapi
+│   └── StrapiProvider.js      //Gerencia integração de dados da API Strapi com SQLite
+│
+└── App.js                    //Componente principal que integra todos os elementos do aplicativo
