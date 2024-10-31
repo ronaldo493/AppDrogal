@@ -45,9 +45,9 @@ export default function MapaLojas(){
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
-        Alert.alert('Permissão de localização negada');
-       return;
-}
+          Alert.alert('Permissão de localização negada');
+          return;
+        }
 
         //Obtém a posição atual do usuário
         let location = await Location.getCurrentPositionAsync({
@@ -67,7 +67,6 @@ export default function MapaLojas(){
         });
       } catch (error) {
         Alert.alert('Erro ao obter localização!');
-        
       }
     };
 
@@ -76,17 +75,17 @@ export default function MapaLojas(){
 
   //Função para abrir o banco de dados
   const openDatabase = async () => {
-  try {
-    const database = await openDatabaseAsync('DataStrapi.db');
-    console.log('Banco de dados aberto com sucesso:', database);
-    setDb(database); //Armazena o banco de dados no estado
-  } catch (error) {
+    try {
+      const database = await openDatabaseAsync('DataStrapi.db');
+      console.log('Banco de dados aberto com sucesso:', database);
+      setDb(database); //Armazena o banco de dados no estado
+    } catch (error) {
       console.error('Erro ao abrir o banco de dados:', error);
     }
   };
 
   useEffect(() => {
-  //Abre o banco de dados ao montar o componente
+    //Abre o banco de dados ao montar o componente
     openDatabase(); 
   }, []);
 
@@ -148,7 +147,6 @@ export default function MapaLojas(){
         style={MapaLojasStyles.map}
         region={mapRegion}
         customMapStyle={isDarkMode ? darkMapStyle : []}
-        
       >
         {currentLocation && (
           <Marker
@@ -158,28 +156,30 @@ export default function MapaLojas(){
           />
         )}
 
-      {filteredFiliais.map(filial => {
-        const latitude = filial.latitude;
-        const longitude = filial.longitude;
+        {filteredFiliais.map(filial => {
+          //Converte as coordenadas para números
+          const latitude = parseFloat(filial.latitude);
+          const longitude = parseFloat(filial.longitude);
 
-        //Verifica se ambos são números válidos
-        if (latitude !== undefined && longitude !== undefined && !isNaN(latitude) && !isNaN(longitude)) {
-          return (
-            <Marker
-              key={filial.codigofilial}
-              coordinate={{ latitude, longitude }}
-              title={filial.nomefilial}
-              description={`Endereço: ${filial.endereco}, ${filial.numero}, ${filial.bairro}, ${filial.nomecidade}`}
-            />
-          );
-        } else {
-          //console.log(`Filial com erro: ${filial.codigofilial}, latitude: ${latitude}, longitude: ${longitude}`);
-        }
-        return null;
-      })}
+          //Log para verificar o tipo de dado
+          console.log(`Filial: ${filial.codigofilial}, latitude: ${typeof latitude}, longitude: ${typeof longitude}`);
+
+          //Verifica se ambos são números válidos
+          if (!isNaN(latitude) && !isNaN(longitude)) {
+            return (
+              <Marker
+                key={filial.codigofilial}
+                coordinate={{ latitude, longitude }}
+                title={filial.nomefilial}
+                description={`Endereço: ${filial.endereco}, ${filial.numero}, ${filial.bairro}, ${filial.nomecidade}`}
+              />
+            );
+          } else {
+            console.log(`Filial com erro: ${filial.codigofilial}, latitude: ${latitude}, longitude: ${longitude}`);
+          }
+          return null;
+        })}
       </MapView>
     </View>
   );
 };
-
-
