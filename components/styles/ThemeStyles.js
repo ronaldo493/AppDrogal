@@ -31,7 +31,7 @@ export const getThemeStyles = (isDarkMode) =>
             paddingHorizontal: 25,
         },
         buttonBackgroundSide: {
-            backgroundColor: isDarkMode ? '#555' : '#ccc',
+            backgroundColor: isDarkMode ? '#888' : '#bbb',
         },
         //SCREEN
         screenText: {
@@ -84,11 +84,23 @@ export const getThemeStyles = (isDarkMode) =>
             borderColor: isDarkMode ? '#777777' : '#2196F3',
             color: isDarkMode ? '#ffffff' : '#000000',
             backgroundColor: isDarkMode ? '#555' : '#ccc',
-            fontSize: 17,
+            fontSize: 15,
             fontWeight: 'bold',
             textAlign: 'center',
-            borderWidth: 0.8,
+            borderWidth: 0.5,
             padding: 8,
+            borderRadius: 4,
+        },
+        inputPatrimonio: {
+            borderWidth: 0.4,
+            borderColor: isDarkMode ? '#777777' : '#2196F3',
+            color: isDarkMode ? '#ffffff' : '#000000',
+            backgroundColor: isDarkMode ? '#555' : '#ccc',
+            fontSize: 13,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            borderWidth: 0.5,
+            padding: 4,
             borderRadius: 4,
         },
         
