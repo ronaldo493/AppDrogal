@@ -10,10 +10,13 @@ export default MaquinaItem = ({ item }) => {
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const { label, options, requiresSelection, selectedValue } = item;
+  const { label, options = [], requiresSelection } = item;
 
   //Estado para armazenar o número do patrimônio escaneado
   const [patrimonio, setPatrimonio] = useState("");
+
+  //Estado para o valor selecionado no Picker
+  const [selectedValue, setSelectedValue] = useState(options[0]?.value);
 
   //Função para scanear o patrimonio
   const handleScan = () => {
@@ -37,7 +40,7 @@ export default MaquinaItem = ({ item }) => {
           title="Escanear" 
           onPress={handleScan} 
           style={PatrimonioAssinaturaStyles.scanButton} 
-          color={isDarkMode ? '#777' : '#999'} 
+          color={isDarkMode ? '#777' : '#BB5059'} 
         />
       </View>
 

@@ -51,6 +51,20 @@ export const getThemeStyles = (isDarkMode) =>
             fontStyle: 'italic',
         },  
 
+        //MODAL
+        contentModal: {
+            backgroundColor: isDarkMode ? '#333' : '#ddd',
+        },
+        titleModal: {
+            color: isDarkMode ? '#fff' : '#000',
+        },
+        buttonModal: {
+            backgroundColor: isDarkMode ? '#555' : '#aaa',
+        },
+        textModal: {
+            color: isDarkMode ? '#fff' : '#111',
+        },
+
         //BUTTON
         textBackground: {
             backgroundColor: isDarkMode ? '#555553' : '#BB5059',
