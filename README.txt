@@ -69,21 +69,26 @@ screens/
 
 		Checklist.js: A tela "Checklist" exibe uma lista de tarefas a serem realizadas durante uma manutenção preventiva.
 
-		PatrimonioAssinatura.js: A tela "PatrimonioAssinatura" é responsável por registrar o patrimônio de uma filial, 
-		permitindo a seleção e visualização de diferentes máquinas e equipamentos, facilitando a manutenção e organização dos 
-		itens. Ela utiliza componentes como MaquinaSection para exibir informações sobre as máquinas e um conjunto de botões 
-		para selecionar categorias como "CAIXA", "BALCAO", "GERENTE", "SERVIDOR" e "RACK", além de gerenciar a escolha do 
-		usuário e a exibição dinâmica das seções correspondentes.
+		PatrimonioAssinatura.js: A tela PatrimonioAssinatura permite o registro e gerenciamento do patrimônio de uma filial 
+		específica, facilitando o acompanhamento e organização de máquinas e equipamentos. O componente oferece botões para 
+		selecionar categorias como "CAIXA", "BALCÃO", "SERVIDOR", "GERENTE", "CLÍNICA" e "RACK", permitindo que o usuário 
+		visualize e adicione itens a essas categorias dinamicamente. A tela utiliza o componente MaquinaSection para exibir 
+		as seções de itens relacionados e gerencia os estados para exibição do modal de seleção, controle de itens adicionados 
+		e escolha das seções.
 
-		MaquinaSection.js: A tela MaquinaSection exibe uma seção dedicada às máquinas, apresentando um título, uma lista 
-		de máquinas utilizando o componente MaquinaItem, e um botão que permite adicionar mais itens. A estrutura 
-		organiza as informações de forma clara, facilitando a interação do usuário com as máquinas.
+		MaquinaSection.js: O componente MaquinaSection exibe uma seção de itens relacionados a uma máquina específica, 
+		como "Caixa G", "Caixa H" e outras. Cada seção possui um título e uma lista de itens, que são renderizados 
+		usando o componente MaquinaItem. Além disso, o componente apresenta um botão para adicionar novos itens, abrindo 
+		um modal para que o usuário escolha entre os itens disponíveis. Também há um botão para excluir uma seção, 
+		facilitando o gerenciamento das máquinas dentro da tela de patrimônio.
 
-		MaquinaItem.js: A tela MaquinaItem representa um item individual dentro de uma seção de máquinas. Ela apresenta 
-		um rótulo para o item, um campo de entrada para o patrimônio e um botão para escanear esse patrimônio. Caso 
-		o item exija uma seleção, um componente Picker é exibido, permitindo ao usuário escolher entre diferentes opções 
-		relacionadas ao item. A estrutura é funcional, permitindo interações simples, como inserir o número 
-		do patrimônio e selecionar opções quando necessário.
+		MaquinaItem.js: O componente MaquinaItem representa um item individual em uma seção de máquinas. Ele exibe um rótulo 
+		do item, um campo de entrada para o número de patrimônio, e um botão para escanear o patrimônio. Caso o item 
+		exija seleção, um Picker é exibido para permitir ao usuário escolher entre diferentes opções, como modelos 
+		específicos de leitores ou impressoras. Este componente é modular e simplificado, permitindo que o usuário 
+		adicione ou modifique informações sobre cada item com facilidade.
+
+
 
 services/
 	MapService.js: O MapService é um módulo que fornece funções para abrir rotas em aplicativos de navegação. 

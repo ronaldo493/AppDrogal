@@ -4,6 +4,8 @@ import { Picker } from "@react-native-picker/picker";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import { RNCamera } from 'react-native-camera';
 
 export default MaquinaItem = ({ item }) => {
   //Modo Escuro
@@ -18,9 +20,18 @@ export default MaquinaItem = ({ item }) => {
   //Estado para o valor selecionado no Picker
   const [selectedValue, setSelectedValue] = useState(options[0]?.value);
 
+  //Estado para abrir o scanner
+  const [isScannerVisible, setScannerVisible] = useState(false);
+
   //Função para scanear o patrimonio
   const handleScan = () => {
+    setScannerVisible(true);
+  };
 
+  //Função que é chamada quando o Patrimônio é lido
+  const onSuccess = (e) => {
+    setPatrimonio(e.data); // Define o valor do patrimônio como o código escaneado
+    setScannerVisible(false); // Fecha o scanner
   };
 
   return (

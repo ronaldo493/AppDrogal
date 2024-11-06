@@ -31,7 +31,7 @@ export default function MaquinaSection({ title, items, selectedItems, onAddItem,
             <Button 
                 title="Adicionar Item" 
                 onPress={onAddItem}
-                color={isDarkMode ? '#777' : '#BB5059'} 
+                color={isDarkMode ? '#777' : '#888'} 
             />
         </View>
     );

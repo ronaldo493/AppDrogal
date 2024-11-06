@@ -3,7 +3,7 @@ import { Button, StyleSheet } from 'react-native';
 const lightTheme = {
     text: '#000',
     screenText: '#000',
-    sidebar: '#f0f0f0',
+    sidebar: '#e7e7e7',
     borderBottomColor: '#ddd',
     screenBackground: '#f5f5f5',
 };

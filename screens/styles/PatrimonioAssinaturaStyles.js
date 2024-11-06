@@ -94,6 +94,12 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         marginVertical: 5,
         borderRadius: 4,
     },
+    input: {
+        marginBottom: 25,
+    }, 
+    buttonAddMachine:{
+        marginBottom: 10,
+    }
 });
 
 export default PatrimonioAssinaturaStyles;
