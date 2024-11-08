@@ -54,6 +54,12 @@
             "deploymentTarget": "13.4"
           }
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Este aplicativo precisa acessar sua câmera para escanear códigos QR e códigos de barras"
+        }
       ]
     ],
     "web": {},
