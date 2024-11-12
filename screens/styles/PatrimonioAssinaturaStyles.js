@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Button } from "react-native-paper";
 
 const PatrimonioAssinaturaStyles = StyleSheet.create({
     container: {
@@ -99,6 +98,16 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
     }, 
     buttonAddMachine:{
         marginBottom: 10,
+    },
+    modalScan:{
+        flex: 1,
+    },
+    viewButton:{
+        position: 'absolute', 
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: 30,
     }
 });
 

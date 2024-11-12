@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { View, Button, Text, TextInput } from "react-native";
+import { View, Button, Text, TextInput, Modal, Alert } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
-import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
+import { CameraView, useCameraPermissions } from "expo-camera";
 
 export default MaquinaItem = ({ item }) => {
   //Modo Escuro
@@ -15,24 +14,29 @@ export default MaquinaItem = ({ item }) => {
   const { label, options = [], requiresSelection } = item;
 
   //Estado para armazenar o número do patrimônio escaneado
-  const [patrimonio, setPatrimonio] = useState("");
+  
 
   //Estado para o valor selecionado no Picker
   const [selectedValue, setSelectedValue] = useState(options[0]?.value);
 
-  //Estado para abrir o scanner
+  //Estado para permissão, abrir o scanner, armazenar o patrimonio
+  const {permission, requestPermission} = useCameraPermissions();
   const [isScannerVisible, setScannerVisible] = useState(false);
+  const [patrimonio, setPatrimonio] = useState("");
 
   //Função para scanear o patrimonio
-  const handleScan = () => {
+  const handleScan = async () => {
+    const { granted } = await requestPermission()
+    if(!granted){
+      return Alert.alert("Câmera, Você precisa habilitar o uso da camêra!")
+    }
     setScannerVisible(true);
   };
 
-  //Função que é chamada quando o Patrimônio é lido
-  const onSuccess = (e) => {
-    setPatrimonio(e.data); // Define o valor do patrimônio como o código escaneado
-    setScannerVisible(false); // Fecha o scanner
-  };
+  //Função Patrimõnio Lido
+  const handleScanRead=() =>{
+
+  }
 
   return (
     <View>
@@ -66,6 +70,20 @@ export default MaquinaItem = ({ item }) => {
           ))}
         </Picker>
       ) : null}
+
+      <Modal visible={isScannerVisible}>
+        <CameraView facing="back" style={PatrimonioAssinaturaStyles.modalScan}>
+          <View style={PatrimonioAssinaturaStyles.viewButton}>
+            <Button 
+              title="Cancelar"
+              style={PatrimonioAssinaturaStyles.modalButton} 
+              color={isDarkMode ? '#777' : '#BB5059'} 
+              onPress={() => setScannerVisible(false)}>
+            </Button>
+          </View>
+
+        </CameraView>
+      </Modal>
     </View>
   );
 };
