@@ -6,6 +6,7 @@ import { getThemeStyles } from "../../components/styles/ThemeStyles";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import MaquinaSection from "./MaquinaSection";
 import Modals from "./Modals";
+import * as FileSystem from 'expo-file-system';
 
 export default function PatrimonioAssinatura() {
     //Modo Escuro
@@ -296,8 +297,6 @@ export default function PatrimonioAssinatura() {
             : selectedOption === 'GERENTE' ? 'Gerente'
             : 'Rack'
             : '';
-    
-        //Verifica se já existe uma seção com a letra fornecida e o tipo correto
         
         //Verifica se a letra já existe em qualquer seção (não apenas na opção selecionada)
         const letterAlreadyExists = sections.some(
