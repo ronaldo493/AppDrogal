@@ -58,7 +58,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Este aplicativo precisa acessar sua câmera para escanear códigos QR e códigos de barras"
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
         }
       ]
     ],
