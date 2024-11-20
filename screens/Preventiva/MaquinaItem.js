@@ -12,19 +12,11 @@ export default MaquinaItem = ({ item, onUpdate }) => {
   const themeStyles = getThemeStyles(isDarkMode);
 
   const { label, options = [], requiresSelection } = item;
-
-  //Estado para o valor selecionado no Picker
-  const [selectedValue, setSelectedValue] = useState(options[0]?.value);
-
-  //Estado para permissão, abrir o scanner, armazenar o patrimonio
-  const [permission, requestPermission] = useCameraPermissions();
-  const [isScannerVisible, setScannerVisible] = useState(false);
-
-  //Estado para armazenar o número do patrimônio escaneado
-  const [patrimonio, setPatrimonio] = useState("");
   
-  //Estado para bloquear a câmera em caso de erro
-  const [isCameraActive, setIsCameraActive] = useState(true); //Câmera ativa por padrão
+  const [selectedValue, setSelectedValue] = useState(options[0]?.value); //Estado para o valor selecionado no Picker
+  const [isScannerVisible, setScannerVisible] = useState(false); //Estado para abrir o scanner
+  const [patrimonio, setPatrimonio] = useState("");   //Estado para armazenar o número do patrimônio escaneado
+  const [isCameraActive, setIsCameraActive] = useState(true); //Estado para bloquear a câmera em caso de erro //Câmera ativa por padrão
 
   //Evitar múltiplas leituras
   const codigoLock = useRef(false)

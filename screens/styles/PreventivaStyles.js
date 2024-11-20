@@ -61,7 +61,42 @@ const PreventivaStyles = StyleSheet.create({
     },
     checklistContainer:{
         flex: 1,
+    },
+    //Modal
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    },
+    modalContent: {
+        width: 300,
+        padding: 20,
+        borderRadius: 10,
+    },
+    modalTitle: {
+        fontSize: 18,
+        marginBottom: 15,
+        textAlign: 'center',
+        borderRadius: 6,
+    },
+    modalButton: {
+        padding: 4,
+        marginVertical: 5,
+        borderRadius: 4,
+    },
+    optionButton: {
+        padding: 10,
+    },
+    optionText: {
+        textAlign: 'center',
+    },
+    closeButton: {
+        padding: 10,
+        borderRadius: 6,
+        marginTop: 25,
     }
+
 
 })
 

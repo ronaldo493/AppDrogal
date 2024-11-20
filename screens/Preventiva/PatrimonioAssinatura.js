@@ -128,8 +128,16 @@ export default function PatrimonioAssinatura() {
         {
             label: 'Impressora:',
             options: [
-                { label: 'Daruma', value: 'daruma' },
-                { label: 'Epson', value: 'epson' }
+                { label: 'Epson', value: 'epson' },
+                { label: 'Daruma', value: 'daruma' }
+            ],
+            requiresSelection: true,
+        },
+        {
+            label: 'Zebra:',
+            options: [
+                { label: 'ZD230', value: 'zd230' },
+                { label: 'GT800', value: 'gt800' }
             ],
             requiresSelection: true,
         },
@@ -166,8 +174,8 @@ export default function PatrimonioAssinatura() {
         {
             label: 'Impressora:',
             options: [
-                { label: 'Daruma', value: 'daruma' },
-                { label: 'Epson', value: 'epson' }
+                { label: 'Epson', value: 'epson' },
+                { label: 'Daruma', value: 'daruma' }
             ],
             requiresSelection: true,
         },
@@ -480,7 +488,7 @@ export default function PatrimonioAssinatura() {
                 allItems={allItems}
                 onSelectItem={addItemToSection}
                 onAddMachine={addNewMachine}
-                newMachineLetter={newMachineLetter} // Passando a letra da nova máquina
+                newMachineLetter={newMachineLetter} //Passando a letra da nova máquina
                 setNewMachineLetter={setNewMachineLetter}
             />
         </ScrollView>
