@@ -1,5 +1,4 @@
 [
-  
   {
     "codigofilial": 1,
     "nomefilial": "FILIAL 001 - MANIPULAÇÃO DOIS ",
@@ -7035,8 +7034,8 @@
     "supervisor": "DOUGLAS QUEIROZ PINTO",
     "cnpj": "54.375.647/0426-36",
     "horariofuncionamento": null,
-    "latitude": -20.81438937321064,
-    "longitude": -49.38416753558121
+    "latitude": "-20.81438937321064",
+    "longitude": "-49.38416753558121"
   },
   {
     "codigofilial": 393,
@@ -7089,8 +7088,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0429-89",
     "horariofuncionamento": null,
-    "latitude": -22.742511764355303,
-    "longitude": -47.61645987711503
+    "latitude": "-22.742511764355303",
+    "longitude": "-47.61645987711503"
   },
   {
     "codigofilial": 396,
@@ -7107,8 +7106,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0430-12",
     "horariofuncionamento": null,
-    "latitude": -22.057067964424856,
-    "longitude": -46.97748501165784
+    "latitude": "-22.057067964424856",
+    "longitude": "-46.97748501165784"
   },
   {
     "codigofilial": 397,
@@ -7125,8 +7124,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0431-01",
     "horariofuncionamento": null,
-    "latitude": -21.14220387985813,
-    "longitude": -47.98852958882874
+    "latitude": "-21.14220387985813",
+    "longitude": "-47.98852958882874"
   },
   {
     "codigofilial": 398,
@@ -7143,8 +7142,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0432-84",
     "horariofuncionamento": null,
-    "latitude": -20.581829950207567,
-    "longitude": -47.862578317221235
+    "latitude": "-20.581829950207567",
+    "longitude": "-47.862578317221235"
   },
   {
     "codigofilial": 399,
@@ -7161,8 +7160,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0433-65",
     "horariofuncionamento": null,
-    "latitude": -22.720587337035422, 
-    "longitude": -47.63835978220809
+    "latitude": "-22.720587337035422", 
+    "longitude": "-47.63835978220809"
   },
   {
     "codigofilial": 400,
@@ -7179,8 +7178,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0434-46",
     "horariofuncionamento": null,
-    "latitude": -21.973392964138192,
-    "longitude": -46.780944848270046
+    "latitude": "-21.973392964138192",
+    "longitude": "-46.780944848270046"
   },
   {
     "codigofilial": 401,
@@ -7197,8 +7196,8 @@
     "supervisor": null,
     "cnpj": "54.375.647/0435-27",
     "horariofuncionamento": null,
-    "latitude": -23.283780215156664,
-    "longitude": -47.65878913406971
+    "latitude": "-23.283780215156664",
+    "longitude": "-47.65878913406971"
   },
   {
     "codigofilial": 402,
@@ -7215,7 +7214,7 @@
     "supervisor": null,
     "cnpj": "54.375.647/0436-08",
     "horariofuncionamento": null,
-    "latitude": -22.897157885015513,
-    "longitude": -47.058753591803786
-  },
+    "latitude": "-22.897157885015513",
+    "longitude": "-47.058753591803786"
+  }
 ]
