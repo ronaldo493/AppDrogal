@@ -6,28 +6,17 @@ import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
-export default MaquinaItem = ({ item }) => {
+export default MaquinaItem = ({ item, onUpdate }) => {
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
   const { label, options = [], requiresSelection } = item;
-
-  //Estado para o valor selecionado no Picker
-  const [selectedValue, setSelectedValue] = useState(options[0]?.value);
-
-  //Estado para permissão, abrir o scanner, armazenar o patrimonio
-  const [permission, requestPermission] = useCameraPermissions();
-  const [isScannerVisible, setScannerVisible] = useState(false);
-
-  //Estado para armazenar o número do patrimônio escaneado
-  const [patrimonio, setPatrimonio] = useState("");
   
-  //Estado para controle do flash
-  const [flashEnabled, setFlashEnabled] = useState('off')
-  
-  //Estado para bloquear a câmera em caso de erro
-  const [isCameraActive, setIsCameraActive] = useState(true); // Câmera ativa por padrão
+  const [selectedValue, setSelectedValue] = useState(options[0]?.value); //Estado para o valor selecionado no Picker
+  const [isScannerVisible, setScannerVisible] = useState(false); //Estado para abrir o scanner
+  const [patrimonio, setPatrimonio] = useState("");   //Estado para armazenar o número do patrimônio escaneado
+  const [isCameraActive, setIsCameraActive] = useState(true); //Estado para bloquear a câmera em caso de erro //Câmera ativa por padrão
 
   //Evitar múltiplas leituras
   const codigoLock = useRef(false)
@@ -40,6 +29,14 @@ export default MaquinaItem = ({ item }) => {
     }
     codigoLock.current = false;
     setScannerVisible(true);
+  };
+
+  
+  //Função para lidar com alterações na entrada de texto
+  const handleInputChange = (text) => {
+    const sanitizedText = text.replace(/\D/g, '').slice(0, 6); //Limita a 6 dígitos
+    setPatrimonio(sanitizedText); //Atualiza o estado local com o texto limpo
+    onUpdate(label, sanitizedText, selectedValue); //Notifica o componente pai com o valor atualizado
   };
 
   //Função Patrimônio Lido
@@ -59,7 +56,7 @@ export default MaquinaItem = ({ item }) => {
       ]);
       setIsCameraActive(false); //Bloquear a câmera até o usuário clicar em "OK"
       return;
-    }
+    };
 
     //Se o código já foi lido, exibe um alerta
     if (patrimonio && patrimonio === data) {
@@ -79,6 +76,7 @@ export default MaquinaItem = ({ item }) => {
     codigoLock.current = true; //Bloquear para leituras futuras
     setPatrimonio(data); //Atualizar o valor de patrimônio
     setScannerVisible(false); //Desativa a visualização da câmera após o código válido ser lido
+    onUpdate(label, data, selectedValue);//Notifica o componente pai com o novo valor do patrimônio
     console.log("Patrimônio escaneado:", data);
   };
 
@@ -90,7 +88,7 @@ export default MaquinaItem = ({ item }) => {
         <TextInput
           style={[PatrimonioAssinaturaStyles.PatrimonioInput, themeStyles.inputPatrimonio]}
           value={patrimonio}
-          onChangeText={(text) => setPatrimonio(text.replace(/\D/g, '').slice(0, 6))} //Restringir a 6 dígitos
+          onChangeText={handleInputChange}
           placeholder="PATRIMÔNIO"
           placeholderTextColor={isDarkMode ? '#ccc' : '#666'}
           keyboardType="numeric" 
@@ -106,7 +104,10 @@ export default MaquinaItem = ({ item }) => {
       {requiresSelection ? (
         <Picker
           selectedValue={selectedValue}
-          onValueChange={(itemValue) => setSelectedValue(itemValue)}
+          onValueChange={(itemValue) => {
+            setSelectedValue(itemValue)
+            onUpdate(label, patrimonio, itemValue);
+          }}
           style={{ color: isDarkMode ? '#ccc' : '#000' }}
         >
           {options.map((option, index) => (

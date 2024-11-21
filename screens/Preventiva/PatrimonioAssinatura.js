@@ -7,6 +7,7 @@ import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import MaquinaSection from "./MaquinaSection";
 import Modals from "./Modals";
 import * as FileSystem from 'expo-file-system';
+import * as Linking from 'expo-linking';
 
 export default function PatrimonioAssinatura() {
     //Modo Escuro
@@ -17,13 +18,99 @@ export default function PatrimonioAssinatura() {
     //Pega a filial passada como parâmetro
     const { filial } = route.params;
 
-    //Estado para gerenciar a opção selecionada
+    //Caminho do arquivo JSON
+    const filePath = `${FileSystem.documentDirectory}patrimonio.json`;
+
+    //Função para salvar os dados no arquivo JSON
+    const saveDataToFile = async (data) => {
+        try {
+            await FileSystem.writeAsStringAsync(filePath, JSON.stringify(data, null, 2));
+            console.log("Dados salvos com sucesso no arquivo JSON!");
+        } catch (error) {
+            console.error("Erro ao salvar dados:", error);
+        }
+    };
+
+    //Função para formatar dados para envio via WhatsApp
+    const formatData = (data) => {
+        let formattedData = `*filial*: ${data.filial}\n\n`;
+        
+    //Iterar pelas seções e formatar os dados
+    for (const section in data.secoes) {
+        formattedData += `  *${section}:*\n`; //Formatação para o nome da seção
+        for (const item in data.secoes[section]) {
+            //Formatação para os itens dentro de cada seção
+            formattedData += `    ${item}: ${data.secoes[section][item]}\n`;
+        }
+        formattedData += `\n`; //Adiciona um espaço entre as seções
+    }
+        
+        return formattedData;
+      };
+      
+
+    //Função para enviar os dados para o WhatsApp
+    const sendJsonWhatsApp = async () => {
+        try {
+            //Verifica se o arquivo JSON existe
+            const fileExists = await FileSystem.getInfoAsync(filePath);
+            if (!fileExists.exists) {
+                //Se o arquivo não existir, exibe uma mensagem de alerta
+                Alert.alert("Atenção", "O arquivo JSON não foi encontrado.");
+                return;
+            }
+            //Ler o conteúdo do arquivo JSON
+            const jsonString = await FileSystem.readAsStringAsync(filePath);
+            const data = JSON.parse(jsonString);
+
+            //Formatar os dados conforme a estrutura desejada
+            const formattedData = formatData(data);
+
+            //Enviar o JSON como uma mensagem para o WhatsApp
+            const url = `whatsapp://send?text=${encodeURIComponent(formattedData)}`;
+            const supported = await Linking.canOpenURL(url);
+
+            if (supported) {
+                await Linking.openURL(url);
+
+                //Excluir o arquivo JSON após o envio
+                await FileSystem.deleteAsync(filePath);
+                console.log("Arquivo JSON excluído com sucesso!");
+            } else {
+                Alert.alert("Erro", "O WhatsApp não está instalado ou não é suportado neste dispositivo.");
+            }
+        } catch (error) {
+            console.error("Erro ao enviar o JSON:", error);
+            Alert.alert("Erro", "Ocorreu um erro ao tentar enviar o JSON para o WhatsApp.");
+        }
+    };
+
     const [selectedOption, setSelectedOption] = useState(null); //Estado para gerenciar a opção selecionada
     const [selectedItems, setSelectedItems] = useState([]);  //Estado para gerenciar os itens selecionados
     const [modalVisible, setModalVisible] = useState(false); //Estado para controlar a visibilidade do modal
     const [selectedSection, setSelectedSection] = useState(null); //Estado para controlar a seção selecionada
     const [newMachineLetter, setNewMachineLetter] = useState(""); //Estado para a letra da nova máquina
 
+    const [inputData, setInputData] = useState({
+        filial: "",
+        secoes: {}
+    }); //estado para armazenar os dados preenchidos
+
+    //Função para atualizar os dados e salvar no JSON
+    const handleUpdateItem = (itemName, value, sectionTitle, option) => {
+        const updatedData = { ...inputData, 
+            filial,  //Incluindo a filial
+            secoes: {
+                ...inputData.secoes, 
+                [sectionTitle]: {
+                    ...inputData.secoes[sectionTitle], 
+                    [itemName]: option ? `${value} (${option})` : value
+                }
+            } }; //Atualiza os dados com o novo item preenchido
+        setInputData(updatedData); //Atualiza o estado global
+        saveDataToFile(updatedData); //Salva os dados no arquivo JSON
+    };
+    
     //Itens 
     const allItems = [
         { label: 'Nobreak:', requiresSelection: false },
@@ -41,8 +128,16 @@ export default function PatrimonioAssinatura() {
         {
             label: 'Impressora:',
             options: [
-                { label: 'Daruma', value: 'daruma' },
-                { label: 'Epson', value: 'epson' }
+                { label: 'Epson', value: 'epson' },
+                { label: 'Daruma', value: 'daruma' }
+            ],
+            requiresSelection: true,
+        },
+        {
+            label: 'Zebra:',
+            options: [
+                { label: 'ZD230', value: 'zd230' },
+                { label: 'GT800', value: 'gt800' }
             ],
             requiresSelection: true,
         },
@@ -79,8 +174,8 @@ export default function PatrimonioAssinatura() {
         {
             label: 'Impressora:',
             options: [
-                { label: 'Daruma', value: 'daruma' },
-                { label: 'Epson', value: 'epson' }
+                { label: 'Epson', value: 'epson' },
+                { label: 'Daruma', value: 'daruma' }
             ],
             requiresSelection: true,
         },
@@ -221,6 +316,7 @@ export default function PatrimonioAssinatura() {
                                 setModalVisible(true);
                             }}
                             onDelete={() => confirmDeleteSection(section.title)}
+                            onUpdateItem={(itemName, value, option) => handleUpdateItem(itemName, value, section.title, option)} //Passa a função para atualizar os dados
                         />
                     </View>
                 );
@@ -374,6 +470,16 @@ export default function PatrimonioAssinatura() {
                     </View>
                 ))}
             </View>
+
+            {/* Botão para enviar JSON para o WhatsApp */}
+            <View style={{ marginTop: 20 }}>
+                <Button 
+                    title="ENVIAR"
+                    onPress={sendJsonWhatsApp} //Chama a função de envio para WhatsApp
+                    color={isDarkMode ? '#BB5059' : '#BB5059'}
+                />
+            </View>
+
             {/* Modal de Adicionar Item e Máquina */}
             <Modals
                 visible={modalVisible}
@@ -382,7 +488,7 @@ export default function PatrimonioAssinatura() {
                 allItems={allItems}
                 onSelectItem={addItemToSection}
                 onAddMachine={addNewMachine}
-                newMachineLetter={newMachineLetter} // Passando a letra da nova máquina
+                newMachineLetter={newMachineLetter} //Passando a letra da nova máquina
                 setNewMachineLetter={setNewMachineLetter}
             />
         </ScrollView>

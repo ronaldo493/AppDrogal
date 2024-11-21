@@ -6,7 +6,7 @@ import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function MaquinaSection({ title, items, selectedItems, onAddItem, onDelete }) {
+export default function MaquinaSection({ title, items, selectedItems, onAddItem, onDelete, onUpdateItem }) {
     const { isDarkMode } = useTheme();
     const themeStyles = getThemeStyles(isDarkMode);
 
@@ -22,10 +22,10 @@ export default function MaquinaSection({ title, items, selectedItems, onAddItem,
             </View>
             <View style={PatrimonioAssinaturaStyles.sectionItem}>
                 {items.map((item, index) => (
-                    <MaquinaItem key={index} item={item} />
+                    <MaquinaItem key={index} item={item} onUpdate={onUpdateItem} />
                 ))}
                 {selectedItems.map((item, index) => (
-                    <MaquinaItem key={`added-${index}`} item={item} />
+                    <MaquinaItem key={`added-${index}`} item={item} onUpdate={onUpdateItem} />
                 ))}
             </View>
             <Button 

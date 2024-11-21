@@ -88,6 +88,11 @@ screens/
 		específicos de leitores ou impressoras. Este componente é modular e simplificado, permitindo que o usuário 
 		adicione ou modifique informações sobre cada item com facilidade.
 
+		OBSERVAÇÃO: Essas telas são complementadas, pois o PatrimônioAssinatura é organizado como MaquinaSection 
+		(que são os pacotes específicos de máquinas) e cada MaquinaSection organiza os MaquinaItem (os itens individuais). 
+		Assim, você tem um sistema hierárquico: uma tela mostra uma categoria, a outra mostra a seção dessa categoria, 
+		e a última mostra o item individual dentro dessa seção.
+
 
 
 services/
