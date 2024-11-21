@@ -4,7 +4,7 @@ import { Picker } from "@react-native-picker/picker";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
-import { CameraView, useCameraPermissions } from "expo-camera";
+import { CameraView} from "expo-camera";
 
 export default MaquinaItem = ({ item, onUpdate }) => {
   //Modo Escuro
@@ -23,10 +23,6 @@ export default MaquinaItem = ({ item, onUpdate }) => {
 
   //Função para scanear o patrimonio
   const handleScan = async () => {
-    const { granted } = await requestPermission();
-    if (!granted) {
-      return Alert.alert("Câmera", "Você precisa habilitar o uso da câmera!");
-    }
     codigoLock.current = false;
     setScannerVisible(true);
   };

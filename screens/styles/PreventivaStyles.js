@@ -73,6 +73,7 @@ const PreventivaStyles = StyleSheet.create({
         width: 300,
         padding: 20,
         borderRadius: 10,
+        
     },
     modalTitle: {
         fontSize: 18,
@@ -87,6 +88,7 @@ const PreventivaStyles = StyleSheet.create({
     },
     optionButton: {
         padding: 10,
+        borderBottomWidth: 1,
     },
     optionText: {
         textAlign: 'center',

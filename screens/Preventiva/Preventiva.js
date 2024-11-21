@@ -20,30 +20,29 @@ export default function Preventiva (){
     //Navegação
     const navigation = useNavigation();
     
-    //Função de Start da Preventiva
-    const handleStartPreventiva = () => {
-      if (!filialInput || !selectedOption) {
-          Alert.alert('Atenção!', 'Por favor, insira a Filial e selecione uma opção');
-          return;
-      }
-      //Navegação com filial e a opção selecionada
-      navigation.navigate('PatrimonioAssinatura', { filial: filialInput, option: selectedOption });
-    };
+    
 
     const toggleChecklist = () => {
       setShowChecklist((prev) => !prev); //alterna a visualização do checklist
     };
 
-    //Função para selecionar a opção
+    //Função para selecionar a opção desejada e validar se o input esta preenchido e executar a navegação
     const handleOptionSelect = (option) => {
-        setSelectedOption(option); //Atualiza a opção selecionada
-        setShowModal(false); //Esconde as opções após selecionar
-        handleStartPreventiva(); //Chama a função de início da preventiva
+        //Validação do campo filial
+        if (!filialInput.trim()) {
+          Alert.alert('Atenção!', 'Por favor, insira a Filial antes de selecionar uma opção.');
+          return;
+      }
+      setSelectedOption(option); //Atualiza a opção selecionada
+      setShowModal(false); //Esconde as opções após selecionar
+      
+      //Navegação com a filial e a opção diretamente da variável "option"
+      navigation.navigate('PatrimonioAssinatura', { filial: filialInput.trim(), option });
     };
 
   return (
     <View style={[PreventivaStyles.container,themeStyles.screenBackground]}>
-      <Text style={[PreventivaStyles.title, themeStyles.text]}>PREVENTIVA</Text>
+      <Text style={[PreventivaStyles.title, themeStyles.text]}>REGISTRO DE PATRIMÔNIO</Text>
       <Text style={[PreventivaStyles.label, themeStyles.text]}>INICIE AS ANOTAÇÕES:</Text>
       <View style={PreventivaStyles.inputContainer}>
         <TextInput
@@ -85,11 +84,11 @@ export default function Preventiva (){
         <View style={PreventivaStyles.modalContainer}>
           <View style={[PreventivaStyles.modalContent, themeStyles.contentModal]}>
               <Text style={[PreventivaStyles.modalTitle, themeStyles.titleModal]}>Escolha uma opção:</Text>
-              {['PREVENTIVA', 'MONTAGEM', 'INCLUSÃO', 'TROCA'].map((option, index) => (
+              {['PREVENTIVA', 'MONTAGEM', 'INCLUSÃO', 'REFORMA', 'TROCA'].map((option, index) => (
                 <TouchableOpacity 
                   key={index} 
                   onPress={() => handleOptionSelect(option)} 
-                  style={[PreventivaStyles.optionButton, themeStyles.button]}
+                  style={[PreventivaStyles.optionButton, themeStyles.borderBottomColor]}
                 >
                   <Text style={[PreventivaStyles.optionText, themeStyles.textModal]}>
                       {option}

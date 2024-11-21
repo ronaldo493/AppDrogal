@@ -16,7 +16,7 @@ export default function PatrimonioAssinatura() {
 
     const route = useRoute();
     //Pega a filial passada como parâmetro
-    const { filial } = route.params;
+    const { filial, option } = route.params;
 
     //Caminho do arquivo JSON
     const filePath = `${FileSystem.documentDirectory}patrimonio.json`;
@@ -99,7 +99,8 @@ export default function PatrimonioAssinatura() {
     //Função para atualizar os dados e salvar no JSON
     const handleUpdateItem = (itemName, value, sectionTitle, option) => {
         const updatedData = { ...inputData, 
-            filial,  //Incluindo a filial
+            //option, //Incluindo o option
+            filial, //Incluindo a filial
             secoes: {
                 ...inputData.secoes, 
                 [sectionTitle]: {
@@ -427,70 +428,73 @@ export default function PatrimonioAssinatura() {
     
 
     return (
-        <ScrollView style={[PatrimonioAssinaturaStyles.container, themeStyles.screenBackground]}>
-            <Text style={[PatrimonioAssinaturaStyles.title, themeStyles.text]}>REGISTRO DE PATRIMÔNIO</Text>
-            <Text style={[PatrimonioAssinaturaStyles.filialText, themeStyles.text]}>
-                FILIAL: {filial}
-            </Text>
+        <View style={{flex: 1}}>
+            <ScrollView style={[PatrimonioAssinaturaStyles.container, themeStyles.screenBackground]}>
+                <Text style={[PatrimonioAssinaturaStyles.title, themeStyles.text]}> {option} </Text>
+                <Text style={[PatrimonioAssinaturaStyles.filialText, themeStyles.text]}>
+                    FILIAL: {filial}
+                </Text>
 
-            <View style={PatrimonioAssinaturaStyles.optionContainer}>
-                {['CAIXA', 'BALCAO', 'SERVIDOR', 'GERENTE', 'CLINICA', 'RACK'].map(option => (
-                    <View key={option}>
-                        <TouchableOpacity
-                            style={[PatrimonioAssinaturaStyles.optionButton, 
-                                { 
-                                    backgroundColor: isDarkMode ? '#777' : '#aaa', 
-                                    //Opacidade reduzida para opções não selecionadas
-                                    opacity: selectedOption && selectedOption !== option ? 0.2 : 1, 
-                                }
-                            ]}
-                            onPress={() => toggleOption(option)}
-                        >
-                            <Text style={[PatrimonioAssinaturaStyles.optionText, themeStyles.text]}>{option}</Text>
-                        </TouchableOpacity>
+                <View style={PatrimonioAssinaturaStyles.optionContainer}>
+                    {['CAIXA', 'BALCAO', 'SERVIDOR', 'GERENTE', 'CLINICA', 'RACK'].map(option => (
+                        <View key={option}>
+                            <TouchableOpacity
+                                style={[PatrimonioAssinaturaStyles.optionButton, 
+                                    { 
+                                        backgroundColor: isDarkMode ? '#777' : '#aaa', 
+                                        //Opacidade reduzida para opções não selecionadas
+                                        opacity: selectedOption && selectedOption !== option ? 0.2 : 1, 
+                                    }
+                                ]}
+                                onPress={() => toggleOption(option)}
+                            >
+                                <Text style={[PatrimonioAssinaturaStyles.optionText, themeStyles.text]}>{option}</Text>
+                            </TouchableOpacity>
 
-                        {/* Renderiza a seção correspondente ao item selecionado */}
-                        {(selectedOption === option && (option === 'CAIXA' || option === 'BALCAO' || option === 'SERVIDOR' || 
-                        option === 'CLINICA' || option === 'GERENTE' || option === 'RACK')) && (
-                            <>
-                                {renderMaquinaSections()}
-                                <View style={PatrimonioAssinaturaStyles.buttonAddMachine}>
-                                    <Button
-                                        title="Adicionar Nova Máquina"
-                                        onPress={() => {
-                                            setSelectedSection(null);
-                                            setModalVisible(true)
+                            {/* Renderiza a seção correspondente ao item selecionado */}
+                            {(selectedOption === option && (option === 'CAIXA' || option === 'BALCAO' || option === 'SERVIDOR' || 
+                            option === 'CLINICA' || option === 'GERENTE' || option === 'RACK')) && (
+                                <>
+                                    {renderMaquinaSections()}
+                                    <View style={PatrimonioAssinaturaStyles.buttonAddMachine}>
+                                        <Button
+                                            title="Adicionar Nova Máquina"
+                                            onPress={() => {
+                                                setSelectedSection(null);
+                                                setModalVisible(true)
+                                                }
                                             }
-                                        }
-                                        color={isDarkMode ? '#BB5059' : '#BB5059'}
-                                    />
-                                </View>
-                            </>
-                        )}
-                    </View>
-                ))}
-            </View>
+                                            color={isDarkMode ? '#BB5059' : '#BB5059'}
+                                        />
+                                    </View>
+                                </>
+                            )}
+                        </View>
+                    ))}
+                </View>
 
-            {/* Botão para enviar JSON para o WhatsApp */}
-            <View style={{ marginTop: 20 }}>
-                <Button 
-                    title="ENVIAR"
-                    onPress={sendJsonWhatsApp} //Chama a função de envio para WhatsApp
-                    color={isDarkMode ? '#BB5059' : '#BB5059'}
+                {/* Botão para enviar JSON para o WhatsApp */}
+                <View style={PatrimonioAssinaturaStyles.buttonSend}>
+                        <Button 
+                        title="ENVIAR"
+                        onPress={sendJsonWhatsApp} //Chama a função de envio para WhatsApp
+                        color={isDarkMode ? '#BB5059' : '#BB5059'}
+                    />
+                </View>
+
+                {/* Modal de Adicionar Item e Máquina */}
+                <Modals
+                    visible={modalVisible}
+                    onClose={() => setModalVisible(false)}
+                    modalType={selectedSection ? 'item' : 'machine'} 
+                    allItems={allItems}
+                    onSelectItem={addItemToSection}
+                    onAddMachine={addNewMachine}
+                    newMachineLetter={newMachineLetter} //Passando a letra da nova máquina
+                    setNewMachineLetter={setNewMachineLetter}
                 />
-            </View>
-
-            {/* Modal de Adicionar Item e Máquina */}
-            <Modals
-                visible={modalVisible}
-                onClose={() => setModalVisible(false)}
-                modalType={selectedSection ? 'item' : 'machine'} 
-                allItems={allItems}
-                onSelectItem={addItemToSection}
-                onAddMachine={addNewMachine}
-                newMachineLetter={newMachineLetter} //Passando a letra da nova máquina
-                setNewMachineLetter={setNewMachineLetter}
-            />
-        </ScrollView>
+            </ScrollView>          
+        </View>
+        
     );
 }
