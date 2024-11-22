@@ -33,20 +33,20 @@ export default function PatrimonioAssinatura() {
 
     //Função para formatar dados para envio via WhatsApp
     const formatData = (data) => {
-        let formattedData = `*filial*: ${data.filial}\n\n`;
+        let formattedData = `*${data.categoria}*\n\n`;
+        formattedData += `*FILIAL*: ${data.filial}\n\n`;
         
-    //Iterar pelas seções e formatar os dados
-    for (const section in data.secoes) {
-        formattedData += `  *${section}:*\n`; //Formatação para o nome da seção
-        for (const item in data.secoes[section]) {
-            //Formatação para os itens dentro de cada seção
-            formattedData += `    ${item}: ${data.secoes[section][item]}\n`;
+        //Iterar pelas seções e formatar os dados
+        for (const section in data.secoes) {
+            formattedData += `  *${section}:*\n`; //Formatação para o nome da seção
+            for (const item in data.secoes[section]) {
+                //Formatação para os itens dentro de cada seção
+                formattedData += `    ${item} ${data.secoes[section][item]}\n`;
+            }
+            formattedData += `\n`; //Adiciona um espaço entre as seções
         }
-        formattedData += `\n`; //Adiciona um espaço entre as seções
-    }
-        
         return formattedData;
-      };
+    };
       
 
     //Função para enviar os dados para o WhatsApp
@@ -92,20 +92,21 @@ export default function PatrimonioAssinatura() {
     const [newMachineLetter, setNewMachineLetter] = useState(""); //Estado para a letra da nova máquina
 
     const [inputData, setInputData] = useState({
+        categoria: option || "",
         filial: "",
         secoes: {}
     }); //estado para armazenar os dados preenchidos
 
     //Função para atualizar os dados e salvar no JSON
-    const handleUpdateItem = (itemName, value, sectionTitle, option) => {
+    const handleUpdateItem = (itemName, value, sectionTitle, itemOption = null) => {
         const updatedData = { ...inputData, 
-            //option, //Incluindo o option
+            categoria: option,
             filial, //Incluindo a filial
             secoes: {
                 ...inputData.secoes, 
                 [sectionTitle]: {
                     ...inputData.secoes[sectionTitle], 
-                    [itemName]: option ? `${value} (${option})` : value
+                    [itemName]: itemOption ? `${value} (${itemOption})` : value
                 }
             } }; //Atualiza os dados com o novo item preenchido
         setInputData(updatedData); //Atualiza o estado global
