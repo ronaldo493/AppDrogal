@@ -37,7 +37,7 @@ export default function Preventiva (){
       setShowModal(false); //Esconde as opções após selecionar
       
       //Navegação com a filial e a opção diretamente da variável "option"
-      navigation.navigate('PatrimonioAssinatura', { filial: filialInput.trim(), option });
+      navigation.navigate('PatrimonioAssinatura', { filial: filialInput.trim(),  option });
     };
 
   return (
