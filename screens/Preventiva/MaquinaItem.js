@@ -4,7 +4,7 @@ import { Picker } from "@react-native-picker/picker";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
-import { CameraView} from "expo-camera";
+import { CameraView, useCameraPermissions} from "expo-camera";
 
 export default MaquinaItem = ({ item, onUpdate }) => {
   //Modo Escuro
@@ -12,7 +12,9 @@ export default MaquinaItem = ({ item, onUpdate }) => {
   const themeStyles = getThemeStyles(isDarkMode);
 
   const { label, options = [], requiresSelection } = item;
-  
+
+    //Estado para permissão, abrir o scanner, armazenar o patrimonio
+  const [permission, requestPermission] = useCameraPermissions();  
   const [selectedValue, setSelectedValue] = useState(options[0]?.value); //Estado para o valor selecionado no Picker
   const [isScannerVisible, setScannerVisible] = useState(false); //Estado para abrir o scanner
   const [patrimonio, setPatrimonio] = useState("");   //Estado para armazenar o número do patrimônio escaneado
@@ -23,6 +25,23 @@ export default MaquinaItem = ({ item, onUpdate }) => {
 
   //Função para scanear o patrimonio
   const handleScan = async () => {
+    if (!permission?.granted) {
+    if (permission?.canAskAgain) {
+      const result = await requestPermission();
+      if (result.granted) {
+        Alert.alert("Permissão concedida!", "Agora você pode acessar a câmera.");
+      } else {
+        Alert.alert("Permissão necessária", "Você precisa conceder permissão para usar a câmera.");
+      }
+    } else {
+      Alert.alert(
+        "Permissão necessária",
+        "A permissão foi desativada permanentemente. Ative-a manualmente nas configurações."
+      );
+    }
+  } else {
+    Alert.alert("Permissão já concedida!", "A câmera está pronta para ser usada.");
+  }
     codigoLock.current = false;
     setScannerVisible(true);
   };

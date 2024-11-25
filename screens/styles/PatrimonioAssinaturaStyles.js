@@ -17,7 +17,6 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
     },
     optionContainer: {
         marginTop: 10,
-        marginBottom: '80%',
     },
     optionButton: {
         padding: 16,
@@ -29,8 +28,7 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         fontSize: 15,
     },
     buttonSend: {
-        justifyContent: 'flex-end',
-  
+	marginTop: '5%',
     },
 
     //Estilo Máquina Section

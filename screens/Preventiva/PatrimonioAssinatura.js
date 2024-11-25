@@ -430,7 +430,7 @@ export default function PatrimonioAssinatura() {
 
     return (
         <View style={{flex: 1}}>
-            <ScrollView style={[PatrimonioAssinaturaStyles.container, themeStyles.screenBackground]}>
+            <ScrollView style={[PatrimonioAssinaturaStyles.container, themeStyles.screenBackground]} contentContainerStyle={{ paddingBottom: 100 }}>
                 <Text style={[PatrimonioAssinaturaStyles.title, themeStyles.text]}> {option} </Text>
                 <Text style={[PatrimonioAssinaturaStyles.filialText, themeStyles.text]}>
                     FILIAL: {filial}
@@ -474,7 +474,7 @@ export default function PatrimonioAssinatura() {
                     ))}
                 </View>
 
-                {/* Botão para enviar JSON para o WhatsApp */}
+		 {/* Botão para enviar JSON para o WhatsApp */}
                 <View style={PatrimonioAssinaturaStyles.buttonSend}>
                         <Button 
                         title="ENVIAR"
@@ -483,6 +483,7 @@ export default function PatrimonioAssinatura() {
                     />
                 </View>
 
+                
                 {/* Modal de Adicionar Item e Máquina */}
                 <Modals
                     visible={modalVisible}
@@ -494,7 +495,9 @@ export default function PatrimonioAssinatura() {
                     newMachineLetter={newMachineLetter} //Passando a letra da nova máquina
                     setNewMachineLetter={setNewMachineLetter}
                 />
-            </ScrollView>          
+            </ScrollView>
+
+     
         </View>
         
     );
