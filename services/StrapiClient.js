@@ -34,6 +34,7 @@ export const fetchPaginatedData = async (endpoint, pageSize = 100) => {
     }
   } catch (error) {
     console.error('Erro ao buscar dados da API Strapi:', error);
+    throw error;
   }
 
   return allData;

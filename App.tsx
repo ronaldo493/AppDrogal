@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
