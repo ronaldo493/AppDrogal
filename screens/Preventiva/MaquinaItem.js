@@ -29,7 +29,7 @@ export default MaquinaItem = ({ item, onUpdate }) => {
     if (permission?.canAskAgain) {
       const result = await requestPermission();
       if (result.granted) {
-        Alert.alert("Permissão concedida!", "Agora você pode acessar a câmera.");
+        console.log("Permissão concedida!", "Agora você pode acessar a câmera.");
       } else {
         Alert.alert("Permissão necessária", "Você precisa conceder permissão para usar a câmera.");
       }
@@ -39,8 +39,6 @@ export default MaquinaItem = ({ item, onUpdate }) => {
         "A permissão foi desativada permanentemente. Ative-a manualmente nas configurações."
       );
     }
-  } else {
-    Alert.alert("Permissão já concedida!", "A câmera está pronta para ser usada.");
   }
     codigoLock.current = false;
     setScannerVisible(true);
