@@ -106,6 +106,7 @@ const saveDataToDB = async (db, tableName, data) => {
 //Componente do provider
 export const StrapiProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [isRegistered, setIsRegistered] = useState(false); //Estado para controle do registro da tarefa
 
   //FUNÇÃO PARA BAIXAR TODAS AS LOJAS NO PRIMEIRO CARREGAMENTO DO COMPONENTE
   const fetchDataAndSaveToDB = async () => {
@@ -223,41 +224,45 @@ export const StrapiProvider = ({ children }) => {
     }
   };
   
+  //Função para configurar o BackgroundFetch
+  const configureBackgroundFetch = async () => {
+    try {
+      //Registra a tarefa apenas se não estiver registrada
+      const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_FETCH_TASK);
+      if (!isRegistered) {
+        await BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
+          minimumInterval: 1440, //24 horas
+          stopOnTerminate: false, //continua após o app ser fechado
+          startOnBoot: true, //inicia após o reinício do dispositivo
+        });
+        setIsRegistered(true); //Atualiza o estado de registro
+        console.log('Background fetch configurado com sucesso');
+      }
+    } catch (error) {
+      console.error('Erro ao configurar BackgroundFetch', error);
+    }
+  };
 
+  //Define a tarefa de BackgroundFetch
+  TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
+    try {
+      console.log('Background Fetch acionado');
+      await syncDataWithStrapi();
+      BackgroundFetch.finish(BackgroundFetch.BackgroundFetchResult.NewData);  //Marca a tarefa como concluída com sucesso
+    } catch (error) {
+      console.error('Erro no Background Fetch', error);
+      BackgroundFetch.finish(BackgroundFetch.BackgroundFetchResult.Failed);  //Marca a tarefa como falha
+    }
+  });
  
   
   useEffect(() => {
-    //Chama uma vez a função no primeiro carregamento da tela
     fetchDataAndSaveToDB();
 
-    TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
-      try {
-        console.log('Background Fetch acionado');
-        await syncDataWithStrapi();
-        BackgroundFetch.finish();  //Finaliza a tarefa
-      } catch (error) {
-        console.error('Erro no Background Fetch', error);
-      }
-    });
-
-    ////////Configuração do BackgroundFetch para sincronizar os dados
-    const configureBackgroundFetch = async () => {
-      try {
-        await BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
-          minimumInterval: 1440, //24 horas
-          stopOnTerminate: false,
-          startOnBoot: true,
-        });
-        console.log('Background fetch configurado com sucesso');
-      } catch (error) {
-        console.error('Erro ao configurar BackgroundFetch', error);
-      }
-    };
-
-    configureBackgroundFetch();
+    configureBackgroundFetch(); //Configura o BackgroundFetch
 
     return () => {
-      BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa quando o componente for desmontado
+      BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa ao desmontar o componente
     };
   }, []);
 

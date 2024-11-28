@@ -22,7 +22,8 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
-        "NSCameraUsageDescription": "Este aplicativo precisa acessar sua câmera para ler códigos de barras e QR codes."
+        "NSCameraUsageDescription": "Este aplicativo precisa acessar sua câmera para ler códigos de barras e QR codes.",
+        "UIBackgroundModes": ["fetch"] 
       },
       "bundleIdentifier": "com.ronaldo2024.SuporteDrogal"
     },
@@ -34,7 +35,9 @@
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
-        "CAMERA"
+        "CAMERA",
+        "RECEIVE_BOOT_COMPLETED",
+        "WAKE_LOCK"
       ],
       "config": {
         "googleMaps": {
@@ -60,7 +63,9 @@
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
         }
-      ]
+      ],
+      "expo-background-fetch",
+      "expo-task-manager"
     ],
     "web": {},
     "extra": {
