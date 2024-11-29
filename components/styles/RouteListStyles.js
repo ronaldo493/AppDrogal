@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   list: {
     marginTop: 10,
-
   },
   routeItem: {
     padding: 15,
@@ -13,7 +12,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 4,
+    marginBottom: 5,
+    borderRadius: 8,
   },
   removeButton: {
     color: '#BE1817',

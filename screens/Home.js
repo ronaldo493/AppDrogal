@@ -70,6 +70,11 @@ export default function Home() {
     setRoutes(routes.filter(filial => filial.codigofilial !== filialToRemove.codigofilial));
   };
 
+  //Função para reordenar rotas
+  const handleReorderRoutes = (updatedRoutes) => {
+    setRoutes(updatedRoutes);
+  };
+
   //Função para traçar a rota
   const handleTraceRoute = async () => {
     console.log('Estado atual da localização:', currentLocation)
@@ -131,7 +136,14 @@ export default function Home() {
       </View>
       <SearchBar onAddRoute={handleAddRoute} />
       <View style={HomeStyles.routeContainer}>
-        <RouteList routes={routes} onRemoveRoute={handleRemoveRoute} />
+        <View style={{ flex: 1 }}> 
+          <RouteList 
+            routes={routes} 
+            onRemoveRoute={handleRemoveRoute} 
+            onReorderRoutes={handleReorderRoutes} 
+          />
+        </View>
+
         <TouchableOpacity onPress={handleTraceRoute}>
           <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>
             TRAÇAR ROTA
