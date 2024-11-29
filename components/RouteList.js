@@ -16,7 +16,7 @@ export default function RouteList({ routes, onRemoveRoute, onReorderRoutes}) {
     <View style={[
        RouteListStyles.routeItem, 
       themeStyles.listRoutes, 
-      isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#999' } : {} ]}
+      isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#bbb' } : {} ]}
     >
       
 

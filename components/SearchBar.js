@@ -4,6 +4,7 @@ import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';
 import { getThemeStyles } from './styles/ThemeStyles';
 import { openDatabaseAsync } from 'expo-sqlite';
+import { Keyboard } from 'react-native';
 
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -69,6 +70,7 @@ const handleSearch = async (text) => {
       onAddRoute(selectedFilial);
       setSearchTerm('');
       setSelectedFilial(null);
+      Keyboard.dismiss(); //Fecha o teclado
     }
   };
 
@@ -95,7 +97,7 @@ const handleSearch = async (text) => {
             <Text style={[themeStyles.text, SearchBarStyles.text]}>CNPJ: {selectedFilial.cnpj}</Text>
           </View>
           <View style={SearchBarStyles.buttonContainer}>
-            <Button title="Adicionar" onPress={handleSelectFilial} />
+            <Button title="Adicionar" onPress={handleSelectFilial}  />
           </View>
         </View>
       )}
