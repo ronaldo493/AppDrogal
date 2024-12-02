@@ -38,6 +38,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
     "react-native-crypto": "^2.2.0",
+    "react-native-draggable-flatlist": "^4.0.1",
     "react-native-geolocation-service": "^5.3.1",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-mail": "^6.1.1",
