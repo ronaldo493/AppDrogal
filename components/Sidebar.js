@@ -18,6 +18,7 @@ export default function Sidebar({ navigation }) {
     { label: 'ROTAS', route: 'Home' },
     { label: 'HISTÓRICO', route: 'Historico' },
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
+    { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
     { label: 'CHAMADOS', route: 'Chamados' },
     { label: 'PREVENTIVA', route: 'Preventiva' },
   ];

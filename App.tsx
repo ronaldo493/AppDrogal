@@ -13,11 +13,13 @@ import Preventiva from './screens/Preventiva/Preventiva';
 import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
+import AddPoint from './screens/Points/AddPoint';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './services/StrapiProvider';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
+
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -116,6 +118,11 @@ function AppNavigation() {
           <Drawer.Screen 
             name="MapaLojas" 
             component={MapaLojas} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="AddPoint" 
+            component={AddPoint} 
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
