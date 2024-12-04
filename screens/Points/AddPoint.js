@@ -4,22 +4,26 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 export default function RestaurantesPostos() {
+  //Estado para gerenciar a região exibida no mapa
   const [mapRegion, setMapRegion] = useState({
     latitude: -22.7277,
     longitude: -47.6490,
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
-  const [currentLocation, setCurrentLocation] = useState(null);
-  const [selectedPoint, setSelectedPoint] = useState(null);
-  const [description, setDescription] = useState('');
-  const [points, setPoints] = useState([]);
-  const [isAddingPoint, setIsAddingPoint] = useState(false); // Controla o modo de adição
 
-  // Obtém a localização atual do usuário
+
+  const [currentLocation, setCurrentLocation] = useState(null); //Estado para armazenar a localização atual do usuário
+  const [selectedPoint, setSelectedPoint] = useState(null); //Estado para armazenar o ponto selecionado pelo usuário
+  const [description, setDescription] = useState(''); //Estado para armazenar a descrição do ponto
+  const [points, setPoints] = useState([]); //Estado para armazenar os pontos salvos (restaurantes ou postos)
+  const [isPontoAdd, setIsPontoAdd] = useState(false); //Estado para controlar se o usuário está no modo de adição de ponto
+
+  //Obter a localização do usuário ao entrar na tela
   useEffect(() => {
     const getLocation = async () => {
       try {
+        //Solicita permissão para acessar a localização
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
@@ -27,12 +31,14 @@ export default function RestaurantesPostos() {
           return;
         }
 
+        //Obtém a localização atual do usuário
         let location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High,
           timeout: 2000,
           maximumAge: 5000,
         });
 
+        //Define a localização atual e ajusta a região do mapa
         setCurrentLocation({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
@@ -51,14 +57,15 @@ export default function RestaurantesPostos() {
     getLocation();
   }, []);
 
-  // Salva o ponto
+  //Função para salvar um ponto
   const savePoint = () => {
+    // Valida se um ponto foi selecionado e se a descrição está preenchida
     if (!selectedPoint || !description.trim()) {
       Alert.alert('Erro', 'Selecione um ponto e adicione uma descrição.');
       return;
     }
 
-    // Pergunta se é restaurante ou posto de combustível
+    //Pergunta ao usuário se o ponto é um restaurante ou um posto
     Alert.alert(
       'Tipo de Ponto',
       'Esse ponto é um Restaurante ou Posto de Combustível?',
@@ -66,52 +73,54 @@ export default function RestaurantesPostos() {
         {
           text: 'Restaurante',
           onPress: () => {
+            //Salva o ponto como um restaurante
             const newPoint = {
               ...selectedPoint,
               description,
               type: 'restaurante',
             };
             setPoints([...points, newPoint]);
-            resetAddPoint();
+            resetAddPoint(); //Reseta o estado de adição de pontos
           },
         },
         {
           text: 'Posto de Combustível',
           onPress: () => {
+            //Salva o ponto como um posto de combustível
             const newPoint = {
               ...selectedPoint,
               description,
               type: 'posto',
             };
             setPoints([...points, newPoint]);
-            resetAddPoint();
+            resetAddPoint(); //Reseta o estado de adição de pontos
           },
         },
       ]
     );
   };
 
-  // Reseta o estado de adição de pontos
+  //Função para resetar o estado de adição de pontos
   const resetAddPoint = () => {
     Alert.alert('Sucesso', 'Ponto salvo com sucesso!');
-    setIsAddingPoint(false);
-    setSelectedPoint(null);
-    setDescription('');
+    setIsPontoAdd(false); //Sai do modo de adição
+    setSelectedPoint(null); //Remove o ponto selecionado
+    setDescription(''); //Limpa a descrição
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       {/* Mapa */}
       <MapView
-        style={styles.map}
         region={mapRegion}
         onPress={(e) => {
-          if (isAddingPoint) {
+          //Permite selecionar um ponto no mapa apenas se estiver no modo de adição
+          if (isPontoAdd) {
             setSelectedPoint(e.nativeEvent.coordinate);
           }
         }}
       >
-        {/* Localização atual */}
+        {/* Marker para a localização atual */}
         {currentLocation && (
           <Marker
             coordinate={currentLocation}
@@ -120,47 +129,48 @@ export default function RestaurantesPostos() {
           />
         )}
 
-        {/* Pontos salvos */}
+        {/* Markers para os pontos salvos */}
         {points.map((point, index) => (
           <Marker
             key={index}
             coordinate={{ latitude: point.latitude, longitude: point.longitude }}
             title={point.description}
+            //Define a cor do marcador com base no tipo de ponto
             pinColor={point.type === 'restaurante' ? 'red' : 'orange'}
           />
         ))}
 
-        {/* Ponto selecionado */}
-        {selectedPoint && isAddingPoint && (
+        {/* Marker para o ponto selecionado */}
+        {selectedPoint && isPontoAdd && (
           <Marker
             coordinate={selectedPoint}
             title="Novo Ponto"
-            pinColor="purple"
+            pinColor="red"
           />
         )}
       </MapView>
 
-      {/* Controles */}
-      <View style={styles.controls}>
-        {!isAddingPoint ? (
+      {/* Controles para adicionar e salvar pontos */}
+      <View>
+        {!isPontoAdd ? (
+          //Botão para ativar o modo de adição de pontos
           <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => setIsAddingPoint(true)}
+            onPress={() => setIsPontoAdd(true)}
           >
-            <Text style={styles.addButtonText}>Adicionar Ponto</Text>
+            <Text>Adicionar Ponto</Text>
           </TouchableOpacity>
         ) : (
           <>
+            {/* Campo para inserir a descrição do ponto */}
             <TextInput
-              style={styles.input}
               placeholder="Descrição do Ponto"
               value={description}
               onChangeText={setDescription}
             />
 
-            <View style={styles.buttonContainer}>
+            <View>
+              {/* Botão para usar a localização atual como ponto */}
               <TouchableOpacity
-                style={styles.button}
                 onPress={() => {
                   if (currentLocation) {
                     setSelectedPoint(currentLocation);
@@ -169,11 +179,12 @@ export default function RestaurantesPostos() {
                   }
                 }}
               >
-                <Text style={styles.buttonText}>Usar Localização Atual</Text>
+                <Text>Usar Localização Atual</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button} onPress={savePoint}>
-                <Text style={styles.buttonText}>Salvar Ponto</Text>
+              {/* Botão para salvar o ponto */}
+              <TouchableOpacity onPress={savePoint}>
+                <Text>Salvar Ponto</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -182,52 +193,3 @@ export default function RestaurantesPostos() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    flex: 1,
-  },
-  controls: {
-    padding: 10,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderColor: '#ddd',
-  },
-  input: {
-    height: 40,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  button: {
-    flex: 1,
-    backgroundColor: '#007BFF',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginHorizontal: 5,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  addButton: {
-    backgroundColor: '#28a745',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  addButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-});
