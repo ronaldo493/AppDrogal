@@ -1,79 +1,117 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import { useTheme } from '../../components/ThemeContext';
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-import MapaStyles, { darkMapStyle } from '../styles/MapaLojasStyles';
 
 export default function RestaurantesPostos() {
-  const { isDarkMode } = useTheme();
-  const themeStyles = getThemeStyles(isDarkMode);
-
   const [mapRegion, setMapRegion] = useState({
     latitude: -22.7277,
     longitude: -47.6490,
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
-
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [description, setDescription] = useState('');
   const [points, setPoints] = useState([]);
+  const [isAddingPoint, setIsAddingPoint] = useState(false); // Controla o modo de adição
 
-  // Pega localização atual do usuário
+  // Obtém a localização atual do usuário
   useEffect(() => {
-    const fetchLocation = async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert('Permissão negada', 'Habilite a permissão para usar o recurso.');
-        return;
+    const getLocation = async () => {
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+
+        if (status !== 'granted') {
+          Alert.alert('Permissão de localização negada');
+          return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.High,
+          timeout: 2000,
+          maximumAge: 5000,
+        });
+
+        setCurrentLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        });
+        setMapRegion({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
+        });
+      } catch (error) {
+        Alert.alert('Erro ao obter localização!');
       }
-
-      const location = await Location.getCurrentPositionAsync({});
-      setCurrentLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-
-      setMapRegion({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.1,
-        longitudeDelta: 0.1,
-      });
     };
 
-    fetchLocation();
+    getLocation();
   }, []);
 
-  // Função para salvar ponto
+  // Salva o ponto
   const savePoint = () => {
     if (!selectedPoint || !description.trim()) {
-      Alert.alert('Erro', 'Selecione um local e insira uma descrição.');
+      Alert.alert('Erro', 'Selecione um ponto e adicione uma descrição.');
       return;
     }
 
-    const newPoint = {
-      ...selectedPoint,
-      description,
-    };
-    setPoints([...points, newPoint]);
-    Alert.alert('Sucesso', 'Ponto adicionado!');
+    // Pergunta se é restaurante ou posto de combustível
+    Alert.alert(
+      'Tipo de Ponto',
+      'Esse ponto é um Restaurante ou Posto de Combustível?',
+      [
+        {
+          text: 'Restaurante',
+          onPress: () => {
+            const newPoint = {
+              ...selectedPoint,
+              description,
+              type: 'restaurante',
+            };
+            setPoints([...points, newPoint]);
+            resetAddPoint();
+          },
+        },
+        {
+          text: 'Posto de Combustível',
+          onPress: () => {
+            const newPoint = {
+              ...selectedPoint,
+              description,
+              type: 'posto',
+            };
+            setPoints([...points, newPoint]);
+            resetAddPoint();
+          },
+        },
+      ]
+    );
+  };
+
+  // Reseta o estado de adição de pontos
+  const resetAddPoint = () => {
+    Alert.alert('Sucesso', 'Ponto salvo com sucesso!');
+    setIsAddingPoint(false);
     setSelectedPoint(null);
     setDescription('');
   };
 
   return (
-    <View style={[MapaStyles.container, themeStyles.screenBackground]}>
-      {/* Mapa com pontos */}
+    <View style={styles.container}>
+      {/* Mapa */}
       <MapView
-        style={MapaStyles.map}
+        style={styles.map}
         region={mapRegion}
-        customMapStyle={isDarkMode ? darkMapStyle : []}
-        onPress={(e) => setSelectedPoint(e.nativeEvent.coordinate)} // Marca o ponto selecionado
+        onPress={(e) => {
+          if (isAddingPoint) {
+            setSelectedPoint(e.nativeEvent.coordinate);
+          }
+        }}
       >
+        {/* Localização atual */}
         {currentLocation && (
           <Marker
             coordinate={currentLocation}
@@ -82,53 +120,114 @@ export default function RestaurantesPostos() {
           />
         )}
 
+        {/* Pontos salvos */}
         {points.map((point, index) => (
           <Marker
             key={index}
             coordinate={{ latitude: point.latitude, longitude: point.longitude }}
             title={point.description}
-            pinColor="green"
+            pinColor={point.type === 'restaurante' ? 'red' : 'orange'}
           />
         ))}
 
-        {selectedPoint && (
+        {/* Ponto selecionado */}
+        {selectedPoint && isAddingPoint && (
           <Marker
             coordinate={selectedPoint}
             title="Novo Ponto"
-            pinColor="red"
+            pinColor="purple"
           />
         )}
       </MapView>
 
-      {/* Campos para adicionar ponto */}
-      <View style={MapaStyles.addPointContainer}>
-        <TextInput
-          style={[MapaStyles.input, themeStyles.input]}
-          placeholder="Descrição do Ponto"
-          placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
-          value={description}
-          onChangeText={setDescription}
-        />
-
-        <View style={MapaStyles.buttonGroup}>
+      {/* Controles */}
+      <View style={styles.controls}>
+        {!isAddingPoint ? (
           <TouchableOpacity
-            style={MapaStyles.button}
-            onPress={() => {
-              if (currentLocation) {
-                setSelectedPoint(currentLocation);
-              } else {
-                Alert.alert('Erro', 'Localização atual não disponível.');
-              }
-            }}
+            style={styles.addButton}
+            onPress={() => setIsAddingPoint(true)}
           >
-            <Text style={MapaStyles.buttonText}>Usar Localização Atual</Text>
+            <Text style={styles.addButtonText}>Adicionar Ponto</Text>
           </TouchableOpacity>
+        ) : (
+          <>
+            <TextInput
+              style={styles.input}
+              placeholder="Descrição do Ponto"
+              value={description}
+              onChangeText={setDescription}
+            />
 
-          <TouchableOpacity style={MapaStyles.button} onPress={savePoint}>
-            <Text style={MapaStyles.buttonText}>Salvar Ponto</Text>
-          </TouchableOpacity>
-        </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  if (currentLocation) {
+                    setSelectedPoint(currentLocation);
+                  } else {
+                    Alert.alert('Erro', 'Localização atual não disponível.');
+                  }
+                }}
+              >
+                <Text style={styles.buttonText}>Usar Localização Atual</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.button} onPress={savePoint}>
+                <Text style={styles.buttonText}>Salvar Ponto</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    flex: 1,
+  },
+  controls: {
+    padding: 10,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderColor: '#ddd',
+  },
+  input: {
+    height: 40,
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: {
+    flex: 1,
+    backgroundColor: '#007BFF',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  addButton: {
+    backgroundColor: '#28a745',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  addButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
