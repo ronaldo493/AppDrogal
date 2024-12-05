@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { useTheme } from '../../components/ThemeContext'; 
+import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
+import  AddPointStyles, { darkMapStyle }  from '../styles/AddPointStyles';
 
-export default function RestaurantesPostos() {
+export default function AddPoint() {
+  //Modo escuro
+  const { isDarkMode } = useTheme();
+  const themeStyles = getThemeStyles(isDarkMode);
+
   //Estado para gerenciar a região exibida no mapa
   const [mapRegion, setMapRegion] = useState({
     latitude: -22.7277,
@@ -109,10 +116,13 @@ export default function RestaurantesPostos() {
   };
 
   return (
-    <View>
+    <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
+      <Text style={[AddPointStyles.title, themeStyles.text]}>PONTOS QUE O</Text>
       {/* Mapa */}
       <MapView
         region={mapRegion}
+        customMapStyle={isDarkMode ? darkMapStyle : []}
+        style={AddPointStyles.map}
         onPress={(e) => {
           //Permite selecionar um ponto no mapa apenas se estiver no modo de adição
           if (isPontoAdd) {
