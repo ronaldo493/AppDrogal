@@ -4,7 +4,8 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-import  AddPointStyles, { darkMapStyle }  from '../styles/AddPointStyles';
+import  AddPointStyles, { darkMapPointStyle }  from '../styles/AddPointStyles';
+import StrapiClient from '../../services/StrapiClient';
 
 export default function AddPoint() {
   //Modo escuro
@@ -65,8 +66,8 @@ export default function AddPoint() {
   }, []);
 
   //Função para salvar um ponto
-  const savePoint = () => {
-    // Valida se um ponto foi selecionado e se a descrição está preenchida
+  const savePoint = async () => {
+    //Valida se um ponto foi selecionado e se a descrição está preenchida
     if (!selectedPoint || !description.trim()) {
       Alert.alert('Erro', 'Selecione um ponto e adicione uma descrição.');
       return;
@@ -79,31 +80,54 @@ export default function AddPoint() {
       [
         {
           text: 'Restaurante',
-          onPress: () => {
-            //Salva o ponto como um restaurante
+          onPress: async () => {
             const newPoint = {
-              ...selectedPoint,
+              latitude: selectedPoint.latitude,
+              longitude: selectedPoint.longitude,
               description,
               type: 'restaurante',
             };
-            setPoints([...points, newPoint]);
-            resetAddPoint(); //Reseta o estado de adição de pontos
+
+            try {
+              //Salva o ponto como restaurante
+              await StrapiClient.post('/pontos-ifoods', {
+                data: newPoint, // Envia os dados como 'data'
+              });
+
+              setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
+              resetAddPoint();
+            } catch (error) {
+              console.error('Erro ao salvar ponto como Restaurante:', error);
+              Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+            }
           },
         },
         {
           text: 'Posto de Combustível',
-          onPress: () => {
-            //Salva o ponto como um posto de combustível
+          onPress: async () => {
             const newPoint = {
-              ...selectedPoint,
+              latitude: selectedPoint.latitude,
+              longitude: selectedPoint.longitude,
               description,
               type: 'posto',
             };
-            setPoints([...points, newPoint]);
-            resetAddPoint(); //Reseta o estado de adição de pontos
+
+            try {
+              //Salva o ponto como posto de combustível
+              await StrapiClient.post('/pontos-abastecimentos', {
+                data: newPoint, //Envia os dados como 'data'
+              });
+
+              setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
+              resetAddPoint();
+            } catch (error) {
+              console.error('Erro ao salvar ponto como Posto de Combustível:', error);
+              Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+            }
           },
         },
       ]
+
     );
   };
 
@@ -117,11 +141,11 @@ export default function AddPoint() {
 
   return (
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
-      <Text style={[AddPointStyles.title, themeStyles.text]}>PONTOS QUE O</Text>
+      <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
       {/* Mapa */}
       <MapView
         region={mapRegion}
-        customMapStyle={isDarkMode ? darkMapStyle : []}
+        customMapStyle={isDarkMode ? darkMapPointStyle : []}
         style={AddPointStyles.map}
         onPress={(e) => {
           //Permite selecionar um ponto no mapa apenas se estiver no modo de adição
@@ -135,7 +159,7 @@ export default function AddPoint() {
           <Marker
             coordinate={currentLocation}
             title="Minha Localização"
-            pinColor="blue"
+            pinColor="red"
           />
         )}
 
@@ -146,7 +170,7 @@ export default function AddPoint() {
             coordinate={{ latitude: point.latitude, longitude: point.longitude }}
             title={point.description}
             //Define a cor do marcador com base no tipo de ponto
-            pinColor={point.type === 'restaurante' ? 'red' : 'orange'}
+            pinColor={point.type === 'restaurante' ? 'orange' : 'blue'}
           />
         ))}
 
@@ -167,18 +191,20 @@ export default function AddPoint() {
           <TouchableOpacity
             onPress={() => setIsPontoAdd(true)}
           >
-            <Text>Adicionar Ponto</Text>
+            <Text style={[AddPointStyles.btnAdd, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>ADICIONAR PONTO</Text>
           </TouchableOpacity>
         ) : (
           <>
             {/* Campo para inserir a descrição do ponto */}
             <TextInput
-              placeholder="Descrição do Ponto"
+              style={[AddPointStyles.inputDesc, themeStyles.input]}
+              placeholder="Descrição do Ponto. EX: (Posto, Restaurante)"
+              placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
               value={description}
               onChangeText={setDescription}
             />
 
-            <View>
+            <View style={AddPointStyles.containerBtn}>
               {/* Botão para usar a localização atual como ponto */}
               <TouchableOpacity
                 onPress={() => {
@@ -188,13 +214,18 @@ export default function AddPoint() {
                     Alert.alert('Erro', 'Localização atual não disponível.');
                   }
                 }}
+                style={AddPointStyles.buttonContainer}
               >
-                <Text>Usar Localização Atual</Text>
+                <Text style={[AddPointStyles.btnFinal, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>
+                  LOCALIZAÇÃO ATUAL
+                </Text>
               </TouchableOpacity>
 
               {/* Botão para salvar o ponto */}
               <TouchableOpacity onPress={savePoint}>
-                <Text>Salvar Ponto</Text>
+                <Text style={[AddPointStyles.btnFinal, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>
+                  SALVAR PONTO
+                </Text>
               </TouchableOpacity>
             </View>
           </>

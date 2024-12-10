@@ -10,23 +10,41 @@ const AddPointStyles = StyleSheet.create({
       marginBottom: 10,
     },
     title: {
-      fontSize: 15,
+      fontSize: 18,
       padding: 15,
-      margin: 15,
+      margin: 8,
       textAlign: 'center',
       fontWeight: 'bold',
       borderRadius: 8,
     },
-    input: {
+    containerBtn: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    btnAdd: {
+      padding: 15,
+      margin: 15,
+    },
+    buttonContainer: {
+      flex: 1, // Faz com que os botões ocupem o mesmo espaços
+    },
+    btnFinal: {
+      paddingVertical: 9,
+      textAlign: 'center',
+      margin: 10,
+    },
+    inputDesc: {
       margin: 15,
     },
   });
+
 
 export default AddPointStyles;
 
 
 //Estilo do mapa Escuro
-export const darkMapStyle = [
+export const darkMapPointStyle = [
   {
     elementType: 'geometry', //Altera o fundo do mapa.
     stylers: [{ color: '#212121' }], //Define a cor do fundo como cinza escuro.

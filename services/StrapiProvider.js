@@ -109,38 +109,43 @@ export const StrapiProvider = ({ children }) => {
   const [isRegistered, setIsRegistered] = useState(false); //Estado para controle do registro da tarefa
 
   //FUNÇÃO PARA BAIXAR TODAS AS LOJAS NO PRIMEIRO CARREGAMENTO DO COMPONENTE
-  const fetchDataAndSaveToDB = async () => {
+  const fetchDataAndSaveToDB = async (endpoint, tableName) => {
     try {
       //Verifica se os dados já foram carregados
-      const hasLoadedData = await AsyncStorage.getItem('hasLoadedData')
+      const hasLoadedData = await AsyncStorage.getItem(`hasLoadedData_${tableName}`);
 
       if(!hasLoadedData){
         const db = await initDB(); //Inicializa o banco de dados
-        const filiais = await fetchPaginatedData('/api/informacoeslojas'); //Busca os dados
+        const filiais = await fetchPaginatedData(endpoint); //Busca os dados
         console.log("Dados recebidos com sucesso");
-        await saveDataToDB(db, 'filiais', filiais); //Salva os dados no banco
+        await saveDataToDB(db, tableName, filiais); //Salva os dados no banco
+
+        //Verifica os dados após o salvamento
+        //const savedData = await db.getAllAsync("SELECT * FROM filiais");
+        //console.log("Dados após salvamento:", savedData);
+
         setData(filiais); //Guarda os dados no estado
 
         //Armazena no AsyncStorage que os dados foram carregados
-        await AsyncStorage.setItem('hasLoadedData', 'true');
+        await AsyncStorage.setItem(`hasLoadedData_${tableName}`, 'true');
       }
       
     } catch (error) {
-      console.error("Erro ao buscar ou salvar dados:", error);
+      console.error(`Erro ao buscar ou salvar dados para a tabela ${tableName}:`, error);
     }
   };
 
   //FUNÇÃO PARA IR ATUALIZANDO A LOJA SE TIVER ALTERAÇÃO OU INCLUSÃO NO STRAPI
-  const syncDataWithStrapi = async () => {
+  const syncDataWithStrapi = async (endpoint, tableName) => {
     try {
       //Inicializa o banco de dados SQLite
       const db = await initDB();
       //Obtém os dados do Strapi (página de informações das lojas)
-      const strapiData = await fetchPaginatedData('/api/informacoeslojas');
+      const strapiData = await fetchPaginatedData(endpoint);
   
       for (const item of strapiData) {
         //Verifica se já existe um registro local com o código da filial correspondente
-        const localData = await db.getAllAsync(`SELECT * FROM filiais WHERE codigofilial = ?;`, [item.codigofilial]);
+        const localData = await db.getAllAsync(`SELECT * FROM ${tableName} WHERE codigofilial = ?;`, [item.codigofilial])
   
         if (localData && localData.length > 0) {
           //Se existir um registro local, pega o primeiro item (deve ser único por codigofilial)
@@ -161,10 +166,11 @@ export const StrapiProvider = ({ children }) => {
 
           //Se forem detectadas diferenças nos dados, faz o update no banco de dados local
           if (differences.length > 0) {
-            console.log(`Mudanças detectadas para ${item.codigofilial}:`, differences);
+            console.log(`Mudanças detectadas para ${item.codigofilial} na tabela ${tableName}:`, differences);
+
   
             await db.runAsync(
-              `UPDATE filiais SET 
+              `UPDATE ${tableName} SET 
                 nomefilial = ?, endereco = ?, numero = ?, cep = ?, bairro = ?, nomecidade = ?, 
                 numeroibge = ?, uf = ?, telefone = ?, gerente = ?, supervisor = ?, cnpj = ?, 
                 horariofuncionamento = ?, latitude = ?, longitude = ?, last_modified = CURRENT_TIMESTAMP 
@@ -192,9 +198,9 @@ export const StrapiProvider = ({ children }) => {
             console.log(`Nenhuma mudança detectada para: ${item.codigofilial}`);
           }
         } else {
-          console.log(`Inserindo novo registro: ${item.codigofilial}`);
+          console.log(`Inserindo novo registro na tabela ${tableName}: ${item.codigofilial}`);
           await db.runAsync(
-            `INSERT INTO filiais (
+            `INSERT INTO ${tableName} (
               codigofilial, nomefilial, endereco, numero, cep, bairro, nomecidade, numeroibge, uf, telefone, 
               gerente, supervisor, cnpj, horariofuncionamento, latitude, longitude, last_modified
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP);`,
@@ -220,7 +226,7 @@ export const StrapiProvider = ({ children }) => {
         }
       }
     } catch (error) {
-      console.error('Erro ao sincronizar dados com o Strapi:', error);
+      console.error(`Erro ao sincronizar dados da tabela ${tableName} com o endpoint ${endpoint}:`, error);
     }
   };
   
@@ -257,7 +263,7 @@ export const StrapiProvider = ({ children }) => {
  
   
   useEffect(() => {
-    fetchDataAndSaveToDB();
+    fetchDataAndSaveToDB('/informacoeslojas', 'filiais');
 
     configureBackgroundFetch(); //Configura o BackgroundFetch
 
