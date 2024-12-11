@@ -3,7 +3,7 @@ import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
 import { openDatabaseAsync } from 'expo-sqlite';
-import MapaLojasStyles, { darkMapStyle } from './styles/MapaLojasStyles';
+import MapaLojasStyles from './styles/MapaLojasStyles';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 
@@ -143,10 +143,15 @@ export default function MapaLojas(){
       />
       
       <MapView
+        key={isDarkMode ? 'dark' : 'light'}
         provider={MapView.PROVIDER_GOOGLE}
+        showsUserLocation={true} //Exibe o ícone de localização do usuário
+        zoomEnabled={true} //Permite zoom
+        //followUserLocation={true} //Faz o mapa seguir o usuário
+        zoomControlEnabled={true} //Exibe controles de zoom no mapa
         style={MapaLojasStyles.map}
         region={mapRegion}
-        customMapStyle={isDarkMode ? darkMapStyle : []}
+        customMapStyle={themeStyles.mapStyle}
       >
         {currentLocation && (
           <Marker

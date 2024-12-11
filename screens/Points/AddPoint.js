@@ -4,8 +4,9 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-import  AddPointStyles, { darkMapPointStyle }  from '../styles/AddPointStyles';
+import  AddPointStyles from '../styles/AddPointStyles';
 import StrapiClient from '../../services/StrapiClient';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function AddPoint() {
   //Modo escuro
@@ -41,9 +42,9 @@ export default function AddPoint() {
 
         //Obtém a localização atual do usuário
         let location = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.High,
-          timeout: 2000,
-          maximumAge: 5000,
+          accuracy: Location.Accuracy.Balanced,
+          timeout: 3000,
+          maximumAge: 1000,
         });
 
         //Define a localização atual e ajusta a região do mapa
@@ -90,9 +91,9 @@ export default function AddPoint() {
 
             try {
               //Salva o ponto como restaurante
-              await StrapiClient.post('/pontos-ifoods', {
-                data: newPoint, // Envia os dados como 'data'
-              });
+              //await StrapiClient.post('/pontos-ifoods', {
+              //  data: newPoint, // Envia os dados como 'data'
+              //});
 
               setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
               resetAddPoint();
@@ -114,9 +115,9 @@ export default function AddPoint() {
 
             try {
               //Salva o ponto como posto de combustível
-              await StrapiClient.post('/pontos-abastecimentos', {
-                data: newPoint, //Envia os dados como 'data'
-              });
+              //await StrapiClient.post('/pontos-abastecimentos', {
+              //  data: newPoint, //Envia os dados como 'data'
+              //});
 
               setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
               resetAddPoint();
@@ -144,8 +145,12 @@ export default function AddPoint() {
       <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
       {/* Mapa */}
       <MapView
+        key={isDarkMode ? 'dark' : 'light'}
         region={mapRegion}
-        customMapStyle={isDarkMode ? darkMapPointStyle : []}
+        customMapStyle={themeStyles.mapStyle}
+        showsUserLocation={true} //Exibe o ícone de localização do usuário
+        zoomEnabled={true} //Permite zoom
+        zoomControlEnabled={true} //Exibe controles de zoom no mapa
         style={AddPointStyles.map}
         onPress={(e) => {
           //Permite selecionar um ponto no mapa apenas se estiver no modo de adição
@@ -159,7 +164,7 @@ export default function AddPoint() {
           <Marker
             coordinate={currentLocation}
             title="Minha Localização"
-            pinColor="red"
+            pinColor="blue"
           />
         )}
 
@@ -169,9 +174,14 @@ export default function AddPoint() {
             key={index}
             coordinate={{ latitude: point.latitude, longitude: point.longitude }}
             title={point.description}
-            //Define a cor do marcador com base no tipo de ponto
-            pinColor={point.type === 'restaurante' ? 'orange' : 'blue'}
-          />
+          >
+            {/* Usando o ícone da biblioteca MaterialIcons */}
+            <Icon
+              name={point.type === 'restaurante' ? 'restaurant' : 'local-gas-station'}
+              size={35}
+              color={point.type === 'restaurante' ? 'red' : 'cian'}
+            />
+          </Marker>
         ))}
 
         {/* Marker para o ponto selecionado */}

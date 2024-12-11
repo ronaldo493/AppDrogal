@@ -16,8 +16,106 @@ const darkTheme = {
     screenBackground: '#101010',
 };
 
+//Estilo do mapa Escuro
+export const darkMapStyle  = [
+    {
+        elementType: 'geometry', //Altera o fundo do mapa.
+        stylers: [{ color: '#1d1d1d' }], //Cor de fundo mais suave e escura, para uma aparência menos agressiva.
+      },
+      {
+        elementType: 'labels.icon', //Controla ícones de rótulos no mapa.
+        stylers: [{ visibility: 'off' }], //Esconde os ícones.
+      },
+      {
+        elementType: 'labels.text.fill', //Altera a cor do texto dos rótulos.
+        stylers: [{ color: '#b0b0b0' }], //Texto em um cinza mais claro, para maior contraste.
+      },
+      {
+        elementType: 'labels.text.stroke', //Adiciona um contorno ao texto.
+        stylers: [{ color: '#1d1d1d' }], //Contorno do texto em cinza escuro, combinando com o fundo.
+      },
+      {
+        featureType: 'administrative.land_parcel', //Estilo para áreas administrativas.
+        elementType: 'labels.text.fill', //Altera a cor do texto para essas áreas.
+        stylers: [{ color: '#b0b0b0' }], //Cinza claro para o texto das áreas administrativas.
+      },
+      {
+        featureType: 'poi', //Estilo para pontos de interesse (POIs).
+        elementType: 'labels.text.fill', //Altera a cor do texto dos POIs.
+        stylers: [{ color: '#8d8d8d' }], //Cinza médio para pontos de interesse, proporcionando uma leve distinção.
+      },
+      {
+        featureType: 'road', //Estilo para estradas.
+        elementType: 'geometry', //Altera a aparência das estradas.
+        stylers: [{ color: '#555555' }], //Estradas com um tom de cinza mais claro, mas ainda suave.
+      },
+      {
+        featureType: 'road', //Estilo para estradas novamente.
+        elementType: 'labels.text.fill', //Altera a cor do texto das estradas.
+        stylers: [{ color: '#ffffff' }], //Texto das estradas em branco, destacando-se do fundo escuro.
+      },
+      {
+        featureType: 'water', //Estilo para corpos d'água.
+        elementType: 'geometry', //Altera a aparência da água.
+        stylers: [{ color: '#2c3e50' }], //Água com um tom de azul escuro, criando contraste suave e agradável.
+      },
+  ];
+  
+  //Estilo do mapa Claro
+  export const lightMapStyle = [
+    {
+        elementType: 'geometry', //Altera o fundo do mapa.
+        stylers: [{ color: '#f4f8f4' }], //Fundo suave, mais próximo de um verde claro.
+      },
+      {
+        elementType: 'labels.icon', //Controla ícones de rótulos no mapa.
+        stylers: [{ visibility: 'off' }], //Esconde os ícones.
+      },
+      {
+        elementType: 'labels.text.fill', //Altera a cor do texto dos rótulos.
+        stylers: [{ color: '#4b8b3f' }], //Verde vibrante para o texto, com bom contraste.
+      },
+      {
+        elementType: 'labels.text.stroke', //Adiciona um contorno ao texto.
+        stylers: [{ color: '#f4f8f4' }], //Contorno sutil, combinando com o fundo.
+      },
+      {
+        featureType: 'administrative.land_parcel', //Estilo para áreas administrativas.
+        elementType: 'labels.text.fill', //Altera a cor do texto para essas áreas.
+        stylers: [{ color: '#4d7031' }], //Verde oliva suave para áreas administrativas.
+      },
+      {
+        featureType: 'poi', //Estilo para pontos de interesse (POIs).
+        elementType: 'labels.text.fill', //Altera a cor do texto dos POIs.
+        stylers: [{ color: '#567f3b' }], //Verde musgo, criando uma distinção sutil.
+      },
+      {
+        featureType: 'road', //Estilo para estradas.
+        elementType: 'geometry', //Altera a aparência das estradas.
+        stylers: [{ color: '#cfe8c6' }], //Estradas de um verde suave e delicado.
+      },
+      {
+        featureType: 'road', //Estilo para estradas novamente.
+        elementType: 'labels.text.fill', //Altera a cor do texto das estradas.
+        stylers: [{ color: '#3a5c37' }], //Texto das estradas em verde escuro, destacando-se suavemente.
+      },
+      {
+        featureType: 'water', //Estilo para corpos d'água.
+        elementType: 'geometry', //Altera a aparência da água.
+        stylers: [{ color: '#a1c9a7' }], //Água com um tom de verde-água suave.
+      },
+      {
+        featureType: 'river', //Estilo específico para rios.
+        elementType: 'geometry', //Altera a aparência dos rios.
+        stylers: [{ color: '#75a7b4' }], //Rio em tom de azul suave para destacar.
+      },
+  ];
+
 export const getThemeStyles = (isDarkMode) =>
     StyleSheet.create({
+        //MAPAS
+        mapStyle: isDarkMode ? darkMapStyle : lightMapStyle,
+
         //SIDEBAR
         sidebar: {
             backgroundColor: isDarkMode ? darkTheme.sidebar : lightTheme.sidebar,

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { openDatabaseAsync } from 'expo-sqlite';
 import { fetchPaginatedData } from '../services/StrapiClient';
+import { initDB } from '../data/db';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
@@ -11,55 +11,6 @@ const BACKGROUND_FETCH_TASK = 'background-fetch-task';
 const StrapiContext = createContext();
 
 export const useStrapi = () => useContext(StrapiContext);
-
-//Inicializa o banco de dados e cria as tabelas, se ainda não existirem
-const initDB = async () => {
-  try {
-    const db = await openDatabaseAsync('DataStrapi.db'); //Abre o banco de dados
-    console.log('Banco de dados aberto com sucesso:', db);
-
-    // Verifica se a tabela já existe
-    const tableExists = await db.getAllAsync(`
-      SELECT name 
-      FROM sqlite_master 
-      WHERE type='table' AND name='filiais';
-    `);
-
-    if (tableExists.length === 0) {
-      // Cria a tabela se não existir
-      await db.execAsync(`
-        PRAGMA journal_mode = WAL;
-        CREATE TABLE filiais (
-          codigofilial INTEGER PRIMARY KEY,
-          nomefilial TEXT,
-          endereco TEXT,
-          numero TEXT,
-          cep TEXT,
-          bairro TEXT,
-          nomecidade TEXT,
-          numeroibge TEXT,
-          uf TEXT,
-          telefone TEXT,
-          gerente TEXT,
-          supervisor TEXT,
-          cnpj TEXT,
-          horariofuncionamento TEXT,
-          latitude TEXT,
-          longitude TEXT,
-          last_modified TEXT DEFAULT CURRENT_TIMESTAMP
-        );
-      `);
-      console.log('Tabela de filiais criada com sucesso!');
-    } else {
-      console.log('Tabela de filiais já existe, não será recriada.');
-    }
-
-    return db; // Retorna o objeto db para uso posterior
-  } catch (error) {
-    console.error('Erro ao abrir ou inicializar o banco de dados:', error);
-    throw error; // Propaga o erro para o chamador
-  }
-};
 
 //Função para salvar ou atualizar dados no banco
 const saveDataToDB = async (db, tableName, data) => {

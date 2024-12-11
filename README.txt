@@ -46,6 +46,10 @@ screens/
 
 	Chamados.js:  Em desenvolvimento.
 
+	Points/
+		AddPoint.js: Tela onde o usuário pode adicionar pontos de interesse, como restaurantes ou postos de combustíveis, que aceitam cartões Alelo Refeição e Ticket Car. o ponto é adicionado 
+		ao banco de dados local e no strapi. Essa tela também se adapta ao modo claro ou escuro, conforme as preferências do usuário.
+
 	Settings/
 		Settings.js: A tela Settings permite ao usuário ajustar as configurações do aplicativo. Ela apresenta um título 
 		"CONFIGURAÇÕES" e contém uma opção para ativar ou desativar o modo escuro usando um interruptor (Switch). 
@@ -93,7 +97,9 @@ screens/
 		Assim, você tem um sistema hierárquico: uma tela mostra uma categoria, a outra mostra a seção dessa categoria, 
 		e a última mostra o item individual dentro dessa seção.
 
-
+data/db/
+	Armazena o banco de dados local do aplicativo, geralmente em SQLite, para garantir que os dados, como filiais, rotas e históricos, sejam persistentes, mesmo sem conexão com 
+	a internet. Permite um acesso mais rápido aos dados e evita chamadas constantes à API.
 
 services/
 	MapService.js: O MapService é um módulo que fornece funções para abrir rotas em aplicativos de navegação. 
