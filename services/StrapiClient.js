@@ -73,7 +73,7 @@ export const fetchPaginatedData = async (endpoint, pageSize = 100) => {
   try {
     //Enquanto houver mais dados para buscar
     while (hasMore) {
-      const response = await apiClient.get(endpoint, {
+      const response = await connection.get(endpoint, {
         params: {
           pagination: {
             page,

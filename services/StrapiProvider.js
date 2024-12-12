@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { fetchPaginatedData } from '../services/StrapiClient';
-import { initDB } from '../data/db';
+import { initDB, saveDataToDB } from '../data/db';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
@@ -12,77 +12,34 @@ const StrapiContext = createContext();
 
 export const useStrapi = () => useContext(StrapiContext);
 
-//Função para salvar ou atualizar dados no banco
-const saveDataToDB = async (db, tableName, data) => {
-  try {
-    //Loop pelos dados
-    for (const item of data) {
-      //Executa a inserção diretamente com runAsync
-      await db.runAsync(
-        `INSERT OR REPLACE INTO ${tableName} (codigofilial, nomefilial, endereco, numero, cep, bairro, nomecidade, numeroibge, uf, telefone, gerente, supervisor, cnpj, horariofuncionamento, latitude, longitude)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
-        [
-          item.codigofilial,
-          item.nomefilial,
-          item.endereco,
-          item.numero,
-          item.cep || null,
-          item.bairro || null,
-          item.nomecidade || null,
-          item.numeroibge,
-          item.uf,
-          item.telefone,
-          item.gerente || null,
-          item.supervisor || null,
-          item.cnpj || null,
-          item.horariofuncionamento || null,
-          item.latitude || null,
-          item.longitude || null,
-        ]
-      );
-
-      console.log(`Dados salvos na tabela '${tableName}' com sucesso:`, item.codigofilial);
-    }
-
-    // //Obtém todos os dados da tabela filiais e exibe no console
-    //const teste = await db.getAllAsync("SELECT * FROM filiais");
-    //console.log("Dados atuais na tabela 'filiais':", teste);
-
-
-  } catch (error) {
-    console.error("Erro ao salvar dados no banco de dados:", error.message);
-  }
-};
-
 //Componente do provider
 export const StrapiProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false); //Estado para controle do registro da tarefa
 
   //FUNÇÃO PARA BAIXAR TODAS AS LOJAS NO PRIMEIRO CARREGAMENTO DO COMPONENTE
-  const fetchDataAndSaveToDB = async (endpoint, tableName) => {
+  const fetchDataAndSaveToDB = async (configs) => {
     try {
-      //Verifica se os dados já foram carregados
-      const hasLoadedData = await AsyncStorage.getItem(`hasLoadedData_${tableName}`);
+      const db = await initDB(); //Inicializa o banco de dados
 
-      if(!hasLoadedData){
-        const db = await initDB(); //Inicializa o banco de dados
-        const filiais = await fetchPaginatedData(endpoint); //Busca os dados
-        console.log("Dados recebidos com sucesso");
-        await saveDataToDB(db, tableName, filiais); //Salva os dados no banco
+      for (const { endpoint, tableName, columns } of configs) {
+        const hasLoadedData = await AsyncStorage.getItem(`hasLoadedData_${tableName}`);
 
-        //Verifica os dados após o salvamento
-        //const savedData = await db.getAllAsync("SELECT * FROM filiais");
-        //console.log("Dados após salvamento:", savedData);
+        if (!hasLoadedData) {
+          const dataFromStrapi = await fetchPaginatedData(endpoint); //Busca os dados
+          //console.log(`Dados recebidos do endpoint ${endpoint} para a tabela ${tableName}`);
+          await saveDataToDB(db, tableName, dataFromStrapi, columns); //Salva os dados no banco
 
-        setData(filiais); //Guarda os dados no estado
+          setData((prevData) => ({
+            ...prevData,
+            [tableName]: dataFromStrapi,
+          })); //Atualiza o estado
 
-        //Armazena no AsyncStorage que os dados foram carregados
-        await AsyncStorage.setItem(`hasLoadedData_${tableName}`, 'true');
+          await AsyncStorage.setItem(`hasLoadedData_${tableName}`, 'true'); //Marca como carregado
+        }
       }
-      
     } catch (error) {
-      console.error(`Erro ao buscar ou salvar dados para a tabela ${tableName}:`, error);
+      console.error('Erro ao buscar ou salvar dados no banco:', error);
     }
   };
 
@@ -204,7 +161,13 @@ export const StrapiProvider = ({ children }) => {
   TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
     try {
       console.log('Background Fetch acionado');
-      await syncDataWithStrapi();
+      const tableConfigs = [
+        { endpoint: '/informacoeslojas', tableName: 'filiais' },
+        //{ endpoint: '/chamados', tableName: 'chamados' },
+        { endpoint: '/pontos-ifoods', tableName: 'pontosIfoods' },
+        { endpoint: '/pontos-abastecimentos', tableName: 'pontosAbastecimentos' },
+      ];
+      await syncDataWithStrapi(tableConfigs);
       BackgroundFetch.finish(BackgroundFetch.BackgroundFetchResult.NewData);  //Marca a tarefa como concluída com sucesso
     } catch (error) {
       console.error('Erro no Background Fetch', error);
@@ -214,9 +177,45 @@ export const StrapiProvider = ({ children }) => {
  
   
   useEffect(() => {
-    fetchDataAndSaveToDB('/informacoeslojas', 'filiais');
+    const tableConfigs = [
+      {
+        endpoint: '/informacoeslojas',
+        tableName: 'filiais',
+        columns: [
+          'codigofilial', 'nomefilial', 'endereco', 'numero', 'cep', 'bairro',
+          'nomecidade', 'numeroibge', 'uf', 'telefone', 'gerente', 'supervisor',
+          'cnpj', 'horariofuncionamento', 'latitude', 'longitude',
+        ],
+      },
+      //{
+        //endpoint: '/chamados',
+        //tableName: 'chamados',
+        //columns: [
+          //'id', 'sequencia', 'situacao', 'descricaosituacao', 'usuarioabertura', 
+          //'nomeabertura', 'setorabertura', 'descricaosetorabertura', 
+          //'usuarioresponsavel', 'nomeresponsavel', 'setor', 'descricaosetorresponsavel',
+          //'titulo', 'descricao', 'filial', 'nomefilial', 'dataabertura',
+        //],
+      //},
+      {
+        endpoint: '/pontos-ifoods',
+        tableName: 'pontosIfoods',
+        columns: [
+          'latitude', 'longitude', 'descricao',
+        ],
+      },
+      {
+        endpoint: '/pontos-abastecimentos',
+        tableName: 'pontosAbastecimentos',
+        columns: [
+          'latitude', 'longitude', 'descricao',
+        ],
+      },
+    ];
 
-    configureBackgroundFetch(); //Configura o BackgroundFetch
+    fetchDataAndSaveToDB(tableConfigs);
+
+    configureBackgroundFetch(tableConfigs); //Configura o BackgroundFetch
 
     return () => {
       BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa ao desmontar o componente

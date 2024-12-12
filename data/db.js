@@ -72,7 +72,41 @@ const createChamadosTable = async (db) => {
   }
 };
 
-// Função para inicializar o banco de dados e criar as tabelas
+//Função para criar a tabela de pontosIfoods
+const createPontosIfoodsTable = async (db) => {
+  try {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS pontosIfoods (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        latitude TEXT,
+        longitude TEXT,
+        descricao TEXT
+      );
+    `);
+    console.log('Tabela pontosIfoods criada com sucesso!');
+  } catch (error) {
+    console.error('Erro ao criar tabela pontos:', error);
+  }
+};
+
+//Função para criar a tabela de pontosAbastecimentos
+const createPontosAbastecimentosTable = async (db) => {
+  try {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS pontosAbastecimentos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        latitude TEXT,
+        longitude TEXT,
+        descricao TEXT
+      );
+    `);
+    console.log('Tabela pontosAbastecimentos criada com sucesso!');
+  } catch (error) {
+    console.error('Erro ao criar tabela pontos:', error);
+  }
+};
+
+//Função para inicializar o banco de dados e criar as tabelas
 export const initDB = async () => {
   try {
     const db = await openDatabaseAsync('DataStrapi.db'); //Abre o banco de dados
@@ -81,11 +115,39 @@ export const initDB = async () => {
     //Criação das tabelas
     await createFiliaisTable(db);
     await createChamadosTable(db);
+    await createPontosIfoodsTable(db);
+    await createPontosAbastecimentosTable(db);
 
     return db; //Retorna o objeto db para uso posterior
   } catch (error) {
     console.error('Erro ao abrir ou inicializar o banco de dados:', error);
     throw error; //Propaga o erro para o chamador
+  }
+};
+
+//Função genérica para salvar ou atualizar dados no banco
+export const saveDataToDB = async (db, tableName, data, columns) => {
+  try {
+    //Monta a string de colunas e os placeholders (?)
+    const columnNames = columns.join(', ');
+    const placeholders = columns.map(() => '?').join(', ');
+
+    //Monta a query SQL genérica
+    const query = `INSERT OR REPLACE INTO ${tableName} (${columnNames}) VALUES (${placeholders});`;
+
+    //Loop pelos dados
+    for (const item of data) {
+      //Cria um array com os valores nas mesmas posições das colunas
+      const values = columns.map((col) => item[col] || null);
+
+      //Executa a inserção diretamente com runAsync
+      await db.runAsync(query, values);
+
+      console.log(`Dados salvos na tabela '${tableName}' com sucesso:`);
+    }
+
+  } catch (error) {
+    console.error(`Erro ao salvar dados na tabela '${tableName}':`, error.message);
   }
 };
 

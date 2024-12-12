@@ -4,6 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
+import { openDatabaseAsync } from 'expo-sqlite';
 import  AddPointStyles from '../styles/AddPointStyles';
 import { ApiService } from '../../services/StrapiClient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -21,7 +22,7 @@ export default function AddPoint() {
     longitudeDelta: 0.1,
   });
 
-
+  const [db, setDb] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null); //Estado para armazenar a localização atual do usuário
   const [selectedPoint, setSelectedPoint] = useState(null); //Estado para armazenar o ponto selecionado pelo usuário
   const [description, setDescription] = useState(''); //Estado para armazenar a descrição do ponto
@@ -42,7 +43,7 @@ export default function AddPoint() {
 
         //Obtém a localização atual do usuário
         let location = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.Balanced,
+          accuracy: Location.Accuracy.High,
           timeout: 3000,
           maximumAge: 1000,
         });
@@ -65,6 +66,44 @@ export default function AddPoint() {
 
     getLocation();
   }, []);
+
+  //Função para abrir o banco de dados
+  const openDatabase = async () => {
+    try {
+      const database = await openDatabaseAsync('DataStrapi.db');
+      console.log('Banco de dados aberto com sucesso:', database);
+      setDb(database); //Armazena o banco de dados no estado
+      fetchPoints(database);  //Chama a função para buscar os pontos ao abrir o banco
+    } catch (error) {
+      console.error('Erro ao abrir o banco de dados:', error);
+    }
+  };
+  
+  //Função para buscar pontos das tabelas pontosIfoods e pontosAbastecimentos
+  const fetchPoints = async (db) => {
+    try {
+      //Buscando pontos dos restaurantes
+      const ifoodPoints = await db.getAllAsync('SELECT * FROM pontosIfoods');
+      //Buscando pontos dos postos de combustíveis
+      const abastecimentoPoints = await db.getAllAsync('SELECT * FROM pontosAbastecimentos');
+
+      //Adiciona o tipo 'restaurante' ou 'posto' aos pontos
+      const pointsWithTypes = [
+        ...ifoodPoints.map((point) => ({ ...point, type: 'restaurante' })),
+        ...abastecimentoPoints.map((point) => ({ ...point, type: 'posto' })),
+      ];
+      
+      //Atualiza o estado com todos os pontos
+      setPoints(pointsWithTypes);
+    } catch (error) {
+      console.error('Erro ao buscar pontos no banco de dados:', error);
+    }
+  };
+
+  useEffect(() => {
+    openDatabase(); 
+  }, []);
+  
 
   //Função para salvar um ponto
   const savePoint = async () => {
@@ -91,11 +130,18 @@ export default function AddPoint() {
             console.log('Dados enviados:', newPoint);
 
             try {
+              //Adicionar no Strapi
               const response = await ApiService.post('/pontos-ifoods', {
                 data: newPoint,
               });
 
               console.log('Resposta da API:', response.data);
+
+              //Adicionar ao banco local
+              await db.runAsync(
+                'INSERT INTO pontosIfoods (latitude, longitude, descricao) VALUES (?, ?, ?)',
+                [newPoint.latitude, newPoint.longitude, newPoint.descricao]
+              );
             
               setPoints([...points, { ...newPoint, type: 'restaurante' }]); //Atualiza o estado com o novo ponto
               resetAddPoint();
@@ -116,11 +162,18 @@ export default function AddPoint() {
             console.log('Dados enviados:', newPoint);
 
             try {
+              //Adicionar no Strapi
               const response = await ApiService.post('/pontos-abastecimentos', {
                 data: newPoint,
               });
 
-            console.log('Resposta da API:', response.data);
+              console.log('Resposta da API:', response.data);
+
+              //Adicionar ao banco local
+              await db.runAsync(
+                'INSERT INTO pontosAbastecimentos (latitude, longitude, descricao) VALUES (?, ?, ?)',
+                [newPoint.latitude, newPoint.longitude, newPoint.descricao]
+              );
 
               setPoints([...points, { ...newPoint, type: 'posto' }]); //Atualiza o estado com o novo ponto
               resetAddPoint();
@@ -195,8 +248,8 @@ export default function AddPoint() {
           >
             {/* Usando o ícone da biblioteca MaterialIcons */}
             <Icon
-              name={point.type === 'restaurante' ? 'restaurant' : 'local-gas-station'}
-              size={40}
+              name={point.type === 'restaurante' ? 'fastfood' : 'local-gas-station'}
+              size={35}
               color={getColor(point.type)}
             />
           </Marker>
