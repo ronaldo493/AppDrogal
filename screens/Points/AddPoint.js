@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import { useTheme } from '../../components/ThemeContext'; 
 import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
 import  AddPointStyles from '../styles/AddPointStyles';
-import StrapiClient from '../../services/StrapiClient';
+import { ApiService } from '../../services/StrapiClient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function AddPoint() {
@@ -83,19 +83,21 @@ export default function AddPoint() {
           text: 'Restaurante',
           onPress: async () => {
             const newPoint = {
-              latitude: selectedPoint.latitude,
-              longitude: selectedPoint.longitude,
-              description,
-              type: 'restaurante',
+              latitude: selectedPoint.latitude.toString(),
+              longitude: selectedPoint.longitude.toString(),
+              descricao: description,
             };
 
-            try {
-              //Salva o ponto como restaurante
-              //await StrapiClient.post('/pontos-ifoods', {
-              //  data: newPoint, // Envia os dados como 'data'
-              //});
+            console.log('Dados enviados:', newPoint);
 
-              setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
+            try {
+              const response = await ApiService.post('/pontos-ifoods', {
+                data: newPoint,
+              });
+
+              console.log('Resposta da API:', response.data);
+            
+              setPoints([...points, { ...newPoint, type: 'restaurante' }]); //Atualiza o estado com o novo ponto
               resetAddPoint();
             } catch (error) {
               console.error('Erro ao salvar ponto como Restaurante:', error);
@@ -107,19 +109,20 @@ export default function AddPoint() {
           text: 'Posto de Combustível',
           onPress: async () => {
             const newPoint = {
-              latitude: selectedPoint.latitude,
-              longitude: selectedPoint.longitude,
-              description,
-              type: 'posto',
+              latitude: selectedPoint.latitude.toString(),
+              longitude: selectedPoint.longitude.toString(),
+              descricao: description,
             };
+            console.log('Dados enviados:', newPoint);
 
             try {
-              //Salva o ponto como posto de combustível
-              //await StrapiClient.post('/pontos-abastecimentos', {
-              //  data: newPoint, //Envia os dados como 'data'
-              //});
+              const response = await ApiService.post('/pontos-abastecimentos', {
+                data: newPoint,
+              });
 
-              setPoints([...points, newPoint]); //Atualiza o estado com o novo ponto
+            console.log('Resposta da API:', response.data);
+
+              setPoints([...points, { ...newPoint, type: 'posto' }]); //Atualiza o estado com o novo ponto
               resetAddPoint();
             } catch (error) {
               console.error('Erro ao salvar ponto como Posto de Combustível:', error);
@@ -139,6 +142,15 @@ export default function AddPoint() {
     setSelectedPoint(null); //Remove o ponto selecionado
     setDescription(''); //Limpa a descrição
   };
+
+  //Função para cor dos icones de acordo com o tipo
+  const getColor = (pointType) => {
+    if (pointType === 'restaurante') {
+      return isDarkMode ? 'red' : 'red';
+    } else {
+      return isDarkMode ? 'orange' : 'green';
+    }
+    };
 
   return (
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
@@ -162,7 +174,10 @@ export default function AddPoint() {
         {/* Marker para a localização atual */}
         {currentLocation && (
           <Marker
-            coordinate={currentLocation}
+            coordinate={{
+              latitude: Number(currentLocation.latitude),
+              longitude: Number(currentLocation.longitude),
+            }}
             title="Minha Localização"
             pinColor="blue"
           />
@@ -172,14 +187,17 @@ export default function AddPoint() {
         {points.map((point, index) => (
           <Marker
             key={index}
-            coordinate={{ latitude: point.latitude, longitude: point.longitude }}
-            title={point.description}
+            coordinate={{
+              latitude: Number(point.latitude),
+              longitude: Number(point.longitude),
+            }}
+            title={point.descricao}
           >
             {/* Usando o ícone da biblioteca MaterialIcons */}
             <Icon
               name={point.type === 'restaurante' ? 'restaurant' : 'local-gas-station'}
-              size={35}
-              color={point.type === 'restaurante' ? 'red' : 'cian'}
+              size={40}
+              color={getColor(point.type)}
             />
           </Marker>
         ))}
@@ -187,7 +205,10 @@ export default function AddPoint() {
         {/* Marker para o ponto selecionado */}
         {selectedPoint && isPontoAdd && (
           <Marker
-            coordinate={selectedPoint}
+            coordinate={{
+              latitude: Number(selectedPoint.latitude),
+              longitude: Number(selectedPoint.longitude),
+            }}
             title="Novo Ponto"
             pinColor="red"
           />

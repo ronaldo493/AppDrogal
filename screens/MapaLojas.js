@@ -167,7 +167,7 @@ export default function MapaLojas(){
           const longitude = parseFloat(filial.longitude);
 
           //Log para verificar o tipo de dado
-          console.log(`Filial: ${filial.codigofilial}, latitude: ${typeof latitude}, longitude: ${typeof longitude}`);
+          //console.log(`Filial: ${filial.codigofilial}, latitude: ${typeof latitude}, longitude: ${typeof longitude}`);
 
           //Verifica se ambos são números válidos
           if (!isNaN(latitude) && !isNaN(longitude)) {

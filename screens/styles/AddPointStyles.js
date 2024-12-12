@@ -27,7 +27,7 @@ const AddPointStyles = StyleSheet.create({
       margin: 15,
     },
     buttonContainer: {
-      flex: 1, // Faz com que os botões ocupem o mesmo espaços
+      flex: 1,
     },
     btnFinal: {
       paddingVertical: 9,
