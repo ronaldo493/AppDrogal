@@ -1,94 +1,53 @@
-const fetchPaginatedData = require('./fetchPaginatedData'); // Importar a função de fetch (se necessário)
+import { fetchPaginatedData } from "./StrapiClient";
+import { initDB } from '../data/db';
 
-const syncDataWithStrapi = async (endpoint, tableName, db) => {
+// Função para atualizar ou inserir dados do Strapi na tabela local
+export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns) => {
   try {
-    // Obtém os dados do Strapi (página de informações)
+    const db = await initDB();
     const strapiData = await fetchPaginatedData(endpoint);
 
-    // Para cada item retornado do Strapi
     for (const item of strapiData) {
-      // Para tabelas que possuem codigofilial
-      if (tableName === 'filiais' || tableName === 'chamados') {
-        // Verifica se já existe um registro local com o codigofilial
-        const localData = await db.getAllAsync(`SELECT * FROM ${tableName} WHERE codigofilial = ?;`, [item.codigofilial]);
+      // Busca dados locais para verificar se o registro já existe
+      const localData = await db.getAllAsync(`SELECT * FROM ${tableName} WHERE ${keyField} = ?;`, [item[keyField]]);
 
-        if (localData && localData.length > 0) {
-          const localItem = localData[0];
-          const differences = Object.keys(item).filter((key) => {
-            if (!(key in localItem)) return false;
-            return JSON.stringify(item[key]) !== JSON.stringify(localItem[key]);
-          });
+      if (localData && localData.length > 0) {
+        const localItem = localData[0];
 
-          if (differences.length > 0) {
-            console.log(`Mudanças detectadas para ${item.codigofilial} na tabela ${tableName}:`, differences);
+        // Compara os dados para verificar se houve mudança
+        const differences = Object.keys(item).filter((key) => {
+          if (!(key in localItem)) return false;
+          const itemValue = item[key];
+          const localValue = localItem[key];
+          return JSON.stringify(itemValue) !== JSON.stringify(localValue);
+        });
 
-            const updateFields = differences.map(field => `${field} = ?`).join(', ');
-            const updateValues = differences.map(field => item[field]);
+        // Se houver mudanças, faz o UPDATE
+        if (differences.length > 0) {
+          console.log(`Mudanças detectadas para ${item[keyField]} na tabela ${tableName}:`, differences);
 
-            updateValues.push(item.codigofilial);
-
-            await db.runAsync(
-              `UPDATE ${tableName} SET ${updateFields}, last_modified = CURRENT_TIMESTAMP WHERE codigofilial = ?;`,
-              updateValues
-            );
-          } else {
-            console.log(`Nenhuma mudança detectada para: ${item.codigofilial}`);
-          }
-        } else {
-          console.log(`Inserindo novo registro na tabela ${tableName}: ${item.codigofilial}`);
-          
-          const columns = Object.keys(item).join(', ');
-          const placeholders = Object.keys(item).map(() => '?').join(', ');
-          const values = Object.values(item);
+          const updateColumns = columns.filter(column => column !== 'last_modified');
+          const updateValues = updateColumns.map(column => item[column] || null);
 
           await db.runAsync(
-            `INSERT INTO ${tableName} (${columns}, last_modified) VALUES (${placeholders}, CURRENT_TIMESTAMP);`,
-            values
+            `UPDATE ${tableName} SET ${updateColumns.map(col => `${col} = ?`).join(', ')}, last_modified = CURRENT_TIMESTAMP WHERE ${keyField} = ?;`,
+            [...updateValues, item[keyField]]
           );
+          console.log(`Registro atualizado na tabela ${tableName}: ${item[keyField]}`);
+        } else {
+          console.log(`Nenhuma mudança detectada para: ${tableName} ${item[keyField]}`);
         }
       } else {
-        // Para tabelas sem codigofilial (como pontosIfoods e pontosAbastecimentos)
-        const localData = await db.getAllAsync(`SELECT * FROM ${tableName} WHERE latitude = ? AND longitude = ?;`, [item.latitude, item.longitude]);
-
-        if (localData && localData.length > 0) {
-          const localItem = localData[0];
-          const differences = Object.keys(item).filter((key) => {
-            if (!(key in localItem)) return false;
-            return JSON.stringify(item[key]) !== JSON.stringify(localItem[key]);
-          });
-
-          if (differences.length > 0) {
-            console.log(`Mudanças detectadas para ponto em (${item.latitude}, ${item.longitude}) na tabela ${tableName}:`, differences);
-
-            const updateFields = differences.map(field => `${field} = ?`).join(', ');
-            const updateValues = differences.map(field => item[field]);
-
-            updateValues.push(item.latitude, item.longitude);
-
-            await db.runAsync(
-              `UPDATE ${tableName} SET ${updateFields}, last_modified = CURRENT_TIMESTAMP WHERE latitude = ? AND longitude = ?;`,
-              updateValues
-            );
-          } else {
-            console.log(`Nenhuma mudança detectada para: (${item.latitude}, ${item.longitude})`);
-          }
-        } else {
-          console.log(`Inserindo novo ponto na tabela ${tableName}: (${item.latitude}, ${item.longitude})`);
-
-          const columns = Object.keys(item).join(', ');
-          const placeholders = Object.keys(item).map(() => '?').join(', ');
-          const values = Object.values(item);
-
-          await db.runAsync(
-            `INSERT INTO ${tableName} (${columns}, last_modified) VALUES (${placeholders}, CURRENT_TIMESTAMP);`,
-            values
-          );
-        }
+        // Se o registro não existir, faz a inserção
+        console.log(`Inserindo novo registro na tabela ${tableName}: ${item[keyField]}`);
+        await db.runAsync(
+          `INSERT INTO ${tableName} (${columns.join(', ')}, last_modified) VALUES (${columns.map(() => '?').join(', ')}, CURRENT_TIMESTAMP);`,
+          [...columns.map(column => item[column] || null)]
+        );
+        console.log(`Registro inserido na tabela ${tableName}: ${item[keyField]}`);
       }
     }
   } catch (error) {
     console.error(`Erro ao sincronizar dados da tabela ${tableName} com o endpoint ${endpoint}:`, error);
   }
 };
-
-module.exports = syncDataWithStrapi;

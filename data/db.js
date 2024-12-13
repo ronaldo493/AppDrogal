@@ -63,7 +63,8 @@ const createChamadosTable = async (db) => {
         codigocategoria INTEGER,
         categoriachamado TEXT,
         dataultimainteracaoaguardandofinalizacao TEXT,
-        dataprimeirainteracaoaguardandofinalizacao TEXT
+        dataprimeirainteracaoaguardandofinalizacao TEXT,
+        last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
     console.log('Tabela chamados criada com sucesso!');
@@ -80,7 +81,8 @@ const createPontosIfoodsTable = async (db) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         latitude TEXT,
         longitude TEXT,
-        descricao TEXT
+        descricao TEXT,
+        last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
     console.log('Tabela pontosIfoods criada com sucesso!');
@@ -97,7 +99,8 @@ const createPontosAbastecimentosTable = async (db) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         latitude TEXT,
         longitude TEXT,
-        descricao TEXT
+        descricao TEXT,
+        last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
     console.log('Tabela pontosAbastecimentos criada com sucesso!');
