@@ -117,22 +117,22 @@ export const StrapiProvider = ({ children }) => {
 
     fetchDataAndSaveToDB(tableConfigs);
 
-    // configureBackgroundFetch(tableConfigs); //Configura o BackgroundFetch
+    configureBackgroundFetch(tableConfigs); //Configura o BackgroundFetch
 
-    // return () => {
-    //   BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa ao desmontar o componente
-    // };
+    return () => {
+      BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa ao desmontar o componente
+    };
 
-    //Testar a função syncDataWithStrapi a cada 1 minuto
-    const intervalId = setInterval(async () => {
-      for (const config of tableConfigs) {
-        const { endpoint, tableName, keyField, columns } = config;
-        console.log(`Sincronizando dados da tabela ${tableName}...`);
-        await syncDataWithStrapi(endpoint, tableName, keyField, columns);
-      }
-    }, 20000); // 60000 ms = 1 minuto
+    // //Testar a função syncDataWithStrapi a cada 1 minuto
+    // const intervalId = setInterval(async () => {
+    //   for (const config of tableConfigs) {
+    //     const { endpoint, tableName, keyField, columns } = config;
+    //     console.log(`Sincronizando dados da tabela ${tableName}...`);
+    //     await syncDataWithStrapi(endpoint, tableName, keyField, columns);
+    //   }
+    // }, 20000); // 60000 ms = 1 minuto
 
-    return () => clearInterval(intervalId); // Limpa o intervalo quando o componente for desmontado
+    // return () => clearInterval(intervalId); // Limpa o intervalo quando o componente for desmontado
   }, []);
 
   return (
