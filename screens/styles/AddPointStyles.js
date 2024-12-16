@@ -10,7 +10,7 @@ const AddPointStyles = StyleSheet.create({
       marginBottom: 10,
     },
     title: {
-      fontSize: 18,
+      fontSize: 16,
       padding: 15,
       margin: 8,
       textAlign: 'center',

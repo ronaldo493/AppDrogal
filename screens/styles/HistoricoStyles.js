@@ -8,7 +8,7 @@ const HistoricoStyles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: '6%',

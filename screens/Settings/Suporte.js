@@ -13,7 +13,7 @@ export default function Suporte ({navigation}){
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={SuporteStyles.scrollContainer}>
       <View style={[SuporteStyles.container,themeStyles.screenBackground]}>
-        <Text style={[SuporteStyles.title, themeStyles.text]}>Suporte</Text>
+        <Text style={[SuporteStyles.title, themeStyles.text]}>SUPORTE</Text>
         <Text style={[SuporteStyles.tipTextObs, themeStyles.textImp]}>
           OBS: Para o perfeito funcionamento do aplicativo é preciso estar ativado a localização do celular.
               Por padrão o waze não consegue gerar várias rotas ao mesmo tempo. Caso precise gerar várias rotas, use o Google Maps.

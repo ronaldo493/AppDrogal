@@ -13,7 +13,9 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderBottomColor: '#ccc',
   },
-
+  text: {
+    fontSize: 14,
+  },
   buttonContainer: {
     marginTop: 10,
   }

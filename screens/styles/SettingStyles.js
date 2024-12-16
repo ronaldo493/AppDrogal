@@ -6,7 +6,7 @@ export default StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold',
     marginBottom: 70,
@@ -19,16 +19,11 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
   },
   label: {
-    fontSize: 17,
+    fontSize: 15,
   },    
   languageContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  language: {
-    fontSize: 16,
-    marginLeft: 10,
-    marginRight: 10,
   },
   footer: {
     marginTop: 'auto',

@@ -7,13 +7,13 @@ const PreventivaStyles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 18,
+        fontSize: 16,
         textAlign: 'center',
         fontWeight: 'bold',
         marginBottom: 20,
     },
     label: {
-        fontSize: 17,
+        fontSize: 14,
         marginVertical: 14,
         textAlign: 'left',
     },
@@ -34,15 +34,13 @@ const PreventivaStyles = StyleSheet.create({
     },
     //Estilo para o Checklist Renderizado
     checklistItem: {
-        fontSize: 16,
+        fontSize: 14,
         fontStyle: 'italic',
         marginVertical: 5,
-        color: '#333',
-        backgroundColor: '#f8f8f8',
-        padding: 8,
-        borderRadius: 8,
+        padding: 7,
+        borderRadius: 6,
         borderColor: '#ddd',
-        elevation: 2, 
+        elevation: 0.6, 
     },
     buttonCheckContainer: {
         width: '100%',
@@ -51,7 +49,7 @@ const PreventivaStyles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     buttonChecklist: {
-        fontSize: 16,
+        fontSize: 14,
         padding: 14,
         borderRadius: 4,
         fontWeight: 'bold',
@@ -76,7 +74,7 @@ const PreventivaStyles = StyleSheet.create({
         
     },
     modalTitle: {
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 15,
         textAlign: 'center',
         borderRadius: 6,

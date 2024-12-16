@@ -201,7 +201,7 @@ export default function AddPoint() {
     if (pointType === 'restaurante') {
       return isDarkMode ? 'red' : 'red';
     } else {
-      return isDarkMode ? 'orange' : 'green';
+      return isDarkMode ? 'white' : 'green';
     }
     };
 
@@ -249,7 +249,7 @@ export default function AddPoint() {
             {/* Usando o ícone da biblioteca MaterialIcons */}
             <Icon
               name={point.type === 'restaurante' ? 'fastfood' : 'local-gas-station'}
-              size={35}
+              size={30}
               color={getColor(point.type)}
             />
           </Marker>

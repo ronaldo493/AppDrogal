@@ -6,29 +6,29 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 15,
         textAlign: 'center',
     },
     filialText: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
     },
     optionContainer: {
         marginTop: 10,
     },
     optionButton: {
-        padding: 16,
-        marginVertical: 5,
+        padding: 14,
+        marginVertical: 4,
         alignItems: 'center',
         borderRadius: 5,
     },
     optionText: {
-        fontSize: 15,
+        fontSize: 14,
     },
     buttonSend: {
-	marginTop: '5%',
+	    marginTop: '5%',
     },
 
     //Estilo Máquina Section
@@ -59,7 +59,7 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         alignItems: "center", 
     },
     itemLabel: {
-        fontSize: 16,
+        fontSize: 14,
         flex: 1,
     },
     PatrimonioInput: {
@@ -84,7 +84,7 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         borderRadius: 10,
     },
     modalTitle: {
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 15,
         textAlign: 'center',
         borderRadius: 6,

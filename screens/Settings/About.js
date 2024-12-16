@@ -11,7 +11,7 @@ export default function About({navigation}) {
 
   return (
     <View style={[AboutStyles.container, themeStyles.screenBackground]}>
-      <Text style={[AboutStyles.title, themeStyles.text]}>Sobre o Aplicativo</Text>
+      <Text style={[AboutStyles.title, themeStyles.text]}>SOBRE O APLICATIVO</Text>
 
       <Text style={[AboutStyles.text, themeStyles.text]}>
         Este aplicativo foi desenvolvido para facilitar o trabalho dos colaboradores que realizam

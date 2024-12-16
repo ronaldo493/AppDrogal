@@ -99,7 +99,7 @@ export default function Preventiva (){
                  style={[PreventivaStyles.closeButton, themeStyles.buttonModal]}
                 onPress={() => setShowModal(false)}
               >
-                <Text style={[PreventivaStyles.closeButtonText, themeStyles.text]}>Fechar</Text>
+                <Text style={themeStyles.text}>Fechar</Text>
               </TouchableOpacity>
           </View>
         </View>

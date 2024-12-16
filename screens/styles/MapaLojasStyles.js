@@ -9,16 +9,8 @@ const MapaLojasStyles = StyleSheet.create({
       marginHorizontal: 15,
       marginBottom: 10,
     },
-    title: {
-      fontSize: 15,
-      padding: 15,
-      margin: 15,
-      textAlign: 'center',
-      fontWeight: 'bold',
-      borderRadius: 8,
-    },
     input: {
-      margin: 15,
+      margin: 12,
     },
   });
 

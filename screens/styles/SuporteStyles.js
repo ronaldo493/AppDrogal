@@ -7,21 +7,21 @@ const SuporteStyles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     title: {
-        fontSize: 26,
+        fontSize: 16,
         fontWeight: 'bold',
         marginVertical: 25,
         textAlign: 'center',
         
     },
     tipText: {
-        fontSize: 16,
+        fontSize: 14,
         lineHeight: 21,
         marginBottom: 21,
         textAlign: 'justify',
     },
     tipTextObs: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 14,
         lineHeight: 21,
         marginBottom: 21,
         textAlign: 'justify',

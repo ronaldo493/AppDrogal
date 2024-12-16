@@ -12,7 +12,7 @@ export default StyleSheet.create({
     paddingHorizontal: '10%',
   },
   menuText: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   buttonLogoff: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     backgroundColor: '#bb5059',
     borderRadius: 8,
     marginTop: 'auto',
-    padding: 9,
+    padding: 7,
     marginHorizontal: 'auto',
     margin: 15,
   },
