@@ -30,55 +30,53 @@ const createFiliaisTable = async (db) => {
   }
 };
 
-//Função para criar a tabela de Chamados
-const createChamadosTable = async (db) => {
-  try {
-    await db.execAsync(`
-      CREATE TABLE IF NOT EXISTS chamados (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        sequencia INTEGER,
-        situacao INTEGER,
-        descricaosituacao TEXT,
-        usuarioabertura INTEGER,
-        nomeabertura TEXT,
-        setorabertura INTEGER,
-        descricaosetorabertura TEXT,
-        usuarioresponsavel INTEGER,
-        nomeresponsavel TEXT,
-        setor INTEGER,
-        descricaosetorresponsavel TEXT,
-        titulo TEXT,
-        descricao TEXT,
-        filial INTEGER,
-        nomefilial TEXT,
-        dataabertura TEXT,
-        dataultimainteracao TEXT,
-        datafinalizacao TEXT,
-        nota INTEGER,
-        notaaceitavel INTEGER,
-        comentarionota TEXT,
-        dataprevisao TEXT,
-        dataprimeirainteracaoatendimento TEXT,
-        dataultimainteracaoaguardandoresposta TEXT,
-        codigocategoria INTEGER,
-        categoriachamado TEXT,
-        dataultimainteracaoaguardandofinalizacao TEXT,
-        dataprimeirainteracaoaguardandofinalizacao TEXT,
-        last_modified TEXT DEFAULT CURRENT_TIMESTAMP
-      );
-    `);
-    console.log('Tabela chamados criada com sucesso!');
-  } catch (error) {
-    console.error('Erro ao criar tabela chamados:', error);
-  }
-};
+// //Função para criar a tabela de Chamados
+// const createChamadosTable = async (db) => {
+//   try {
+//     await db.execAsync(`
+//       CREATE TABLE IF NOT EXISTS chamados (
+//         sequencia INTEGER,
+//         situacao INTEGER,
+//         descricaosituacao TEXT,
+//         usuarioabertura INTEGER,
+//         nomeabertura TEXT,
+//         setorabertura INTEGER,
+//         descricaosetorabertura TEXT,
+//         usuarioresponsavel INTEGER,
+//         nomeresponsavel TEXT,
+//         setor INTEGER,
+//         descricaosetorresponsavel TEXT,
+//         titulo TEXT,
+//         descricao TEXT,
+//         filial INTEGER,
+//         nomefilial TEXT,
+//         dataabertura TEXT,
+//         dataultimainteracao TEXT,
+//         datafinalizacao TEXT,
+//         nota INTEGER,
+//         notaaceitavel INTEGER,
+//         comentarionota TEXT,
+//         dataprevisao TEXT,
+//         dataprimeirainteracaoatendimento TEXT,
+//         dataultimainteracaoaguardandoresposta TEXT,
+//         codigocategoria INTEGER,
+//         categoriachamado TEXT,
+//         dataultimainteracaoaguardandofinalizacao TEXT,
+//         dataprimeirainteracaoaguardandofinalizacao TEXT,
+//         last_modified TEXT DEFAULT CURRENT_TIMESTAMP
+//       );
+//     `);
+//     console.log('Tabela chamados criada com sucesso!');
+//   } catch (error) {
+//     console.error('Erro ao criar tabela chamados:', error);
+//   }
+// };
 
 //Função para criar a tabela de pontosIfoods
 const createPontosIfoodsTable = async (db) => {
   try {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS pontosIfoods (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         latitude TEXT,
         longitude TEXT,
         descricao TEXT,
@@ -96,7 +94,6 @@ const createPontosAbastecimentosTable = async (db) => {
   try {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS pontosAbastecimentos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         latitude TEXT,
         longitude TEXT,
         descricao TEXT,
@@ -117,7 +114,7 @@ export const initDB = async () => {
 
     //Criação das tabelas
     await createFiliaisTable(db);
-    await createChamadosTable(db);
+    // await createChamadosTable(db);
     await createPontosIfoodsTable(db);
     await createPontosAbastecimentosTable(db);
 
@@ -140,7 +137,7 @@ export const saveDataToDB = async (db, tableName, data, columns) => {
 
     //Loop pelos dados
     for (const item of data) {
-      //Cria um array com os valores nas mesmas posições das colunas
+      //Cria um array com os valores nas mesmas posições das coluna
       const values = columns.map((col) => item[col] || null);
 
       //Executa a inserção diretamente com runAsync

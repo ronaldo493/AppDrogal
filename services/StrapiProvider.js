@@ -44,101 +44,6 @@ export const StrapiProvider = ({ children }) => {
     }
   };
 
-  // //FUNÇÃO PARA IR ATUALIZANDO A LOJA SE TIVER ALTERAÇÃO OU INCLUSÃO NO STRAPI
-  // const syncDataWithStrapi = async (endpoint, tableName) => {
-  //   try {
-  //     //Inicializa o banco de dados SQLite
-  //     const db = await initDB();
-  //     //Obtém os dados do Strapi (página de informações das lojas)
-  //     const strapiData = await fetchPaginatedData(endpoint);
-  
-  //     for (const item of strapiData) {
-  //       //Verifica se já existe um registro local com o código da filial correspondente
-  //       const localData = await db.getAllAsync(`SELECT * FROM ${tableName} WHERE codigofilial = ?;`, [item.codigofilial])
-  
-  //       if (localData && localData.length > 0) {
-  //         //Se existir um registro local, pega o primeiro item (deve ser único por codigofilial)
-  //         const localItem = localData[0];
-  
-  //         //Compara os campos do item vindo do Strapi com o registro local
-  //         const differences = Object.keys(item).filter((key) => {
-  //           //Se o campo não existir no item local, ignora
-  //           if (!(key in localItem)) return false;
-  
-  //           //Obtém os valores do item vindo do Strapi e o valor do item local
-  //           const itemValue = item[key];
-  //           const localValue = localItem[key];
-  
-  //           //Faz uma comparação genérica (usando JSON.stringify) para verificar se os valores são diferentes
-  //           return JSON.stringify(itemValue) !== JSON.stringify(localValue);
-  //         });
-
-  //         //Se forem detectadas diferenças nos dados, faz o update no banco de dados local
-  //         if (differences.length > 0) {
-  //           console.log(`Mudanças detectadas para ${item.codigofilial} na tabela ${tableName}:`, differences);
-
-  
-  //           await db.runAsync(
-  //             `UPDATE ${tableName} SET 
-  //               nomefilial = ?, endereco = ?, numero = ?, cep = ?, bairro = ?, nomecidade = ?, 
-  //               numeroibge = ?, uf = ?, telefone = ?, gerente = ?, supervisor = ?, cnpj = ?, 
-  //               horariofuncionamento = ?, latitude = ?, longitude = ?, last_modified = CURRENT_TIMESTAMP 
-  //             WHERE codigofilial = ?;`,
-  //             [
-  //               item.nomefilial,
-  //               item.endereco,
-  //               item.numero,
-  //               item.cep || null,
-  //               item.bairro || null,
-  //               item.nomecidade || null,
-  //               item.numeroibge,
-  //               item.uf,
-  //               item.telefone,
-  //               item.gerente || null,
-  //               item.supervisor || null,
-  //               item.cnpj || null,
-  //               item.horariofuncionamento || null,
-  //               item.latitude || null,
-  //               item.longitude || null,
-  //               item.codigofilial,
-  //             ]
-  //           );
-  //         } else {
-  //           console.log(`Nenhuma mudança detectada para: ${item.codigofilial}`);
-  //         }
-  //       } else {
-  //         console.log(`Inserindo novo registro na tabela ${tableName}: ${item.codigofilial}`);
-  //         await db.runAsync(
-  //           `INSERT INTO ${tableName} (
-  //             codigofilial, nomefilial, endereco, numero, cep, bairro, nomecidade, numeroibge, uf, telefone, 
-  //             gerente, supervisor, cnpj, horariofuncionamento, latitude, longitude
-  //           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP);`,
-  //           [
-  //             item.codigofilial,
-  //             item.nomefilial,
-  //             item.endereco,
-  //             item.numero,
-  //             item.cep || null,
-  //             item.bairro || null,
-  //             item.nomecidade || null,
-  //             item.numeroibge,
-  //             item.uf,
-  //             item.telefone,
-  //             item.gerente || null,
-  //             item.supervisor || null,
-  //             item.cnpj || null,
-  //             item.horariofuncionamento || null,
-  //             item.latitude || null,
-  //             item.longitude || null,
-  //           ]
-  //         );
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error(`Erro ao sincronizar dados da tabela ${tableName} com o endpoint ${endpoint}:`, error);
-  //   }
-  // };
-  
   //Função para configurar o BackgroundFetch
   const configureBackgroundFetch = async () => {
     try {
@@ -199,13 +104,13 @@ export const StrapiProvider = ({ children }) => {
       {
         endpoint: '/pontos-ifoods',
         tableName: 'pontosIfoods',
-        keyField: 'id', //Campo chave
+        keyField: 'latitude', //Campo chave
         columns: ['latitude', 'longitude', 'descricao'],
       },
       {
         endpoint: '/pontos-abastecimentos',
         tableName: 'pontosAbastecimentos',
-        keyField: 'id', //Campo chave
+        keyField: 'latitude', //Campo chave
         columns: ['latitude', 'longitude', 'descricao'],
       },
     ];
@@ -225,7 +130,7 @@ export const StrapiProvider = ({ children }) => {
         console.log(`Sincronizando dados da tabela ${tableName}...`);
         await syncDataWithStrapi(endpoint, tableName, keyField, columns);
       }
-    }, 60000); // 60000 ms = 1 minuto
+    }, 20000); // 60000 ms = 1 minuto
 
     return () => clearInterval(intervalId); // Limpa o intervalo quando o componente for desmontado
   }, []);
