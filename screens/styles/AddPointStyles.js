@@ -15,12 +15,13 @@ const AddPointStyles = StyleSheet.create({
       margin: 8,
       textAlign: 'center',
       fontWeight: 'bold',
-      borderRadius: 8,
+      borderRadius: 6,
     },
     containerBtn: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      marginBottom: 10,
     },
     btnAdd: {
       padding: 15,
