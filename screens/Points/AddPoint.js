@@ -23,6 +23,7 @@ export default function AddPoint() {
   });
 
   const [db, setDb] = useState(null);
+  const [isLocationLoaded, setIsLocationLoaded] = useState(false); //Estado para verificar se a localização foi carregada
   const [currentLocation, setCurrentLocation] = useState(null); //Estado para armazenar a localização atual do usuário
   const [selectedPoint, setSelectedPoint] = useState(null); //Estado para armazenar o ponto selecionado pelo usuário
   const [description, setDescription] = useState(''); //Estado para armazenar a descrição do ponto
@@ -183,14 +184,21 @@ export default function AddPoint() {
             }
           },
         },
-      ]
-
+      ],
+      { cancelable: true } //Permite que o alerta seja fechado tocando fora dele
     );
   };
 
   //Função para resetar o estado de adição de pontos
   const resetAddPoint = () => {
     Alert.alert('Sucesso', 'Ponto salvo com sucesso!');
+    setIsPontoAdd(false); //Sai do modo de adição
+    setSelectedPoint(null); //Remove o ponto selecionado
+    setDescription(''); //Limpa a descrição
+  };
+
+  //Função para voltar a secao
+  const voltarSecao = () => {
     setIsPontoAdd(false); //Sai do modo de adição
     setSelectedPoint(null); //Remove o ponto selecionado
     setDescription(''); //Limpa a descrição
@@ -273,10 +281,25 @@ export default function AddPoint() {
         {!isPontoAdd ? (
           //Botão para ativar o modo de adição de pontos
           <TouchableOpacity
-            onPress={() => setIsPontoAdd(true)}
+            onPress={() => {
+              //Exibe a mensagem explicativa quando o usuário clicar em "Adicionar Ponto"
+              Alert.alert(
+                'Como Usar a Tela.',
+                'Nesta tela, você pode adicionar pontos como restaurantes que passam o Alelo Refeição ou postos de combustíveis que passam o TicketCar.\n\n' +
+                '1️⃣ Selecione um local no mapa ou use sua localização atual.\n\n' +
+                '2️⃣ Adicione uma descrição para o ponto, como "Restaurante" ou "Posto".\n\n' +
+                '3️⃣ Clique em "SALVAR PONTO".\n\n\n' +
+                '4️⃣ Escolha o tipo de ponto: Restaurante ou Posto de Combustível.\n\n' +
+                'Esses passos são necessários para adicionar corretamente um ponto!',
+                [
+                  { text: 'OK', onPress: () => setIsPontoAdd(true) },
+                ]
+              );
+            }}
           >
             <Text style={[AddPointStyles.btnAdd, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>ADICIONAR PONTO</Text>
           </TouchableOpacity>
+
         ) : (
           <>
             {/* Campo para inserir a descrição do ponto */}
@@ -295,7 +318,10 @@ export default function AddPoint() {
                   if (currentLocation) {
                     setSelectedPoint(currentLocation);
                   } else {
-                    Alert.alert('Erro', 'Localização atual não disponível.');
+                    if (!isLocationLoaded) {
+                      Alert.alert('Atenção', 'Localização ainda está sendo carregada. Tente novamente em alguns segundos.');
+                      return;
+                    }
                   }
                 }}
                 style={AddPointStyles.buttonContainer}
@@ -309,6 +335,13 @@ export default function AddPoint() {
               <TouchableOpacity onPress={savePoint}>
                 <Text style={[AddPointStyles.btnFinal, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>
                   SALVAR PONTO
+                </Text>
+              </TouchableOpacity>
+
+              {/* Botão para voltar a tela */}
+              <TouchableOpacity  onPress={voltarSecao}>
+                <Text style={[AddPointStyles.btnFinal, themeStyles.buttonBackgroundScreen, themeStyles.textBackground]}>
+                  ← VOLTAR
                 </Text>
               </TouchableOpacity>
             </View>
