@@ -29,6 +29,7 @@ export default function MaquinaSection({ title, items, selectedItems, onAddItem,
                 ))}
             </View>
             <Button 
+                style={PatrimonioAssinaturaStyles.Button}
                 title="Adicionar Item" 
                 onPress={onAddItem}
                 color={isDarkMode ? '#777' : '#888'} 

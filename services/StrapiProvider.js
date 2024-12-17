@@ -51,7 +51,7 @@ export const StrapiProvider = ({ children }) => {
       const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_FETCH_TASK);
       if (!isRegistered) {
         await BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
-          minimumInterval: 3, //24 horas
+          minimumInterval: 86400, //24 horas
           stopOnTerminate: false, //continua após o app ser fechado
           startOnBoot: true, //inicia após o reinício do dispositivo
         });

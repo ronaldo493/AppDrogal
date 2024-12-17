@@ -24,10 +24,10 @@ const PreventivaStyles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 15,
+        marginTop: 10,
     },
     button: {
-        padding: 14,
+        padding: 12,
         borderRadius: 4,
         fontWeight: 'bold',
         elevation: 4

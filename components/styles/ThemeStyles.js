@@ -127,6 +127,7 @@ export const getThemeStyles = (isDarkMode) =>
             color: isDarkMode ? darkTheme.text : lightTheme.text,
             paddingVertical: 10,
             paddingHorizontal: 25,
+            fontSize: 14,
         },
         buttonBackgroundSide: {
             backgroundColor: isDarkMode ? '#888' : '#bbb',
