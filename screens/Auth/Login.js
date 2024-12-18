@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { useAuth } from '../../components/AuthContext';
 
-const Login = () => {
-  const { login } = useAuth();
+export default Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -17,32 +14,30 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      {error ? <Text style={styles.error}>{error}</Text> : null}
-      <TextInput
-        style={styles.input}
-        placeholder="Usuário"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <Button title="Entrar" onPress={handleLogin} />
+    <View style={PreventivaStyles.container}>
+        <Text style={PreventivaStyles.title}>Login</Text>
+        <TextInput
+            style={PreventivaStyles.input}
+            placeholder="Usuário"
+            keyboardType="numeric"
+            value={user}
+            onChangeText={setUser}
+        />
+        <TextInput
+            style={PreventivaStyles.input}
+            placeholder="Senha"
+            keyboardType="default"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+        />
+        <TouchableOpacity
+            style={PreventivaStyles.button}
+            onPress={handleLogin}
+        >
+            <Text style={PreventivaStyles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
     </View>
-  );
-};
+);
 
-const styles = StyleSheet.create({
-  container: { padding: 20 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-  input: { marginBottom: 15, padding: 10, borderWidth: 1, borderRadius: 5 },
-  error: { color: 'red', marginBottom: 10 },
-});
 
-export default Login;
