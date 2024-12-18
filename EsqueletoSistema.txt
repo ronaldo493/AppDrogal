@@ -1,5 +1,7 @@
 /MyApp
 ├── /components
+|   ├── AuthContext.js       // Contexto de autenticação global
+│   ├── PrivateRoute.js      // Proteção de rotas privadas
 │   ├── SearchBar.js          //Implementa a barra de busca para buscar filiais pelo código
 │   ├── RouteList.js          //Exibe lista de rotas (filiais) com opção de remoção
 │   ├── Sidebar.js            //Barra lateral de navegação com opções e logout
@@ -36,8 +38,12 @@
 │   │   └── PreventivaStyles.js
 │
 ├── /services
+|   ├── AuthService.js       // Funções de autenticação: login, logout
 │   ├── MapService.js         //Funções para abrir rotas em Google Maps e Waze
 │   ├── StrapiClient.js       //Busca dados paginados da API Strapi
 │   └── StrapiProvider.js      //Gerencia integração de dados da API Strapi com SQLite
 │
+├── /utils
+│   ├── Storage.js           // Armazenamento de tokens com AsyncStorage
+|
 └── App.js                    //Componente principal que integra todos os elementos do aplicativo

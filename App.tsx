@@ -19,6 +19,8 @@ import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './services/StrapiProvider';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
+import { useAuth } from './components/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const Drawer = createDrawerNavigator();
@@ -27,11 +29,11 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
-    <StrapiProvider>
-      <ThemeProvider>
-         <AppWithTheme />
-      </ThemeProvider>
-    </StrapiProvider>
+      <StrapiProvider>
+        <ThemeProvider>
+          <AppWithTheme />
+        </ThemeProvider>
+      </StrapiProvider>
   );
 }
 

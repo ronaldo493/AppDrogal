@@ -1,42 +1,48 @@
-import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
-import PreventivaStyles from "../styles/LoginStyles";
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useAuth } from '../../components/AuthContext';
 
-export default function Login () {
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+const Login = () => {
+  const { login } = useAuth();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-    const handleLogin = async () => {
-        if (!user || !password) {
-            Alert.alert('Atenção, Usuário ou senha incorretos')
-            return;
-        }
+  const handleLogin = async () => {
+    try {
+      await login(username, password);
+    } catch (err) {
+      setError(err.message || 'Erro ao fazer login');
     }
+  };
 
-    return (
-        <View style={PreventivaStyles.container}>
-            <Text style={PreventivaStyles.title}>Login</Text>
-            <TextInput
-                style={PreventivaStyles.input}
-                placeholder="Usuário"
-                keyboardType="numeric"
-                value={user}
-                onChangeText={setUser}
-            />
-            <TextInput
-                style={PreventivaStyles.input}
-                placeholder="Senha"
-                keyboardType="default"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-            />
-            <TouchableOpacity
-                style={PreventivaStyles.button}
-                onPress={handleLogin}
-            >
-                <Text style={PreventivaStyles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
-        </View>
-    );
-}
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Login</Text>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <TextInput
+        style={styles.input}
+        placeholder="Usuário"
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <Button title="Entrar" onPress={handleLogin} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { padding: 20 },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
+  input: { marginBottom: 15, padding: 10, borderWidth: 1, borderRadius: 5 },
+  error: { color: 'red', marginBottom: 10 },
+});
+
+export default Login;
