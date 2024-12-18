@@ -13,25 +13,30 @@ export default function Login () {
         }
     }
 
-    <View>
-        <Text>Login</Text>
-        <TextInput
-            placeholder="Usuário"
-            keyboardType="numeric"
-            value="user"
-            onChangeText={setUser}
-        />
-        <TextInput
-            placeholder="Senha"
-            keyboardType="numeric"
-            secureTextEntry
-            value="password"
-            onChangeText={setPassword}
-        />
-        <TouchableOpacity
-            onPress={handleLogin}
-        >
-            <Text>Entrar</Text>
-        </TouchableOpacity>
-    </View>
+    return (
+        <View style={PreventivaStyles.container}>
+            <Text style={PreventivaStyles.title}>Login</Text>
+            <TextInput
+                style={PreventivaStyles.input}
+                placeholder="Usuário"
+                keyboardType="numeric"
+                value={user}
+                onChangeText={setUser}
+            />
+            <TextInput
+                style={PreventivaStyles.input}
+                placeholder="Senha"
+                keyboardType="default"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+            />
+            <TouchableOpacity
+                style={PreventivaStyles.button}
+                onPress={handleLogin}
+            >
+                <Text style={PreventivaStyles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+        </View>
+    );
 }
