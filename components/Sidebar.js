@@ -21,7 +21,7 @@ export default function Sidebar({ navigation }) {
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
     { label: 'CHAMADOS', route: 'Chamados' },
     { label: 'LOGIN', route: 'Login' },
-    // { label: 'PATRIMÔNIO', route: 'Preventiva' },
+    { label: 'PATRIMÔNIO', route: 'Preventiva' },
   ];
 
   return (
