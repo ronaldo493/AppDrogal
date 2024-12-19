@@ -20,7 +20,7 @@ export default function Sidebar({ navigation }) {
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
     { label: 'CHAMADOS', route: 'Chamados' },
-    // { label: 'PREVENTIVA', route: 'Preventiva' },
+    // { label: 'PATRIMÔNIO', route: 'Preventiva' },
   ];
 
   return (
