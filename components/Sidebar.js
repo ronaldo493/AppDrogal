@@ -20,6 +20,7 @@ export default function Sidebar({ navigation }) {
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
     { label: 'CHAMADOS', route: 'Chamados' },
+    { label: 'LOGIN', route: 'Login' },
     // { label: 'PATRIMÔNIO', route: 'Preventiva' },
   ];
 

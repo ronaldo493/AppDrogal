@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import LoginStyles from '../styles/LoginStyles';
 
-export default Login = () => {
+export default function Login ()  {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,17 +15,17 @@ export default Login = () => {
   };
 
   return (
-    <View style={PreventivaStyles.container}>
-        <Text style={PreventivaStyles.title}>Login</Text>
+    <View style={LoginStyles.container}>
+        <Text style={LoginStyles.title}>Login</Text>
         <TextInput
-            style={PreventivaStyles.input}
+            style={LoginStyles.input}
             placeholder="Usuário"
             keyboardType="numeric"
             value={user}
             onChangeText={setUser}
         />
         <TextInput
-            style={PreventivaStyles.input}
+            style={LoginStyles.input}
             placeholder="Senha"
             keyboardType="default"
             secureTextEntry
@@ -32,12 +33,12 @@ export default Login = () => {
             onChangeText={setPassword}
         />
         <TouchableOpacity
-            style={PreventivaStyles.button}
+            style={LoginStyles.button}
             onPress={handleLogin}
         >
-            <Text style={PreventivaStyles.buttonText}>Entrar</Text>
+            <Text style={LoginStyles.buttonText}>Entrar</Text>
         </TouchableOpacity>
     </View>
 );
 
-
+}

@@ -9,6 +9,7 @@ import Home from './screens/Home';
 import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
 import Chamados from './screens/Chamados';
+import Login from './screens/Auth/Login';
 import Preventiva from './screens/Preventiva/Preventiva';
 import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
@@ -19,9 +20,6 @@ import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './services/StrapiProvider';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
-import { useAuth } from './components/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -135,6 +133,11 @@ function AppNavigation() {
           <Drawer.Screen 
             name="Preventiva" 
             component={PreventivaStack} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="Login" 
+            component={Login} 
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
