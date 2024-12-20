@@ -51,12 +51,14 @@ export const StrapiProvider = ({ children }) => {
       const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_FETCH_TASK);
       if (!isRegistered) {
         await BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
-          minimumInterval: 360, //6 horas
+          minimumInterval: 15 * 60, //6 horas
           stopOnTerminate: false, //continua após o app ser fechado
           startOnBoot: true, //inicia após o reinício do dispositivo
         });
         setIsRegistered(true); //Atualiza o estado de registro
         console.log('Background fetch configurado com sucesso');
+      } else {
+        console.log('A tarefa de background já está registrada');
       }
     } catch (error) {
       console.error('Erro ao configurar BackgroundFetch', error);
@@ -116,8 +118,7 @@ export const StrapiProvider = ({ children }) => {
     ];
 
     fetchDataAndSaveToDB(tableConfigs);
-
-    configureBackgroundFetch(tableConfigs); //Configura o BackgroundFetch
+    configureBackgroundFetch(); //Configura o BackgroundFetch
 
     return () => {
       BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK); //Cancela a tarefa ao desmontar o componente

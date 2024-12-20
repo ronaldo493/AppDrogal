@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     if (userData) {
       setUser(userData);
       setToken(userData.token); //Armazena o token no AsyncStorage
-      navigate('/dashboard'); //Redireciona após login bem-sucedido
+      navigate('/home'); //Redireciona após login bem-sucedido
     } else {
       throw new Error('Credenciais inválidas');
     }
