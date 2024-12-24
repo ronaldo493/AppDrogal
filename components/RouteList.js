@@ -14,9 +14,9 @@ export default function RouteList({ routes, onRemoveRoute, onReorderRoutes}) {
   //Renderenização de cada Item da Lista
   const renderItem = ({ item, drag, isActive }) => (
     <View style={[
-       RouteListStyles.routeItem, 
-      themeStyles.listRoutes, 
-      isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#bbb' } : {} ]}
+        RouteListStyles.routeItem, 
+        themeStyles.listRoutes, 
+        isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#bbb' } : {} ]}
     >
       
 
