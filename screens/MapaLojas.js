@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
@@ -6,6 +6,7 @@ import MapaLojasStyles from './styles/MapaLojasStyles';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
 import { useFiliais } from '../components/FiliaisContext';
+import debounce from 'lodash.debounce';
 
 export default function MapaLojas(){
   //Modo escuro
@@ -22,7 +23,6 @@ export default function MapaLojas(){
   };
 
   //Estado para armazenar a cidade digitada, a região do mapa e a localização atual
-  const [db, setDb] = useState(null);
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState([]);
   const [mapRegion, setMapRegion] = useState({
@@ -76,18 +76,20 @@ export default function MapaLojas(){
     getLocation();
   }, []);
 
-  //Atualiza a região do mapa e os marcadores quando o usuário digitar uma cidade
+  //Atualiza os marcadores e a região do mapa ao carregar as filiais
   useEffect(() => {
-    const filiaisFiltradas = filiais.filter(filial =>
-      normalizeText(filial.nomecidade).includes(normalizeText(searchCity))
-    );
+    if (filiais.length > 0) {
+      setFilteredFiliais(filiais);
 
-    if (filiaisFiltradas.length > 0) {
-      const firstFilial = filiaisFiltradas[0];
-      const latitude = parseFloat(firstFilial.latitude?.replace(',', '.'));
-      const longitude = parseFloat(firstFilial.longitude?.replace(',', '.'));
+      const primeiraFilial = filiais.find((filial) => {
+        const latitude = parseFloat(filial.latitude?.replace(',', '.'));
+        const longitude = parseFloat(filial.longitude?.replace(',', '.'));
+        return !isNaN(latitude) && !isNaN(longitude);
+      });
 
-      if (latitude && longitude) {
+      if (primeiraFilial) {
+        const latitude = parseFloat(primeiraFilial.latitude?.replace(',', '.'));
+        const longitude = parseFloat(primeiraFilial.longitude?.replace(',', '.'));
         setMapRegion({
           latitude,
           longitude,
@@ -96,9 +98,47 @@ export default function MapaLojas(){
         });
       }
     }
+  }, [filiais]);
 
-    setFilteredFiliais(filiaisFiltradas);
-  }, [searchCity, filiais]);
+  //Função para atualizar a busca com debounce
+  const searchCityDebounced = useCallback(
+    debounce((city) => {
+      const filiaisFiltradas = filiais.filter((filial) =>
+        normalizeText(filial.nomecidade).includes(normalizeText(city))
+      );
+
+      if (filiaisFiltradas.length > 0) {
+        const firstFilial = filiaisFiltradas[0];
+        const latitude = parseFloat(firstFilial.latitude?.replace(',', '.'));
+        const longitude = parseFloat(firstFilial.longitude?.replace(',', '.'));
+
+        if (latitude && longitude) {
+          setMapRegion({
+            latitude,
+            longitude,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
+          });
+        }
+      }
+
+      setFilteredFiliais(filiaisFiltradas);
+    }, 300),
+    [filiais]
+  );
+
+  //Limpa o debounce ao desmontar o componente
+  useEffect(() => {
+    return () => {
+      searchCityDebounced.cancel();
+    };
+  }, [searchCityDebounced]);
+
+  //Atualiza a cidade digitada
+  const searchCityChange = (text) => {
+    setSearchCity(text);
+    searchCityDebounced(text);
+  };
 
   return (
     <View style={[MapaLojasStyles.container, themeStyles.screenBackground]}>
@@ -107,7 +147,7 @@ export default function MapaLojas(){
         placeholder="DIGITE A CIDADE"
         placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
         value={searchCity}
-        onChangeText={setSearchCity}
+        onChangeText={searchCityChange}
       />
       
       <MapView
@@ -148,7 +188,7 @@ export default function MapaLojas(){
               />
             );
           } else {
-            console.log(`Filial com erro: ${filial.codigofilial}, latitude: ${latitude}, longitude: ${longitude}`);
+            //console.log(`Filial com erro: ${filial.codigofilial}, latitude: ${latitude}, longitude: ${longitude}`);
           }
           return null;
         })}

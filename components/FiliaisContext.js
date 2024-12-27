@@ -8,7 +8,7 @@ const FiliaisContext = createContext();
 export const FiliaisProvider = ({ children }) => {
   const [filiais, setFiliais] = useState([]);
 
-  // Carregando as filiais do banco de dados
+  //Carregando as filiais do banco de dados
   useEffect(() => {
     const loadFiliais = async () => {
       try {
@@ -23,7 +23,7 @@ export const FiliaisProvider = ({ children }) => {
   }, []);
 
   return (
-    <FiliaisContext.Provider value={{ filiais, loadFiliais }}>
+    <FiliaisContext.Provider value={{ filiais }}>
       {children} 
     </FiliaisContext.Provider>
   );

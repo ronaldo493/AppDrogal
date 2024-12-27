@@ -16,15 +16,7 @@ export default function SearchBar({ onAddRoute }) {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Lista Filiais
-  const { filiais, loadFiliais } = useFiliais();
-  console.log(filiais, loadFiliais);
-
-  //Carregar filiais quando o componente for montado
-  useEffect(() => {
-    if (filiais.length === 0) {
-      loadFiliais(); //Carregar filiais se ainda não foram carregadas
-    }
-  }, [filiais, loadFiliais]);
+  const { filiais } = useFiliais();
 
   //Função para buscar filial na lista local usando o código de filial
   const searchFilial = (text) => {
@@ -51,7 +43,7 @@ export default function SearchBar({ onAddRoute }) {
   const debouncedSearch = useCallback(
     debounce((text) => {
       searchFilial(text); //Chama a função de busca
-    }, 300), //300ms de espera após o último caractere digitado
+    }, 400), //400ms de espera após o último caractere digitado
     [filiais] //Recria a função debounce apenas se a lista de filiais mudar
   );
 
