@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
-import { openDatabaseAsync } from 'expo-sqlite';
 import MapaLojasStyles from './styles/MapaLojasStyles';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+import { useFiliais } from '../components/FiliaisContext';
 
 export default function MapaLojas(){
   //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
+
+  //Lista de filiais do contexto
+  const { filiais } = useFiliais();
 
   //Coordenadas de Piracicaba onde o mapa irá iniciar
   const piracicabaCoordinates = {
@@ -73,64 +76,29 @@ export default function MapaLojas(){
     getLocation();
   }, []);
 
-  //Função para abrir o banco de dados
-  const openDatabase = async () => {
-    try {
-      const database = await openDatabaseAsync('DataStrapi.db');
-      console.log('Banco de dados aberto com sucesso:', database);
-      setDb(database); //Armazena o banco de dados no estado
-    } catch (error) {
-      console.error('Erro ao abrir o banco de dados:', error);
-    }
-  };
-
-  useEffect(() => {
-    //Abre o banco de dados ao montar o componente
-    openDatabase(); 
-  }, []);
-
   //Atualiza a região do mapa e os marcadores quando o usuário digitar uma cidade
   useEffect(() => {
-    const fetchFiliais = async () => {
-      if (db) {
-        try {
-          const allFiliais = await db.getAllAsync('SELECT * FROM filiais');
-          //console.log('Todas as filiais:', allFiliais);
-          setFilteredFiliais(allFiliais); //Definindo todas as filiais inicialmente
+    const filiaisFiltradas = filiais.filter(filial =>
+      normalizeText(filial.nomecidade).includes(normalizeText(searchCity))
+    );
 
-          if (searchCity.trim() !== '') {
-            const filiaisFiltradas = allFiliais.filter(filial =>
-              normalizeText(filial.nomecidade).includes(normalizeText(searchCity))
-            );
-      
-            if (filiaisFiltradas.length > 0) {
-              const firstFilial = filiaisFiltradas[0];
-              const latitude = parseFloat(firstFilial.latitude?.replace(',', '.'));
-              const longitude = parseFloat(firstFilial.longitude?.replace(',', '.'));
-      
-              if (latitude && longitude) {
-                setMapRegion({
-                  latitude,
-                  longitude,
-                  latitudeDelta: 0.1, //Delta de latitude para zoom
-                  longitudeDelta: 0.1, //Delta de longitude para zoom
-                });
-              }
-      
-              //Atualiza os marcadores filtrados
-              setFilteredFiliais(filiaisFiltradas);
-            }
-          } else {
-            //Se a busca estiver vazia, exibe todas as filiais
-            setFilteredFiliais(allFiliais);
-          }
-        } catch (error) {
-          console.error('Erro ao buscar filiais do banco:', error);
-        }
+    if (filiaisFiltradas.length > 0) {
+      const firstFilial = filiaisFiltradas[0];
+      const latitude = parseFloat(firstFilial.latitude?.replace(',', '.'));
+      const longitude = parseFloat(firstFilial.longitude?.replace(',', '.'));
+
+      if (latitude && longitude) {
+        setMapRegion({
+          latitude,
+          longitude,
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
+        });
       }
     }
-    fetchFiliais();    
-  }, [db, searchCity]);
+
+    setFilteredFiliais(filiaisFiltradas);
+  }, [searchCity, filiais]);
 
   return (
     <View style={[MapaLojasStyles.container, themeStyles.screenBackground]}>

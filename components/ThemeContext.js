@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //Cria um contexto para o tema (modo claro/escuro)
 const ThemeContext = createContext();
 
+//Provedor - Envolvendo os componentes e fornecendo os dados
 export const ThemeProvider = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
