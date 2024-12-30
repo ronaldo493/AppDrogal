@@ -17,6 +17,7 @@ import Suporte from './screens/Settings/Suporte';
 import AddPoint from './screens/Points/AddPoint';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
+import { FiliaisProvider } from './components/FiliaisContext';
 import { StrapiProvider } from './services/StrapiProvider';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
@@ -28,9 +29,11 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
       <StrapiProvider>
-        <ThemeProvider>
-          <AppWithTheme />
-        </ThemeProvider>
+        <FiliaisProvider>
+          <ThemeProvider>
+            <AppWithTheme />
+          </ThemeProvider>
+        </FiliaisProvider>  
       </StrapiProvider>
   );
 }
