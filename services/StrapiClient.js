@@ -8,7 +8,7 @@ const API_TOKEN = '9daa01c9a2a011d52e3be0dadafe720ee349c7d77707081c0d9db457662f0
 
 
 //Função para criar o cliente Axios
-const createApiClientStrapi = () => {
+export const createApiClientStrapi = () => {
 
   const conexao = axios.create({
     baseURL: BASE_URL,

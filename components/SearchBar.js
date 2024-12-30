@@ -4,7 +4,7 @@ import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';
 import { getThemeStyles } from './styles/ThemeStyles';
 import { Keyboard } from 'react-native';
-import { useFiliais } from '../components/FiliaisContext';
+import  useFiliais  from '../hooks/buscarFiliais';
 import debounce from 'lodash.debounce';
 
 export default function SearchBar({ onAddRoute }) {
@@ -16,7 +16,7 @@ export default function SearchBar({ onAddRoute }) {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Lista Filiais
-  const { filiais } = useFiliais();
+  const { filiais = [] } = useFiliais();
 
   //Função para buscar filial na lista local usando o código de filial
   const searchFilial = (text) => {
