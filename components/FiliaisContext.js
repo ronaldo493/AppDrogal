@@ -1,21 +1,16 @@
 import React, { createContext, useState, useContext } from 'react';
 
 //Criando o contexto
-const StrapiFiliaisContext = createContext();
+const FiliaisContext = createContext();
 
 //Provedor
 export const StrapiFiliaisProvider = ({ children }) => {
   const [filiais, setFiliais] = useState([]);
 
-  const contextValue = {
-    filiais,
-    setFiliais
-  }
-
   return (
-    <StrapiFiliaisContext.Provider value={{ contextValue }}>
+    <FiliaisContext.Provider value={{ filiais, setFiliais }}>
       {children} 
-    </StrapiFiliaisContext.Provider>
+    </FiliaisContext.Provider>
   );
 };
 

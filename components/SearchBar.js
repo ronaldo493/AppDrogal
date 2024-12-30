@@ -43,7 +43,7 @@ export default function SearchBar({ onAddRoute }) {
   const debouncedSearch = useCallback(
     debounce((text) => {
       searchFilial(text); //Chama a função de busca
-    }, 400), //400ms de espera após o último caractere digitado
+    }, 400), //300ms de espera após o último caractere digitado
     [filiais] //Recria a função debounce apenas se a lista de filiais mudar
   );
 

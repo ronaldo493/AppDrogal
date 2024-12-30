@@ -1,41 +1,42 @@
 import { useState, useEffect, useCallback } from "react";
-import { createApiClientStrapi } from "../services/StrapiClient";
-import useStrapiFiliais from "../components/FiliaisContext";
+import { useStrapiFiliais } from "../components/FiliaisContext";
+import { fetchPaginatedData } from "../services/Pagination";
 
 const useFiliais = () => {
-    const conexao = createApiClientStrapi();
     
     const suporteStrapi = useStrapiFiliais();
 
-    const { filial, setFilial } = suporteStrapi;
+    const { filiais, setFiliais } = suporteStrapi;
 
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
-    const refetch = useCallback(async () =>{
+    const refetch = useCallback(async () => {
         setLoading(true);
         setError(null);
-
+    
         try {
-            const response = await conexao.get('/informacoeslojas');
-            if (setFilial) {
-                setFilial(response.data);
-            } else {
-                console.error("`setFilial` não está definido em `suporteStrapi`.");
-            }
+          const data = await fetchPaginatedData('/informacoeslojas');
+
+          setFiliais(data);
+    
+          console.log("Todos os dados das filiais salvos no estado:");
+          data.forEach(filial => {
+            console.log(filial.codigofilial);  //Exibe o código
+          });
         } catch (err) {
             console.error("Erro ao buscar filiais:", err);
             setError(err.message || "Erro desconhecido");
         } finally {
-            setLoading(false);
+          setLoading(false);
         }
-    }, [conexao, setFilial]);
+      }, [setFiliais]);
 
     useEffect(() => {
         refetch();
-    }, [refetch]);
+    }, []);
 
-    return { filial, error, loading, refetch }
+    return { filiais, error, loading, refetch }
 }
 
 export default useFiliais;
