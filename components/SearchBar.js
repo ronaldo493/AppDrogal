@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { TextInput, Button, View, Text } from 'react-native';
 import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';

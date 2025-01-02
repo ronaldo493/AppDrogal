@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
-import { useStrapiFiliais } from "../components/FiliaisContext";
+import { useStrapi } from "../components/StrapiContext";
 import { fetchPaginatedData } from "../services/Pagination";
 
 const useFiliais = () => {
     
-    const suporteStrapi = useStrapiFiliais();
+    const suporteStrapi = useStrapi();
 
     const { filiais, setFiliais } = suporteStrapi;
 
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
-    const refetch = useCallback(async () => {
+    const getFiliais = useCallback(async () => {
         setLoading(true);
         setError(null);
     
@@ -33,10 +33,10 @@ const useFiliais = () => {
       }, [setFiliais]);
 
     useEffect(() => {
-        refetch();
+        getFiliais();
     }, []);
 
-    return { filiais, error, loading, refetch }
+    return { filiais, error, loading, getFiliais }
 }
 
 export default useFiliais;

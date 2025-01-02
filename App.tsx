@@ -17,8 +17,7 @@ import Suporte from './screens/Settings/Suporte';
 import AddPoint from './screens/Points/AddPoint';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
-import { StrapiFiliaisProvider } from './components/FiliaisContext';
-import { StrapiProvider } from './services/StrapiProvider';
+import { StrapiProvider } from './components/StrapiContext';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
 
@@ -28,13 +27,11 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
-      // <StrapiProvider>
-        <StrapiFiliaisProvider>
+        <StrapiProvider>
           <ThemeProvider>
             <AppWithTheme />
           </ThemeProvider>
-        </StrapiFiliaisProvider>  
-      // </StrapiProvider>
+        </StrapiProvider>  
   );
 }
 
