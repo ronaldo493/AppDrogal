@@ -38,7 +38,7 @@
         "CAMERA",
         "RECEIVE_BOOT_COMPLETED",
         "WAKE_LOCK",
-        ["ACCESS_BACKGROUND_LOCATION"]
+        "ACCESS_BACKGROUND_LOCATION"
       ],
       "config": {
         "googleMaps": {
