@@ -5,7 +5,7 @@ import MapView, { Marker } from 'react-native-maps';
 import MapaLojasStyles from './styles/MapaLojasStyles';
 import { useTheme } from '../components/ThemeContext'; 
 import { getThemeStyles } from '../components/styles/ThemeStyles'; 
-import { useFiliais } from '../components/StrapiContext';
+import  useFiliais  from '../hooks/buscarFiliais';
 import debounce from 'lodash.debounce';
 
 export default function MapaLojas(){

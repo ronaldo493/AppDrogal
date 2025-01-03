@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { TextInput, Button, View, Text } from 'react-native';
+import { TextInput, Button, View, Text, ActivityIndicator } from 'react-native';
 import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';
 import { getThemeStyles } from './styles/ThemeStyles';
@@ -16,7 +16,7 @@ export default function SearchBar({ onAddRoute }) {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Lista Filiais
-  const { filiais = [] } = useFiliais();
+  const { filiais = [], error, loading } = useFiliais();
 
   //Função para buscar filial na lista local usando o código de filial
   const searchFilial = (text) => {
@@ -75,6 +75,21 @@ export default function SearchBar({ onAddRoute }) {
           onChangeText={handleSearch}
         />
       </View>
+
+      {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
+      {loading && (
+        <View >
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+
+      {/* Exibe erro, caso haja */}
+      {error && (
+        <View >
+          <Text style={themeStyles.errorText}>{error}</Text>
+        </View>
+      )}
+
       {selectedFilial && (
         <View style={SearchBarStyles.suggestionContainer}>
           <View style={[SearchBarStyles.suggestionItem, themeStyles.listSearch]}>

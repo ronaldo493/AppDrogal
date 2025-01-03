@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useStrapi } from "../components/StrapiContext";
 import { fetchPaginatedData } from "../services/Pagination";
 
@@ -11,7 +11,7 @@ const useFiliais = () => {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
-    const getFiliais = useCallback(async () => {
+    const getFiliais = async () => {
         setLoading(true);
         setError(null);
     
@@ -30,13 +30,16 @@ const useFiliais = () => {
         } finally {
           setLoading(false);
         }
-      }, [setFiliais]);
+      };
 
-    useEffect(() => {
-        getFiliais();
-    }, []);
+      useEffect(() => {
+        //Verifica se o estado de filiais está vazio antes de buscar os dados
+        if (filiais.length === 0) {
+            getFiliais();
+        }
+    }, [filiais])
 
-    return { filiais, error, loading, getFiliais }
+    return { filiais, error, loading }
 }
 
 export default useFiliais;

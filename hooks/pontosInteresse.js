@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useStrapi } from "../components/StrapiContext";
 import { fetchPaginatedData } from "../services/Pagination";
 import strapiClient from "../services/StrapiClient";
@@ -13,7 +13,7 @@ const usePontos = () => {
     const [ loading, setLoading ] = useState(false);
 
     //BUSCA DE DADOS
-    const getPontos = useCallback(async () => {
+    const getPontos = async () => {
         setLoading(true);
         setError(null);
     
@@ -32,11 +32,11 @@ const usePontos = () => {
         } finally {
           setLoading(false);
         }
-      }, [setPontos]);
+      };
 
 
     //SALVAR DADOS
-    const postPontos = useCallback(async (novoPonto) => {
+    const postPontos = async (novoPonto) => {
         setLoading(true);
         setError(null);
 
@@ -55,11 +55,14 @@ const usePontos = () => {
         } finally {
             setLoading(false);
         }
-    }, []);
+    };
 
     useEffect(() => {
-        getPontos();
-    }, []);
+        //Verifica se o estado de filiais está vazio antes de buscar os dados
+        if (pontos.length === 0) {
+            getPontos();
+        }
+    }, [pontos, getPontos])
 
     return { pontos, error, loading, getPontos, postPontos }
 }

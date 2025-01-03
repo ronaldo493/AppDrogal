@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Alert, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useTheme } from '../../components/ThemeContext'; 
@@ -111,7 +111,7 @@ export default function AddPoint() {
   const savePoint = async () => {
     //Valida se um ponto foi selecionado e se a descrição está preenchida
     if (!selectedPoint || !description.trim()) {
-      Alert.alert('Erro', 'Selecione um ponto e adicione uma descrição.');
+      Alert.alert('Atenção!', 'Selecione um ponto e adicione uma descrição.');
       return;
     }
 
@@ -127,7 +127,7 @@ export default function AddPoint() {
               latitude: selectedPoint.latitude.toString(),
               longitude: selectedPoint.longitude.toString(),
               descricao: description,
-              categoria: isPontoAdd ? 'Restaurante' : 'Posto de Combustível',
+              categoria: 'Restaurante',
             };
 
             console.log('Dados enviados:', newPoint);
@@ -135,9 +135,9 @@ export default function AddPoint() {
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              await postPontos(newPoint);
+              const response = await postPontos(newPoint);
 
-              console.log('Resposta da API:', response.data);
+              console.log('Resposta da API:', response);
 
               // //Adicionar ao banco local
               // await db.runAsync(
@@ -159,16 +159,15 @@ export default function AddPoint() {
               latitude: selectedPoint.latitude.toString(),
               longitude: selectedPoint.longitude.toString(),
               descricao: description,
-              categoria: isPontoAdd ? 'Restaurante' : 'Posto de Combustível',
+              categoria: 'Posto de Combustível',
             };
             console.log('Dados enviados:', newPoint);
 
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              await postPontos(newPoint);
-
-              console.log('Resposta da API:', response.data);
+              const response = await postPontos(newPoint);
+              console.log('Resposta da API:', response)
 
               // //Adicionar ao banco local
               // await db.runAsync(
@@ -220,6 +219,21 @@ export default function AddPoint() {
   return (
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
       <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
+
+      {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
+      {loading && (
+        <View >
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+
+      {/* Exibe erro, caso haja */}
+      {error && (
+        <View >
+          <Text style={themeStyles.errorText}>{error}</Text>
+        </View>
+      )}
+
       {/* Mapa */}
       <MapView
         key={isDarkMode ? 'dark' : 'light'}

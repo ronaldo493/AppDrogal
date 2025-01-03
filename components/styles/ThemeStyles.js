@@ -234,6 +234,11 @@ export const getThemeStyles = (isDarkMode) =>
         checklistItemTheme: {
             backgroundColor: isDarkMode ? '#333' : '#f5f5f5',
             color: isDarkMode ? darkTheme.text : lightTheme.text,
+        },
+
+        //ERROR
+        errorText: {
+          color: isDarkMode ? '#ccc' : '#000',
         }
     });
 
