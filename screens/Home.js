@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Alert, Image, TouchableOpacity, Text } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import RouteList from '../components/RouteList';

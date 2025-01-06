@@ -1,73 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import { View, Text, TextInput, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
-import { useTheme } from '../../components/ThemeContext'; 
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-import  AddPointStyles from '../styles/AddPointStyles';
-import usePontos from '../../hooks/pontosInteresse';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useTheme } from '../components/ThemeContext'; 
+import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+import  AddPointStyles from './styles/AddPointStyles';
+import usePontos from '../hooks/pontosInteresse';
+import useLocation from '../hooks/useLocation';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function AddPoint() {
   //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  //
   const { pontos = [], loading, error, postPontos } = usePontos();
-
-  //Estado para gerenciar a região exibida no mapa
-  const [mapRegion, setMapRegion] = useState({
-    latitude: -22.7277,
-    longitude: -47.6490,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
-  });
+  const { currentLocation, mapRegion} = useLocation();
 
   // const [db, setDb] = useState(null);
   const [isLocationLoaded, setIsLocationLoaded] = useState(false); //Estado para verificar se a localização foi carregada
-  const [currentLocation, setCurrentLocation] = useState(null); //Estado para armazenar a localização atual do usuário
   const [selectedPoint, setSelectedPoint] = useState(null); //Estado para armazenar o ponto selecionado pelo usuário
   const [description, setDescription] = useState(''); //Estado para armazenar a descrição do ponto
   const [isPontoAdd, setIsPontoAdd] = useState(false); //Estado para controlar se o usuário está no modo de adição de ponto
-
-  //Obter a localização do usuário ao entrar na tela
-  useEffect(() => {
-    const getLocation = async () => {
-      try {
-        //Solicita permissão para acessar a localização
-        let { status } = await Location.requestForegroundPermissionsAsync();
-
-        if (status !== 'granted') {
-          Alert.alert('Permissão de localização negada');
-          return;
-        }
-
-        //Obtém a localização atual do usuário
-        let location = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.High,
-          timeout: 3000,
-          maximumAge: 1000,
-        });
-
-        //Define a localização atual e ajusta a região do mapa
-        setCurrentLocation({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-        });
-        setMapRegion({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.1,
-        });
-      } catch (error) {
-        Alert.alert('Erro ao obter localização!');
-      }
-    };
-
-    getLocation();
-  }, []);
 
   // //Função para abrir o banco de dados
   // const openDatabase = async () => {
@@ -209,17 +162,24 @@ export default function AddPoint() {
 
   //Função para cor dos icones de acordo com o tipo
   const getColor = (pointType) => {
-    if (pointType === 'restaurante') {
-      return isDarkMode ? 'red' : 'red';
-    } else {
-      return isDarkMode ? 'white' : 'green';
+      return pointType === 'restaurante' ? 'red' : 'green';
     }
-    };
 
   return (
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
       <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
 
+      <View style={AddPointStyles.description}>
+        {/* Exibe um texto explicativo abaixo do título */}
+        <Text style={[AddPointStyles.subtitle, { color: 'red' }]}>
+          Restaurante (Ponto Vermelho)
+        </Text>
+        <Text style={[AddPointStyles.subtitle, { color: 'green' }]}>
+          Postos (Ponto Verde)
+        </Text>
+      </View>
+
+      
       {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
       {loading && (
         <View >
@@ -271,12 +231,13 @@ export default function AddPoint() {
               longitude: Number(point.longitude),
             }}
             title={point.descricao}
+            pinColor={getColor(point.type)}
           >
-            <Icon
+            {/* <Icon
               name={point.type === 'restaurante' ? 'fastfood' : 'local-gas-station'}
-              size={30}
+              size={27}
               color={getColor(point.type)}
-            />
+            /> */}
           </Marker>
         ))}
 

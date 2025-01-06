@@ -14,7 +14,7 @@ import Preventiva from './screens/Preventiva/Preventiva';
 import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
-import AddPoint from './screens/Points/AddPoint';
+import AddPoint from './screens/AddPoint';
 import About from './screens/Settings/About';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './components/StrapiContext';

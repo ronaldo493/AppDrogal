@@ -26,7 +26,7 @@ export default function About({navigation}) {
       </Text>
 
       <Text style={[AboutStyles.versionText, themeStyles.text]}>
-        Versão do Aplicativo: 1.0.1
+        Versão do Aplicativo: 1.0.4
       </Text>
 
       <Text style={[AboutStyles.developerText, themeStyles.text]}>

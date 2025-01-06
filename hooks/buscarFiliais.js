@@ -3,7 +3,6 @@ import { useStrapi } from "../components/StrapiContext";
 import { fetchPaginatedData } from "../services/Pagination";
 
 const useFiliais = () => {
-    
     const suporteStrapi = useStrapi();
 
     const { filiais, setFiliais } = suporteStrapi;
@@ -20,7 +19,7 @@ const useFiliais = () => {
 
           setFiliais(data);
     
-          console.log("Todos os dados das filiais salvos no estado:");
+          console.log("Todos os dados das filiais salvos:");
           data.forEach(filial => {
             console.log(filial.codigofilial);  //Exibe o código
           });

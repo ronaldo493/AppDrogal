@@ -22,7 +22,7 @@ const usePontos = () => {
 
           setPontos(data);
     
-          console.log("Todos os dados das filiais salvos no estado:");
+          console.log("Todos os dados dos pontos salvos:");
           data.forEach(point => {
             console.log(point.categoria);  //Exibe o código
           });

@@ -25,8 +25,7 @@ export default function useLocation() {
       //Obtém a posição atual do usuário
       let location = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.High,
-        timeout: 3000,
-        maximumAge: 1000, // Usa a localização armazenada se disponível
+        timeout: 5000,
       });
 
       //Atualiza o estado com a localização atual
@@ -41,9 +40,9 @@ export default function useLocation() {
         latitudeDelta: 0.1,
         longitudeDelta: 0.1,
       });
-    } catch (error) {
-      Alert.alert('Erro ao obter localização!');
-      setError(error.message);
+    } catch (err) {
+      console.error("Erro ao obter a localização:", err);
+      setError(err.message || "Erro desconhecido");
     } finally {
       setLoading(false);
     }
@@ -53,5 +52,5 @@ export default function useLocation() {
     getLocation();
   }, []);
 
-  return { currentLocation, mapRegion, error, loading, getLocation };
+  return { currentLocation, mapRegion, setMapRegion, error, loading };
 }
