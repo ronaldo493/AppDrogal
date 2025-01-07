@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Location from 'expo-location';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import RouteList from '../components/RouteList';
 import SearchBar from '../components/SearchBar';
@@ -11,50 +10,10 @@ import HomeStyles from './styles/HomeStyles';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
-  const [currentLocation, setCurrentLocation] = useState(null); //Estado que armazena a localização atual do usuário
-  const [isLocationLoaded, setIsLocationLoaded] = useState(false); //Estado para verificar se a localização foi carregada
 
   //Modo escuro
   const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
-
-  useEffect(() => {
-    const subscribeToLocationUpdates = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync(); //Solicita permissão para acessar a localização
-      
-      //Verificação de Permissão
-      if (status !== 'granted') { 
-        Alert.alert('Permissão Negada', 'Você precisa permitir o acesso à localização para traçar a rota.', [
-          { text: 'Solicitar Permissão', onPress: () => subscribeToLocationUpdates() }, //Reexecuta a função
-          { text: 'Sair', onPress: () => console.log('Usuário saiu') }
-        ]);
-        return;
-      }
-
-      //Define o watcher para a localização
-      const locationSubscription = await Location.watchPositionAsync(
-        {
-          accuracy: Location.Accuracy.High,
-          timeInterval: 1000, //Tempo em milissegundos entre atualizações
-          distanceInterval: 1, //Distância em metros entre atualizações
-        },
-        (location) => {
-          setCurrentLocation({
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-          });
-          setIsLocationLoaded(true); //Define que a localização foi carregada
-        }
-      );
-
-      return () => {
-        //Limpa o watcher ao desmontar o componente
-        locationSubscription.remove();
-      };
-    };
-
-    subscribeToLocationUpdates();
-  }, []);
 
   //Função para adicionar uma filial
   const handleAddRoute = (filial) => {
@@ -87,12 +46,6 @@ export default function Home() {
       Alert.alert('Atenção!', 'Nenhuma filial selecionada');
       return;
     }
-
-    //Adiciona a localização atual como a primeira posição na rota
-    const completeRoute = [
-      { latitude: currentLocation.latitude, longitude: currentLocation.longitude }, 
-      ...routes
-    ];
     
     const currentDate = new Date().toLocaleString(); //Obtém a data atual
 
@@ -119,8 +72,8 @@ export default function Home() {
         'Escolha o Navegador',
         'Deseja abrir a rota no Google Maps ou no Waze?',
         [
-          { text: 'Google Maps', onPress: () => MapService.openGoogleMapsRoute(completeRoute) },
-          { text: 'Waze', onPress: () => MapService.openWazeRoute(completeRoute) },
+          { text: 'Google Maps', onPress: () => MapService.openGoogleMapsRoute(routes) },
+          { text: 'Waze', onPress: () => MapService.openWazeRoute(routes) },
           { text: 'Cancelar', style: 'cancel' },
         ]
       );

@@ -1,8 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
 import { NavigationContainer } from '@react-navigation/native'; //Gerencia a navegação principal da aplicação
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
-import React, { useState } from 'react';
-import { GestureResponderEvent, StatusBar, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import { Divider, MD2DarkTheme, MD2LightTheme, Menu, Provider as PaperProvider } from 'react-native-paper'; //Menu Suspenso
 import Icon from 'react-native-vector-icons/MaterialIcons'; //Icones
 import Sidebar from './components/Sidebar';
@@ -51,22 +51,6 @@ function AppNavigation() {
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const ThemeStyles = getThemeStyles(isDarkMode);
-
-  //Controla o estado da visibilidade do Menu(Icone)
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [anchorPosition, setAnchorPosition] = useState<{ x: number; y: number } | null>(null);
-
-  //Função para abrir Menu(Icone)
-  const openMenu = (event: GestureResponderEvent) => {
-    const { pageX, pageY } = event.nativeEvent;
-    setAnchorPosition({ x: pageX, y: pageY, });
-    setIsMenuVisible(true);
-  }
-
-  //Função para Fechar Menu(Icone)
-  const closeMenu = () => {
-    setIsMenuVisible(false);
-  }
  
   return (
       <>  

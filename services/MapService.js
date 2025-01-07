@@ -4,22 +4,38 @@ const MapService = {
   openGoogleMapsRoute: (routes) => {
     if (routes.length === 0) return;
 
+    //URL base do Google Maps para direções
     const baseUrl = 'https://www.google.com/maps/dir/?api=1';
-    const origin = `&origin=${routes[0].latitude},${routes[0].longitude}`; //Localização atual
-    const waypoints = routes.slice(1, routes.length - 1).map(route => `${route.latitude},${route.longitude}`).join('|');
-    const destination = `&destination=${routes[routes.length - 1].latitude},${routes[routes.length - 1].longitude}`;
+     
+    //Cria uma string com os pontos intermediários (waypoints), exceto o último
+    const waypoints = routes.slice(0, routes.length - 1).map(route => `${route.latitude},${route.longitude}`).join('|');
+    
+    //Se houver waypoints, adiciona o parâmetro na URL
+    const waypointsParam = waypoints ? `&waypoints=${encodeURIComponent(waypoints)}` : '';
+    
+    //Cria o parâmetro de destino usando o último ponto
+    const destination = `&destination=${encodeURIComponent(routes[routes.length - 1].latitude)},${encodeURIComponent(routes[routes.length - 1].longitude)}`;
+    
+    //Define o modo de viagem como "driving" (dirigindo)
     const travelMode = '&travelmode=driving';
 
-    const url = `${baseUrl}${origin}&waypoints=${waypoints}${destination}${travelMode}`;
+    //Constrói a URL final com todos os parâmetros
+    const url = `${baseUrl}${waypointsParam}${destination}${travelMode}`;
+    
     Linking.openURL(url);
   },
 
   openWazeRoute: (routes) => {
     if (routes.length === 0) return;
 
-    const baseUrl = 'waze://?ll=';
-    const destination = `${routes[routes.length - 1].latitude},${routes[routes.length - 1].longitude}`;
-    const url = `${baseUrl}${destination}&navigate=yes`;
+     //URL base do Waze para direções
+     const baseUrl = 'waze://?ll=';
+    
+     //Cria o parâmetro de destino usando o último ponto
+     const destination = `${encodeURIComponent(routes[routes.length - 1].latitude)},${encodeURIComponent(routes[routes.length - 1].longitude)}`;
+     
+     //Constrói a URL final para o Waze
+     const url = `${baseUrl}${destination}&navigate=yes`;
 
     Linking.openURL(url).catch(() => {
       Alert.alert('Waze não encontrado', 'Por favor, instale o Waze para navegar.');

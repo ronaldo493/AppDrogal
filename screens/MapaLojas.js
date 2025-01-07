@@ -1,7 +1,6 @@
-import * as Location from 'expo-location';
 import debounce from 'lodash.debounce';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Alert, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useTheme } from '../components/ThemeContext';
 import { getThemeStyles } from '../components/styles/ThemeStyles';
@@ -16,21 +15,11 @@ export default function MapaLojas(){
   //Lista de filiais do contexto
   const { filiais } = useFiliais();
 
-  //Coordenadas de Piracicaba onde o mapa irá iniciar
-  const piracicabaCoordinates = {
-    latitude: -22.7277,
-    longitude: -47.6490,
-  };
-
   //Estado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState([]);
-  const [mapRegion, setMapRegion] = useState({
-    ...piracicabaCoordinates,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
-  });
-  const [currentLocation, setCurrentLocation] = useState(null);
+
+  const { currentLocation, mapRegion, setMapRegion, error, loading } = useLocation();
 
   //Função para remover acentos e normalizar o texto
   const normalizeText = (text) => {
@@ -40,41 +29,6 @@ export default function MapaLojas(){
       .replace(/[\u0300-\u036f]/g, '') //Remove os acentos
       .trim(); //Remove espaços em branco nas pontas
   };
-
-  //Obtém a localização atual do usuário
-  useEffect(() => {
-    const getLocation = async () => {
-      try {
-        let { status } = await Location.requestForegroundPermissionsAsync();
-
-        if (status !== 'granted') {
-          Alert.alert('Permissão de localização negada');
-          return;
-        }
-
-        //Obtém a posição atual do usuário
-        let location = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.High,
-          timeout: 3000, 
-          maximumAge: 1000, //Use a localização armazenada se disponível
-        });
-        setCurrentLocation({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-        });
-        setMapRegion({
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.1,
-        });
-      } catch (error) {
-        Alert.alert('Erro ao obter localização!');
-      }
-    };
-
-    getLocation();
-  }, []);
 
   //Atualiza os marcadores e a região do mapa ao carregar as filiais
   useEffect(() => {
@@ -149,6 +103,20 @@ export default function MapaLojas(){
         value={searchCity}
         onChangeText={searchCityChange}
       />
+
+      {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
+      {loading && (
+        <View >
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+
+      {/* Exibe erro, caso haja */}
+      {error && (
+        <View >
+          <Text style={themeStyles.errorText}>{error}</Text>
+        </View>
+      )}
       
       <MapView
         key={isDarkMode ? 'dark' : 'light'}

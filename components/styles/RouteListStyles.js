@@ -25,5 +25,6 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 13,
+    fontWeight: 'bold', 
   }
 });
