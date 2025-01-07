@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import axiosRetry from 'axios-retry';
+
 //URL base da API Strapi
 const BASE_URL = 'http://suporteappdrogal.ddns.com.br:18083/api';
 
@@ -21,9 +23,17 @@ export const createApiClientStrapi = () => {
 };
 
 //Função para obter a conexão
+
 const strapiClient = () => {
-  return createApiClientStrapi();
+
+  const instance = createApiClientStrapi();
+
+  axiosRetry(instance, { retries: 4 });
+
+  return instance;
+
 };
+
 
 
 export default strapiClient;
