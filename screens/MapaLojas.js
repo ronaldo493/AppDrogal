@@ -16,12 +16,6 @@ export default function MapaLojas(){
   //Lista de filiais do contexto
   const { filiais } = useFiliais();
 
-  //Coordenadas de Piracicaba onde o mapa irá iniciar
-  const piracicabaCoordinates = {
-    latitude: -22.7277,
-    longitude: -47.6490,
-  };
-
   //Estado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState([]);

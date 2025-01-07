@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
-import { TouchableOpacity, StatusBar, GestureResponderEvent } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; //Icones
-import { Menu, Provider as PaperProvider, Divider, MD2DarkTheme, MD2LightTheme }  from 'react-native-paper'; //Menu Suspenso
+import { StatusBar } from 'react-native';
+import {  Provider as PaperProvider, MD2DarkTheme, MD2LightTheme }  from 'react-native-paper';
 import Home from './screens/Home';
 import Settings from './screens/Settings/Settings';
 import Historico from './screens/Historico';
@@ -16,6 +15,7 @@ import Sidebar from './components/Sidebar';
 import Suporte from './screens/Settings/Suporte';
 import AddPoint from './screens/AddPoint';
 import About from './screens/Settings/About';
+import HeaderMenu from './components/HeaderMenu';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './components/StrapiContext';
 import { getThemeStyles } from './components/styles/ThemeStyles'; 
@@ -51,22 +51,6 @@ function AppNavigation() {
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const ThemeStyles = getThemeStyles(isDarkMode);
-
-  //Controla o estado da visibilidade do Menu(Icone)
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [anchorPosition, setAnchorPosition] = useState<{ x: number; y: number } | null>(null);
-
-  //Função para abrir Menu(Icone)
-  const openMenu = (event: GestureResponderEvent) => {
-    const { pageX, pageY } = event.nativeEvent;
-    setAnchorPosition({ x: pageX, y: pageY, });
-    setIsMenuVisible(true);
-  }
-
-  //Função para Fechar Menu(Icone)
-  const closeMenu = () => {
-    setIsMenuVisible(false);
-  }
  
   return (
       <>  
@@ -85,23 +69,7 @@ function AppNavigation() {
             },
             headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
             headerRight: () => (
-              <>
-                <TouchableOpacity onPress={openMenu} style={{ marginRight: 10, padding: 9 }} >
-                <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
-                </TouchableOpacity>
-                <Menu   
-                  visible={isMenuVisible}
-                  onDismiss={closeMenu}
-                  anchor={{ x: anchorPosition?.x || 0, y: anchorPosition?.y || 0}}
-                >
-                  <Menu.Item  onPress={() => { closeMenu(); navigation.navigate('Settings');}} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
-                  <Divider />
-                  <Menu.Item  onPress={() => { closeMenu(); }} title="Meu Perfil" titleStyle={ThemeStyles.textMenu} />
-                  <Divider />
-                  <Menu.Item  onPress={() => { closeMenu(); }} title="Sair" titleStyle={ThemeStyles.textMenu} />
-                </Menu>
-              </>
-              
+              <HeaderMenu navigation={navigation}  themeStyles={ThemeStyles} />
             ),
           })}
         >

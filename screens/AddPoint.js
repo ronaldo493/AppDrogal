@@ -6,7 +6,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 import  AddPointStyles from './styles/AddPointStyles';
 import usePontos from '../hooks/pontosInteresse';
 import useLocation from '../hooks/useLocation';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function AddPoint() {
   //Modo escuro
@@ -169,14 +169,20 @@ export default function AddPoint() {
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
       <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
 
-      <View style={AddPointStyles.description}>
-        {/* Exibe um texto explicativo abaixo do título */}
-        <Text style={[AddPointStyles.subtitle, { color: 'red' }]}>
-          Restaurante (Ponto Vermelho)
-        </Text>
-        <Text style={[AddPointStyles.subtitle, { color: 'green' }]}>
-          Postos (Ponto Verde)
-        </Text>
+      <View style={[AddPointStyles.description, themeStyles.sidebar]}>
+        <View style={{ display:'flex', flexDirection: 'row' }}>
+          <Icon name="fastfood" size={22} color="red" />
+          <Text style={[AddPointStyles.subtitle, { color: 'red' }]}>
+            RESTAURANTE
+          </Text>
+        </View>
+        
+        <View style={{ display:'flex', flexDirection: 'row'}}>
+          <Icon name="local-gas-station" size={22} color="green" />
+          <Text style={[AddPointStyles.subtitle, { color: 'green' }]}>
+            POSTO DE COMBUSTÍVEL
+          </Text>
+        </View>
       </View>
 
       
