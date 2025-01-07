@@ -11,11 +11,25 @@ const AddPointStyles = StyleSheet.create({
     },
     title: {
       fontSize: 16,
-      padding: 15,
+      paddingBottom: 15,
       margin: 8,
       textAlign: 'center',
       fontWeight: 'bold',
       borderRadius: 6,
+    },
+    description: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginHorizontal: 15,
+      marginBottom: 10,
+      padding:7,
+      borderRadius: 6,
+      backgroundColor: '#d1d1d1'
+    },
+    subtitle: {
+      fontWeight: 'bold',
+      padding: 5,
+      marginLeft: 7,
     },
     containerBtn: {
       flexDirection: 'row',

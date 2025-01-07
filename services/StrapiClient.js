@@ -8,7 +8,7 @@ const API_TOKEN = '9daa01c9a2a011d52e3be0dadafe720ee349c7d77707081c0d9db457662f0
 
 
 //Função para criar o cliente Axios
-const createApiClientStrapi = () => {
+export const createApiClientStrapi = () => {
 
   const conexao = axios.create({
     baseURL: BASE_URL,
@@ -27,81 +27,3 @@ const strapiClient = () => {
 
 
 export default strapiClient;
-
-// //Serviço com métodos HTTP
-// export const ApiService = {
-//   get: async (endpoint, params = {}) => {
-//     try {
-//       const response = await connection.get(endpoint, { params });
-//       return response.data;
-//     } catch (error) {
-//       console.error(`Erro ao realizar GET no endpoint ${endpoint}:`, error);
-//       throw error;
-//     }
-//   },
-
-//   post: async (endpoint, data) => {
-//     try {
-//       const response = await connection.post(endpoint, data);
-//       return response.data;
-//     } catch (error) {
-//       console.error(`Erro ao realizar POST no endpoint ${endpoint}:`, error);
-//       throw error;
-//     }
-//   },
-
-//   put: async (endpoint, data) => {
-//     try {
-//       const response = await connection.put(endpoint, data);
-//       return response.data;
-//     } catch (error) {
-//       console.error(`Erro ao realizar PUT no endpoint ${endpoint}:`, error);
-//       throw error;
-//     }
-//   },
-
-//   delete: async (endpoint) => {
-//     try {
-//       const response = await connection.delete(endpoint);
-//       return response.data;
-//     } catch (error) {
-//       console.error(`Erro ao realizar DELETE no endpoint ${endpoint}:`, error);
-//       throw error;
-//     }
-//   },
-// };
-
-//Função genérica para buscar dados paginados
-export const fetchPaginatedData = async (endpoint, pageSize = 100) => {
-  let allData = [];
-  let page = 1;
-  let hasMore = true;
-
-  const connection = strapiClient();  //Usando o cliente Strapi
-
-  try {
-    //Enquanto houver mais dados para buscar
-    while (hasMore) {
-      const response = await connection.get(endpoint, {
-        params: {
-          pagination: {
-            page,
-            pageSize,
-          },
-        },
-      });
-
-      const { data, meta } = response.data;
-      allData = [...allData, ...data];
-
-      //Verifica se há mais páginas
-      hasMore = meta.pagination.page < meta.pagination.pageCount;
-      page += 1;
-    }
-  } catch (error) {
-    console.error(`Erro ao buscar dados do endpoint ${endpoint}:`, error);
-    throw error;
-  }
-
-  return allData;
-};

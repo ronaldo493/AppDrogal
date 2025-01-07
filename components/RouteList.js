@@ -14,9 +14,9 @@ export default function RouteList({ routes, onRemoveRoute, onReorderRoutes}) {
   //Renderenização de cada Item da Lista
   const renderItem = ({ item, drag, isActive }) => (
     <View style={[
-        RouteListStyles.routeItem, 
-        themeStyles.listRoutes, 
-        isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#bbb' } : {} ]}
+       RouteListStyles.routeItem, 
+      themeStyles.listRoutes, 
+      isActive ? { backgroundColor: isDarkMode ? '#ccc' : '#bbb' } : {} ]}
     >
       
 
@@ -25,7 +25,7 @@ export default function RouteList({ routes, onRemoveRoute, onReorderRoutes}) {
       </TouchableOpacity>
       <Text style={RouteListStyles.text}>{item.nomefilial}</Text>
       <TouchableOpacity onPress={() => onRemoveRoute(item)}>
-      <Icon name="delete" size={26} color={isDarkMode ? '#990000' : '#cc0000'} />
+      <Icon name="delete" size={24} color={isDarkMode ? '#990000' : '#cc0000'} />
       </TouchableOpacity>
     </View>
   );

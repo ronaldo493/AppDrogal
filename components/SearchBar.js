@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { TextInput, Button, View, Text } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { TextInput, Button, View, Text, ActivityIndicator } from 'react-native';
 import SearchBarStyles from './styles/SearchBarStyles';
 import { useTheme } from './ThemeContext';
 import { getThemeStyles } from './styles/ThemeStyles';
 import { Keyboard } from 'react-native';
-import { useFiliais } from '../components/FiliaisContext';
+import  useFiliais  from '../hooks/buscarFiliais';
 import debounce from 'lodash.debounce';
 
 export default function SearchBar({ onAddRoute }) {
@@ -16,7 +16,7 @@ export default function SearchBar({ onAddRoute }) {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Lista Filiais
-  const { filiais } = useFiliais();
+  const { filiais = [], error, loading } = useFiliais();
 
   //Função para buscar filial na lista local usando o código de filial
   const searchFilial = (text) => {
@@ -43,7 +43,7 @@ export default function SearchBar({ onAddRoute }) {
   const debouncedSearch = useCallback(
     debounce((text) => {
       searchFilial(text); //Chama a função de busca
-    }, 400), //400ms de espera após o último caractere digitado
+    }, 400), //300ms de espera após o último caractere digitado
     [filiais] //Recria a função debounce apenas se a lista de filiais mudar
   );
 
@@ -75,6 +75,21 @@ export default function SearchBar({ onAddRoute }) {
           onChangeText={handleSearch}
         />
       </View>
+
+      {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
+      {loading && (
+        <View >
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+
+      {/* Exibe erro, caso haja */}
+      {error && (
+        <View >
+          <Text style={themeStyles.errorText}>{error}</Text>
+        </View>
+      )}
+
       {selectedFilial && (
         <View style={SearchBarStyles.suggestionContainer}>
           <View style={[SearchBarStyles.suggestionItem, themeStyles.listSearch]}>
