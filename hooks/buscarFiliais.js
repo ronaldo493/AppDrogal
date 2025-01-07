@@ -1,45 +1,48 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStrapi } from "../components/StrapiContext";
 import { fetchPaginatedData } from "../services/Pagination";
 
 const useFiliais = () => {
     
-    const suporteStrapi = useStrapi();
+  const suporteStrapi = useStrapi();
 
-    const { filiais, setFiliais } = suporteStrapi;
+  const { filiais, setFiliais } = suporteStrapi;
 
-    const [ error, setError ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
+  const [ error, setError ] = useState(null);
+  const [ loading, setLoading ] = useState(false);
 
-    const getFiliais = async () => {
-        setLoading(true);
-        setError(null);
-    
-        try {
-          const data = await fetchPaginatedData('/informacoeslojas');
+  const getFiliais = async () => {
 
-          setFiliais(data);
-    
-          console.log("Todos os dados das filiais salvos no estado:");
-          data.forEach(filial => {
-            console.log(filial.codigofilial);  //Exibe o código
-          });
-        } catch (err) {
-            console.error("Erro ao buscar filiais:", err);
-            setError(err.message || "Erro desconhecido");
-        } finally {
-          setLoading(false);
-        }
-      };
+    setLoading(true);
 
-      useEffect(() => {
-        //Verifica se o estado de filiais está vazio antes de buscar os dados
-        if (filiais.length === 0) {
-            getFiliais();
-        }
-    }, [filiais])
+    setError(null);
 
-    return { filiais, error, loading }
+    try {
+      
+      const data = await fetchPaginatedData('/informacoeslojas');
+
+      setFiliais(data);
+
+    } catch (err) {
+
+      console.error("Erro ao buscar filiais:", err);
+      setError(err.message || "Erro desconhecido");
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
+  useEffect(() => { filiais.length == 0 && getFiliais() }, [])
+
+  return { 
+    filiais, 
+    error, 
+    loading 
+  }
+
 }
 
 export default useFiliais;

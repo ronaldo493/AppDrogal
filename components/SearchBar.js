@@ -1,11 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { TextInput, Button, View, Text, ActivityIndicator } from 'react-native';
-import SearchBarStyles from './styles/SearchBarStyles';
-import { useTheme } from './ThemeContext';
-import { getThemeStyles } from './styles/ThemeStyles';
-import { Keyboard } from 'react-native';
-import  useFiliais  from '../hooks/buscarFiliais';
 import debounce from 'lodash.debounce';
+import React, { useCallback, useState } from 'react';
+import { ActivityIndicator, Button, Keyboard, Text, TextInput, View } from 'react-native';
+import useFiliais from '../hooks/buscarFiliais';
+import SearchBarStyles from './styles/SearchBarStyles';
+import { getThemeStyles } from './styles/ThemeStyles';
+import { useTheme } from './ThemeContext';
 
 export default function SearchBar({ onAddRoute }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -32,9 +31,9 @@ export default function SearchBar({ onAddRoute }) {
 
     if (filialEncontrada) {
       setSelectedFilial(filialEncontrada); //Define a filial encontrada
-      console.log('Filial encontrada:', filialEncontrada);
+      // console.log('Filial encontrada:', filialEncontrada);
     } else {
-      console.log('Nenhuma filial encontrada com o código:', codigoFilial);
+      // console.log('Nenhuma filial encontrada com o código:', codigoFilial);
       setSelectedFilial(null);
     }
   };

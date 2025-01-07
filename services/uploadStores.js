@@ -16,8 +16,8 @@ const uploadStores = async () => {
    const token = '9daa01c9a2a011d52e3be0dadafe720ee349c7d77707081c0d9db457662f0a71db6b9c929ba3a813afe67fd0d49216ddbccfd773e5bfd1f0ca9fb9cfeb5ae0f1e7fee4712f24049e0be73433593f42a11ac9701394cd44d787ccd42ca324ed0b2a31b530c3b119b6db4905a41b05b339ba5ca21d0da42417e1224b69184e1055';
  
    for (const store of stores) {
-     console.log('Iniciando envio para a loja:', store.codigousuario);
-     console.log('Dados da loja:', store);
+    //  console.log('Iniciando envio para a loja:', store.codigousuario);
+    //  console.log('Dados da loja:', store);
  
      try {
        const response = await axios.post(url, { data: store }, {
@@ -27,7 +27,7 @@ const uploadStores = async () => {
          }
        });
  
-       console.log(`Loja ${store.codigousuario} adicionada com sucesso:`, response.data);
+      //  console.log(`Loja ${store.codigousuario} adicionada com sucesso:`, response.data);
      } catch (error) {
        // Log de erro detalhado
        console.error(`Erro ao adicionar loja ${store.codigousuario}:`, error.response ? error.response.data : error.message);

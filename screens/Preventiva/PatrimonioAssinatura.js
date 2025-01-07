@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, Button, TouchableOpacity, Alert } from "react-native";
 import { useRoute } from "@react-navigation/native";
+import * as FileSystem from 'expo-file-system';
+import * as Linking from 'expo-linking';
+import React, { useState } from "react";
+import { Alert, Button, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import MaquinaSection from "./MaquinaSection";
 import Modals from "./Modals";
-import * as FileSystem from 'expo-file-system';
-import * as Linking from 'expo-linking';
 
 export default function PatrimonioAssinatura() {
     //Modo Escuro
@@ -25,9 +25,9 @@ export default function PatrimonioAssinatura() {
     const saveDataToFile = async (data) => {
         try {
             await FileSystem.writeAsStringAsync(filePath, JSON.stringify(data, null, 2));
-            console.log("Dados salvos com sucesso no arquivo JSON!");
+            // console.log("Dados salvos com sucesso no arquivo JSON!");
         } catch (error) {
-            console.error("Erro ao salvar dados:", error);
+            // console.error("Erro ao salvar dados:", error);
         }
     };
 
@@ -75,7 +75,7 @@ export default function PatrimonioAssinatura() {
 
                 //Excluir o arquivo JSON após o envio
                 await FileSystem.deleteAsync(filePath);
-                console.log("Arquivo JSON excluído com sucesso!");
+                // console.log("Arquivo JSON excluído com sucesso!");
             } else {
                 Alert.alert("Erro", "O WhatsApp não está instalado ou não é suportado neste dispositivo.");
             }

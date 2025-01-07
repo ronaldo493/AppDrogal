@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchPaginatedData } from '../services/StrapiClient';
-import { initDB, saveDataToDB } from '../data/db';
-import { syncDataWithStrapi } from './SyncDataWithStrapi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { initDB, saveDataToDB } from '../data/db';
+import { fetchPaginatedData } from '../services/StrapiClient';
+import { syncDataWithStrapi } from './SyncDataWithStrapi';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch-task';
 
@@ -56,9 +56,9 @@ export const StrapiProvider = ({ children }) => {
           startOnBoot: true, //inicia após o reinício do dispositivo
         });
         setIsRegistered(true); //Atualiza o estado de registro
-        console.log('Background fetch configurado com sucesso');
+        // console.log('Background fetch configurado com sucesso');
       } else {
-        console.log('A tarefa de background já está registrada');
+        // console.log('A tarefa de background já está registrada');
       }
     } catch (error) {
       console.error('Erro ao configurar BackgroundFetch', error);
@@ -68,7 +68,7 @@ export const StrapiProvider = ({ children }) => {
   //Define a tarefa de BackgroundFetch
   TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
     try {
-      console.log('Background Fetch acionado');
+      // console.log('Background Fetch acionado');
       const tableConfigs = [
         { endpoint: '/informacoeslojas', tableName: 'filiais' },
         //{ endpoint: '/chamados', tableName: 'chamados' },
@@ -79,7 +79,7 @@ export const StrapiProvider = ({ children }) => {
       //Loop para sincronizar cada tabela
       for (const config of tableConfigs) {
         const { endpoint, tableName } = config;
-        console.log(`Sincronizando dados da tabela ${tableName}...`);
+        // console.log(`Sincronizando dados da tabela ${tableName}...`);
         await syncDataWithStrapi(endpoint, tableName);
       }
 

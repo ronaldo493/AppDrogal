@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import { useTheme } from '../../components/ThemeContext'; 
-import { getThemeStyles } from '../../components/styles/ThemeStyles'; 
-import  AddPointStyles from '../styles/AddPointStyles';
-import usePontos from '../../hooks/pontosInteresse';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useTheme } from '../../components/ThemeContext';
+import { getThemeStyles } from '../../components/styles/ThemeStyles';
+import usePontos from '../../hooks/pontosInteresse';
+import AddPointStyles from '../styles/AddPointStyles';
 
 export default function AddPoint() {
   //Modo escuro
@@ -130,14 +130,14 @@ export default function AddPoint() {
               categoria: 'Restaurante',
             };
 
-            console.log('Dados enviados:', newPoint);
+            // console.log('Dados enviados:', newPoint);
 
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
               const response = await postPontos(newPoint);
 
-              console.log('Resposta da API:', response);
+              // console.log('Resposta da API:', response);
 
               // //Adicionar ao banco local
               // await db.runAsync(
@@ -161,13 +161,13 @@ export default function AddPoint() {
               descricao: description,
               categoria: 'Posto de Combustível',
             };
-            console.log('Dados enviados:', newPoint);
+            // console.log('Dados enviados:', newPoint);
 
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
               const response = await postPontos(newPoint);
-              console.log('Resposta da API:', response)
+              // console.log('Resposta da API:', response)
 
               // //Adicionar ao banco local
               // await db.runAsync(
@@ -236,6 +236,7 @@ export default function AddPoint() {
 
       {/* Mapa */}
       <MapView
+      provider={MapView.PROVIDER_GOOGLE}
         key={isDarkMode ? 'dark' : 'light'}
         region={mapRegion}
         customMapStyle={themeStyles.mapStyle}

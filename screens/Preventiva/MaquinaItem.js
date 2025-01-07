@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import { View, Button, Text, TextInput, Modal, Alert } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
+import { CameraView, useCameraPermissions } from "expo-camera";
+import React, { useRef, useState } from "react";
+import { Alert, Button, Modal, Text, TextInput, View } from "react-native";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
-import { CameraView, useCameraPermissions} from "expo-camera";
+import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 
 export default MaquinaItem = ({ item, onUpdate }) => {
   //Modo Escuro
@@ -29,7 +29,7 @@ export default MaquinaItem = ({ item, onUpdate }) => {
     if (permission?.canAskAgain) {
       const result = await requestPermission();
       if (result.granted) {
-        console.log("Permissão concedida!", "Agora você pode acessar a câmera.");
+        // console.log("Permissão concedida!", "Agora você pode acessar a câmera.");
       } else {
         Alert.alert("Permissão necessária", "Você precisa conceder permissão para usar a câmera.");
       }
@@ -90,7 +90,7 @@ export default MaquinaItem = ({ item, onUpdate }) => {
     setPatrimonio(data); //Atualizar o valor de patrimônio
     setScannerVisible(false); //Desativa a visualização da câmera após o código válido ser lido
     onUpdate(label, data, selectedValue);//Notifica o componente pai com o novo valor do patrimônio
-    console.log("Patrimônio escaneado:", data);
+    // console.log("Patrimônio escaneado:", data);
   };
 
   return (

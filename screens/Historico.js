@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, Alert, TouchableOpacity } from 'react-native';
-import HistoricoStyles from './styles/HistoricoStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import { useTheme } from '../components/ThemeContext'; 
-import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+import React, { useState } from 'react';
+import { Alert, FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '../components/ThemeContext';
+import { getThemeStyles } from '../components/styles/ThemeStyles';
+import HistoricoStyles from './styles/HistoricoStyles';
 
 export default function Historico() {
   //Modo escuro
@@ -23,7 +23,7 @@ export default function Historico() {
             setRouteHistory(JSON.parse(history).reverse());
           }
         } catch (error) {
-          console.log('Erro ao carregar o histórico de rotas:', error);
+          // console.log('Erro ao carregar o histórico de rotas:', error);
         }
       };
       loadRouteHistory();

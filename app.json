@@ -23,7 +23,9 @@
         "NSLocationWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSCameraUsageDescription": "Este aplicativo precisa acessar sua câmera para ler códigos de barras e QR codes.",
-        "UIBackgroundModes": ["fetch"] 
+        "UIBackgroundModes": [
+          "fetch"
+        ]
       },
       "bundleIdentifier": "com.ronaldo2024.SuporteDrogal"
     },
@@ -38,7 +40,7 @@
         "CAMERA",
         "RECEIVE_BOOT_COMPLETED",
         "WAKE_LOCK",
-        ["ACCESS_BACKGROUND_LOCATION"]
+        "ACCESS_BACKGROUND_LOCATION"
       ],
       "config": {
         "googleMaps": {
@@ -53,9 +55,6 @@
         {
           "android": {
             "usesCleartextTraffic": true
-          },
-          "ios": {
-            "deploymentTarget": "13.4"
           }
         }
       ],
@@ -66,7 +65,8 @@
         }
       ],
       "expo-background-fetch",
-      "expo-task-manager"
+      "expo-task-manager",
+      "expo-sqlite"
     ],
     "web": {},
     "extra": {

@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Button } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const { width, height } = Dimensions.get('window'); //Ajustar automaticamente
 

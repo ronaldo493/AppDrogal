@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { View, Alert, Image, TouchableOpacity, Text } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import RouteList from '../components/RouteList';
-import HomeStyles from './styles/HomeStyles';
-import * as Location from 'expo-location';
-import MapService from '../services/MapService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTheme } from '../components/ThemeContext'; 
-import { getThemeStyles } from '../components/styles/ThemeStyles'; 
+import * as Location from 'expo-location';
+import React, { useEffect, useState } from 'react';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import RouteList from '../components/RouteList';
+import SearchBar from '../components/SearchBar';
+import { useTheme } from '../components/ThemeContext';
+import { getThemeStyles } from '../components/styles/ThemeStyles';
+import MapService from '../services/MapService';
+import HomeStyles from './styles/HomeStyles';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -77,7 +77,7 @@ export default function Home() {
 
   //Função para traçar a rota
   const handleTraceRoute = async () => {
-    console.log('Estado atual da localização:', currentLocation)
+    // console.log('Estado atual da localização:', currentLocation)
     if (!isLocationLoaded) {
       Alert.alert('Atenção', 'Localização ainda está sendo carregada. Tente novamente em alguns segundos.');
       return;
@@ -128,7 +128,7 @@ export default function Home() {
       Alert.alert('Erro ao salvar o histórico', error.message);
     }
   };
-
+  console.log('123')
   return (
     <View style={[HomeStyles.container, themeStyles.screenBackground]}>
       <View style={HomeStyles.logoContainer}>
@@ -152,4 +152,5 @@ export default function Home() {
       </View>
     </View>
   );
+  
 }

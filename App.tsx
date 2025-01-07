@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
+import { NavigationContainer } from '@react-navigation/native'; //Gerencia a navegação principal da aplicação
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
-import { TouchableOpacity, StatusBar, GestureResponderEvent } from 'react-native';
+import React, { useState } from 'react';
+import { GestureResponderEvent, StatusBar, TouchableOpacity } from 'react-native';
+import { Divider, MD2DarkTheme, MD2LightTheme, Menu, Provider as PaperProvider } from 'react-native-paper'; //Menu Suspenso
 import Icon from 'react-native-vector-icons/MaterialIcons'; //Icones
-import { Menu, Provider as PaperProvider, Divider, MD2DarkTheme, MD2LightTheme }  from 'react-native-paper'; //Menu Suspenso
-import Home from './screens/Home';
-import Settings from './screens/Settings/Settings';
-import Historico from './screens/Historico';
-import Chamados from './screens/Chamados';
-import Login from './screens/Auth/Login';
-import Preventiva from './screens/Preventiva/Preventiva';
-import MapaLojas from './screens/MapaLojas';
 import Sidebar from './components/Sidebar';
-import Suporte from './screens/Settings/Suporte';
-import AddPoint from './screens/Points/AddPoint';
-import About from './screens/Settings/About';
-import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { StrapiProvider } from './components/StrapiContext';
-import { getThemeStyles } from './components/styles/ThemeStyles'; 
+import { getThemeStyles } from './components/styles/ThemeStyles';
+import { ThemeProvider, useTheme } from './components/ThemeContext';
+import Login from './screens/Auth/Login';
+import Chamados from './screens/Chamados';
+import Historico from './screens/Historico';
+import Home from './screens/Home';
+import MapaLojas from './screens/MapaLojas';
+import AddPoint from './screens/Points/AddPoint';
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
+import Preventiva from './screens/Preventiva/Preventiva';
+import About from './screens/Settings/About';
+import Settings from './screens/Settings/Settings';
+import Suporte from './screens/Settings/Suporte';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -27,11 +27,11 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
-        <StrapiProvider>
-          <ThemeProvider>
-            <AppWithTheme />
-          </ThemeProvider>
-        </StrapiProvider>  
+    <StrapiProvider>
+      <ThemeProvider>
+        <AppWithTheme />
+      </ThemeProvider>
+    </StrapiProvider>  
   );
 }
 
@@ -75,88 +75,88 @@ function AppNavigation() {
           backgroundColor={isDarkMode ? '#333' : '#f0f0f0'}  
         />
         <NavigationContainer>
-        <Drawer.Navigator
-          drawerContent={(props) => <Sidebar {...props} />}
-          screenOptions={({ navigation }) => ({ 
-            headerShown: true, //Mostra o cabeçalho
-            headerTitle: '',   //Remove o título da tela
-            headerStyle: {
-              backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
-            },
-            headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
-            headerRight: () => (
-              <>
-                <TouchableOpacity onPress={openMenu} style={{ marginRight: 10, padding: 9 }} >
-                <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
-                </TouchableOpacity>
-                <Menu   
-                  visible={isMenuVisible}
-                  onDismiss={closeMenu}
-                  anchor={{ x: anchorPosition?.x || 0, y: anchorPosition?.y || 0}}
-                >
-                  <Menu.Item  onPress={() => { closeMenu(); navigation.navigate('Settings');}} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
-                  <Divider />
-                  <Menu.Item  onPress={() => { closeMenu(); }} title="Meu Perfil" titleStyle={ThemeStyles.textMenu} />
-                  <Divider />
-                  <Menu.Item  onPress={() => { closeMenu(); }} title="Sair" titleStyle={ThemeStyles.textMenu} />
-                </Menu>
-              </>
-              
-            ),
-          })}
-        >
-          <Drawer.Screen 
-            name="Home" 
-            component={Home} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Historico" 
-            component={Historico} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="MapaLojas" 
-            component={MapaLojas} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="AddPoint" 
-            component={AddPoint} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Chamados" 
-            component={Chamados} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Preventiva" 
-            component={PreventivaStack} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Login" 
-            component={Login} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Settings" 
-            component={SettingsStack} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="Suporte" 
-            component={Suporte} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
-            name="About" 
-            component={About} 
-            options={{ headerTitle: '' }} 
-          />
+          <Drawer.Navigator
+            drawerContent={(props) => <Sidebar {...props} />}
+            screenOptions={({ navigation }) => ({ 
+              headerShown: true, //Mostra o cabeçalho
+              headerTitle: '',   //Remove o título da tela
+              headerStyle: {
+                backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
+              },
+              headerTintColor: isDarkMode ? '#B0B3B8' : '#000000',
+              headerRight: () => (
+                <>
+                  <TouchableOpacity onPress={openMenu} style={{ marginRight: 10, padding: 9 }} >
+                  <Icon name="account-circle" size={28} color={isDarkMode ? '#B0B3B8' : '#000'} /> 
+                  </TouchableOpacity>
+                  <Menu   
+                    visible={isMenuVisible}
+                    onDismiss={closeMenu}
+                    anchor={{ x: anchorPosition?.x || 0, y: anchorPosition?.y || 0}}
+                  >
+                    <Menu.Item  onPress={() => { closeMenu(); navigation.navigate('Settings');}} title="Configurações" titleStyle={ThemeStyles.textMenu}  />
+                    <Divider />
+                    <Menu.Item  onPress={() => { closeMenu(); }} title="Meu Perfil" titleStyle={ThemeStyles.textMenu} />
+                    <Divider />
+                    <Menu.Item  onPress={() => { closeMenu(); }} title="Sair" titleStyle={ThemeStyles.textMenu} />
+                  </Menu>
+                </>
+                
+              ),
+            })}
+          >
+            <Drawer.Screen 
+              name="Home" 
+              component={Home} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Historico" 
+              component={Historico} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="MapaLojas" 
+              component={MapaLojas} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="AddPoint" 
+              component={AddPoint} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Chamados" 
+              component={Chamados} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Preventiva" 
+              component={PreventivaStack} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Login" 
+              component={Login} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Settings" 
+              component={SettingsStack} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="Suporte" 
+              component={Suporte} 
+              options={{ headerTitle: '' }} 
+            />
+            <Drawer.Screen 
+              name="About" 
+              component={About} 
+              options={{ headerTitle: '' }} 
+            />
 
-        </Drawer.Navigator>
+          </Drawer.Navigator>
       </NavigationContainer>  
     </> 
   );

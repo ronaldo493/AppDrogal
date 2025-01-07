@@ -1,5 +1,5 @@
-import { fetchPaginatedData } from "./StrapiClient";
 import { initDB } from '../data/db';
+import { fetchPaginatedData } from "./StrapiClient";
 
 //Função para atualizar ou inserir dados do Strapi na tabela local
 export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns) => {
@@ -24,7 +24,7 @@ export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns)
 
         //Se houver mudanças, faz o UPDATE
         if (differences.length > 0) {
-          console.log(`Mudanças detectadas para ${item[keyField]} na tabela ${tableName}:`, differences);
+          // console.log(`Mudanças detectadas para ${item[keyField]} na tabela ${tableName}:`, differences);
 
           const updateColumns = columns.filter(column => column !== 'last_modified');
           const updateValues = updateColumns.map(column => item[column] || null);
@@ -33,9 +33,9 @@ export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns)
             `UPDATE ${tableName} SET ${updateColumns.map(col => `${col} = ?`).join(', ')}, last_modified = CURRENT_TIMESTAMP WHERE ${keyField} = ?;`,
             [...updateValues, item[keyField]]
           );
-          console.log(`Registro atualizado na tabela ${tableName}: ${item[keyField]}`);
+          // console.log(`Registro atualizado na tabela ${tableName}: ${item[keyField]}`);
         } else {
-          console.log(`Nenhuma mudança detectada para: ${tableName} ${item[keyField]}`);
+          // console.log(`Nenhuma mudança detectada para: ${tableName} ${item[keyField]}`);
 
             // //Executando o SELECT para ver o conteúdo atual
             // const rows = await db.getAllAsync('SELECT * FROM pontosAbastecimentos');
@@ -43,12 +43,12 @@ export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns)
         }
       } else {
         //Se o registro não existir, faz a inserção
-        console.log(`Inserindo novo registro na tabela ${tableName}: ${item[keyField]}`);
+        // console.log(`Inserindo novo registro na tabela ${tableName}: ${item[keyField]}`);
         await db.runAsync(
           `INSERT INTO ${tableName} (${columns.join(', ')}, last_modified) VALUES (${columns.map(() => '?').join(', ')}, CURRENT_TIMESTAMP);`,
           [...columns.map(column => item[column] || null)]
         );
-        console.log(`Registro inserido na tabela ${tableName}: ${item[keyField]}`);
+        // console.log(`Registro inserido na tabela ${tableName}: ${item[keyField]}`);
       }
     } 
 
@@ -59,9 +59,9 @@ export const syncDataWithStrapi = async (endpoint, tableName, keyField, columns)
     for (const localItem of localData) {
       if (!strapiIds.includes(localItem[keyField])) {
         //Deletar registros do banco local que não estão mais no Strapi
-        console.log(`Deletando registro do banco local: ${localItem[keyField]}`);
+        // console.log(`Deletando registro do banco local: ${localItem[keyField]}`);
         await db.runAsync(`DELETE FROM ${tableName} WHERE ${keyField} = ?;`, [localItem[keyField]]);
-        console.log(`Registro deletado do banco local: ${localItem[keyField]}`);
+        // console.log(`Registro deletado do banco local: ${localItem[keyField]}`);
       }
     }
   

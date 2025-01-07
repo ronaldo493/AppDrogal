@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 //Criando o contexto
 const StrapiContext = createContext();
@@ -7,7 +7,7 @@ const StrapiContext = createContext();
 export const StrapiProvider = ({ children }) => {
   const [filiais, setFiliais] = useState([]);
   const [pontos, setPontos] = useState([]);
-
+  
   const contextValue = {
     filiais,
     setFiliais,

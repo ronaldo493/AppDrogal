@@ -429,7 +429,7 @@ const createUsers = async () => {
     };
 
     try {
-      console.log(`Criando usuário: ${userData.username}, Email: ${userData.email}`);
+      // console.log(`Criando usuário: ${userData.username}, Email: ${userData.email}`);
 
       const response = await axios.post(apiUrl, userData, {
         headers: {
@@ -438,7 +438,7 @@ const createUsers = async () => {
         },
       });
 
-      console.log(`Usuário ${userData.username} criado com sucesso:`, response.data);
+      // console.log(`Usuário ${userData.username} criado com sucesso:`, response.data);
     } catch (error) {
       console.error(`Erro ao criar usuário ${userData.username}:`, error.response ? error.response.data : error.message);
     }

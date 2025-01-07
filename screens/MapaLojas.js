@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View, TextInput, Alert } from 'react-native';
 import * as Location from 'expo-location';
-import MapView, { Marker } from 'react-native-maps';
-import MapaLojasStyles from './styles/MapaLojasStyles';
-import { useTheme } from '../components/ThemeContext'; 
-import { getThemeStyles } from '../components/styles/ThemeStyles'; 
-import  useFiliais  from '../hooks/buscarFiliais';
 import debounce from 'lodash.debounce';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Alert, TextInput, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { useTheme } from '../components/ThemeContext';
+import { getThemeStyles } from '../components/styles/ThemeStyles';
+import useFiliais from '../hooks/buscarFiliais';
+import MapaLojasStyles from './styles/MapaLojasStyles';
 
 export default function MapaLojas(){
   //Modo escuro
@@ -80,13 +80,13 @@ export default function MapaLojas(){
   useEffect(() => {
     if (filiais.length > 0) {
       setFilteredFiliais(filiais);
-
+      
       const primeiraFilial = filiais.find((filial) => {
         const latitude = parseFloat(filial.latitude?.replace(',', '.'));
         const longitude = parseFloat(filial.longitude?.replace(',', '.'));
         return !isNaN(latitude) && !isNaN(longitude);
       });
-
+      
       if (primeiraFilial) {
         const latitude = parseFloat(primeiraFilial.latitude?.replace(',', '.'));
         const longitude = parseFloat(primeiraFilial.longitude?.replace(',', '.'));
@@ -178,6 +178,7 @@ export default function MapaLojas(){
           //console.log(`Filial: ${filial.codigofilial}, latitude: ${typeof latitude}, longitude: ${typeof longitude}`);
 
           //Verifica se ambos são números válidos
+
           if (!isNaN(latitude) && !isNaN(longitude)) {
             return (
               <Marker

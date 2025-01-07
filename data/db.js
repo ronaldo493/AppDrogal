@@ -24,7 +24,7 @@ const createFiliaisTable = async (db) => {
         last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('Tabela filiais criada com sucesso!');
+    // console.log('Tabela filiais criada com sucesso!');
   } catch (error) {
     console.error('Erro ao criar tabela filiais:', error);
   }
@@ -83,9 +83,9 @@ const createPontosIfoodsTable = async (db) => {
         last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('Tabela pontosIfoods criada com sucesso!');
+    // console.log('Tabela pontosIfoods criada com sucesso!');
   } catch (error) {
-    console.error('Erro ao criar tabela pontos:', error);
+    // console.error('Erro ao criar tabela pontos:', error);
   }
 };
 
@@ -100,9 +100,9 @@ const createPontosAbastecimentosTable = async (db) => {
         last_modified TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('Tabela pontosAbastecimentos criada com sucesso!');
+    // console.log('Tabela pontosAbastecimentos criada com sucesso!');
   } catch (error) {
-    console.error('Erro ao criar tabela pontos:', error);
+    // console.error('Erro ao criar tabela pontos:', error);
   }
 };
 
@@ -110,7 +110,7 @@ const createPontosAbastecimentosTable = async (db) => {
 export const initDB = async () => {
   try {
     const db = await openDatabaseAsync('DataStrapi.db'); //Abre o banco de dados
-    console.log('Banco de dados aberto com sucesso:', db);
+    // console.log('Banco de dados aberto com sucesso:', db);
 
     //Criação das tabelas
     await createFiliaisTable(db);
@@ -143,7 +143,7 @@ export const saveDataToDB = async (db, tableName, data, columns) => {
       //Executa a inserção diretamente com runAsync
       await db.runAsync(query, values);
 
-      console.log(`Dados salvos na tabela '${tableName}' com sucesso:`);
+      // console.log(`Dados salvos na tabela '${tableName}' com sucesso:`);
     }
 
   } catch (error) {
