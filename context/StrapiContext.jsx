@@ -23,6 +23,6 @@ export const StrapiProvider = ({ children }) => {
 };
 
 //Encapsulando 
-export const useStrapi = () => {
+export const useStrapiContext = () => {
     return useContext(StrapiContext);
 }

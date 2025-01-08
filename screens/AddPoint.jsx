@@ -22,43 +22,6 @@ export default function AddPoint() {
   const [description, setDescription] = useState(''); //Estado para armazenar a descrição do ponto
   const [isPontoAdd, setIsPontoAdd] = useState(false); //Estado para controlar se o usuário está no modo de adição de ponto
 
-  // //Função para abrir o banco de dados
-  // const openDatabase = async () => {
-  //   try {
-  //     const database = await openDatabaseAsync('DataStrapi.db');
-  //     console.log('Banco de dados aberto com sucesso:', database);
-  //     setDb(database); //Armazena o banco de dados no estado
-  //     fetchPoints(database);  //Chama a função para buscar os pontos ao abrir o banco
-  //   } catch (error) {
-  //     console.error('Erro ao abrir o banco de dados:', error);
-  //   }
-  // };
-  
-  //Função para buscar pontos das tabelas pontosIfoods e pontosAbastecimentos
-  // const fetchPoints = async () => {
-  //   try {
-  //     //Buscando pontos dos restaurantes
-  //     const ifoodPoints = await db.getAllAsync('SELECT * FROM pontosIfoods');
-  //     //Buscando pontos dos postos de combustíveis
-  //     const abastecimentoPoints = await db.getAllAsync('SELECT * FROM pontosAbastecimentos');
-
-  //     //Adiciona o tipo 'restaurante' ou 'posto' aos pontos
-  //     const pointsWithTypes = [
-  //       ...ifoodPoints.map((point) => ({ ...point, type: 'restaurante' })),
-  //       ...abastecimentoPoints.map((point) => ({ ...point, type: 'posto' })),
-  //     ];
-      
-  //     //Atualiza o estado com todos os pontos
-  //     setPoints(pointsWithTypes);
-  //   } catch (error) {
-  //     console.error('Erro ao buscar pontos no banco de dados:', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   openDatabase(); 
-  // }, []);
-  
 
   //Função para salvar um ponto
   const savePoint = async () => {
@@ -83,24 +46,13 @@ export default function AddPoint() {
               categoria: 'Restaurante',
             };
 
-            console.log('Dados enviados:', newPoint);
-
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
               const response = await postPontos(newPoint);
-
-              console.log('Resposta da API:', response);
-
-              // //Adicionar ao banco local
-              // await db.runAsync(
-              //   'INSERT INTO pontosIfoods (latitude, longitude, descricao) VALUES (?, ?, ?)',
-              //   [newPoint.latitude, newPoint.longitude, newPoint.descricao]
-              // );
-            
+              
               resetAddPoint();
             } catch (error) {
-              console.error('Erro ao salvar ponto como Restaurante:', error);
               Alert.alert('Erro', 'Não foi possível salvar o ponto.');
             }
           },
@@ -114,20 +66,12 @@ export default function AddPoint() {
               descricao: description,
               categoria: 'Posto de Combustível',
             };
-            console.log('Dados enviados:', newPoint);
 
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
               const response = await postPontos(newPoint);
-              console.log('Resposta da API:', response)
-
-              // //Adicionar ao banco local
-              // await db.runAsync(
-              //   'INSERT INTO pontosAbastecimentos (latitude, longitude, descricao) VALUES (?, ?, ?)',
-              //   [newPoint.latitude, newPoint.longitude, newPoint.descricao]
-              // );
-
+  
               resetAddPoint();
             } catch (error) {
               console.error('Erro ao salvar ponto como Posto de Combustível:', error);
@@ -237,11 +181,6 @@ export default function AddPoint() {
             title={point.descricao}
             pinColor={getColor(point.type)}
           >
-            {/* <Icon
-              name={point.type === 'restaurante' ? 'fastfood' : 'local-gas-station'}
-              size={27}
-              color={getColor(point.type)}
-            /> */}
           </Marker>
         ))}
 

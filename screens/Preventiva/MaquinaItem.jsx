@@ -28,7 +28,6 @@ export default MaquinaItem = ({ item, onUpdate }) => {
     if (permission?.canAskAgain) {
       const result = await requestPermission();
       if (result.granted) {
-        console.log("Permissão concedida!", "Agora você pode acessar a câmera.");
       } else {
         Alert.alert("Permissão necessária", "Você precisa conceder permissão para usar a câmera.");
       }
@@ -89,7 +88,6 @@ export default MaquinaItem = ({ item, onUpdate }) => {
     setPatrimonio(data); //Atualizar o valor de patrimônio
     setScannerVisible(false); //Desativa a visualização da câmera após o código válido ser lido
     onUpdate(label, data, selectedValue);//Notifica o componente pai com o novo valor do patrimônio
-    console.log("Patrimônio escaneado:", data);
   };
 
   return (

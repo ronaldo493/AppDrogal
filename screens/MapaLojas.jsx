@@ -143,9 +143,6 @@ export default function MapaLojas(){
           const latitude = parseFloat(filial.latitude);
           const longitude = parseFloat(filial.longitude);
 
-          //Log para verificar o tipo de dado
-          //console.log(`Filial: ${filial.codigofilial}, latitude: ${typeof latitude}, longitude: ${typeof longitude}`);
-
           //Verifica se ambos são números válidos
           if (!isNaN(latitude) && !isNaN(longitude)) {
             return (
@@ -156,8 +153,6 @@ export default function MapaLojas(){
                 description={`Endereço: ${filial.endereco}, ${filial.numero}, ${filial.bairro}, ${filial.nomecidade}`}
               />
             );
-          } else {
-            //console.log(`Filial com erro: ${filial.codigofilial}, latitude: ${latitude}, longitude: ${longitude}`);
           }
           return null;
         })}

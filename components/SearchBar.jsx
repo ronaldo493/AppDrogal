@@ -31,9 +31,7 @@ export default function SearchBar({ onAddRoute }) {
 
     if (filialEncontrada) {
       setSelectedFilial(filialEncontrada); //Define a filial encontrada
-      console.log('Filial encontrada:', filialEncontrada);
     } else {
-      console.log('Nenhuma filial encontrada com o código:', codigoFilial);
       setSelectedFilial(null);
     }
   };

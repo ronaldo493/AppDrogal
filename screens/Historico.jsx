@@ -23,7 +23,6 @@ export default function Historico() {
             setRouteHistory(JSON.parse(history).reverse());
           }
         } catch (error) {
-          console.log('Erro ao carregar o histórico de rotas:', error);
         }
       };
       loadRouteHistory();

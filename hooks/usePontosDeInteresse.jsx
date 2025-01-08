@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useStrapi } from "../context/StrapiContext";
+import { useStrapiContext } from "../context/StrapiContext";
 import strapiClient from "../services/StrapiClient";
-import { fetchPaginatedData } from "./usePagination";
+import usePagination from "./usePagination";
 
 const usePontos = () => {
     
-    const suporteStrapi = useStrapi();
+    const suporteStrapi = useStrapiContext();
 
     const { pontos, setPontos } = suporteStrapi;
 
@@ -18,16 +18,10 @@ const usePontos = () => {
         setError(null);
     
         try {
-          const data = await fetchPaginatedData('/pontos-interesses');
+          const data = await usePagination('/pontos-interesses');
 
           setPontos(data);
-    
-          console.log("Todos os dados dos pontos salvos:");
-          data.forEach(point => {
-            console.log(point.categoria);  //Exibe o código
-          });
         } catch (err) {
-            console.error("Erro ao buscar Pontos:", err);
             setError(err.message || "Erro desconhecido");
         } finally {
           setLoading(false);

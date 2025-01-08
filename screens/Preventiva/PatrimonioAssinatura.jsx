@@ -2,7 +2,7 @@ import { useRoute } from "@react-navigation/native";
 import * as FileSystem from 'expo-file-system';
 import * as Linking from 'expo-linking';
 import React, { useState } from "react";
-import { Alert, Button, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Button, ScrollView, Text, TouchableOpacity, View, Platform } from "react-native";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
 import { useTheme } from "../../context/ThemeContext";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
@@ -25,7 +25,6 @@ export default function PatrimonioAssinatura() {
     const saveDataToFile = async (data) => {
         try {
             await FileSystem.writeAsStringAsync(filePath, JSON.stringify(data, null, 2));
-            console.log("Dados salvos com sucesso no arquivo JSON!");
         } catch (error) {
             console.error("Erro ao salvar dados:", error);
         }
@@ -84,7 +83,6 @@ export default function PatrimonioAssinatura() {
     
                 // Excluir o arquivo JSON após o envio
                 await FileSystem.deleteAsync(filePath);
-                console.log("Arquivo JSON excluído com sucesso!");
             } else {
                 // Mensagem de erro específica para iOS ou Android
                 Alert.alert(

@@ -1,7 +1,7 @@
 import strapiClient from "../services/StrapiClient";
 
 //Função genérica para buscar dados paginados
-export const fetchPaginatedData = async (endpoint, pageSize = 100) => {
+export default usePagination = async (endpoint, pageSize = 100) => {
     let allData = [];
     let page = 1;
     let hasMore = true;
