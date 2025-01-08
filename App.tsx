@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';  //Gerencia a navegação principal da aplicação
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
+import { NavigationContainer } from '@react-navigation/native'; //Gerencia a navegação principal da aplicação
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
+import React from 'react';
 import { StatusBar } from 'react-native';
-import {  Provider as PaperProvider, MD2DarkTheme, MD2LightTheme }  from 'react-native-paper';
-import Home from './screens/Home';
-import Settings from './screens/Settings/Settings';
-import Historico from './screens/Historico';
-import Chamados from './screens/Chamados';
-import Login from './screens/Auth/Login';
-import Preventiva from './screens/Preventiva/Preventiva';
-import MapaLojas from './screens/MapaLojas';
-import Sidebar from './components/Sidebar';
-import Suporte from './screens/Settings/Suporte';
-import AddPoint from './screens/AddPoint';
-import About from './screens/Settings/About';
+import { MD2DarkTheme, MD2LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import HeaderMenu from './components/HeaderMenu';
-import { ThemeProvider, useTheme } from './components/ThemeContext';
-import { StrapiProvider } from './components/StrapiContext';
-import { getThemeStyles } from './components/styles/ThemeStyles'; 
+import Sidebar from './components/Sidebar';
+import { getThemeStyles } from './components/styles/ThemeStyles';
+import { StrapiProvider } from './context/StrapiContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import AddPoint from './screens/AddPoint';
+import Login from './screens/Auth/Login';
+import Chamados from './screens/Chamados';
+import Historico from './screens/Historico';
+import Home from './screens/Home';
+import MapaLojas from './screens/MapaLojas';
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
+import Preventiva from './screens/Preventiva/Preventiva';
+import About from './screens/Settings/About';
+import Settings from './screens/Settings/Settings';
+import Suporte from './screens/Settings/Suporte';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
