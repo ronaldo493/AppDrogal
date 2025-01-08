@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Button, TouchableOpacity, Alert } from "react-native";
+import { View, Text, ScrollView, Button, TouchableOpacity, Alert,Platform } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
@@ -52,32 +52,47 @@ export default function PatrimonioAssinatura() {
     //Função para enviar os dados para o WhatsApp
     const sendJsonWhatsApp = async () => {
         try {
-            //Verifica se o arquivo JSON existe
+            // Verifica se o arquivo JSON existe
             const fileExists = await FileSystem.getInfoAsync(filePath);
             if (!fileExists.exists) {
-                //Se o arquivo não existir, exibe uma mensagem de alerta
+                // Se o arquivo não existir, exibe uma mensagem de alerta
                 Alert.alert("Atenção", "O arquivo JSON não foi encontrado.");
                 return;
             }
-            //Ler o conteúdo do arquivo JSON
+            // Ler o conteúdo do arquivo JSON
             const jsonString = await FileSystem.readAsStringAsync(filePath);
             const data = JSON.parse(jsonString);
-
-            //Formatar os dados conforme a estrutura desejada
+    
+            // Formatar os dados conforme a estrutura desejada
             const formattedData = formatData(data);
-
-            //Enviar o JSON como uma mensagem para o WhatsApp
-            const url = `whatsapp://send?text=${encodeURIComponent(formattedData)}`;
+    
+            // Definir a URL de envio
+            let url = '';
+            if (Platform.OS === 'ios') {
+                // Para iOS, o esquema pode precisar de um número de telefone
+                url = `whatsapp://send?text=${encodeURIComponent(formattedData)}`;
+            } else {
+                // Para Android, usa o esquema normal
+                url = `whatsapp://send?text=${encodeURIComponent(formattedData)}`;
+            }
+    
+            // Verifica se o WhatsApp pode ser aberto com o esquema
             const supported = await Linking.canOpenURL(url);
-
+    
             if (supported) {
                 await Linking.openURL(url);
-
-                //Excluir o arquivo JSON após o envio
+    
+                // Excluir o arquivo JSON após o envio
                 await FileSystem.deleteAsync(filePath);
                 console.log("Arquivo JSON excluído com sucesso!");
             } else {
-                Alert.alert("Erro", "O WhatsApp não está instalado ou não é suportado neste dispositivo.");
+                // Mensagem de erro específica para iOS ou Android
+                Alert.alert(
+                    "Erro",
+                    Platform.OS === 'ios'
+                        ? "O WhatsApp não está instalado ou o esquema 'whatsapp://' não está sendo reconhecido."
+                        : "O WhatsApp não está instalado ou não é suportado neste dispositivo."
+                );
             }
         } catch (error) {
             console.error("Erro ao enviar o JSON:", error);

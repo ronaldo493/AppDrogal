@@ -23,7 +23,9 @@
         "NSLocationWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Este aplicativo precisa acessar sua localização para mostrar as lojas próximas a você.",
         "NSCameraUsageDescription": "Este aplicativo precisa acessar sua câmera para ler códigos de barras e QR codes.",
-        "UIBackgroundModes": ["fetch"] 
+        "UIBackgroundModes": ["fetch"],
+        "LSApplicationQueriesSchemes": ["whatsapp"]
+        
       },
       "bundleIdentifier": "com.ronaldo2024.SuporteDrogal"
     },

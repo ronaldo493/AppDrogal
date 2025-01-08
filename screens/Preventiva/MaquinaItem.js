@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import { View, Button, Text, TextInput, Modal, Alert, TouchableOpacity } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import { View, Button, Text, TextInput, Modal, Alert, TouchableOpacity, Platform } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
 import { getThemeStyles } from "../../components/styles/ThemeStyles";
@@ -115,19 +116,48 @@ export default MaquinaItem = ({ item, onUpdate }) => {
         </TouchableOpacity>
       </View>
 
-      {requiresSelection ? (
-        <Picker
-          selectedValue={selectedValue}
-          onValueChange={(itemValue) => {
-            setSelectedValue(itemValue)
-            onUpdate(label, patrimonio, itemValue);
-          }}
-          style={{ color: isDarkMode ? '#ccc' : '#000' }}
-        >
-          {options.map((option, index) => (
-            <Picker.Item key={index} label={option.label} value={option.value} />
-          ))}
-        </Picker>
+      {requiresSelection ? (  
+        <View style={{ marginBottom: 20 }}>
+          <RNPickerSelect
+            onValueChange={(itemValue) => {
+              setSelectedValue(itemValue); //Atualiza o estado com o valor selecionado
+              onUpdate(label, patrimonio, itemValue); //Chama a função para notificar o componente pai sobre a atualização
+            }}
+            value={selectedValue} //Define o valor atual selecionado no picker
+            items={options.map((option) => ({
+              label: option.label, //Define o texto exibido para cada opção
+              value: option.value, //Define o valor associado a cada opção
+            }))}
+            placeholder={{
+              label: "Selecione uma opção...",
+              value: null,
+              color: "#999",
+            }}
+            style={{
+              inputIOS: {
+                color: isDarkMode ? "#ccc" : "#000",
+                paddingVertical: 12,
+                paddingHorizontal: 10,
+                borderWidth: 0.2,
+                borderColor: isDarkMode ? "#ccc" : "#bbb",
+                borderRadius: 5,
+                height: 40,
+              },
+              iconContainer: {
+                padding: 8,
+                flex: 1,
+                alignItems: "center",
+                justifyContent: 'center'
+              },
+            }}
+            Icon={() => (
+              Platform.OS === "ios" ? (
+                <MaterialIcons name="keyboard-arrow-down" size={32} color="gray" />
+              ) : null
+            )}
+          />
+        </View>
+
       ) : null}
 
       <Modal visible={isScannerVisible}>

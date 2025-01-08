@@ -80,6 +80,7 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         alignItems:'center',
         fontWeight: 'bold'
     },
+    
 
     //Modal
     modalContainer: {
