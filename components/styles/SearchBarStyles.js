@@ -1,9 +1,9 @@
-import { Button, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 12,
   },
   input: {
     flex: 1,

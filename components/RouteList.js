@@ -23,7 +23,7 @@ export default function RouteList({ routes, onRemoveRoute, onReorderRoutes}) {
       <TouchableOpacity onPressIn={drag}>
         <Icon name="drag-handle" size={30} color={isDarkMode ? '#666' : '#666'} />
       </TouchableOpacity>
-      <Text style={RouteListStyles.text}>{item.nomefilial}</Text>
+      <Text style={[RouteListStyles.text, themeStyles.text]}>{item.nomefilial}</Text>
       <TouchableOpacity onPress={() => onRemoveRoute(item)}>
       <Icon name="delete" size={24} color={isDarkMode ? '#990000' : '#cc0000'} />
       </TouchableOpacity>

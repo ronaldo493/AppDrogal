@@ -35,8 +35,10 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
     contentSection: {
         marginBottom: 20,
         padding: 5,
+        borderRadius: 8,
     },
     titleSection: {
+        paddingHorizontal: 5,
         fontSize: 16,             
         fontWeight: 'bold',       
         marginVertical: 18,        
@@ -50,10 +52,11 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         justifyContent: 'space-between', 
         marginBottom: 6, 
     },
-
+   
     //Itens do Maquina Item
     itemRowContainer: {
         flexDirection: "row",
+        paddingHorizontal: 5,
         marginBottom: 10,
         justifyContent: "space-between",
         alignItems: "center", 
@@ -63,12 +66,19 @@ const PatrimonioAssinaturaStyles = StyleSheet.create({
         flex: 1,
     },
     PatrimonioInput: {
-        flex: 2,
-
+        flex: 1,
         marginRight: 8,
     },
     scanButton: {
+        padding: 8,
+        borderRadius: 8,
         flex: 1,
+    },
+    textButton: {
+        fontSize: 12,
+        textAlign: 'center',
+        alignItems:'center',
+        fontWeight: 'bold'
     },
 
     //Modal

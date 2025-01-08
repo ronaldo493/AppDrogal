@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const HistoricoStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 15,
     backgroundColor: '#fff',
   },
 
@@ -19,7 +19,7 @@ const HistoricoStyles = StyleSheet.create({
     padding: 15,
     backgroundColor: '#f0f0f0',
     borderRadius: 7,
-    borderWidth: 1,
+    borderWidth: 0.3,
     borderColor: '#ccc',
   },
 

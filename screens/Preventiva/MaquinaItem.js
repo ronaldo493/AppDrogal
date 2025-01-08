@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, Button, Text, TextInput, Modal, Alert } from "react-native";
+import { View, Button, Text, TextInput, Modal, Alert, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import PatrimonioAssinaturaStyles from "../styles/PatrimonioAssinaturaStyles";
 import { useTheme } from "../../components/ThemeContext";
@@ -106,12 +106,13 @@ export default MaquinaItem = ({ item, onUpdate }) => {
           placeholderTextColor={isDarkMode ? '#ccc' : '#666'}
           keyboardType="numeric" 
         />
-        <Button 
-          title="Escanear" 
-          onPress={handleScan} 
-          style={PatrimonioAssinaturaStyles.scanButton} 
-          color={isDarkMode ? '#777' : '#BB5059'} 
-        />
+
+        <TouchableOpacity
+          onPress={handleScan}
+          style={[PatrimonioAssinaturaStyles.scanButton, themeStyles.buttonModal]}
+        >
+          <Text style={[PatrimonioAssinaturaStyles.textButton, themeStyles.text]}>SCAN</Text>
+        </TouchableOpacity>
       </View>
 
       {requiresSelection ? (

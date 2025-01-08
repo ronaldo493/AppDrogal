@@ -34,14 +34,8 @@ export default function Home() {
     setRoutes(updatedRoutes);
   };
 
-  //Função para traçar a rota
-  const handleTraceRoute = async () => {
-
-    if (routes.length === 0) {
-      Alert.alert('Atenção!', 'Nenhuma filial selecionada');
-      return;
-    }
-    
+  //Função Salvar histórico
+  const saveHistory = async () => {
     const currentDate = new Date().toLocaleString(); //Obtém a data atual
 
     try {
@@ -62,19 +56,47 @@ export default function Home() {
 
       parsedHistory.push(updatedRoute);
       await AsyncStorage.setItem('routeHistory', JSON.stringify(parsedHistory));
+    } catch (error) {
+      throw new Error('Não foi possível salvar o histórico.');
+    }
+  }
 
+  //Função para abrir o maps ou o waze e salvar o historico
+  const handleOpenGoogleMaps = async () => {
+    try {
+      await saveHistory();
+      MapService.openGoogleMapsRoute(routes);
+    } catch (error) {
+      Alert.alert('Erro ao salvar o histórico', error.message);
+    }
+  };
+  
+  const handleOpenWaze = async () => {
+    try {
+      await saveHistory();
+      MapService.openWazeRoute(routes); 
+    } catch (error) {
+      Alert.alert('Erro ao salvar o histórico', error.message);
+    }
+  };
+
+  //Função para traçar a rota
+  const handleTraceRoute = async () => {
+    if (routes.length === 0) {
+      Alert.alert('Atenção!', 'Nenhuma filial selecionada');
+      return;
+    }
+    
+    
       Alert.alert(
         'Escolha o Navegador',
         'Deseja abrir a rota no Google Maps ou no Waze?',
         [
-          { text: 'Google Maps', onPress: () => MapService.openGoogleMapsRoute(routes) },
-          { text: 'Waze', onPress: () => MapService.openWazeRoute(routes) },
+          { text: 'Google Maps', onPress: handleOpenGoogleMaps },
+          { text: 'Waze', onPress: handleOpenWaze },
           { text: 'Cancelar', style: 'cancel' },
         ]
       );
-    } catch (error) {
-      Alert.alert('Erro ao salvar o histórico', error.message);
-    }
   };
 
   return (

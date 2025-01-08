@@ -3,33 +3,26 @@ import { StyleSheet } from 'react-native';
 const AddPointStyles = StyleSheet.create({
     container: {
       flex: 1,
+      padding: 15,
     },
     map: {
       flex: 1,
-      marginHorizontal: 15,
-      marginBottom: 10,
     },
-    title: {
-      fontSize: 16,
-      paddingBottom: 15,
-      margin: 8,
-      textAlign: 'center',
-      fontWeight: 'bold',
-      borderRadius: 6,
+    contentTitle: {
+      display:'flex', 
+      flexDirection: 'row', 
     },
     description: {
       display: 'flex',
       justifyContent: 'space-between',
-      marginHorizontal: 15,
-      marginBottom: 10,
-      padding:7,
+      padding:10,
       borderRadius: 6,
+      marginBottom: 15,
       backgroundColor: '#d1d1d1'
     },
     subtitle: {
       fontWeight: 'bold',
-      padding: 5,
-      marginLeft: 7,
+      padding: 4,
     },
     containerBtn: {
       flexDirection: 'row',
@@ -38,8 +31,7 @@ const AddPointStyles = StyleSheet.create({
       marginBottom: 10,
     },
     btnAdd: {
-      padding: 15,
-      margin: 15,
+      marginTop: 15,
     },
     buttonContainer: {
       flex: 1,

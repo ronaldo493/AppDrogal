@@ -17,21 +17,21 @@ export default function Chamados (){
         <TouchableOpacity 
         style={[ChamadosStyles.button, themeStyles.radiusBackground, selectedOption === 'atribuido' && themeStyles.buttonSelected]} 
         onPress={() => setSelectedOption('atribuido')}>
-          <Text style={[ChamadosStyles.text, themeStyles.text]}>ATRIBUÍDOS</Text>
+          <Text style={[ChamadosStyles.textTitle, themeStyles.text]}>ATRIBUÍDOS</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[ChamadosStyles.button, themeStyles.radiusBackground, selectedOption === 'naoAtribuido' && themeStyles.buttonSelected]}
         onPress={() => setSelectedOption('naoAtribuido')}>
-          <Text style={[ChamadosStyles.text, themeStyles.text]}>NÃO ATRIBUÍDOS</Text>
+          <Text style={[ChamadosStyles.textTitle, themeStyles.text]}>NÃO ATRIBUÍDOS</Text>
         </TouchableOpacity>
       </View>
       {selectedOption === 'atribuido' && (
         <View style={ChamadosStyles.content}>
-          <Text style={[themeStyles.text]}>Conteúdo dos chamados atribuídos em Desenvolvimento.</Text>
+          <Text style={[ChamadosStyles.textContent, themeStyles.text]}>Conteúdo dos chamados atribuídos em Desenvolvimento.</Text>
         </View>
       )}
       {selectedOption === 'naoAtribuido' && (
         <View style={ChamadosStyles.content}>
-          <Text style={themeStyles.text }>Conteúdo dos chamados não atribuídos em Desenvolvimento.</Text>
+          <Text style={[ChamadosStyles.textContent, themeStyles.text]}>Conteúdo dos chamados não atribuídos em Desenvolvimento.</Text>
         </View>
       )}
     </View>

@@ -25,7 +25,6 @@ export default function useLocation() {
       //Obtém a posição atual do usuário
       let location = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.High,
-        timeout: 5000,
       });
 
       //Atualiza o estado com a localização atual

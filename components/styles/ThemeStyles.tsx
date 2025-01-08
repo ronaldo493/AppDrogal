@@ -162,7 +162,7 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
       borderBottomColor: isDarkMode ? darkTheme.borderBottomColor : lightTheme.borderBottomColor,
     },
     radiusBackground: {
-      backgroundColor: isDarkMode ? '#222' : '#ddd',
+      backgroundColor: isDarkMode ? '#555' : '#ddd',
     },
     textImp: {
       color: isDarkMode ? '#B22222' : '#B22222',
@@ -220,18 +220,18 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
       fontWeight: 'bold',
       textAlign: 'center',
       padding: 10,
-      borderRadius: 10,
+      borderRadius: 6,
     },
     inputPatrimonio: {
       borderWidth: 0.8,
       borderColor: isDarkMode ? '#777777' : '#2196F3',
       color: isDarkMode ? '#ffffff' : '#000000',
       backgroundColor: isDarkMode ? '#555' : '#ccc',
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: 'bold',
       textAlign: 'center',
-      padding: 10,
-      borderRadius: 10,
+      padding: 7,
+      borderRadius: 8,
     },
 
     // ROUTES

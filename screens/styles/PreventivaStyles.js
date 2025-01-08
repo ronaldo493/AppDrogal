@@ -4,13 +4,13 @@ const PreventivaStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        padding: 20,
+        padding: 15,
     },
     title: {
         fontSize: 16,
         textAlign: 'center',
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginBottom: 16,
     },
     label: {
         fontSize: 14,
@@ -19,7 +19,7 @@ const PreventivaStyles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        marginRight: 10,
+        marginRight: 6,
     },
     inputContainer: {
         flexDirection: 'row',
@@ -28,7 +28,7 @@ const PreventivaStyles = StyleSheet.create({
     },
     button: {
         padding: 12,
-        borderRadius: 4,
+        borderRadius: 8,
         fontWeight: 'bold',
         elevation: 4
     },
@@ -38,7 +38,7 @@ const PreventivaStyles = StyleSheet.create({
         fontStyle: 'italic',
         marginVertical: 5,
         padding: 7,
-        borderRadius: 6,
+        borderRadius: 8,
         borderColor: '#ddd',
         elevation: 0.6, 
     },
@@ -59,6 +59,7 @@ const PreventivaStyles = StyleSheet.create({
     },
     checklistContainer:{
         flex: 1,
+        borderRadius: 8,
     },
     //Modal
     modalContainer: {

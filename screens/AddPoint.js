@@ -13,7 +13,7 @@ export default function AddPoint() {
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const { pontos = [], loading, error, postPontos } = usePontos();
+  const { pontos, loading, error, postPontos } = usePontos();
   const { currentLocation, mapRegion} = useLocation();
 
   // const [db, setDb] = useState(null);
@@ -167,17 +167,15 @@ export default function AddPoint() {
 
   return (
     <View style={[AddPointStyles.container, themeStyles.screenBackground]}>
-      <Text style={[AddPointStyles.title, themeStyles.text]}>RESTAURANTES & POSTOS</Text>
-
       <View style={[AddPointStyles.description, themeStyles.sidebar]}>
-        <View style={{ display:'flex', flexDirection: 'row' }}>
+        <View style={[AddPointStyles.contentTitle, {justifyContent:'flex-start'}]}>
           <Icon name="fastfood" size={22} color="red" />
           <Text style={[AddPointStyles.subtitle, { color: 'red' }]}>
             RESTAURANTE
           </Text>
         </View>
         
-        <View style={{ display:'flex', flexDirection: 'row'}}>
+        <View style={[AddPointStyles.contentTitle, {justifyContent:'flex-end'}]}>
           <Icon name="local-gas-station" size={22} color="green" />
           <Text style={[AddPointStyles.subtitle, { color: 'green' }]}>
             POSTO DE COMBUSTÍVEL

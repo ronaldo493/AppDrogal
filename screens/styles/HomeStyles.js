@@ -1,11 +1,11 @@
-import { StyleSheet, Dimensions, Button } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window'); //Ajustar automaticamente
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
+    padding: 15,
   },
 
   logoContainer: {

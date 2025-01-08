@@ -16,7 +16,7 @@ export default function SearchBar({ onAddRoute }) {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Lista Filiais
-  const { filiais = [], error, loading } = useFiliais();
+  const { filiais, error, loading } = useFiliais();
 
   //Função para buscar filial na lista local usando o código de filial
   const searchFilial = (text) => {

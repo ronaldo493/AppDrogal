@@ -3,22 +3,30 @@ import { StyleSheet } from 'react-native';
 const ChamadosStyles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        padding: 15,
         flex: 1,
     },
     btnContainer: {
         flexDirection: 'row',
+        gap: 10,
     },
     button: {
-        padding: 14,
-        marginHorizontal: 8,
-        borderRadius: 5,
-        marginVertical: 25,
+        padding: 10,
+        borderRadius: 8,
         flex: 1,
     },
-    text: {
+    textTitle: {
         fontSize: 14,
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    content: {
+        marginTop: 10,
+    },
+    textContent: {
+        fontSize: 15,
     }
+    
 });
 
 export default ChamadosStyles;

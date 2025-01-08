@@ -48,7 +48,7 @@ export default function Preventiva (){
         <TextInput
           value={filialInput}
           onChangeText={setFilialInput}
-          placeholder='Digite a Filial'
+          placeholder='DIGITE A FILIAL'
           placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
           keyboardType="numeric"
           style={[PreventivaStyles.input, themeStyles.input]}
