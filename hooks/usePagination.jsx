@@ -1,36 +1,34 @@
-import strapiClient from "../services/StrapiClient";
+import { useState } from "react";
 
-//Função genérica para buscar dados paginados
-export default usePagination = async (endpoint, pageSize = 100) => {
-    let allData = [];
-    let page = 1;
-    let hasMore = true;
-  
-    const connection = strapiClient();  //Usando o cliente Strapi
-  
-    try {
-      //Enquanto houver mais dados para buscar
-      while (hasMore) {
-        const response = await connection.get(endpoint, {
-          params: {
-            pagination: {
-              page,
-              pageSize,
-            },
-          },
-        });
-  
-        const { data, meta } = response.data;
-        allData = [...allData, ...data];
-  
-        //Verifica se há mais páginas
-        hasMore = meta.pagination.page < meta.pagination.pageCount;
-        page += 1;
-      }
-    } catch (error) {
-      console.error(`Erro ao buscar dados do endpoint ${endpoint}:`, error);
-      throw error;
-    }
-  
-    return allData;
+const usePagination = (initialPage = 1, refetch) => {
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [hasMore, setHasMore] = useState(true); 
+
+  //Função para avançar para a próxima página
+  const nextPage = async () => {
+    if (!hasMore) return;
+    const nextPage = currentPage + 1;
+    const { hasMore: newHasMore } = await refetch(nextPage);
+
+    //Se a resposta retornar menos que o pageSize, significa que não há mais dados
+    setHasMore(newHasMore);
+    setCurrentPage(nextPage);  //Atualiza a página atual
   };
+
+  //Função para voltar para a página anterior
+  const prevPage = async () => {
+    if (currentPage <= 1) return;
+    const previousPage = currentPage - 1;
+    await refetch(previousPage);
+    setCurrentPage(previousPage);
+  };
+
+  return {
+    currentPage,
+    nextPage,
+    prevPage,
+    hasMore,
+  };
+};
+
+export default usePagination;
