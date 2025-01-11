@@ -5,6 +5,7 @@ import usePagination from "./usePagination";
 
 const usePontos = () => {
     
+    const conexao = strapiClient();
     const suporteStrapi = useStrapiContext();
 
     const { pontos, setPontos } = suporteStrapi;
@@ -18,9 +19,14 @@ const usePontos = () => {
         setError(null);
     
         try {
-          const data = await usePagination('/pontos-interesses');
+          const response = await conexao.get('/pontos-interesses');
 
-          setPontos(data);
+          const { data: responseData, meta } = response.data
+
+          console.log(meta)
+
+          setPontos((prevPontos) => [...prevPontos, ...responseData])
+
         } catch (err) {
             setError(err.message || "Erro desconhecido");
         } finally {
@@ -52,13 +58,19 @@ const usePontos = () => {
     };
 
     useEffect(() => {
-        //Verifica se o estado de filiais está vazio antes de buscar os dados
+        
+        //Verifica se o estado de pontos está vazio antes de buscar os dados
         if (pontos.length === 0) {
             getPontos();
         }
-    }, [pontos, getPontos])
+    }, [pontos])
 
-    return { pontos, error, loading, getPontos, postPontos }
+    return { 
+        pontos,
+        error,
+        loading,
+        postPontos,
+    }
 }
 
 export default usePontos;
