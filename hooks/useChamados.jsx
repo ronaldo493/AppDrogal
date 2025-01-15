@@ -48,7 +48,9 @@ const useChamados = () => {
   };
 
   useEffect(() => {   
+    if(chamados.length === 0) {
       getChamados();
+    }
   }, [currentPage]);
 
 

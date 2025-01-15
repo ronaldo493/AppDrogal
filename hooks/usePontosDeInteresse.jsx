@@ -69,7 +69,9 @@ const usePontos = () => {
     };
 
     useEffect(() => {
+      if(pontos.length === 0) {
         getPontos();
+      }
     }, [currentPage])
 
     return { 

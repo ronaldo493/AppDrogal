@@ -16,6 +16,8 @@ export default function MapaLojas(){
   //Lista de filiais do contexto
   const { filiais } = useFiliais();
 
+  console.log(filiais)
+
   //Estado para armazenar a cidade digitada, a região do mapa e a localização atual
   const [searchCity, setSearchCity] = useState('');
   const [filteredFiliais, setFilteredFiliais] = useState([]);

@@ -45,8 +45,11 @@ const useFiliais = () => {
     }
   };
 
-  useEffect(() => {   
+  useEffect(() => {  
+    if(filiais.length === 0) {
       getFiliais();
+    }
+      
   }, [currentPage]);
 
 
