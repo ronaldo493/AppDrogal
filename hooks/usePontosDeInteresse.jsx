@@ -13,17 +13,29 @@ const usePontos = () => {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
+    const pageSize = 100;
+    const { nextPage, currentPage, setDataMeta } = usePagination(1, "paginationPontos");
+
     //BUSCA DE DADOS
     const getPontos = async () => {
         setLoading(true);
         setError(null);
     
         try {
-          const response = await conexao.get('/pontos-interesses');
+          const response = await conexao.get('/pontos-interesses', {
+            params: {
+              pagination: {
+                page: currentPage,
+                pageSize,
+              },
+            },
+          });
 
-          const { data: responseData, meta } = response.data
+          const { data: responseData, meta } = response.data;
 
-          console.log(meta)
+          setDataMeta(meta)
+      
+          nextPage();
 
           setPontos((prevPontos) => [...prevPontos, ...responseData])
 
@@ -48,7 +60,6 @@ const usePontos = () => {
             const savedPonto = response.data.data;
             setPontos((prevPontos) => [...prevPontos, savedPonto])
 
-            console.log("Ponto salvo com sucesso:", savedPonto.attributes?.descricao);
         } catch(err) {
             console.error("Erro ao salvar o ponto:", err);
             setError(err.response?.data?.message || "Erro desconhecido");
@@ -58,12 +69,8 @@ const usePontos = () => {
     };
 
     useEffect(() => {
-        
-        //Verifica se o estado de pontos está vazio antes de buscar os dados
-        if (pontos.length === 0) {
-            getPontos();
-        }
-    }, [pontos])
+        getPontos();
+    }, [currentPage])
 
     return { 
         pontos,

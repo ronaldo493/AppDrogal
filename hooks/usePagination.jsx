@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const usePagination = (initialPage = 1, refetch) => {
+const usePagination = (initialPage = 1, context = "default") => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [hasMore, setHasMore] = useState(true); 
+  const [dataMeta, setDataMeta] = useState();
+
 
   //Função para avançar para a próxima página
-  const nextPage = async () => {
-    if (!hasMore) return;
-    const nextPage = currentPage + 1;
-    const { hasMore: newHasMore } = await refetch(nextPage);
-
-    //Se a resposta retornar menos que o pageSize, significa que não há mais dados
-    setHasMore(newHasMore);
-    setCurrentPage(nextPage);  //Atualiza a página atual
+  const nextPage = () => {
+    if (currentPage >= dataMeta?.pagination?.pageCount) {
+      setHasMore(false)
+      return;
+    }
+    setCurrentPage((prevPage) => prevPage + 1);
   };
+
 
   //Função para voltar para a página anterior
   const prevPage = async () => {
     if (currentPage <= 1) return;
     const previousPage = currentPage - 1;
-    await refetch(previousPage);
     setCurrentPage(previousPage);
   };
 
@@ -28,6 +28,9 @@ const usePagination = (initialPage = 1, refetch) => {
     nextPage,
     prevPage,
     hasMore,
+    setHasMore,
+    setDataMeta,
+    dataMeta,
   };
 };
 
