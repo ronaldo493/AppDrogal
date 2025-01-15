@@ -7,12 +7,15 @@ const StrapiContext = createContext();
 export const StrapiProvider = ({ children }) => {
   const [filiais, setFiliais] = useState([]);
   const [pontos, setPontos] = useState([]);
+  const [chamados, setChamados] = useState([]);
 
   const contextValue = {
     filiais,
     setFiliais,
     pontos,
-    setPontos
+    setPontos,
+    chamados,
+    setChamados
   }
 
   return (

@@ -23,8 +23,14 @@ const ChamadosStyles = StyleSheet.create({
     content: {
         marginTop: 10,
     },
+    item: {
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 8,
+    },
     textContent: {
         fontSize: 15,
+        paddingBottom: 7,
     }
     
 });

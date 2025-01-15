@@ -3,25 +3,25 @@ import { useStrapiContext } from "../context/StrapiContext";
 import strapiClient from "../services/StrapiClient";
 import usePagination from "./usePagination";
 
-const useFiliais = () => {
+const useChamados = () => {
   const conexao = strapiClient();
   const suporteStrapi = useStrapiContext();
 
-  const { filiais, setFiliais } = suporteStrapi;
+  const { chamados, setChamados } = suporteStrapi;
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const pageSize = 100;
-  const { currentPage, nextPage, setDataMeta } = usePagination(1, "paginationFiliais")
+  const { currentPage, nextPage, setDataMeta } = usePagination(1, "paginationChamados")
 
   //Função para buscar as filiais com paginação
-  const getFiliais = async () => {
+  const getChamados = async () => {
     setLoading(true);
     setError(null);
   
     try {
-      const response = await conexao.get('/informacoeslojas', {
+      const response = await conexao.get('/chamados', {
         params: {
           pagination: {
             page: currentPage,
@@ -33,10 +33,12 @@ const useFiliais = () => {
       const { data: responseData, meta } = response.data;
 
       setDataMeta(meta)
+
+      console.log(responseData)
       
       nextPage();
 
-      setFiliais((prevFiliais) =>  [...prevFiliais, ...responseData]);
+      setChamados((prevChamados) =>  [...prevChamados, ...responseData]);
   
     } catch (err) {
       setError(err.message || "Erro desconhecido");
@@ -46,15 +48,15 @@ const useFiliais = () => {
   };
 
   useEffect(() => {   
-      getFiliais();
+      getChamados();
   }, [currentPage]);
 
 
   return {
-    filiais,
+    chamados,
     error,
     loading,
   };
 };
 
-export default useFiliais;
+export default useChamados;
