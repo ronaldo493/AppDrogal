@@ -13,7 +13,7 @@ const useChamados = () => {
   const [loading, setLoading] = useState(false);
 
   const pageSize = 100;
-  const { currentPage, nextPage, setDataMeta } = usePagination(1, "paginationChamados")
+  const { currentPage, nextPage, setDataMeta, hasMore } = usePagination(1, "paginationChamados")
 
   //Função para buscar as filiais com paginação
   const getChamados = async () => {
@@ -48,10 +48,10 @@ const useChamados = () => {
   };
 
   useEffect(() => {   
-    if(chamados.length === 0) {
+    if(hasMore) {
       getChamados();
     }
-  }, [currentPage]);
+  }, [currentPage, hasMore]);
 
 
   return {

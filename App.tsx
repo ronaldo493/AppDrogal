@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
 import { NavigationContainer } from '@react-navigation/native'; //Gerencia a navegação principal da aplicação
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { MD2DarkTheme, MD2LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import HeaderMenu from './components/HeaderMenu';
@@ -20,6 +20,7 @@ import Preventiva from './screens/Preventiva/Preventiva';
 import About from './screens/Settings/About';
 import Settings from './screens/Settings/Settings';
 import Suporte from './screens/Settings/Suporte';
+import { AuthProvider, useAuthContext } from './context/AuthContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -27,11 +28,14 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
+      <AuthProvider>
         <StrapiProvider>
           <ThemeProvider>
             <AppWithTheme />
           </ThemeProvider>
-        </StrapiProvider>  
+        </StrapiProvider> 
+      </AuthProvider>
+         
   );
 }
 
@@ -47,18 +51,29 @@ function AppWithTheme() {
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
-
+  const { token } = useAuthContext(); //Verifica se o tem o token
+  
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const ThemeStyles = getThemeStyles(isDarkMode);
  
   return (
+     
       <>  
         <StatusBar 
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}  //Estilo dos ícones da barra de status
           backgroundColor={isDarkMode ? '#333' : '#f0f0f0'}  
         />
         <NavigationContainer>
+        {!token ? (
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Login" 
+              component={Login} 
+              options={{ headerShown: false }}  // Remover topo na tela de login
+            />
+          </Stack.Navigator>
+        ) : (
         <Drawer.Navigator
           drawerContent={(props) => <Sidebar {...props} />}
           screenOptions={({ navigation }) => ({ 
@@ -104,11 +119,6 @@ function AppNavigation() {
             options={{ headerTitle: '' }} 
           />
           <Drawer.Screen 
-            name="Login" 
-            component={Login} 
-            options={{ headerTitle: '' }} 
-          />
-          <Drawer.Screen 
             name="Settings" 
             component={SettingsStack} 
             options={{ headerTitle: '' }} 
@@ -123,8 +133,8 @@ function AppNavigation() {
             component={About} 
             options={{ headerTitle: '' }} 
           />
-
         </Drawer.Navigator>
+        )}
       </NavigationContainer>  
     </> 
   );

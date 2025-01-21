@@ -1,40 +1,45 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Alert,ActivityIndicator } from 'react-native';
 import LoginStyles from '../styles/LoginStyles';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import useAuth from '../../hooks/useAuth';
 
 export default function Login ()  {
+  const { conexaoLogin, loading, error } = useAuth()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+
+
+  //Deixando padrão o email
+  const email = `${username}@drogal.com.br`
 
   const handleLogin = async () => {
-    try {
-      await login(username, password);
-    } catch (err) {
-      setError(err.message || 'Erro ao fazer login');
+    if(!username || !password) {
+      Alert.alert('Atenção!', 'Preencha todos os campos!')
+      return;
     }
+    
+      await conexaoLogin(email, password);
+   
   };
 
   return (
     <View style={LoginStyles.container}>
-      <Image
-        source={require('../../assets/img/drogal.png')}
-        style={LoginStyles.logo}
-        resizeMode="contain"
-      />
+      <View style={LoginStyles.headerLogin}>
+        <Image
+          source={require('../../assets/img/drogal.png')}
+          style={LoginStyles.logo}
+          resizeMode="contain"
+        />
 
-      <Text style={LoginStyles.title}>
-        LOGIN
-      </Text>
-
-      {error ? <Text style={LoginStyles.errorText}>{error}</Text> : null}
+        {error ? <Text style={LoginStyles.errorText}>{error}</Text> : null}
+      </View>
+      
 
       <TextInput
             style={LoginStyles.input}
-            placeholder="Usuário"
+            placeholder="Código Usuário"
             placeholderTextColor="#A9A9A9"
-            keyboardType="numeric"
+            keyboardType="default"
             value={username}
             onChangeText={setUsername}
         />
@@ -50,13 +55,24 @@ export default function Login ()  {
         <TouchableOpacity
             style={LoginStyles.button}
             onPress={handleLogin}
+            disabled={loading}
         >
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
             <Text style={LoginStyles.buttonText}>Entrar</Text>
+          )}
         </TouchableOpacity>
 
-        <TouchableOpacity style={LoginStyles.forgotPassword}>
-          <Text style={LoginStyles.forgotText}>Esqueceu a senha?</Text>
-        </TouchableOpacity>
+        <View style={LoginStyles.footerLogin}>
+          <TouchableOpacity>
+            <Text style={LoginStyles.registerText}>Cadastre-se</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={LoginStyles.forgotText}>Esqueceu a senha?</Text>
+          </TouchableOpacity>
+        </View>
+        
     </View>
 );
 

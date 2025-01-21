@@ -13,7 +13,7 @@ const useFiliais = () => {
   const [loading, setLoading] = useState(false);
 
   const pageSize = 100;
-  const { currentPage, nextPage, setDataMeta } = usePagination(1, "paginationFiliais")
+  const { currentPage, nextPage, setDataMeta, hasMore } = usePagination(1, "paginationFiliais")
 
   //Função para buscar as filiais com paginação
   const getFiliais = async () => {
@@ -36,6 +36,8 @@ const useFiliais = () => {
       
       nextPage();
 
+      
+
       setFiliais((prevFiliais) =>  [...prevFiliais, ...responseData]);
   
     } catch (err) {
@@ -45,11 +47,11 @@ const useFiliais = () => {
     }
   };
 
-  useEffect(() => {  
-    if(filiais.length === 0) {
+  useEffect(() => {
+    if (hasMore) {
       getFiliais();
+      console.log(filiais.map(filial => filial.codigofilial));
     }
-      
   }, [currentPage]);
 
 

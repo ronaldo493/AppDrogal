@@ -1,16 +1,19 @@
 import React from 'react';
-import { BackHandler, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { getThemeStyles } from '../components/styles/ThemeStyles';
 import { useTheme } from '../context/ThemeContext';
 import SidebarStyles from './styles/SidebarStyles';
+import useAuth from '../hooks/useAuth';
 
 export default function Sidebar({ navigation }) {
   // Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
+  const { Logout } = useAuth();
+
   const handleLogout = () => {
-    BackHandler.exitApp();
+    Logout();
   };
 
   const menuItems = [
@@ -19,7 +22,6 @@ export default function Sidebar({ navigation }) {
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
     { label: 'CHAMADOS', route: 'Chamados' },
-    // { label: 'LOGIN', route: 'Login' },
     { label: 'PATRIMÔNIO', route: 'Preventiva' },
   ];
 

@@ -14,7 +14,7 @@ const usePontos = () => {
     const [ loading, setLoading ] = useState(false);
 
     const pageSize = 100;
-    const { nextPage, currentPage, setDataMeta } = usePagination(1, "paginationPontos");
+    const { nextPage, currentPage, setDataMeta, hasMore } = usePagination(1, "paginationPontos");
 
     //BUSCA DE DADOS
     const getPontos = async () => {
@@ -69,10 +69,10 @@ const usePontos = () => {
     };
 
     useEffect(() => {
-      if(pontos.length === 0) {
+      if(hasMore) {
         getPontos();
       }
-    }, [currentPage])
+    }, [currentPage, hasMore])
 
     return { 
         pontos,

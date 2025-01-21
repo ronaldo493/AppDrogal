@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const usePagination = (initialPage = 1, context = "default") => {
+const usePagination = (initialPage = 1) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [hasMore, setHasMore] = useState(true); 
   const [dataMeta, setDataMeta] = useState();
@@ -12,9 +12,14 @@ const usePagination = (initialPage = 1, context = "default") => {
       setHasMore(false)
       return;
     }
+    console.log("Antes de atualizar:", currentPage)
     setCurrentPage((prevPage) => prevPage + 1);
   };
-
+  
+// UseEffect para mostrar quando o estado atual foi atualizado
+useEffect(() => {
+  console.log("currentPage atualizado:", currentPage);  // Valor atualizado de currentPage
+}, [currentPage]);
 
   //Função para voltar para a página anterior
   const prevPage = async () => {

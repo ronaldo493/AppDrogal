@@ -3,27 +3,29 @@ import { StyleSheet } from 'react-native';
 const Login = StyleSheet.create({
     container: {
         flex: 1,
+        borderRadius: 8,
+        display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
         padding: 20,
+    },
+    headerLogin: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
     },
     logo: {
         width: 150,
         height: 100,
-        marginBottom: 30,
+        marginBottom: 50,
     },  
-    title: {
-        fontSize: 18,
-        margin: 30,
-        fontWeight: '700',
-    }, 
     input: {
         width: '100%',
         padding: 14,
         marginBottom: 20,
         borderWidth: 1,
         borderColor: '#ddd',
-        borderRadius: 12,
+        borderRadius: 6,
         backgroundColor: '#fff',
         fontSize: 16,
         color: '#333',
@@ -35,7 +37,7 @@ const Login = StyleSheet.create({
         width: '100%',
         padding: 14,
         backgroundColor: '#5A9BD5',
-        borderRadius: 12,
+        borderRadius: 6,
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 20,
@@ -51,8 +53,16 @@ const Login = StyleSheet.create({
         fontSize: 14,
         marginBottom: 15,
       },
-      forgotPassword: {
-        marginTop: 15,
+      footerLogin: {
+        display: 'flex',
+        justifyContent:'space-between',
+        flexDirection: 'row',
+        marginTop: 10,
+      },
+
+      registerText: {
+        color: '#222AAA',
+        fontWeight: '500',
       },
       forgotText: {
         color: '#FF0000',
