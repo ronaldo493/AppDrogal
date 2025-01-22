@@ -20,11 +20,17 @@ const useAuth = () => {
         identifier: codigoUsuario,
         password: senha,
       });
-      setToken(response.data.jwt);
-      setUser(response.data.user);
 
-      console.log(response.data.user)
-      console.log(response.data.jwt)
+      console.log(response);
+      const { jwt, user } = response.data;
+
+      await setToken(jwt);
+      setUser({
+        ...user,
+        role: user.role?.name || 'default', // Adiciona o nome do papel ao estado
+      });
+  
+      console.log(user.role?.name);
     } catch (err) {
         setError("Usuário ou senha incorretos");
     } finally {
@@ -32,14 +38,8 @@ const useAuth = () => {
     }
   };
 
-  const Logout = () => {
-    setUser("");
-    setToken("");
-  }
-
   return {
     conexaoLogin,
-    Logout,
     user,
     token,
     loading,

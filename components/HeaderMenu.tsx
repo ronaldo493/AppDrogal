@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { TouchableOpacity, GestureResponderEvent } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Menu, Divider } from 'react-native-paper';
+import { useAuthContext }from '../context/AuthContext'
 
 interface HeaderMenuProps {
   navigation: any; //Navegação do React Navigation
@@ -18,6 +19,13 @@ interface HeaderMenuProps {
 const HeaderMenu: React.FC<HeaderMenuProps> = React.memo(({ navigation, themeStyles }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [anchorPosition, setAnchorPosition] = useState<{ x: number; y: number } | null>(null);
+
+  const { clearToken } = useAuthContext();
+
+  const handleLogout = () => {
+    clearToken();
+  };
+
 
   // Função para abrir o menu (usando useCallback para memoização)
   const openMenu = useCallback((event: GestureResponderEvent) => {
@@ -57,7 +65,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = React.memo(({ navigation, themeSty
         />
         <Divider />
         <Menu.Item
-          onPress={closeMenu}
+          onPress={handleLogout}
           title="Sair"
           titleStyle={themeStyles.textMenu}
         />

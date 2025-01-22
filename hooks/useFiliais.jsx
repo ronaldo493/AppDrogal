@@ -36,8 +36,6 @@ const useFiliais = () => {
       
       nextPage();
 
-      
-
       setFiliais((prevFiliais) =>  [...prevFiliais, ...responseData]);
   
     } catch (err) {

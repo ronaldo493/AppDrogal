@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import axiosRetry from 'axios-retry';
 
 //URL base da API Strapi
@@ -19,6 +18,8 @@ export const createApiClientStrapi = () => {
     },
   });
 
+  axiosRetry(conexao, { retries: 4 });
+
   return conexao;
 };
 
@@ -26,14 +27,8 @@ export const createApiClientStrapi = () => {
 
 const strapiClient = () => {
 
-  const instance = createApiClientStrapi();
-
-  axiosRetry(instance, { retries: 4 });
-
-  return instance;
+  return createApiClientStrapi();
 
 };
-
-
 
 export default strapiClient;

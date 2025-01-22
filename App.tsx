@@ -1,8 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'; //Cria o menu lateral (drawer)
 import { NavigationContainer } from '@react-navigation/native'; //Gerencia a navegação principal da aplicação
 import { createStackNavigator } from '@react-navigation/stack'; //Cria um Stack Navigator
-import React, { useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, View, ActivityIndicator } from 'react-native';
+import React from 'react';
 import { MD2DarkTheme, MD2LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import HeaderMenu from './components/HeaderMenu';
 import Sidebar from './components/Sidebar';
@@ -51,14 +51,21 @@ function AppWithTheme() {
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
-  const { token } = useAuthContext(); //Verifica se o tem o token
+  const { token, loading } = useAuthContext(); //Verifica se o tem o token
   
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const ThemeStyles = getThemeStyles(isDarkMode);
+
+  if (loading) {
+    return (
+      <View>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    )
+  }
  
   return (
-     
       <>  
         <StatusBar 
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}  //Estilo dos ícones da barra de status

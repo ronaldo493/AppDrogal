@@ -3,17 +3,17 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { getThemeStyles } from '../components/styles/ThemeStyles';
 import { useTheme } from '../context/ThemeContext';
 import SidebarStyles from './styles/SidebarStyles';
-import useAuth from '../hooks/useAuth';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Sidebar({ navigation }) {
   // Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const { Logout } = useAuth();
+  const { clearToken } = useAuthContext();
 
   const handleLogout = () => {
-    Logout();
+    clearToken();
   };
 
   const menuItems = [

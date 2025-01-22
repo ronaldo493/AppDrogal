@@ -55,14 +55,8 @@ const Login = StyleSheet.create({
       },
       footerLogin: {
         display: 'flex',
-        justifyContent:'space-between',
-        flexDirection: 'row',
-        marginTop: 10,
-      },
-
-      registerText: {
-        color: '#222AAA',
-        fontWeight: '500',
+        alignItems:'center',
+        marginTop: 15,
       },
       forgotText: {
         color: '#FF0000',

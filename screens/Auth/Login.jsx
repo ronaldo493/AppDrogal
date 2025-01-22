@@ -65,10 +65,7 @@ export default function Login ()  {
         </TouchableOpacity>
 
         <View style={LoginStyles.footerLogin}>
-          <TouchableOpacity>
-            <Text style={LoginStyles.registerText}>Cadastre-se</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={LoginStyles.btn}> 
             <Text style={LoginStyles.forgotText}>Esqueceu a senha?</Text>
           </TouchableOpacity>
         </View>
