@@ -21,7 +21,8 @@ const ChamadosStyles = StyleSheet.create({
         textAlign: 'center',
     },
     content: {
-        marginTop: 10,
+        marginTop: 18,
+        width: '100%',
     },
     item: {
         padding: 10,
@@ -31,6 +32,12 @@ const ChamadosStyles = StyleSheet.create({
     textContent: {
         fontSize: 15,
         paddingBottom: 7,
+        fontWeight: 'bold',
+    },
+    detailContainer: {
+        marginTop: 0,
+        marginBottom: 18,
+        padding: 10,
     }
     
 });

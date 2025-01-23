@@ -13,6 +13,7 @@ export default function Chamados (){
   const { chamados} = useChamados();
 
   const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOptionChamados, setSelectedOptionChamados] = useState('');
 
   return (
     <View style={[ChamadosStyles.container,themeStyles.screenBackground]}>
@@ -29,24 +30,39 @@ export default function Chamados (){
       </View>
       {selectedOption === 'atribuido' && (
         <View style={ChamadosStyles.content}>
-        {chamados
-          .filter((chamado) => chamado.situacao === 1)
-          .map((chamado, index) => (
-            <View key={index} style={[themeStyles.sidebar, ChamadosStyles.item]}>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]} >
-                {chamado.dataabertura}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {chamado.nomefilial}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {chamado.descricao}
-              </Text>
-            </View>
-            
-          ))}
-      </View>
+          {chamados
+            .filter((chamado) => chamado.situacao === 1)
+            .map((chamado, index) => (
+              <View key={index}>
+                <TouchableOpacity
+                  style={[themeStyles.sidebar, ChamadosStyles.item]}
+                  onPress={() => setSelectedOptionChamados(
+                    selectedOptionChamados?.id === chamado.id ? null : chamado)}
+                  >
+                  <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                    {chamado.dataabertura}
+                  </Text>
+                  <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                    {chamado.nomefilial}
+                  </Text>
+                  <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                    Título: {chamado.titulo}
+                  </Text>
+                </TouchableOpacity>
+
+                {selectedOptionChamados?.id === chamado.id && (
+                  <View style={[ChamadosStyles.detailContainer, themeStyles.sidebar]}>
+                    <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                      {chamado.descricao}
+                    </Text>
+                  </View>
+                )}
+              </View>
+            ))}
+        </View>
       )}
+
+          
       {selectedOption === 'naoAtribuido' && (
         <View style={ChamadosStyles.content}>
           {chamados

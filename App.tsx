@@ -51,7 +51,7 @@ function AppWithTheme() {
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
-  const { token, loading, isLoggedIn } = useAuthContext(); //Verifica se o tem o token
+  const { loading, isLoggedIn } = useAuthContext(); //Verifica se o tem o token
   
   //Modo Escuro
   const { isDarkMode } = useTheme();

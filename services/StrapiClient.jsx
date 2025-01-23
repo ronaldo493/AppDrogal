@@ -8,7 +8,6 @@ const BASE_URL = 'http://suporteappdrogal.ddns.com.br:18083/api';
 //Função para criar o cliente Axios
 export const createApiClientStrapi = () => {
   const authStrapi = useAuthContext();
-  console.log(authStrapi.token)
   const conexao = axios.create({
     baseURL: BASE_URL,
     headers: {

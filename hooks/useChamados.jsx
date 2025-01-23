@@ -34,7 +34,7 @@ const useChamados = () => {
 
       setDataMeta(meta)
 
-      console.log(responseData)
+     
       
       nextPage();
 
@@ -50,6 +50,7 @@ const useChamados = () => {
   useEffect(() => {   
     if(hasMore) {
       getChamados();
+      console.log(chamados)
     }
   }, [currentPage, hasMore]);
 
