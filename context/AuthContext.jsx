@@ -4,9 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //Criando o contexto
 const AuthContext = createContext();
 
+export const publicKey = 'f239af91055557d1c51ca53b69981f2c7ca4ab2364d47b951966aca5d65a812ab8401849599bbedcfa773a1a8ad893608fa115dd015f17c99243629059513e4ca0ea6993490be6d955d5ccaa55d861b6b360dd56805b098244a986009288e2f7554ddb7882467f53ec8afb53e18ecf2352eb37447eb12656ab924789e6ac3cee';
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(publicKey);
     const [loading, setLoading] = useState(true);
 
     //Crregamento do token
@@ -38,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     const clearToken = async () => {
         try {
             await AsyncStorage.removeItem('userToken');
-            setToken(null);
+            setToken(publicKey);
             setUser(null);
         } catch (err) {
             console.error('Erro ao remover token do AsyncStorage:', err);
@@ -49,6 +51,10 @@ export const AuthProvider = ({ children }) => {
        tokenStorage(); 
     }, []);
 
+    const isLoggedIn = () => {
+        return token && token != publicKey
+    }
+
     const contextValue = {
         user,
         setUser,
@@ -56,7 +62,8 @@ export const AuthProvider = ({ children }) => {
         setToken: saveToken,
         clearToken,
         loading,
-        setLoading
+        setLoading,
+        isLoggedIn
     }
 
     return (

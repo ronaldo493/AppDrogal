@@ -19,7 +19,7 @@ const useFiliais = () => {
   const getFiliais = async () => {
     setLoading(true);
     setError(null);
-  
+   console.log(conexao.defaults.headers)
     try {
       const response = await conexao.get('/informacoeslojas', {
         params: {
@@ -48,9 +48,9 @@ const useFiliais = () => {
   useEffect(() => {
     if (hasMore) {
       getFiliais();
-      console.log(filiais.map(filial => filial.codigofilial));
+      // console.log(filiais.map(filial => filial.codigofilial));
     }
-  }, [currentPage]);
+  }, []);
 
 
   return {

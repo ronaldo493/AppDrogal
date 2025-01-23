@@ -20,7 +20,7 @@ import Preventiva from './screens/Preventiva/Preventiva';
 import About from './screens/Settings/About';
 import Settings from './screens/Settings/Settings';
 import Suporte from './screens/Settings/Suporte';
-import { AuthProvider, useAuthContext } from './context/AuthContext';
+import { AuthProvider, publicKey, useAuthContext } from './context/AuthContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -51,7 +51,7 @@ function AppWithTheme() {
 
 //Componente de navegação, que agora usará o tema
 function AppNavigation() {
-  const { token, loading } = useAuthContext(); //Verifica se o tem o token
+  const { token, loading, isLoggedIn } = useAuthContext(); //Verifica se o tem o token
   
   //Modo Escuro
   const { isDarkMode } = useTheme();
@@ -72,7 +72,7 @@ function AppNavigation() {
           backgroundColor={isDarkMode ? '#333' : '#f0f0f0'}  
         />
         <NavigationContainer>
-        {!token ? (
+        {!isLoggedIn() ? (
           <Stack.Navigator>
             <Stack.Screen 
               name="Login" 

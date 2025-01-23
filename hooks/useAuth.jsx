@@ -25,10 +25,8 @@ const useAuth = () => {
       const { jwt, user } = response.data;
 
       await setToken(jwt);
-      setUser({
-        ...user,
-        role: user.role?.name || 'default', // Adiciona o nome do papel ao estado
-      });
+
+      setUser(user);
   
       console.log(user.role?.name);
     } catch (err) {
