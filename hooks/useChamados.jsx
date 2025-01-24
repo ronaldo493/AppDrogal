@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useStrapiContext } from "../context/StrapiContext";
 import strapiClient from "../services/StrapiClient";
 import usePagination from "./usePagination";
+import { useAuthContext } from "../context/AuthContext";
 
 const useChamados = () => {
   const conexao = strapiClient();
   const suporteStrapi = useStrapiContext();
+  const authStrapi = useAuthContext();
 
   const { chamados, setChamados } = suporteStrapi;
 
@@ -26,6 +28,13 @@ const useChamados = () => {
           pagination: {
             page: currentPage,
             pageSize,
+          },
+          filters: {
+            $or: [
+              { nomeresponsavel: { $eq: authStrapi.user.username } }, //Igual ao username
+              { nomeresponsavel: { $eq: '' } }, //Campo vazio
+              { nomeresponsavel: { $null: true } }, //Campo nulo
+            ],
           },
         },
       });
@@ -50,7 +59,6 @@ const useChamados = () => {
   useEffect(() => {   
     if(hasMore) {
       getChamados();
-      console.log(chamados)
     }
   }, [currentPage, hasMore]);
 

@@ -27,97 +27,91 @@ export default function Chamados (){
     } return;
   }
 
+  const handleSelectOption = (option) => {
+    setSelectedOption(option);
+    setSelectedOptionChamados(null); //Limpar a seleção ao mudar de lista
+  };
+
+  const renderChamados = (data) => (
+    <FlatList
+      data={data}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item }) => (
+        <View key={item.id}>
+          <TouchableOpacity
+            style={[
+              themeStyles.sidebar,
+              ChamadosStyles.item,
+              {
+                opacity:
+                  selectedOptionChamados && selectedOptionChamados !== item ? 0.2 : 1,
+              },
+            ]}
+            onPress={() =>
+              setSelectedOptionChamados(
+                selectedOptionChamados?.id === item.id ? null : item
+              )
+            }
+          >
+            <View>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                {item.dataabertura}
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                {item.nomefilial}
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                Título: {item.titulo.split(' ').slice(0, 3).join(' ')}...
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={[ChamadosStyles.btnRota, themeStyles.buttonModal]}
+              onPress={() => traceRoute(item)}
+            >
+              <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>
+                Traçar Rota
+              </Text>
+            </TouchableOpacity>
+          </TouchableOpacity>
+
+          {selectedOptionChamados?.id === item.id && (
+            <View style={[ChamadosStyles.detailContainer, themeStyles.sidebar]}>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                {item.descricao}
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                COLABORADOR: {item.nomeabertura}
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+                TÉCNICO: {item.nomeresponsavel || 'Não atribuído'}
+              </Text>
+            </View>
+          )}
+        </View>
+      )}
+      style={ChamadosStyles.content}
+    />
+  );
+
   return (
     <View style={[ChamadosStyles.container,themeStyles.screenBackground]}>
       <View style={ChamadosStyles.btnContainer}>
         <TouchableOpacity 
         style={[ChamadosStyles.button, themeStyles.radiusBackground, selectedOption === 'atribuido' && themeStyles.buttonSelected]} 
-        onPress={() => setSelectedOption('atribuido')}>
+        onPress={() => handleSelectOption('atribuido')}>
           <Text style={[ChamadosStyles.textTitle, themeStyles.text]}>ATRIBUÍDOS</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[ChamadosStyles.button, themeStyles.radiusBackground, selectedOption === 'naoAtribuido' && themeStyles.buttonSelected]}
-        onPress={() => setSelectedOption('naoAtribuido')}>
+        onPress={() => handleSelectOption('naoAtribuido')}>
           <Text style={[ChamadosStyles.textTitle, themeStyles.text]}>NÃO ATRIBUÍDOS</Text>
         </TouchableOpacity>
       </View>
-      {selectedOption === 'atribuido' && (
-         <FlatList
-            data={chamados.filter((chamado) => chamado.situacao === 1)}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => (
-              <View key={item.id}>
-                <TouchableOpacity
-                  style={[
-                    themeStyles.sidebar,
-                    ChamadosStyles.item,
-                    {
-                      opacity:
-                        selectedOptionChamados && selectedOptionChamados !== item ? 0.2 : 1,
-                    },
-                  ]}
-                  onPress={() =>
-                    setSelectedOptionChamados(
-                      selectedOptionChamados?.id === item.id ? null : item
-                    )
-                  }
-                >
-                  <View>
-                    <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                      {item.dataabertura}
-                    </Text>
-                    <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                      {item.nomefilial}
-                    </Text>
-                    <Text style={[ChamadosStyles.textContent, themeStyles.text]} >
-                      Título: {item.titulo.split(' ').slice(0, 3).join(' ')}...
-                    </Text>
-                  </View>
-                  <TouchableOpacity
-                    style={[ ChamadosStyles.btnRota, themeStyles.buttonModal]}
-                    onPress={() => traceRoute(item)}
-                  >
-                    <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>
-                      Traçar Rota
-                    </Text>
-                  </TouchableOpacity>
-                </TouchableOpacity>
 
-                {selectedOptionChamados?.id === item.id && (
-                  <View
-                    style={[ChamadosStyles.detailContainer, themeStyles.sidebar]}
-                  >
-                    <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                      {item.descricao}
-                    </Text>
-                  </View>
-                )}
-              </View>
-            )}
-            style={ChamadosStyles.content}
-          />
-      )}
+      {selectedOption === 'atribuido' &&
+        renderChamados(chamados.filter((chamado) => chamado.situacao === 1))}
 
-          
-      {/* {selectedOption === 'naoAtribuido' && (
-        <View style={ChamadosStyles.content}>
-          {chamados
-          .filter((chamado) => chamado.situacao !== 1)
-          .map((chamado, index) => (
-            <View key={index} style={[themeStyles.sidebar, ChamadosStyles.item]}>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]} >
-                {chamado.dataabertura}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {chamado.nomefilial}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {chamado.descricao}
-              </Text>
-            </View>
-            
-          ))}
-        </View>
-      )} */}
+      {selectedOption === 'naoAtribuido' &&
+        renderChamados(chamados.filter((chamado) => chamado.situacao === 0))}
     </View>
   );
 };

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useStrapiContext } from './StrapiContext';
 
 //Criando o contexto
 const AuthContext = createContext();
@@ -10,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
     const [token, setToken] = useState(publicKey);
     const [loading, setLoading] = useState(true);
+    const { setChamados } = useStrapiContext(); 
 
     //Crregamento do token
     const tokenStorage = async () => {
@@ -66,8 +68,10 @@ export const AuthProvider = ({ children }) => {
     const clearToken = async () => {
         try {
             await AsyncStorage.removeItem('userToken');
+            await AsyncStorage.removeItem('userData');
             setToken(publicKey);
             setUser(null);
+            setChamados([]);
         } catch (err) {
             console.error('Erro ao remover token do AsyncStorage:', err);
         }

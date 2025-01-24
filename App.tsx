@@ -29,13 +29,14 @@ const Stack = createStackNavigator();
 //Componente principal, fornecerá o tema para todo o APP
 export default function App() {
   return (
+    <StrapiProvider>
       <AuthProvider>
-        <StrapiProvider>
           <ThemeProvider>
             <AppWithTheme />
           </ThemeProvider>
-        </StrapiProvider> 
-      </AuthProvider>
+        </AuthProvider>
+    </StrapiProvider>
+        
          
   );
 }

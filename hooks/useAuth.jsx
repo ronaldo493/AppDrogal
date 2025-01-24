@@ -21,14 +21,12 @@ const useAuth = () => {
         password: senha,
       });
 
-      console.log(response);
       const { jwt, user } = response.data;
 
       await setToken(jwt);
 
       await setUser(user);
   
-      console.log(user.role?.name);
     } catch (err) {
         setError("Usuário ou senha incorretos");
     } finally {

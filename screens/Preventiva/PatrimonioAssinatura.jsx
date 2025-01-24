@@ -409,34 +409,26 @@ export default function PatrimonioAssinatura() {
             : 'Rack'
             : '';
         
-        //Verifica se a letra já existe em qualquer seção (não apenas na opção selecionada)
-        const letterAlreadyExists = sections.some(
-            section => section.title.includes(cleanedLetter.toUpperCase())
-        );
-    
-        if (letterAlreadyExists) {
-            Alert.alert("Atenção!", `A letra ${cleanedLetter.toUpperCase()} já está sendo usada em outra seção.`);
-        } else {
-            //Cria a nova seção com a letra e tipo correto
-            const newSection = { 
-                title: `${sectionPrefix} ${cleanedLetter.toUpperCase()}`, 
-                items: selectedOption === 'CAIXA' ? [...caixaItems] 
-                    : selectedOption === 'BALCAO' ? [...balcaoItems]
-                    : selectedOption === 'SERVIDOR' ? [...servidorItems]
-                    : selectedOption === 'CLINICA' ? [...clinicaItems]
-                    : selectedOption === 'GERENTE' ? [...gerenteItems]
-                    : [...rackItems]
-            };
-    
-            //Atualiza o estado das seções
-            setSections(prevSections => {
-                const updatedSections = [...prevSections, newSection];
-                return updatedSections;
-            });
-    
-            setNewMachineLetter(""); 
-            setModalVisible(false);
-        }
+        
+        //Cria a nova seção com a letra e tipo correto
+        const newSection = { 
+            title: `${sectionPrefix} ${cleanedLetter.toUpperCase()}`, 
+            items: selectedOption === 'CAIXA' ? [...caixaItems] 
+                : selectedOption === 'BALCAO' ? [...balcaoItems]
+                : selectedOption === 'SERVIDOR' ? [...servidorItems]
+                : selectedOption === 'CLINICA' ? [...clinicaItems]
+                : selectedOption === 'GERENTE' ? [...gerenteItems]
+                : [...rackItems]
+        };
+
+        //Atualiza o estado das seções
+        setSections(prevSections => {
+            const updatedSections = [...prevSections, newSection];
+            return updatedSections;
+        });
+
+        setNewMachineLetter(""); 
+        setModalVisible(false);  
     };
     
     
