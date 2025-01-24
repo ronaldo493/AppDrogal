@@ -39,7 +39,7 @@ export default function Login ()  {
             style={LoginStyles.input}
             placeholder="Código Usuário"
             placeholderTextColor="#A9A9A9"
-            keyboardType="numeric"
+            keyboardType="default"
             value={username}
             onChangeText={setUsername}
         />

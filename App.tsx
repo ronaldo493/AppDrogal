@@ -18,9 +18,10 @@ import MapaLojas from './screens/MapaLojas';
 import PatrimonioAssinatura from './screens/Preventiva/PatrimonioAssinatura';
 import Preventiva from './screens/Preventiva/Preventiva';
 import About from './screens/Settings/About';
+import EditProfile from './screens/Auth/EditProfile';
 import Settings from './screens/Settings/Settings';
 import Suporte from './screens/Settings/Suporte';
-import { AuthProvider, publicKey, useAuthContext } from './context/AuthContext';
+import { AuthProvider, useAuthContext } from './context/AuthContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -138,6 +139,11 @@ function AppNavigation() {
           <Drawer.Screen 
             name="About" 
             component={About} 
+            options={{ headerTitle: '' }} 
+          />
+          <Drawer.Screen 
+            name="EditProfile" 
+            component={EditProfile} 
             options={{ headerTitle: '' }} 
           />
         </Drawer.Navigator>

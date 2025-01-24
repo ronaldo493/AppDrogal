@@ -26,7 +26,7 @@ const useAuth = () => {
 
       await setToken(jwt);
 
-      setUser(user);
+      await setUser(user);
   
       console.log(user.role?.name);
     } catch (err) {
@@ -36,8 +36,27 @@ const useAuth = () => {
     }
   };
 
+  const resetPassword = async (oldPassword, newPassword) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await conexao.put("/auth/reset-password", {
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+      });
+
+      console.log("Senha redefinida com sucesso", response.data);
+    } catch (err) {
+      setError("Erro ao redefinir a senha. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     conexaoLogin,
+    resetPassword,
     user,
     token,
     loading,

@@ -59,7 +59,10 @@ const HeaderMenu: React.FC<HeaderMenuProps> = React.memo(({ navigation, themeSty
         />
         <Divider />
         <Menu.Item
-          onPress={closeMenu}
+          onPress={() => {
+            closeMenu();
+            navigation.navigate('EditProfile');
+          }}
           title="Meu Perfil"
           titleStyle={themeStyles.textMenu}
         />

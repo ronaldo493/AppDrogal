@@ -197,7 +197,7 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
       elevation: 4,
     },
     buttonSelected: {
-      backgroundColor: isDarkMode ? '#007bff' : '#BB5059',
+      backgroundColor: isDarkMode ? '#222' : '#999',
     },
     buttonBack: {
       backgroundColor: isDarkMode ? '#222' : '#bbb',

@@ -26,6 +26,21 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    //Carregar o user no AsyncStorage
+    const userStorage = async () => {
+        try {
+            setLoading(true);
+            const storedUser = await AsyncStorage.getItem('userData');
+            if (storedUser) {
+                setUser(JSON.parse(storedUser));
+            }
+        } catch (err) {
+            console.error('Erro ao carregar dados do usuário:', err);
+        } finally {
+            setLoading(false);
+        }  
+    };
+
     //Salvar o token no AsyncStorage
     const saveToken = async (newToken) => {
         try {
@@ -33,6 +48,17 @@ export const AuthProvider = ({ children }) => {
             setToken(newToken);
         } catch (err) {
             console.error('Erro ao salvar token no AsyncStorage:', err);
+        }
+    };
+
+    //Salvar o usuário no AsyncStorage
+    const saveUser = async (newUser) => {
+        try {
+            const userString = JSON.stringify(newUser);
+            await AsyncStorage.setItem('userData', userString);
+            setUser(newUser);
+        } catch (err) {
+            console.error('Erro ao salvar dados do usuário no AsyncStorage:', err);
         }
     };
 
@@ -47,8 +73,11 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    
+
     useEffect(() => {
        tokenStorage(); 
+       userStorage();
     }, []);
 
     const isLoggedIn = () => {
@@ -57,7 +86,7 @@ export const AuthProvider = ({ children }) => {
 
     const contextValue = {
         user,
-        setUser,
+        setUser: saveUser,
         token,
         setToken: saveToken,
         clearToken,

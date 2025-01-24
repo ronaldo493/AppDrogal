@@ -25,19 +25,33 @@ const ChamadosStyles = StyleSheet.create({
         width: '100%',
     },
     item: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        flex: 1,
         padding: 10,
         marginBottom: 10,
         borderRadius: 8,
+        elevation: 2,
+    },
+    btnRota: {
+        marginTop: 10,
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: 4,
+        alignSelf: 'flex-end',               
     },
     textContent: {
-        fontSize: 15,
+        fontSize: 13,
         paddingBottom: 7,
-        fontWeight: 'bold',
+        lineHeight: 22,
+        
     },
     detailContainer: {
         marginTop: 0,
         marginBottom: 18,
         padding: 10,
+        borderRadius: 8,
     }
     
 });
