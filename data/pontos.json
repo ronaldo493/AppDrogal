@@ -1,0 +1,212 @@
+[
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-20.71243331856419",
+       "longitude":"-48.540424322950585",
+       "descricao":"Posto Shell" 
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.830656589684395",
+       "longitude":"-46.892210491410076",
+       "descricao":"Posto Shell (Aceita Alelo e TicketLog)"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-23.123002769818275",
+       "longitude":"-47.225641462261386",
+       "descricao":"Posto Pimenta (Bandeira Ipiranga)"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-20.56146841564562",
+       "longitude":"-48.57302155716042", 
+       "descricao":"Padoka 30"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.979858152231582",
+       "longitude":"-47.00058672794421", 
+       "descricao":"Churrascarias das Marmitex"  
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.20864977364296",
+       "longitude":"-47.604717146317306", 
+       "descricao":"Camilos Padaria" 
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.594021006934554",
+       "longitude":"-46.88933402094754", 
+       "descricao":"Restaurante Brasil"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.708563588472437",
+       "longitude":"-47.65351630198757",  
+       "descricao":"Natural da Terra"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.71920923149558",
+       "longitude":"-47.64873538761526",  
+       "descricao":"Porto do Norte"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.71920923149558",
+       "longitude":"-47.64873538761526",  
+       "descricao":"Posto Shell A6"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.73886471622936",
+       "longitude":"-47.59752281620573",  
+       "descricao":"Padaria Empório dos Pães"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.75855965652048",
+       "longitude":"-48.8324828984699",  
+       "descricao":"Padaria Moderna"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.363110955078476", 
+       "longitude":"-47.38741345835933",  
+       "descricao":"Tony's Grill - Frango na Brasa"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.65377601977479", 
+       "longitude":"-47.18298797765734",  
+       "descricao":"Cantinho da Costela"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.94211452713928",
+       "longitude":"-47.090563761708495",  
+       "descricao":"Restaurante Alecrim"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-23.28465880881196",
+       "longitude":"-47.672753689888005",  
+       "descricao":"Restaurante Dona Ju"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.59429239549445",
+       "longitude":"-48.81201615945938",  
+       "descricao":"Auto Posto MG"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.575773664144165",
+       "longitude":"-47.16949409361406",  
+       "descricao":"Padaria Nova Ipê"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.594274159511148",
+       "longitude":"-48.815980996087724",  
+       "descricao":"Padaria J.Pan"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.539653692912434",
+       "longitude":"-48.77198042954287",  
+       "descricao":"Posto Cazulão"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.142795470426215",
+       "longitude":"-47.97775186422264",  
+       "descricao":"Padaria Nosso Pão"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.36427744164681",
+       "longitude":"-47.39006625322095",  
+       "descricao":"Restaurante Rei da Picanha"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.943312813807257",
+       "longitude":"-46.99767924945591",  
+       "descricao":"Espetaria Belo Boi"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-22.977028593727223",
+       "longitude":"-47.14773201165722",  
+       "descricao":"Churrascaria e Marmitaria"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.96224835570682",
+       "longitude":"-47.10752680240654",  
+       "descricao":"Posto Ipiranga"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.830188719819812",
+       "longitude":"-47.07903243551556",  
+       "descricao":"Posto Shell"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-21.14295181000831",
+       "longitude":"-47.984616047822875",  
+       "descricao":"Restaurante"
+    },
+    {
+       "categoria":"Restaurante",
+       "latitude":"-23.09179757878216",
+       "longitude":"-47.21161644115057", 
+       "descricao":"Bar do Zé Ferreira"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.962243845702947",
+       "longitude":"-47.10758375343837", 
+       "descricao":"Posto Ipiranga"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.830782231218265", 
+       "longitude":"-46.892173759380924", 
+       "descricao":"Posto Shell"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.60879025046614",  
+       "longitude":"-46.89377466296998", 
+       "descricao":"Igo-Comércio Varejista de Combustpivel"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.200984042293733",  
+       "longitude":"-47.764946502289746", 
+       "descricao":"Posto onde compra o Cappuccino"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-21.189570759947284", 
+       "longitude":"-47.75810540663234", 
+       "descricao":"Posto GNV"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.71529161490602",
+       "longitude":"-47.632574435198755", 
+       "descricao":"Posto Shell Agronomia"
+    },
+    {
+       "categoria":"Posto de Combustível",
+       "latitude":"-22.73071443061261", 
+       "longitude":"-47.61357302690877", 
+       "descricao":"Posto Shell"
+    }
+]

@@ -939,7 +939,7 @@
     "codigofilial": 53,
     "nomefilial": "FILIAL 053 - DROGAL INDAIATUBA",
     "endereco": "AV GERALDO HACKMANN",
-    "numero": "498",
+    "numero": "370",
     "cep": "13.345-400",
     "bairro": "NUC HAB BRIGADEIRO FARIA LIMA",
     "nomecidade": "INDAIATUBA",
@@ -950,8 +950,8 @@
     "supervisor": "JEFERSON ROCHA SANCHES",
     "cnpj": "54.375.647/0054-39",
     "horariofuncionamento": "SEG. À DOM. E FER. 07:00 ÀS 23:00",
-    "latitude": "-23.10587556745622", 
-    "longitude": "-47.218378278104325"
+    "latitude": "-23.104862862351286",  
+    "longitude": "-47.217941633475746"
   },
   {
     "codigofilial": 54,
@@ -7250,7 +7250,25 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0438-70",
     "horariofuncionamento": null,
-    "latitude": "-22.320154301144175",
-    "longitude": "-49.02644291951593"
+    "latitude": "-22.320236722485646",
+    "longitude": "-49.026110460191106"
+  },
+  {
+    "codigofilial": 405,
+    "nomefilial": "FILIAL 405 - DROGAL CAMPINAS X",
+    "endereco": "R NADALINA VAROLLO FUZARO",
+    "numero": "5",
+    "cep": "13.056-183",
+    "bairro": "JARDIM SAO PEDRO DE VIRACOPOS",
+    "nomecidade": "CAMPINAS",
+    "numeroibge": 3509502,
+    "uf": "SP",
+    "telefone": "Fone1: 19 34291200 / Fone2:  ",
+    "gerente": null,
+    "supervisor": "MARCIO DE LIMA SANTOS",
+    "cnpj": "54.375.647/0439-50",
+    "horariofuncionamento": null,
+    "latitude": "-22.98824680314948",
+    "longitude": "-47.142273987964955"
   }
 ]
