@@ -2486,9 +2486,9 @@
   {
     "codigofilial": 140,
     "nomefilial": "FILIAL 140 - DROGAL BAURU",
-    "endereco": "AV DUQUE DE CAXIAS",
-    "numero": "21-21",
-    "cep": "17.011-066",
+    "endereco": "AV NACOES UNIDAS",
+    "numero": "53-133",
+    "cep": "17.033-260",
     "bairro": "VILA CARDIA",
     "nomecidade": "BAURU",
     "numeroibge": 3506003,
@@ -2498,8 +2498,8 @@
     "supervisor": "MOYSES PADUIM DE SOUZA",
     "cnpj": "54.375.647/0173-64",
     "horariofuncionamento": "SEG. À SAB. 07:00 ÀS 22:00 -  DOM. E FER. NÃO ABRE",
-    "latitude": "-22.32529301113671",
-    "longitude": "-49.05568040044764"
+    "latitude": "-22.336734215284338", 
+    "longitude": "-49.028841694334425"
   },
   {
     "codigofilial": 141,
