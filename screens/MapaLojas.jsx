@@ -36,11 +36,7 @@ export default function MapaLojas(){
     if (filiais.length > 0) {
       setFilteredFiliais(filiais);
 
-      const primeiraFilial = filiais.find((filial) => {
-        const latitude = parseFloat(filial.latitude?.replace(',', '.'));
-        const longitude = parseFloat(filial.longitude?.replace(',', '.'));
-        return !isNaN(latitude) && !isNaN(longitude);
-      });
+      const primeiraFilial = filiais.find((filial)  => filial.nomefilial === "Piracicaba")
 
       if (primeiraFilial) {
         const latitude = parseFloat(primeiraFilial.latitude?.replace(',', '.'));
