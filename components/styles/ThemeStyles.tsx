@@ -15,6 +15,9 @@ interface ThemeStyles {
   sidebar: {
     backgroundColor: string;
   };
+  chamados: {
+    backgroundColor: string;
+  };
   text: {
     color: string;
   };
@@ -118,6 +121,7 @@ const lightTheme = {
   text: '#000',
   screenText: '#000',
   sidebar: '#e7e7e7',
+  chamados: '#d8d8d8',
   borderBottomColor: '#ddd',
   screenBackground: '#f5f5f5',
 };
@@ -126,6 +130,7 @@ const darkTheme = {
   text: '#cccccc',
   screenText: '#E0E0E0',
   sidebar: '#2E2E2C',
+  chamados: '#2E2E2C',
   borderBottomColor: '#555553',
   screenBackground: '#101010',
 };
@@ -138,6 +143,9 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
     // SIDEBAR
     sidebar: {
       backgroundColor: isDarkMode ? darkTheme.sidebar : lightTheme.sidebar,
+    },
+    chamados: {
+      backgroundColor: isDarkMode ? darkTheme.chamados : lightTheme.chamados
     },
     text: {
       color: isDarkMode ? darkTheme.text : lightTheme.text,
@@ -197,7 +205,7 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
       elevation: 4,
     },
     buttonSelected: {
-      backgroundColor: isDarkMode ? '#222' : '#999',
+      backgroundColor: isDarkMode ? '#222' : '#B66',
     },
     buttonBack: {
       backgroundColor: isDarkMode ? '#222' : '#bbb',

@@ -32,8 +32,17 @@ const useChamados = () => {
           filters: {
             $or: [
               { nomeresponsavel: { $eq: authStrapi.user.username } }, //Igual ao username
-              { nomeresponsavel: { $eq: '' } }, //Campo vazio
-              { nomeresponsavel: { $null: true } }, //Campo nulo
+              {
+                $and: [
+                  { descricaosetorresponsavel: { $eq: authStrapi.user.setor } }, //Setor igual
+                  {
+                    $or: [
+                      { nomeresponsavel: { $eq: '' } }, //Campo vazio
+                      { nomeresponsavel: { $null: true } }, //Campo nullo
+                    ]
+                  }
+                ]
+              }
             ],
           },
         },
@@ -42,9 +51,7 @@ const useChamados = () => {
       const { data: responseData, meta } = response.data;
 
       setDataMeta(meta)
-
-     
-      
+ 
       nextPage();
 
       setChamados((prevChamados) =>  [...prevChamados, ...responseData]);

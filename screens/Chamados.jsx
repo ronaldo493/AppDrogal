@@ -40,11 +40,11 @@ export default function Chamados (){
         <View key={item.id}>
           <TouchableOpacity
             style={[
-              themeStyles.sidebar,
+              themeStyles.chamados,
               ChamadosStyles.item,
               {
                 opacity:
-                  selectedOptionChamados && selectedOptionChamados !== item ? 0.2 : 1,
+                  selectedOptionChamados && selectedOptionChamados !== item ? 0.1 : 1,
               },
             ]}
             onPress={() =>
@@ -54,14 +54,14 @@ export default function Chamados (){
             }
           >
             <View>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {item.dataabertura}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, { fontWeight: 'bold' }]}>
                 {item.nomefilial}
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                Título: {item.titulo.split(' ').slice(0, 3).join(' ')}...
+                Título: {item.titulo.split(' ').slice(0, 1).join(' ')}...
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, { fontSize: 13, marginTop: 10, fontStyle: 'italic' }]}>
+                {new Date(item.dataabertura).toLocaleDateString("pt-BR")}
               </Text>
             </View>
             <TouchableOpacity
@@ -75,15 +75,15 @@ export default function Chamados (){
           </TouchableOpacity>
 
           {selectedOptionChamados?.id === item.id && (
-            <View style={[ChamadosStyles.detailContainer, themeStyles.sidebar]}>
+            <View style={[ChamadosStyles.detailContainer, themeStyles.chamados]}>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
                 {item.descricao}
               </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                COLABORADOR: {item.nomeabertura}
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, {marginTop: 15}]}>
+                Colaborador: {item.nomeabertura}
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                TÉCNICO: {item.nomeresponsavel || 'Não atribuído'}
+                Técnico: {item.nomeresponsavel || 'Não atribuído'}
               </Text>
             </View>
           )}
