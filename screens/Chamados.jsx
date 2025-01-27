@@ -55,13 +55,13 @@ export default function Chamados (){
           >
             <View>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                {item.dataabertura}
-              </Text>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
                 {item.nomefilial}
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
                 Título: {item.titulo.split(' ').slice(0, 3).join(' ')}...
+              </Text>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, {fontStyle: 'italic'}]}>
+                Abertura: {new Date(item.dataabertura).toLocaleDateString("pt-BR")}
               </Text>
             </View>
             <TouchableOpacity

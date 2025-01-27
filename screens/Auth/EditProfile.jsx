@@ -1,53 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text } from 'react-native';
 import useAuth from '../../hooks/useAuth';
-import ChamadosStyles from '../styles/ChamadosStyles';
+import LoginStyles from '../styles/LoginStyles';
+import { useTheme } from '../../context/ThemeContext';
+import { getThemeStyles } from '../../components/styles/ThemeStyles';
 
 export default function EditProfile() {
-  const { user, resetPassword } = useAuth();
+  //Usuário
+  const { user } = useAuth();
 
-  const [selectedOption, setSelectedOption] = useState();
-  const [passAntiga, setPassAntiga] = useState();
-  const [newPassword, setNewPassword] = useState();
+ //Modo escuro
+  const { isDarkMode } = useTheme(); 
+  const themeStyles = getThemeStyles(isDarkMode);
+  
 
-  const handlePassword = () => {
-    resetPassword(passAntiga, newPassword);
-  }
+  useEffect(() => {
+    console.log(user)
+  },[])
   
   return (
-    <View>
-        <View>
-            <Text>Email: {user?.email} </Text>
-            <Text>Usuário: {user?.username} </Text>
-            <Text>Email de Recuperação: </Text>
-            <TouchableOpacity
-                onPress={() => setSelectedOption('troca')}
-            >
-                <Text>Trocar Senha</Text>
-            </TouchableOpacity>
-        </View>
-        {selectedOption === 'troca' && (
-        <View>
-          <TextInput
-            style={[ChamadosStyles.pass]}
-            secureTextEntry
-            placeholder="Digite a senha antiga"
-            value={passAntiga}
-            onChangeText={(text) => setPassAntiga(text)}
-          />
-          <TextInput
-            style={[ChamadosStyles.pass]}
-            secureTextEntry
-            placeholder="Digite a senha nova"
-            value={newPassword}
-            onChangeText={(text) => setNewPassword(text)}
-          />
-          <TouchableOpacity onPress={handlePassword}>
-            <Text>Confirmar</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+    <View style={[LoginStyles.container, themeStyles.screenBackground]}>
+      <Text style={[LoginStyles.title, themeStyles.text]}>PERFIL DO USUÁRIO</Text>
+
+      <View style={[LoginStyles.infoBox, themeStyles.sidebar]}>
+        <Text style={[LoginStyles.label, themeStyles.text]}>Email:</Text>
+        <Text style={[LoginStyles.value, themeStyles.text]}>{user?.email || 'Não disponível'}</Text>
+      </View>
+
+      <View style={[LoginStyles.infoBox, themeStyles.sidebar]}>
+        <Text style={[LoginStyles.label, themeStyles.text]}>Usuário:</Text>
+        <Text style={[LoginStyles.value, themeStyles.text]}>{user?.username || 'Não disponível'}</Text>
+      </View>
+
+      <View style={[LoginStyles.infoBox, themeStyles.sidebar]}>
+        <Text style={[LoginStyles.label, themeStyles.text]}>Setor:</Text>
+        <Text style={[LoginStyles.value, themeStyles.text]}>{user?.setor || 'Não disponível'}</Text>
+      </View>
+
+      {/* <View style={[LoginStyles.infoBox, themeStyles.sidebar]}>
+        <Text style={[LoginStyles.label, themeStyles.text]}>Email de Recuperação:</Text>
+        <Text style={[LoginStyles.value, themeStyles.text]}>{user?.emailSec || 'Não disponível'}</Text>
+      </View> */}
     </View>
-    
   )
 }
