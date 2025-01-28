@@ -77,8 +77,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    
-
     useEffect(() => {
        tokenStorage(); 
        userStorage();

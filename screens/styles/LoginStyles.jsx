@@ -6,7 +6,7 @@ const Login = StyleSheet.create({
         borderRadius: 8,
         display: 'flex',
         justifyContent: 'center',
-        padding: 20,
+        padding: 15,
     },
     headerLogin: {
       display: 'flex',
@@ -17,7 +17,7 @@ const Login = StyleSheet.create({
     logo: {
         width: 150,
         height: 100,
-        marginBottom: 50,
+        marginBottom: 25,
     },  
     input: {
         width: '100%',
@@ -50,7 +50,8 @@ const Login = StyleSheet.create({
       },
       errorText: {
         color: '#FF0000',
-        fontSize: 14,
+        fontSize: 15,
+        fontWeight: 'bold',
         marginBottom: 15,
       },
       footerLogin: {
@@ -61,11 +62,11 @@ const Login = StyleSheet.create({
       forgotText: {
         color: '#FF0000',
         fontSize: 14,
-        fontWeight: '500',
+        textAlign: 'center',
       },
 
       //EditProfile
-      container: {
+      containerEdit: {
         flex: 1,
         padding: 20,
         backgroundColor: '#f9f9f9',
@@ -80,10 +81,9 @@ const Login = StyleSheet.create({
       infoBox: {
         marginBottom: 20,
         padding: 15,
-        borderWidth: 1,
-        borderColor: '#ddd',
+        borderWidth: 0.5,
+        borderColor: '#bbb',
         borderRadius: 10,
-        backgroundColor: '#fff',
       },
       label: {
         fontSize: 16,

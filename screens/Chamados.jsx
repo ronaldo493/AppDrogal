@@ -44,7 +44,7 @@ export default function Chamados (){
               ChamadosStyles.item,
               {
                 opacity:
-                  selectedOptionChamados && selectedOptionChamados !== item ? 0.2 : 1,
+                  selectedOptionChamados && selectedOptionChamados !== item ? 0.1 : 1,
               },
             ]}
             onPress={() =>

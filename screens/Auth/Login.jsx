@@ -39,7 +39,7 @@ export default function Login ()  {
             style={LoginStyles.input}
             placeholder="Código Usuário"
             placeholderTextColor="#A9A9A9"
-            keyboardType="default"
+            keyboardType="numeric"
             value={username}
             onChangeText={setUsername}
         />
@@ -66,7 +66,7 @@ export default function Login ()  {
 
         <View style={LoginStyles.footerLogin}>
           <TouchableOpacity style={LoginStyles.btn}> 
-            <Text style={LoginStyles.forgotText}>Esqueceu a senha?</Text>
+            <Text style={LoginStyles.forgotText}>Se precisar trocar a senha entre em contato com o Administrador </Text>
           </TouchableOpacity>
         </View>
         

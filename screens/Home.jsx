@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import RouteList from '../components/RouteList';
 import SearchBar from '../components/SearchBar';
@@ -7,6 +7,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 import { useTheme } from '../context/ThemeContext';
 import MapService from '../fixtures/mapService';
 import HomeStyles from './styles/HomeStyles';
+import useAuth from '../hooks/useAuth';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -14,6 +15,15 @@ export default function Home() {
   //Modo escuro
   const { isDarkMode } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
+  
+  //Execução de chekToken no carregamento da tela
+  const { checkToken, token, message  } = useAuth();
+
+  useEffect(() => {
+    if (token) {
+      checkToken(token);
+    }
+  }, [token]);
 
   //Função para adicionar uma filial
   const handleAddRoute = (filial) => {
@@ -113,6 +123,11 @@ export default function Home() {
             onReorderRoutes={handleReorderRoutes} 
           />
         </View>
+        {message && (
+          <View style={{ backgroundColor: "#87CEEB", padding: 30, marginBottom:20 }}>
+            <Text style={{ color: "white" }}>{message}</Text>
+          </View>
+        )}
 
         <TouchableOpacity onPress={handleTraceRoute}>
           <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>

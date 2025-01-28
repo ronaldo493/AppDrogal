@@ -19,7 +19,7 @@ export default function EditProfile() {
   },[])
   
   return (
-    <View style={[LoginStyles.container, themeStyles.screenBackground]}>
+    <View style={[LoginStyles.containerEdit, themeStyles.screenBackground]}>
       <Text style={[LoginStyles.title, themeStyles.text]}>PERFIL DO USUÁRIO</Text>
 
       <View style={[LoginStyles.infoBox, themeStyles.sidebar]}>
