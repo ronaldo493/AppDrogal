@@ -64,7 +64,7 @@ const useAuth = () => {
           
           setTimeout(() => {
             clearToken();
-          }, 4000);
+          }, 3000);
         } else {
           console.log("Token Válido")
         }

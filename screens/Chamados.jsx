@@ -58,7 +58,7 @@ export default function Chamados (){
                 {item.nomefilial}
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
-                Título: {item.titulo.split(' ').slice(0, 3).join(' ')}...
+                Título: {item.titulo.split(' ').slice(0, 1).join(' ')}...
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text, {fontStyle: 'italic'}]}>
                 Abertura: {new Date(item.dataabertura).toLocaleDateString("pt-BR")}

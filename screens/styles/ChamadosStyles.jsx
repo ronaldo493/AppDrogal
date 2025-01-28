@@ -42,7 +42,7 @@ const ChamadosStyles = StyleSheet.create({
         alignSelf: 'flex-end',               
     },
     textContent: {
-        fontSize: 15,
+        fontSize: 14,
         paddingBottom: 7,
         lineHeight: 22,
         
