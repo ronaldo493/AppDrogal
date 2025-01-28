@@ -10,19 +10,19 @@ export default function Sidebar({ navigation }) {
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const { clearToken } = useAuthContext();
+  const { clearToken, user } = useAuthContext();
 
   const handleLogout = () => {
     clearToken();
   };
 
   const menuItems = [
-    { label: 'ROTAS', route: 'Home' },
+    { label: 'TRAÇAR ROTA', route: 'Home' },
     { label: 'HISTÓRICO', route: 'Historico' },
+    { label: 'CHAMADOS', route: 'Chamados' },
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
-    { label: 'CHAMADOS', route: 'Chamados' },
-    { label: 'PATRIMÔNIO', route: 'Preventiva' },
+    ...user?.setor === 'INFRAESTRUTURA' || user?.setor === 'TI - SUPORTE'? [{ label: 'PATRIMÔNIO', route: 'Preventiva' }] : [],
   ];
 
   return (
