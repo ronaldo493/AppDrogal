@@ -325,12 +325,6 @@ const corporateUsers = [
     "descricaosetor":"TI - SUPORTE"
  },
  {
-    "codigousuario":12585,
-    "nome":"GUSTAVO CORDEIRO DOS SANTOS",
-    "codigosetor":30,
-    "descricaosetor":"TI - SUPORTE"
- },
- {
     "codigousuario":640,
     "nome":"GUSTAVO DIAS ALVES",
     "codigosetor":30,
@@ -419,7 +413,8 @@ const createUsers = async () => {
       email: `${user.codigousuario}@drogal.com.br`, //Gerando email
       password: 'drogal', //Defina uma senha padrão
       confirmed: false, //Confirmação do usuário
-      role: 5, //ID 
+      role: 3, //ID 
+      setor: user.descricaosetor
 
       //5 Infraestrutura
       //4 Engenharia
