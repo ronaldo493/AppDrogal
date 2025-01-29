@@ -110,7 +110,7 @@ export default function Chamados (){
       </View>
       <Toast/>
       {selectedOption === 'atribuido' &&
-        renderChamados(chamados.filter((chamado) => chamado.situacao === 1))}
+        renderChamados(chamados.filter((chamado) => chamado.situacao === 1 || chamado.situacao === 2))}
 
       {selectedOption === 'naoAtribuido' &&
         renderChamados(chamados.filter((chamado) => chamado.situacao === 0))}
