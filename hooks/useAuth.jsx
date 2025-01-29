@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import strapiClient from "../services/StrapiClient";
 import jwtDecode from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const useAuth = () => {
   const conexao = strapiClient();
@@ -10,7 +11,6 @@ const useAuth = () => {
   //Logoff
   const { clearToken } = useAuthContext();
 
-  
   //Mensagem
   const [message, setMessage] = useState(null);
 
@@ -19,6 +19,7 @@ const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  //Função de LOGIN
   const conexaoLogin = async (codigoUsuario, senha) => {
     setLoading(true);
     setError(null);
@@ -37,7 +38,9 @@ const useAuth = () => {
       await setUser(user);
 
       checkToken(jwt)
-  
+      
+      await monitorarSessao();
+      
     } catch (err) {
         setError("Usuário ou Senha incorretos");
     } finally {
@@ -45,19 +48,18 @@ const useAuth = () => {
     }
   };
 
+  //Função checagem de EXPIRAÇÃO DE TOKEN
   const checkToken = (tokenReceived) => {
     if (tokenReceived && typeof tokenReceived === 'string' && tokenReceived.includes('.')) {
       try {
         const desctJwt = jwtDecode(tokenReceived); //Destrututurando JWT
+        const iat = desctJwt.iat; //Date Criação de JWT
         console.log(desctJwt)
-        const iat = desctJwt.iat;
-        const expirationTime = 60;
+        
+        const expirationTime = 259200; //3 dias
         const exp = iat + expirationTime; //Tempo de expiração
         const currentTime = Math.floor(Date.now() / 1000); //Tempo atual em segundos
-        
-        console.log("Data de criação (iat):", iat);
-        console.log("Data de expiração (exp):", exp);
-  
+
         //Verifica o token e redireciona se inválido
         if (currentTime >= exp) {
           setMessage("Sua sessão expirou. Você será redirecionado para o login.")
@@ -74,6 +76,40 @@ const useAuth = () => {
     }
   }
 
+  
+  //Função pra Monitorar o ACESSO ao APP
+  const monitorarSessao = async () => {
+    const storedUser = await AsyncStorage.getItem("userData"); //Buscando o usuário do AsyncStorage
+    if (!storedUser) {
+      console.warn("Usuário não encontrado. Monitoramento não será feito.");
+      return;
+    }
+
+    const userData = JSON.parse(storedUser); 
+
+
+    try {
+      //DADOS a ser enviados
+      const sendMonitor = {
+        user: userData.username,
+        setor: userData.setor,
+      }
+
+      //Envio no Strapi
+      const response = await conexao.post("/sessoes", {
+        data: sendMonitor,
+      });
+
+      console.log('Sessão monitorada com sucesso:', response.data);
+    } catch (err) {
+      console.error('Erro ao monitorar sessão:', err.response ? err.response.data : err.message);
+    } 
+  };
+
+  // useEffect(() => {
+  //   monitorarSessao();
+  // }, [])
+    
   return {
     checkToken,
     message,

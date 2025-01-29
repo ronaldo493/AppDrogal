@@ -51,7 +51,7 @@ const useFiliais = () => {
 
   useEffect(() => {
       getFiliais(); 
-      console.log(filiais.map((filial) => filial.codigofilial))
+      // console.log(filiais.map((filial) => filial.codigofilial))
   }, []);
 
 

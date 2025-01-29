@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
        tokenStorage(); 
        userStorage();
+       
     }, []);
 
     const isLoggedIn = () => {

@@ -6,7 +6,7 @@ import SidebarStyles from './styles/SidebarStyles';
 import { useAuthContext } from '../context/AuthContext';
 
 export default function Sidebar({ navigation }) {
-  // Modo escuro
+  //Modo escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
 

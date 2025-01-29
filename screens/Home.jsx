@@ -7,7 +7,7 @@ import { getThemeStyles } from '../components/styles/ThemeStyles';
 import { useTheme } from '../context/ThemeContext';
 import MapService from '../fixtures/mapService';
 import HomeStyles from './styles/HomeStyles';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';;
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -17,7 +17,8 @@ export default function Home() {
   const themeStyles = getThemeStyles(isDarkMode);
   
   //Execução de chekToken no carregamento da tela
-  const { checkToken, token, message  } = useAuth();
+  const { checkToken, token, message } = useAuth();
+
 
   useEffect(() => {
     if (token) {
