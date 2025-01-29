@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useStrapiContext } from "../context/StrapiContext";
 import strapiClient from "../services/StrapiClient";
+import Toast from 'react-native-toast-message';
 
 const useFiliais = () => {
   const conexao = strapiClient();
@@ -43,7 +44,35 @@ const useFiliais = () => {
       setFiliais(allFiliais);
   
     } catch (err) {
-      setError(err.message || "Erro desconhecido");
+       const errorMessage = err.response?.data?.message;
+       setError(errorMessage);
+      
+       //Verifica se o erro é 403 e exibe uma mensagem de permissão
+       if (err.response?.status === 403) {
+           Toast.show({
+            type: 'error',
+            text1: 'Acesso Negado',
+            text2: 'Informações Filiais - contate o ADM',
+            text1Style: { 
+              fontSize: 17,
+            },
+            text2Style: { 
+              fontSize: 15,
+            },
+           });
+       } else {
+           Toast.show({
+            type: 'error',
+            text1: 'Erro',
+            text2: errorMessage,
+            text1Style: { 
+              fontSize: 17,
+            },
+            text2Style: { 
+              fontSize: 15,
+            },
+           });
+       }         
     } finally {
       setLoading(false);
     }

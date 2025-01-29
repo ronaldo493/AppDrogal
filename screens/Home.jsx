@@ -8,6 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 import MapService from '../fixtures/mapService';
 import HomeStyles from './styles/HomeStyles';
 import useAuth from '../hooks/useAuth';;
+import Toast from 'react-native-toast-message';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -129,6 +130,7 @@ export default function Home() {
             <Text style={{ color: "white" }}>{message}</Text>
           </View>
         )}
+        <Toast/>
 
         <TouchableOpacity onPress={handleTraceRoute}>
           <Text style={[themeStyles.textBackground, themeStyles.buttonBackgroundScreen]}>

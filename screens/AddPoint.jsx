@@ -7,6 +7,7 @@ import { useTheme } from '../context/ThemeContext';
 import useLocation from '../hooks/useLocation';
 import usePontos from '../hooks/usePontosDeInteresse';
 import AddPointStyles from './styles/AddPointStyles';
+import Toast from 'react-native-toast-message';
 
 export default function AddPoint() {
   //Modo escuro
@@ -49,9 +50,12 @@ export default function AddPoint() {
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              const response = await postPontos(newPoint);
-              
-              resetAddPoint();
+              const isSaved = await postPontos(newPoint);
+
+              if (isSaved) {
+                resetAddPoint();
+              } return;
+
             } catch (error) {
               Alert.alert('Erro', 'Não foi possível salvar o ponto.');
             }
@@ -70,9 +74,12 @@ export default function AddPoint() {
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              const response = await postPontos(newPoint);
+              const isSaved = await postPontos(newPoint);
+
+              if (isSaved) {
+                resetAddPoint();
+              } return;
   
-              resetAddPoint();
             } catch (error) {
               console.error('Erro ao salvar ponto como Posto de Combustível:', error);
               Alert.alert('Erro', 'Não foi possível salvar o ponto.');
@@ -91,7 +98,6 @@ export default function AddPoint() {
 
   //Função para resetar o estado de adição de pontos
   const resetAddPoint = () => {
-    Alert.alert('Sucesso', 'Ponto salvo com sucesso!');
     setIsPontoAdd(false); //Sai do modo de adição
     setSelectedPoint(null); //Remove o ponto selecionado
     setDescription(''); //Limpa a descrição
@@ -126,7 +132,7 @@ export default function AddPoint() {
           </Text>
         </View>
       </View>
-
+      <Toast />
       
       {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
       {loading && (
@@ -136,11 +142,11 @@ export default function AddPoint() {
       )}
 
       {/* Exibe erro, caso haja */}
-      {error && (
+      {/* {error && (
         <View >
           <Text style={themeStyles.errorText}>{error}</Text>
         </View>
-      )}
+      )} */}
 
       {/* Mapa */}
       <MapView
@@ -196,6 +202,7 @@ export default function AddPoint() {
           />
         )}
       </MapView>
+      
 
       {/* Controles para adicionar e salvar pontos */}
       <View>

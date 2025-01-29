@@ -7,6 +7,7 @@ import { useTheme } from '../context/ThemeContext';
 import useFiliais from '../hooks/useFiliais';
 import useLocation from '../hooks/useLocation';
 import MapaLojasStyles from './styles/MapaLojasStyles';
+import Toast from 'react-native-toast-message';
 
 export default function MapaLojas(){
   //Modo escuro
@@ -100,7 +101,7 @@ export default function MapaLojas(){
         value={searchCity}
         onChangeText={searchCityChange}
       />
-
+    <Toast/>
       {/* Exibe o carregamento enquanto os dados estão sendo buscados */}
       {loading && (
         <View >

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useStrapiContext } from "../context/StrapiContext";
 import strapiClient from "../services/StrapiClient";
 import usePagination from "./usePagination";
+import Toast from 'react-native-toast-message';
 
 const usePontos = () => {
     
@@ -40,7 +41,32 @@ const usePontos = () => {
           setPontos((prevPontos) => [...prevPontos, ...responseData])
 
         } catch (err) {
-            setError(err.message || "Erro desconhecido");
+            //Verifica se o erro é 403 e exibe uma mensagem de permissão
+          if (err.response?.status === 403) {
+            Toast.show({
+              type: 'error',
+              text1: 'Acesso Negado',
+              text2: 'Você não tem permissão contate o ADM',
+              text1Style: { 
+                fontSize: 17,
+              },
+              text2Style: { 
+                fontSize: 15,
+              },
+            });
+        } else {
+            Toast.show({
+              type: 'error',
+              text1: 'Erro',
+              text2: errorMessage,
+              text1Style: { 
+                fontSize: 17,
+              },
+              text2Style: { 
+                fontSize: 15,
+              },
+            });
+        }  
         } finally {
           setLoading(false);
         }
@@ -53,7 +79,7 @@ const usePontos = () => {
         setError(null);
 
         try {
-            const response = await strapiClient().post("/pontos-interesses", {
+            const response = await conexao.post("/pontos-interesses", {
                 data: novoPonto,
             });
 
@@ -61,8 +87,35 @@ const usePontos = () => {
             setPontos((prevPontos) => [...prevPontos, savedPonto])
 
         } catch(err) {
-            console.error("Erro ao salvar o ponto:", err);
-            setError(err.response?.data?.message || "Erro desconhecido");
+          const errorMessage = err.response?.data?.message;
+          setError(errorMessage);
+          
+          //Verifica se o erro é 403 e exibe uma mensagem de permissão
+          if (err.response?.status === 403) {
+              Toast.show({
+                type: 'error',
+                text1: 'Acesso Negado',
+                text2: 'Você não tem permissão contate o ADM',
+                text1Style: { 
+                  fontSize: 17,
+                },
+                text2Style: { 
+                  fontSize: 15,
+                },
+              });
+          } else {
+              Toast.show({
+                type: 'error',
+                text1: 'Erro',
+                text2: errorMessage,
+                text1Style: { 
+                  fontSize: 17,
+                },
+                text2Style: { 
+                  fontSize: 15,
+                },
+              });
+          }  
         } finally {
             setLoading(false);
         }

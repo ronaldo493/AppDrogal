@@ -6,6 +6,7 @@ import  useChamados  from '../hooks/useChamados'
 import ChamadosStyles from './styles/ChamadosStyles';
 import useFiliais from '../hooks/useFiliais';
 import MapService from '../fixtures/mapService';
+import Toast from 'react-native-toast-message';
 
 export default function Chamados (){
   //Modo escuro
@@ -13,7 +14,7 @@ export default function Chamados (){
   const themeStyles = getThemeStyles(isDarkMode);
 
   const { filiais } = useFiliais();
-  const { chamados} = useChamados();
+  const { chamados } = useChamados();
 
   const [selectedOption, setSelectedOption] = useState('');
   const [selectedOptionChamados, setSelectedOptionChamados] = useState('');
@@ -38,6 +39,7 @@ export default function Chamados (){
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item }) => (
         <View key={item.id}>
+          
           <TouchableOpacity
             style={[
               themeStyles.sidebar,
@@ -106,7 +108,7 @@ export default function Chamados (){
           <Text style={[ChamadosStyles.textTitle, themeStyles.text]}>NÃO ATRIBUÍDOS</Text>
         </TouchableOpacity>
       </View>
-
+      <Toast/>
       {selectedOption === 'atribuido' &&
         renderChamados(chamados.filter((chamado) => chamado.situacao === 1))}
 
