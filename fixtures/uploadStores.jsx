@@ -3,289 +3,504 @@ const axios = require('axios');
 //Dados das lojas
 const stores =
 [
-  
   {
-    "sequencia": 290638,
-    "situacao": 1,
-    "descricaosituacao": "Em atendimento",
-    "usuarioabertura": 4447,
-    "nomeabertura": "JACQUELINE SANTOS CARDOSO",
-    "setorabertura": 21,
-    "descricaosetorabertura": "LOJA",
-    "usuarioresponsavel": 8392,
-    "nomeresponsavel": "RONALDO VIEIRA DA SILVA",
-    "setor": 30,
-    "descricaosetorresponsavel": "TI - SUPORTE",
-    "titulo": "voip sem funcionamento",
-    "descricao": "Boa tarde pessoal estamos com problemas em nosso voip a alguns dias, porém um dos aparelhos estavam funcionando, solicitamos um outro porém não funcionou.\nEstamos sem comunicação com as filias, por gentileza verifiquem para nós.\n\n\nExcelente dia!\n\nAtenciosamente.",
-    "filial": 267,
-    "nomefilial": "FILIAL 267 - DROGAL HOLAMBRA",
-    "dataabertura": "2024-10-11T13:54:07",
-    "dataultimainteracao": "2024-10-11T13:57:31",
-    "datafinalizacao": null,
-    "nota": null,
-    "notaaceitavel": null,
-    "comentarionota": null,
-    "dataprevisao": null,
-    "dataprimeirainteracaoatendimento": "2024-10-11T14:47:29",
-    "dataultimainteracaoaguardandoresposta": null,
-    "codigocategoria": 42,
-    "categoriachamado": "VOIP",
-    "statustarefas": null,
-    "dataultimainteracaoaguardandofinalizacao": null,
-    "dataprimeirainteracaoaguardandofinalizacao": null,
-    "kmchegada": null,
-    "placaveiculo": null,
-    "datahoraexecucaoinicio": null,
-    "datahoraexecucaofim": null,
-    "codigoregiao": 0,
-    "descregiao": "SEM REGIÃO",
-    "qtdanexos": 0,
-    "qtdexecutor": 0,
-    "anexaimagem": 0,
-    "datareabertura": null,
-    "projeto": null,
-    "nroprojeto": null,
-    "filialatendimento": null,
-    "nrocard": null,
-    "avaliaaberturachamado": 1
+    "codigousuario": 8394,
+    "nome": "ALEXANDRE DOS REIS ARAUJO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
   },
   {
-    "sequencia":291050,
-    "situacao":0,
-    "descricaosituacao":"Aberto",
-    "usuarioabertura":13401,
-    "nomeabertura":"JENIFFER LARA DOS SANTOS",
-    "setorabertura":21,
-    "descricaosetorabertura":"LOJA",
-    "usuarioresponsavel":null,
-    "nomeresponsavel":null,
-    "setor":30,
-    "descricaosetorresponsavel":"TI - SUPORTE",
-    "titulo":"Monitor parou de funcionar",
-    "descricao":"bom dia!!!\n\nApos tempestade com varias quedas de energia na ultima sexta feira 11-10 , temos um monitor que parou de funcionar. Segue fotos.\n\nAt. te Jeiniffer",
-    "filial":318,
-    "nomefilial":"FILIAL 318 - DROGAL SAO JOSE D",
-    "dataabertura":"2024-10-14T08:29:47",
-    "dataultimainteracao":"2024-10-14T08:32:56",
-    "datafinalizacao":null,
-    "nota":null,
-    "notaaceitavel":null,
-    "comentarionota":null,
-    "dataprevisao":null,
-    "dataprimeirainteracaoatendimento":null,
-    "dataultimainteracaoaguardandoresposta":null,
-    "codigocategoria":136,
-    "categoriachamado":"MONITOR SECUNDARIO",
-    "statustarefas":null,
-    "dataultimainteracaoaguardandofinalizacao":null,
-    "dataprimeirainteracaoaguardandofinalizacao":null,
-    "kmchegada":null,
-    "placaveiculo":null,
-    "datahoraexecucaoinicio":null,
-    "datahoraexecucaofim":null,
-    "codigoregiao":0,
-    "descregiao":"SEM REGIÃO",
-    "qtdanexos":1,
-    "qtdexecutor":0,
-    "anexaimagem":0,
-    "datareabertura":null,
-    "projeto":null,
-    "nroprojeto":null,
-    "filialatendimento":null,
-    "nrocard":null,
-    "avaliaaberturachamado":1
- },
- {
-    "sequencia":291057,
-    "situacao":0,
-    "descricaosituacao":"Aberto",
-    "usuarioabertura":10492,
-    "nomeabertura":"JULIA GRECHI LOPES",
-    "setorabertura":32,
-    "descricaosetorabertura":"MARKETING",
-    "usuarioresponsavel":null,
-    "nomeresponsavel":null,
-    "setor":30,
-    "descricaosetorresponsavel":"TI - SUPORTE",
-    "titulo":"TELA PISCANDO",
-    "descricao":"Bom dia!\n\nO monitor da Enoe do marketing está piscando. Poderia verificar, por gentileza?\n\nObrigada. ",
-    "filial":196,
-    "nomefilial":"FILIAL 196 - DROGAL ADM",
-    "dataabertura":"2024-10-14T08:48:33",
-    "dataultimainteracao":"2024-10-14T08:50:51",
-    "datafinalizacao":null,
-    "nota":null,
-    "notaaceitavel":null,
-    "comentarionota":null,
-    "dataprevisao":null,
-    "dataprimeirainteracaoatendimento":null,
-    "dataultimainteracaoaguardandoresposta":null,
-    "codigocategoria":136,
-    "categoriachamado":"MONITOR SECUNDARIO",
-    "statustarefas":null,
-    "dataultimainteracaoaguardandofinalizacao":null,
-    "dataprimeirainteracaoaguardandofinalizacao":null,
-    "kmchegada":null,
-    "placaveiculo":null,
-    "datahoraexecucaoinicio":null,
-    "datahoraexecucaofim":null,
-    "codigoregiao":0,
-    "descregiao":"SEM REGIÃO",
-    "qtdanexos":0,
-    "qtdexecutor":0,
-    "anexaimagem":0,
-    "datareabertura":null,
-    "projeto":null,
-    "nroprojeto":null,
-    "filialatendimento":null,
-    "nrocard":null,
-    "avaliaaberturachamado":1
- },
- {
-    "sequencia":291065,
-    "situacao":0,
-    "descricaosituacao":"Aberto",
-    "usuarioabertura":13483,
-    "nomeabertura":"FLAVIA CIPRIANO ANSELMO",
-    "setorabertura":21,
-    "descricaosetorabertura":"LOJA",
-    "usuarioresponsavel":null,
-    "nomeresponsavel":null,
-    "setor":30,
-    "descricaosetorresponsavel":"TI - SUPORTE",
-    "titulo":"SODEXO",
-    "descricao":"Olá,\n\nOntem não conseguimos realizar a venda atraves do cartão SODEXO para uma cliente.\nFoi realizada tentativas nos caixas 1, 2 e POS.\nTentativas realizadas entre 12:00h e 12:30h.\n\nComo proceder?\n\nAtt, Flávia Cipriano.",
-    "filial":349,
-    "nomefilial":"FILIAL 349 - DROGAL ITAPIRA",
-    "dataabertura":"2024-10-14T09:15:30",
-    "dataultimainteracao":"2024-10-14T09:19:57",
-    "datafinalizacao":null,
-    "nota":null,
-    "notaaceitavel":null,
-    "comentarionota":null,
-    "dataprevisao":null,
-    "dataprimeirainteracaoatendimento":null,
-    "dataultimainteracaoaguardandoresposta":null,
-    "codigocategoria":93,
-    "categoriachamado":"PDV",
-    "statustarefas":null,
-    "dataultimainteracaoaguardandofinalizacao":null,
-    "dataprimeirainteracaoaguardandofinalizacao":null,
-    "kmchegada":null,
-    "placaveiculo":null,
-    "datahoraexecucaoinicio":null,
-    "datahoraexecucaofim":null,
-    "codigoregiao":0,
-    "descregiao":"SEM REGIÃO",
-    "qtdanexos":0,
-    "qtdexecutor":0,
-    "anexaimagem":0,
-    "datareabertura":null,
-    "projeto":null,
-    "nroprojeto":null,
-    "filialatendimento":null,
-    "nrocard":null,
-    "avaliaaberturachamado":1
- },
- {
-    "sequencia":291069,
-    "situacao":0,
-    "descricaosituacao":"Aberto",
-    "usuarioabertura":5051,
-    "nomeabertura":"CAMILA ALMEIDA GUERRA",
-    "setorabertura":21,
-    "descricaosetorabertura":"LOJA",
-    "usuarioresponsavel":null,
-    "nomeresponsavel":null,
-    "setor":30,
-    "descricaosetorresponsavel":"TI - SUPORTE",
-    "titulo":"Voip não está funcionando",
-    "descricao":"Olá bom dia,\n\nNosso voip não está funcionando\nPOderia verificar por favor.",
-    "filial":120,
-    "nomefilial":"FILIAL 120 - DROGAL RIO CLARO",
-    "dataabertura":"2024-10-14T09:19:24",
-    "dataultimainteracao":"2024-10-14T09:20:48",
-    "datafinalizacao":null,
-    "nota":null,
-    "notaaceitavel":null,
-    "comentarionota":null,
-    "dataprevisao":null,
-    "dataprimeirainteracaoatendimento":null,
-    "dataultimainteracaoaguardandoresposta":null,
-    "codigocategoria":42,
-    "categoriachamado":"VOIP",
-    "statustarefas":null,
-    "dataultimainteracaoaguardandofinalizacao":null,
-    "dataprimeirainteracaoaguardandofinalizacao":null,
-    "kmchegada":null,
-    "placaveiculo":null,
-    "datahoraexecucaoinicio":null,
-    "datahoraexecucaofim":null,
-    "codigoregiao":0,
-    "descregiao":"SEM REGIÃO",
-    "qtdanexos":0,
-    "qtdexecutor":0,
-    "anexaimagem":0,
-    "datareabertura":null,
-    "projeto":null,
-    "nroprojeto":null,
-    "filialatendimento":null,
-    "nrocard":null,
-    "avaliaaberturachamado":1
- },
- {
-    "sequencia":291090,
-    "situacao":0,
-    "descricaosituacao":"Aberto",
-    "usuarioabertura":4542,
-    "nomeabertura":"RAUL ROCHA DE BRITO",
-    "setorabertura":21,
-    "descricaosetorabertura":"LOJA",
-    "usuarioresponsavel":null,
-    "nomeresponsavel":null,
-    "setor":30,
-    "descricaosetorresponsavel":"TI - SUPORTE",
-    "titulo":"Impressora enroscando folhas",
-    "descricao":"Impressora não está funcionando a mesma está enroscando as folhas",
-    "filial":2,
-    "nomefilial":"FILIAL 002 - DROGAL DROGAPIRES",
-    "dataabertura":"2024-10-14T10:09:48",
-    "dataultimainteracao":"2024-10-14T10:10:44",
-    "datafinalizacao":null,
-    "nota":null,
-    "notaaceitavel":null,
-    "comentarionota":null,
-    "dataprevisao":null,
-    "dataprimeirainteracaoatendimento":null,
-    "dataultimainteracaoaguardandoresposta":null,
-    "codigocategoria":19,
-    "categoriachamado":"IMPRESSORA HP",
-    "statustarefas":null,
-    "dataultimainteracaoaguardandofinalizacao":null,
-    "dataprimeirainteracaoaguardandofinalizacao":null,
-    "kmchegada":null,
-    "placaveiculo":null,
-    "datahoraexecucaoinicio":null,
-    "datahoraexecucaofim":null,
-    "codigoregiao":0,
-    "descregiao":"SEM REGIÃO",
-    "qtdanexos":0,
-    "qtdexecutor":0,
-    "anexaimagem":0,
-    "datareabertura":null,
-    "projeto":null,
-    "nroprojeto":null,
-    "filialatendimento":null,
-    "nrocard":null,
-    "avaliaaberturachamado":1
- },
+    "codigousuario": 1004,
+    "nome": "ANGELA RODRIGUES",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1324,
+    "nome": "ANTONIO BATISTA DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 10733,
+    "nome": "ANTONIO FRAZAO FILHO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 15253,
+    "nome": "CARLOS HENRIQUE BISPO DE ARAUJO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 8390,
+    "nome": "CLAYTON FILIPE DOS REIS LIMA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 143,
+    "nome": "DANILO GENARO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 7464,
+    "nome": "EDSON NOGUEIRA DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 12296,
+    "nome": "EDSON SOARES SANTANA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 17020,
+    "nome": "EVERALDO CAETANO LOPES JUNIOR",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1323,
+    "nome": "FRANCISCO CLAUDIO PIRES DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1322,
+    "nome": "FRANCISCO ROMARIO LIMA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 16717,
+    "nome": "GEAN MARCOS PELISSARI",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1376,
+    "nome": "GERALDO FRANCISCO DE MOURA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1317,
+    "nome": "GERSON APARECIDO CLARO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 16220,
+    "nome": "GUILHERME DE MORAES",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1325,
+    "nome": "ISAIAS GOMES DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 909,
+    "nome": "JAILSON DA SILVA HONORIO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 14762,
+    "nome": "JEFFERSON WILLIAM NICARETTE",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 7466,
+    "nome": "JONATAS FILARDI ANDRADE",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1501,
+    "nome": "KALEK NATHA RUFINO GOMES",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 11471,
+    "nome": "LARISSA DE CAMPOS RONCHESELE",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 8389,
+    "nome": "LOURIVAL DE JESUS FRANCO DE CAMPOS",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 15818,
+    "nome": "LUCAS DEROLDO CARVALHO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1320,
+    "nome": "LUCIO PEREIRA DO NASCIMENTO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1321,
+    "nome": "LUIS HENRIQUE DA SILVA GONCALVES",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 11647,
+    "nome": "LUIS MULLER SOUZA DA CRUZ",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1319,
+    "nome": "LUIZ FERNANDO SIMAO RODRIGUES",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 904,
+    "nome": "MARCOS JOSE DE SOUZA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 16913,
+    "nome": "MATHEUS JANUARIO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 1375,
+    "nome": "MOISES ESDRAS DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 18309,
+    "nome": "PAULO HENRIQUE RODRIGUES SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 16718,
+    "nome": "RONILSON MENDES DOS SANTOS",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 15341,
+    "nome": "THAIS MARCON GOBBO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 17775,
+    "nome": "TONY RAMON MARCONATTO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 16300,
+    "nome": "VINICIUS LEONARDO ALECRIM DE S SANTOS",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 12609,
+    "nome": "VITAL GENESIO DA SILVA FILHO",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 11020,
+    "nome": "WILLIAM PAULO DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 14051,
+    "nome": "ZAQUEU FERNANDO DA SILVA",
+    "codigosetor": 31,
+    "descricaosetor": "ENGENHARIA"
+  },
+  {
+    "codigousuario": 522,
+    "nome": "ALEX FERRAZ DE CAMARGO",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 90,
+    "nome": "CARLA RIANNY BRITO MARICONI",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 17123,
+    "nome": "ENOE EUNICE SMANIOTTO GERMANO",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 10492,
+    "nome": "JULIA GRECHI LOPES",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 18175,
+    "nome": "LUCAS GUSTAVO RIGHI",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 1055,
+    "nome": "MARCELO POMPEO",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 7815,
+    "nome": "MARIANA FERNANDES GUIDI",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 12334,
+    "nome": "SIMONE VERNEQUE",
+    "codigosetor": 32,
+    "descricaosetor": "MARKETING"
+  },
+  {
+    "codigousuario": 7465,
+    "nome": "ADRIANO TURIBIO",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 1071,
+    "nome": "ALEXANDRE DA SILVA ALVES",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 12813,
+    "nome": "FELIPE CESAR PASSOS FERNANDES",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 10054,
+    "nome": "FELIPE MELO DE MATOS",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 8680,
+    "nome": "GUSTAVO HENRIQUE DA SILVA PLENS",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 7438,
+    "nome": "GUSTAVO HENRIQUE RAMOS DE JESUS",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 12295,
+    "nome": "JULIO APARECIDO MARIANO",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 15225,
+    "nome": "LUCAS RODOLFO RICARTE",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 9812,
+    "nome": "MATHEUS GOMES DE SOUZA",
+    "codigosetor": 106,
+    "descricaosetor": "TI - INFRAESTRUTURA"
+  },
+  {
+    "codigousuario": 6,
+    "nome": "ANTONIO CARLOS DE CAMARGO CAETANO",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 752,
+    "nome": "CLAUDIO BARREIROS LIMA",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 10,
+    "nome": "Homologação",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 15460,
+    "nome": "KAUA DA SILVA FORTINI",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 10141,
+    "nome": "LUCAS GABRIEL MAXIMO",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 99,
+    "nome": "MAGALI TEREZINHA LAVORANTE TIETZ",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 12297,
+    "nome": "PEDRO AUGUSTO FRANCO BERTONCELLOS",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 5453,
+    "nome": "REGINA ZEN DO AMARAL PEDREIRA",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 1269,
+    "nome": "RICARDO VICCINO LOPES",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 5206,
+    "nome": "VANESSA LUANA RODRIGUES ALMEIDA",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 5,
+    "nome": "VERIDIANA MICHELON CAMARDA",
+    "codigosetor": 5,
+    "descricaosetor": "TI - SISTEMAS"
+  },
+  {
+    "codigousuario": 755,
+    "nome": "DIEGO VIEIRA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 15224,
+    "nome": "FABIO ALEXANDRE PRETEL JUNIOR",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 1054,
+    "nome": "GUILHERME URBANO CASELLA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 640,
+    "nome": "GUSTAVO DIAS ALVES",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 11981,
+    "nome": "GUSTAVO SIMPLICIO DE LIMA SILVA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 7689,
+    "nome": "IGOR VINICIUS DA SILVA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 15593,
+    "nome": "JOAO MATHEUS VIEIRA LISBOA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 17937,
+    "nome": "JOAO VICTOR RODRIGUES TONIOLO",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 1567,
+    "nome": "KEVIN CHAGAS DE OLIVEIRA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 1395,
+    "nome": "LUCAS SANTOS FERREIRA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 749,
+    "nome": "MARCELO ADRIANO FRANCO",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 15011,
+    "nome": "MARCUS VINICIUS IZEQUIEL DE PASSOS",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 15634,
+    "nome": "MATHEUS NOVELLO MORAES",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 15462,
+    "nome": "PAULO DUARTE BOSCARIOL FILHO",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  },
+  {
+    "codigousuario": 8392,
+    "nome": "RONALDO VIEIRA DA SILVA",
+    "codigosetor": 30,
+    "descricaosetor": "TI - SUPORTE"
+  }
 
 ]
 
 //Função para enviar os dados
 const uploadStores = async () => {
-   const url = 'http://suporteappdrogal.ddns.com.br:18083/api/chamados';
+   const url = 'http://suporteappdrogal.ddns.com.br:18083/api/corporate-users';
    const token = '9daa01c9a2a011d52e3be0dadafe720ee349c7d77707081c0d9db457662f0a71db6b9c929ba3a813afe67fd0d49216ddbccfd773e5bfd1f0ca9fb9cfeb5ae0f1e7fee4712f24049e0be73433593f42a11ac9701394cd44d787ccd42ca324ed0b2a31b530c3b119b6db4905a41b05b339ba5ca21d0da42417e1224b69184e1055';
  
    for (const store of stores) {
