@@ -56,7 +56,7 @@ export default function Chamados (){
             }
           >
             <View>
-              <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, { fontWeight: '600'}]}>
                 {item.nomefilial}
               </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
@@ -78,6 +78,9 @@ export default function Chamados (){
 
           {selectedOptionChamados?.id === item.id && (
             <View style={[ChamadosStyles.detailContainer, themeStyles.sidebar]}>
+              <Text style={[ChamadosStyles.textContent, themeStyles.text, {color: '#B00', fontWeight: 'bold'}]}>
+                {item.descricaosituacao}
+              </Text>
               <Text style={[ChamadosStyles.textContent, themeStyles.text]}>
                 {item.descricao}
               </Text>
