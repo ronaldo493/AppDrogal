@@ -36,16 +36,13 @@ export default function Suporte ({navigation}){
         </Text>
 
         <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-          5° A tela "Preventiva" permite registrar anotações sobre patrimônio, incluindo tipos como Preventiva, Montagem, Inclusão, Reforma e Troca. Insira o código da filial e escolha a opção desejada para seguir com o registro. Além disso, você pode visualizar o checklist na tel inicial da Preventiva.
+          5° A tela "Patrimônios" permite registrar anotações sobre patrimônio, incluindo tipos como Preventiva, Montagem, Inclusão, Reforma e Troca. Insira o código da filial e escolha a opção desejada para seguir com o registro. Além disso, você pode visualizar o checklist na tel inicial da Preventiva.
         </Text>
 
         <Text style={[SuporteStyles.tipText, themeStyles.text]}>
           6° Ative o modo escuro nas configurações para facilitar a visualização em ambientes com pouca luz.
         </Text>
 
-        <Text style={[SuporteStyles.tipText, themeStyles.text]}>
-          7° Mesmo sem internet, você ainda pode visualizar chamados e suas atribuições anteriores.
-        </Text>
         <Text style={[SuporteStyles.tipText, themeStyles.text, { fontStyle: 'italic', marginTop: 20 }]}>
           🚧 Algumas funcionalidades estão em desenvolvimento. Fique atento a atualizações!
         </Text>

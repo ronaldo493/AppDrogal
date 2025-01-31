@@ -15,7 +15,9 @@ export default function About({navigation}) {
 
       <Text style={[AboutStyles.text, themeStyles.text]}>
         Este aplicativo foi desenvolvido para facilitar o trabalho dos colaboradores que realizam
-        atividades externas, ajudando na localização de filiais e na visualização de chamados.
+        atividades externas, ajudando na localização de filiais, visualização de chamados, adição de pontos 
+        de Restaurantes e Postos de Combustíveis que passam o ALELO e TICKET LOG, 
+        também a possibilidade de colher PATRIMÔNIOS pelo celular.
         Com ele, você pode traçar rotas para as filiais mais próximas utilizando o Google Maps ou Waze.
         Além disso, o aplicativo permite a consulta de chamados, tanto os atribuídos quanto os não atribuídos,
         proporcionando uma visão clara das tarefas a serem realizadas.
@@ -26,7 +28,7 @@ export default function About({navigation}) {
       </Text>
 
       <Text style={[AboutStyles.versionText, themeStyles.text]}>
-        Versão do Aplicativo: 1.0.4
+        Versão do Aplicativo: 2.0.0
       </Text>
 
       <Text style={[AboutStyles.developerText, themeStyles.text]}>

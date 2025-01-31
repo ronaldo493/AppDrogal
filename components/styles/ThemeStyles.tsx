@@ -49,6 +49,9 @@ interface ThemeStyles {
   buttonModal: {
     backgroundColor: string;
   };
+  buttonModalScreen: {
+    backgroundColor: string;
+  };
   textModal: {
     color: string;
   };
@@ -186,6 +189,9 @@ export const getThemeStyles = (isDarkMode: boolean): ThemeStyles => {
     },
     buttonModal: {
       backgroundColor: isDarkMode ? '#555' : '#aaa',
+    },
+    buttonModalScreen: {
+      backgroundColor: isDarkMode ? '#888' : '#aaa',
     },
     textModal: {
       color: isDarkMode ? '#fff' : '#111',

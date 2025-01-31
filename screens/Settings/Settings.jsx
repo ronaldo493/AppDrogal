@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Text, View, Modal } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { Switch, Text, View, Modal, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { getThemeStyles } from '../../components/styles/ThemeStyles';
 import { useTheme } from '../../context/ThemeContext';
 import SettingStyles from '../styles/SettingStyles';
@@ -11,20 +10,45 @@ export default function Settings({navigation}) {
   const { isDarkMode, toggleTheme } = useTheme(); 
   const themeStyles = getThemeStyles(isDarkMode);
 
-  const { postSugestao, loading, error } = useSugestao();
+  const { postSugestao, loading, error, setError } = useSugestao();
 
   const [ modalVisible, setModalVisible ] = useState(false);
   const [ email, setEmail ] = useState("");
   const [ sugestao, setSugestao] = useState("");
+  const [successMessage, setSuccessMessage] = useState(false);
 
   const handleEnviar = async () => {
-    const sucesso = await postSugestao(email, sugestao)
-    if (sucesso) {
+    if(!email || !sugestao) {
+          Alert.alert('Atenção!', 'Preencha todos os campos!')
+          return;
+    } 
+
+    try {
+      await postSugestao(email, sugestao);
       setEmail('');
       setSugestao('');
       setModalVisible(false);
+      setSuccessMessage(true);
+      setTimeout(() => {
+        setSuccessMessage(false);
+      }, 1000);  
+    } catch (err) {
+      console.error("Erro ao enviar sugestão", err);
     }
+    
   }
+
+  const handleExit = () => {
+      setEmail('');
+      setSugestao('');
+      setModalVisible(false);  
+  }
+
+  const handleOpenModal = () => {
+    setError(null);
+    setModalVisible(true);
+  }
+
 
   return (
     <View style={[SettingStyles.container, themeStyles.screenBackground]}>
@@ -48,38 +72,47 @@ export default function Settings({navigation}) {
           </TouchableOpacity>
         </View>
         <View>
-          <TouchableOpacity onPress={() => setModalVisible(true)}  style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
-            <Text style={[SettingStyles.label, themeStyles.text]}>Sugestão</Text>
+          <TouchableOpacity onPress={handleOpenModal}  style={[SettingStyles.optionContainer, themeStyles.borderBottomColor]}>
+            <Text style={[SettingStyles.label, themeStyles.text]}>Feedback & Sugestão</Text>
           </TouchableOpacity>
         </View>
+        {error ? <Text style={SettingStyles.errorText}>{error}</Text> : null}
       </View>
+      {successMessage && (
+        <Text style={[SettingStyles.successText, themeStyles.text]}>
+          SUGESTÃO ENVIADA COM SUCESSO!
+        </Text>
+      )}
 
       {/* Modal de Sugestao */}
-      <Modal visible={modalVisible} >
-        <View style={SettingStyles.modalContainer}>
-          <Text style={SettingStyles.modalTitle}>SUGESTÃO DE MELHORIA</Text>
+      <Modal visible={modalVisible} animationType="slide" transparent={true} >
+        <View style={[SettingStyles.modalContainer, themeStyles.sidebar]}>
+          <Text style={[SettingStyles.modalTitle, themeStyles.text]}>SUGESTÃO DE MELHORIA</Text>
+          {error ? <Text style={SettingStyles.errorText}>{error}</Text> : null}
           <View style={SettingStyles.modalInput}>
             <TextInput
-              style={SettingStyles.modalInputText}
+              style={[SettingStyles.modalInputText, themeStyles.input]}
               placeholder='Digite seu E-mail'
+              placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
               onChangeText={setEmail}
-              keyboardType='default'
+              keyboardType='email-address'
             />
             <TextInput
-              style={[SettingStyles.modalInputText, {height: 200}]}
+              style={[SettingStyles.modalInputText, themeStyles.input, {height: 200}]}
               placeholder='Descreva sua Sugestão...'
+              placeholderTextColor={isDarkMode ? '#ccc' : '#333'}
               onChangeText={setSugestao}
               multiline
             />
           </View>
           <View style={SettingStyles.btnContainer}>
             <View style={SettingStyles.btnView}>
-              <TouchableOpacity onPress={handleEnviar} style={SettingStyles.modalButton}>
+              <TouchableOpacity onPress={handleEnviar} style={[SettingStyles.modalButton, themeStyles.buttonModalScreen]}>
                 <Text style={[SettingStyles.textButton, themeStyles.text]}>{loading ? "Enviando..." : "ENVIAR"}</Text>
               </TouchableOpacity>
             </View>
             <View style={SettingStyles.btnView}> 
-              <TouchableOpacity onPress={() => {setModalVisible(false)}} style={[SettingStyles.modalButton, themeStyles.buttonModal]}>
+              <TouchableOpacity onPress={handleExit}  style={[SettingStyles.modalButton, themeStyles.buttonModalScreen]}>
                 <Text style={[SettingStyles.textButton, themeStyles.text]}>CANCELAR</Text>
               </TouchableOpacity>
             </View>

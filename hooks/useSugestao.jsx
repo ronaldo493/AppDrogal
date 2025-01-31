@@ -20,15 +20,16 @@ const useSugestao = () => {
                     user: user.username,
                     setor: user.setor,
                     email: email,
-                    sugestao: sugestao    
+                    sugesao: sugestao    
                 },
             });
 
-            console.log(response)
-
         } catch(err){
-            const errorMessage = err.response?.data?.message;
+            const errorMessage = err.response?.data?.message || "ERRO AO ENVIAR SUGESTÃO. TENTE NOVAMENTE.";;
             setError(errorMessage);
+            setTimeout(() => {
+                setError(false);
+              }, 5000)
         } finally {
             setLoading(false);
         }
@@ -37,7 +38,8 @@ const useSugestao = () => {
     return{
         postSugestao,
         loading,
-        error
+        error,
+        setError
     }
 }
 
