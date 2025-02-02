@@ -9,6 +9,7 @@ import MapService from '../fixtures/mapService';
 import HomeStyles from './styles/HomeStyles';
 import useAuth from '../hooks/useAuth';;
 import Toast from 'react-native-toast-message';
+import useCheckVersion from '../hooks/useCheckVersion';
 
 export default function Home() {
   const [routes, setRoutes] = useState([]); //Estado que armazena as rotas/filiais selecionadas pelo usuário
@@ -19,7 +20,7 @@ export default function Home() {
   
   //Execução de chekToken no carregamento da tela
   const { checkToken, token, message } = useAuth();
-
+  const { currentVersion, error, loading } = useCheckVersion();
 
   useEffect(() => {
     if (token) {
