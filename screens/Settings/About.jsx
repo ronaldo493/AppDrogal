@@ -3,11 +3,14 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { getThemeStyles } from '../../components/styles/ThemeStyles';
 import { useTheme } from '../../context/ThemeContext';
 import AboutStyles from '../../screens/styles/AboutStyles';
+import Constants from "expo-constants";
 
 export default function About({navigation}) {
   //Modo Escuro
   const { isDarkMode } = useTheme();
   const themeStyles = getThemeStyles(isDarkMode);
+
+  const currentVersion = Constants.expoConfig.version;
 
   return (
     <View style={[AboutStyles.container, themeStyles.screenBackground]}>
@@ -28,7 +31,7 @@ export default function About({navigation}) {
       </Text>
 
       <Text style={[AboutStyles.versionText, themeStyles.text]}>
-        Versão do Aplicativo: 2.0.0
+        Versão do Aplicativo: {currentVersion}
       </Text>
 
       <Text style={[AboutStyles.developerText, themeStyles.text]}>

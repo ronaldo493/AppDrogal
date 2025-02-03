@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import { Alert, Linking } from 'react-native';
+import { Alert, Linking } from 'react-native';
 import strapiClient from "../services/StrapiClient";
 import Constants from "expo-constants";
 
@@ -17,27 +17,48 @@ const useCheckVersion = () => {
         setError(null)
 
         try {
-            const response = await conexao.get('/update');
-            console.log("Dados da resposta:", response.data);
+            const response = await conexao.get('/update?populate=apk');
 
-            const { versao, apk, required } = response.data;
+            const { versao, apk, required } = response.data.data;
       
             if (versao && versao !== currentVersion) {
-              console.log(`Nova versão disponível: ${versao}`);
-              
-      
-            //   //Notificar o usuário sobre a atualização
-            //   Alert.alert(
-            //     "Nova Atualização Disponível",
-            //     `A versão ${versao} está disponível. ${required ? "Esta atualização é obrigatória." : "Deseja atualizar agora?"}`,
-            //     [
-            //         { text: "Agora Não", style: "cancel" },
-            //         { 
-            //             text: "Atualizar", 
-            //             onPress: () => Linking.openURL(apk?.url) 
-            //         }
-            //     ]
-            //   );
+
+              //Notificar o usuário sobre a atualização
+              Alert.alert(
+                "Nova Atualização Disponível",
+                `A versão ${versao} está disponível. ${required ? "Esta atualização é obrigatória." : "Deseja atualizar agora?"}`, 
+                required === true
+                ?  [
+                      { 
+                          text: "Atualizar", 
+                          onPress: () => {
+                            if (apk && Array.isArray(apk) && apk.length > 0 && apk[0]?.url) {
+                              const baseUrl = conexao.defaults.baseURL.replace("/api", "");
+                              const apkUrl = `${baseUrl}${apk[0].url}`;
+                              Linking.openURL(apkUrl);
+                            } else {
+                                Alert.alert("Erro", "Não foi possível encontrar o link de atualização.");
+                            }
+                        }
+                      }
+                  ]
+                  : [ //Se não for obrigatória, mostra as duas opções
+                    { text: "Agora Não", style: "cancel" },
+                    { 
+                        text: "Atualizar", 
+                        onPress: () => {
+                            if (apk && Array.isArray(apk) && apk.length > 0 && apk[0]?.url) {
+                                const baseUrl = conexao.defaults.baseURL.replace("/api", "");
+                                const apkUrl = `${baseUrl}${apk[0].url}`;
+                                
+                                Linking.openURL(apkUrl);
+                            } else {
+                                Alert.alert("Erro", "Não foi possível encontrar o link de atualização.");
+                            }
+                        }
+                    }
+                ]
+              );
             }
           } catch (err) {
             console.log("Erro ao fazer a requisição:", err);
@@ -49,8 +70,7 @@ const useCheckVersion = () => {
     }
     
     useEffect(() => {
-        console.log("Checando versão...");
-        checkVersion();
+        checkVersion();      
       }, []);
 
     return {

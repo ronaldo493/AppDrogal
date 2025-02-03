@@ -13,6 +13,7 @@ const useSugestao = () => {
         setLoading(true);
         setError(null);
         
+        console.log(email, sugestao, user.username, user.setor)
         try {
             //Envio no Strapi
             const response = await conexao.post("/sugestoes", {
@@ -20,7 +21,7 @@ const useSugestao = () => {
                     user: user.username,
                     setor: user.setor,
                     email: email,
-                    sugesao: sugestao    
+                    sugestao: sugestao    
                 },
             });
 
