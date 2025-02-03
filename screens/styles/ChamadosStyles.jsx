@@ -52,6 +52,14 @@ const ChamadosStyles = StyleSheet.create({
         marginBottom: 18,
         padding: 10,
         borderRadius: 8,
+    },
+    textCount: {
+        width: '100%',
+        padding: 10,
+        fontWeight: '600',
+        textAlign: 'center',
+        borderRadius: 8,
+        marginTop: 10,
     }
     
 });

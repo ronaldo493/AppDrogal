@@ -50,11 +50,17 @@ const useChamados = () => {
   
       const { data: responseData, meta } = response.data;
 
+      console.log(responseData.map((chamado) => chamado.sequencia))
+      const filteredResponseData = responseData.filter((item, index, self) =>
+        index === self.findIndex((i) => i.sequencia === item.sequencia)
+      );
+      console.log(filteredResponseData.map((chamado) => chamado.sequencia))
+
       setDataMeta(meta)
  
       nextPage();
 
-      setChamados((prevChamados) =>  [...prevChamados, ...responseData]);
+      setChamados((prevChamados) =>  [...prevChamados, ...filteredResponseData]);
   
     } catch (err) {
       setError(err.message || "Erro desconhecido");

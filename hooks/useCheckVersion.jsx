@@ -17,9 +17,9 @@ const useCheckVersion = () => {
         setError(null)
 
         try {
-            const response = await conexao.get('/update?populate=apk');
+            const response = await conexao.get('/update-app');
 
-            const { versao, apk, required } = response.data.data;
+            const { versao, appUrl, required } = response.data.data;
       
             if (versao && versao !== currentVersion) {
 
@@ -32,9 +32,9 @@ const useCheckVersion = () => {
                       { 
                           text: "Atualizar", 
                           onPress: () => {
-                            if (apk && Array.isArray(apk) && apk.length > 0 && apk[0]?.url) {
+                            if (appUrl) {
                               const baseUrl = conexao.defaults.baseURL.replace("/api", "");
-                              const apkUrl = `${baseUrl}${apk[0].url}`;
+                              const apkUrl = `${baseUrl}${appUrl}`;
                               Linking.openURL(apkUrl);
                             } else {
                                 Alert.alert("Erro", "Não foi possível encontrar o link de atualização.");
@@ -47,9 +47,9 @@ const useCheckVersion = () => {
                     { 
                         text: "Atualizar", 
                         onPress: () => {
-                            if (apk && Array.isArray(apk) && apk.length > 0 && apk[0]?.url) {
+                            if (appUrl) {
                                 const baseUrl = conexao.defaults.baseURL.replace("/api", "");
-                                const apkUrl = `${baseUrl}${apk[0].url}`;
+                                const apkUrl = `${baseUrl}${appUrl}`;
                                 
                                 Linking.openURL(apkUrl);
                             } else {

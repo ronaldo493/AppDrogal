@@ -98,6 +98,11 @@ export default function Chamados (){
     />
   );
 
+  //Contagem de Chamados
+  const totalAtribuido = chamados.filter((item) => item.situacao === 1 || item.situacao === 2);
+  const totalNaoAtribuido = chamados.filter((item) => item.situacao === 0);
+
+
   return (
     <View style={[ChamadosStyles.container,themeStyles.screenBackground]}>
       <View style={ChamadosStyles.btnContainer}>
@@ -113,10 +118,23 @@ export default function Chamados (){
       </View>
       <Toast/>
       {selectedOption === 'atribuido' &&
-        renderChamados(chamados.filter((chamado) => chamado.situacao === 1 || chamado.situacao === 2))}
+      <>
+        {renderChamados(chamados.filter((chamado) => chamado.situacao === 1 || chamado.situacao === 2) 
+        .sort((a, b) => new Date(b.dataabertura) - new Date(a.dataabertura)) //Ordena do mais novo para o mais antigo
+        )}
+        <Text style={[ChamadosStyles.textCount, themeStyles.text, themeStyles.radiusBackground]}>TOTAL:{totalAtribuido.length} </Text>
+      </>
+      }
 
       {selectedOption === 'naoAtribuido' &&
-        renderChamados(chamados.filter((chamado) => chamado.situacao === 0))}
+      <>
+        {renderChamados(chamados.filter((chamado) => chamado.situacao === 0)
+        .sort((a, b) => new Date(b.dataabertura) - new Date(a.dataabertura)) //Ordena do mais novo para o mais antigo
+        )}
+        <Text style={[ChamadosStyles.textCount, themeStyles.text, themeStyles.radiusBackground]}>TOTAL:{totalNaoAtribuido.length} </Text>
+      </>
+     }
+        
     </View>
   );
 };

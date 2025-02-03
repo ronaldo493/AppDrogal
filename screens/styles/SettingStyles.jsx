@@ -74,7 +74,7 @@ export default StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    borderWidth: 0.3,
+    borderWidth: 2,
     padding: 15,
     borderRadius: 8,
     borderColor: "#bbb"
@@ -86,21 +86,25 @@ export default StyleSheet.create({
     marginBottom: 18,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#bbb',
   },
   btnContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderWidth: 2,
+    borderColor: '#bbb',
+    borderRadius: 8,
+    marginTop: 30,
     gap: 8,
   },
   btnView: {
     flex: 1,
+    margin: 15, 
   },
   modalButton: {
-    padding: 6,
+    padding: 8,
     borderRadius: 6,
-    marginTop: 20,
   },
   textButton: {
     fontSize: 14,
