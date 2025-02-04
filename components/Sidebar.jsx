@@ -22,7 +22,7 @@ export default function Sidebar({ navigation }) {
     { label: 'CHAMADOS', route: 'Chamados' },
     { label: 'MAPA DE LOJAS', route: 'MapaLojas' },
     { label: 'RESTAURANTES & POSTOS', route: 'AddPoint' },
-    ...user?.setor === 'INFRAESTRUTURA' || user?.setor === 'TI - SUPORTE'? [{ label: 'PATRIMÔNIO', route: 'Preventiva' }] : [],
+    ...user?.setor === 'TI - INFRAESTRUTURA' || user?.setor === 'TI - SUPORTE'? [{ label: 'PATRIMÔNIO', route: 'Preventiva' }] : [],
   ];
 
   return (
