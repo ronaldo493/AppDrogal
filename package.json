@@ -41,7 +41,7 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
     "@teovilla/react-native-web-maps": "^0.9.5",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "axios-retry": "^4.5.0",
     "date-fns": "^4.1.0",
     "eas-cli": "^12.5.3",
