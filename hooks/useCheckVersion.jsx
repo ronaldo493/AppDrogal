@@ -17,11 +17,13 @@ const useCheckVersion = () => {
         setError(null)
 
         try {
-            const response = await conexao.get('/update-app');
+            const response = await conexao.get('/update-app?populate=appApk');
 
-            const { versao, appUrl, required } = response.data.data;
+            console.log(response.data)
+
+            const { versao, appUrl, required, appApk } = response.data.data;
       
-            if (versao && versao !== currentVersion) {
+            if (versao && versao > currentVersion) {
 
               //Notificar o usuário sobre a atualização
               Alert.alert(
@@ -32,13 +34,34 @@ const useCheckVersion = () => {
                       { 
                           text: "Atualizar", 
                           onPress: () => {
-                            if (appUrl) {
-                              const baseUrl = conexao.defaults.baseURL.replace("/api", "");
-                              const apkUrl = `${baseUrl}${appUrl}`;
-                              Linking.openURL(apkUrl);
-                            } else {
-                                Alert.alert("Erro", "Não foi possível encontrar o link de atualização.");
-                            }
+                            Alert.alert(
+                                "Escolha o método de atualização",
+                                "Como deseja baixar a atualização?",
+                                [
+                                    { 
+                                        text: "Baixar APK", 
+                                        onPress: () => {
+                                            if (appApk && appApk.url) {
+                                                const baseUrl = conexao.defaults.baseURL.replace("/api", "");
+                                                const apkUrl = `${baseUrl}${appApk.url}`;
+                                                Linking.openURL(apkUrl);
+                                            } else {
+                                                Alert.alert("Erro", "Não foi possível encontrar o link do APK.");
+                                            }
+                                        }
+                                    },
+                                    { 
+                                        text: "Baixar com Link", 
+                                        onPress: () => {
+                                            if (appUrl) {
+                                                Linking.openURL(appUrl);
+                                            } else {
+                                                Alert.alert("Erro", "Não foi possível encontrar o link externo.");
+                                            }
+                                        }
+                                    }
+                                ]
+                            );
                         }
                       }
                   ]
@@ -47,9 +70,9 @@ const useCheckVersion = () => {
                     { 
                         text: "Atualizar", 
                         onPress: () => {
-                            if (appUrl) {
+                            if (appApk) {
                                 const baseUrl = conexao.defaults.baseURL.replace("/api", "");
-                                const apkUrl = `${baseUrl}${appUrl}`;
+                                const apkUrl = `${baseUrl}${appApk}`;
                                 
                                 Linking.openURL(apkUrl);
                             } else {
