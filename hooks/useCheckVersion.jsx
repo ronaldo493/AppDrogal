@@ -70,14 +70,34 @@ const useCheckVersion = () => {
                     { 
                         text: "Atualizar", 
                         onPress: () => {
-                            if (appApk) {
-                                const baseUrl = conexao.defaults.baseURL.replace("/api", "");
-                                const apkUrl = `${baseUrl}${appApk}`;
-                                
-                                Linking.openURL(apkUrl);
-                            } else {
-                                Alert.alert("Erro", "Não foi possível encontrar o link de atualização.");
-                            }
+                            Alert.alert(
+                                "Escolha o método de atualização",
+                                "Como deseja baixar a atualização?",
+                                [
+                                    { 
+                                        text: "Baixar APK", 
+                                        onPress: () => {
+                                            if (appApk && appApk.url) {
+                                                const baseUrl = conexao.defaults.baseURL.replace("/api", "");
+                                                const apkUrl = `${baseUrl}${appApk.url}`;
+                                                Linking.openURL(apkUrl);
+                                            } else {
+                                                Alert.alert("Erro", "Não foi possível encontrar o link do APK.");
+                                            }
+                                        }
+                                    },
+                                    { 
+                                        text: "Abrir Link", 
+                                        onPress: () => {
+                                            if (appUrl) {
+                                                Linking.openURL(appUrl);
+                                            } else {
+                                                Alert.alert("Erro", "Não foi possível encontrar o link externo.");
+                                            }
+                                        }
+                                    }
+                                ]
+                            );
                         }
                     }
                 ]
