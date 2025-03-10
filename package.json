@@ -45,7 +45,7 @@
     "axios-retry": "^4.5.0",
     "date-fns": "^4.1.0",
     "eas-cli": "^12.5.3",
-    "expo": "~52.0.26",
+    "expo": "^52.0.37",
     "expo-background-fetch": "~13.0.5",
     "expo-build-properties": "~0.13.1",
     "expo-camera": "~16.0.14",

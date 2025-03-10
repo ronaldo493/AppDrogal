@@ -50,14 +50,23 @@ export default function AddPoint() {
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              const isSaved = await postPontos(newPoint);
-
-              if (isSaved) {
+              await postPontos(newPoint);
+                Toast.show({
+                  type: 'success',
+                  text1: 'Ponto de Restaurante salvo com sucesso!',
+                  position: 'center',
+                  topOffset: 0
+                });
                 resetAddPoint();
-              } return;
 
             } catch (error) {
-              Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+              Toast.show({
+                type: 'error',
+                text1: 'Não foi possível salvar o ponto.',
+                position: 'center',
+                topOffset: 0
+              });
+              resetAddPoint();
             }
           },
         },
@@ -74,15 +83,23 @@ export default function AddPoint() {
             try {
               //Adicionar no Strapi
               //Chamando a função do hook usePontos para salvar o ponto
-              const isSaved = await postPontos(newPoint);
-
-              if (isSaved) {
+              await postPontos(newPoint);
+                Toast.show({
+                  type: 'success',
+                  text1: 'Ponto de Combustível salvo com sucesso!',
+                  position: 'center',
+                  topOffset: 0
+                });
                 resetAddPoint();
-              } return;
-  
+
             } catch (error) {
-              console.error('Erro ao salvar ponto como Posto de Combustível:', error);
-              Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+              Toast.show({
+                type: 'error',
+                text1: 'Não foi possível salvar o ponto.',
+                position: 'center',
+                topOffset: 0
+              });
+              resetAddPoint();
             }
           },
         },
